@@ -1,6 +1,9 @@
 import 'package:ecommerce_int2/app_properties.dart';
 import 'package:ecommerce_int2/screens/auth/welcome_back_page.dart';
+import 'package:ecommerce_int2/screens/auth/welcome_products_page.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 import 'forgot_password_page.dart';
 
@@ -10,6 +13,8 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  final _formKey = GlobalKey<FormState>();
   TextEditingController email = TextEditingController(text: 'example@email.com');
 
   TextEditingController password = TextEditingController(text: '12345678');
@@ -133,7 +138,7 @@ class _RegisterPageState extends State<RegisterPage> {
   void _submit() {
     final form = _formKey!.currentState;
 
-    if (form.validate()) {
+    if (form!.validate()) {
       form.save();
       // _registerUser();
       _redirectUser();
@@ -142,7 +147,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void _registerUser() async {
     setState(() => _isSubmitting = true);
-    http.Response response = await http.post('http://localhost:1337/auth/local/register', body: {
+    http.Response response = await http.post(Uri.parse('http://localhost:1337/auth/local/register'), body: {
       "mobileNumber": _mobileNumber,
       "password": _password
     });
@@ -161,13 +166,15 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void _showSuccessSnack() {
     final snackbar = SnackBar(content: Text('User $_mobileNumber successfully created!', style: TextStyle(color: Colors.green)));
-    _scaffoldKey!.currentState.showSnackBar(snackbar);
-    _formKey!.currentState.reset();
+    if (_scaffoldKey != null) {
+      _scaffoldKey.currentState?.showSnackBar(snackbar);
+    }
+    _formKey.currentState?.reset();
   }
 
   void _showErrorSnack(String errorMsg) {
     final snackbar = SnackBar(content: Text(errorMsg, style: TextStyle(color: Colors.red)));
-    _scaffoldKey!.currentState.showSnackBar(snackbar);
+    _scaffoldKey.currentState?.showSnackBar(snackbar);
     throw Exception('Error registering: $errorMsg');
   }
 
