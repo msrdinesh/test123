@@ -130,7 +130,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Padding(
         padding: EdgeInsets.only(top: 20.0),
         child: Column(children: [
-          _isSubmitting == true ? CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Theme.of(context).primaryColor)) : RaisedButton(child: Text('Continue', style: Theme!.of(context).textTheme.bodyText1.copyWith(color: Colors.black)), elevation: 8.0, shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))), color: Theme.of(context).primaryColor, onPressed: _submit),
+          _isSubmitting == true ? CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Theme.of(context).primaryColor)) : RaisedButton(child: Text('Continue', style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.black)), elevation: 8.0, shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))), color: Theme.of(context).primaryColor, onPressed: _submit),
           FlatButton(child: Text('Existing user? Login'), onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new WelcomeBackPage())))
         ]));
   }
