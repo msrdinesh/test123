@@ -297,7 +297,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Stack(
+     SingleChildScrollView(
+        child:Stack(
         children: <Widget>[
           Container(
             decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/background.jpg'), fit: BoxFit.cover)),
@@ -341,6 +342,6 @@ class _RegisterPageState extends State<RegisterPage> {
           )
         ],
       ),
-    );
+    ));
   }
 }
