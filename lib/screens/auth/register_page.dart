@@ -296,7 +296,7 @@ class _RegisterPageState extends State<RegisterPage> {
     );
 
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
           child: Stack(
         children: <Widget>[
