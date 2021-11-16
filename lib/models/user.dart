@@ -23,19 +23,7 @@ class User {
   Picture picture;
   String nat;
 
-  User(
-      {required this.gender,
-      required this.name,
-      required this.location,
-      required this.email,
-      required this.login,
-      required this.dob,
-      required this.registered,
-      required this.phone,
-      required this.cell,
-      required this.id,
-      required this.picture,
-      required this.nat});
+  User({required this.gender, required this.name, required this.location, required this.email, required this.login, required this.dob, required this.registered, required this.phone, required this.cell, required this.id, required this.picture, required this.nat});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
