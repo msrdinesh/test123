@@ -54,7 +54,11 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
         padding: EdgeInsets.only(top: 20.0),
         child: Column(children: [
           _isSubmitting == true ? CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Theme.of(context).accentColor)) : RaisedButton(child: Text('Submit', style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.black)), elevation: 8.0, shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))), color: Theme.of(context).accentColor, onPressed: _submit),
-          FlatButton(child: Text('New user? Register'), onPressed: () => {})
+          FlatButton(
+              child: Text('New user? Register'),
+              onPressed: () => {
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new RegisterPage()))
+                  })
         ]));
   }
 
