@@ -1,6 +1,6 @@
 import 'package:ecommerce_int2/app_properties.dart';
 import 'package:flutter/material.dart';
-
+import 'package:http/http.dart' as http;
 import 'register_page.dart';
 
 class WelcomeBackPage extends StatefulWidget {
@@ -13,14 +13,14 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   final _formKey = GlobalKey<FormState>();
 
   bool _isSubmitting = false, _obscureText = true;
-  String _email = "", _password = "";
+  String? _email = "", _password = "";
 
   Widget _showTitle() {
     return Text('Login', style: Theme.of(context).textTheme.headline1);
   }
 
   Widget _showEmailInput() {
-    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _email = val, validator: (val) => val.length != 10 ? 'Invalid Mobile Number' : null, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Mobile Number *', hintText: 'Mobile Number *', icon: Icon(Icons.mail, color: Colors.grey))));
+    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _email = val, validator: (val) => val?.length != 10 ? 'Invalid Mobile Number' : null, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Mobile Number *', hintText: 'Mobile Number *', icon: Icon(Icons.mail, color: Colors.grey))));
   }
 
   Widget _showPasswordInput() {
@@ -28,7 +28,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
         padding: EdgeInsets.only(top: 20.0),
         child: TextFormField(
             onSaved: (val) => _password = val,
-            validator: (val) => val.length < 6 ? 'Password too short' : null,
+            validator: (val) => val?.length < 6 ? 'Password too short' : null,
             obscureText: _obscureText,
             decoration: InputDecoration(
                 suffixIcon: GestureDetector(
