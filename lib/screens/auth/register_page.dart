@@ -14,9 +14,9 @@ class RegisterPageState extends State<RegisterPage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
 
-  bool _isSubmitting, _obscureText = true;
-  String _firstname, _lastname, _mobileNumber, _alternateMobileNumber, _email, _password, _houseNumber, _street, _city, _state, _pincode;
-  bool _sameDelivery;
+  bool _isSubmitting = true, _obscureText = true;
+  String _firstname = "", _lastname = "", _mobileNumber = "", _alternateMobileNumber = "", _email = "", _password = "", _houseNumber = "", _street = "", _city = "", _state = "", _pincode = "";
+  bool _sameDelivery = true;
 
   Widget _showTitle() {
     return Text('Create Account');
