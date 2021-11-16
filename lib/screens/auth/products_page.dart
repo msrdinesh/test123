@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ecommerce_int2/screens/auth/side_bar.dart';
+import 'package:ecommerce_int2/screens/auth/sidebar.dart';
 
 class ProductsPage extends StatefulWidget {
   @override
