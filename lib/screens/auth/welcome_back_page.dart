@@ -121,9 +121,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
                 Spacer(),
                 subTitle,
                 Spacer(flex: 2),
-                loginForm,
-                Spacer(flex: 2),
-                forgotPassword
+                loginForm
               ],
             ),
           )
