@@ -308,20 +308,24 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 28.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Spacer(flex: 3),
-                title,
-                Spacer(),
-                subTitle,
-                Spacer(flex: 2),
-                registerForm,
-                Spacer(flex: 2),
-                Padding(padding: EdgeInsets.only(bottom: 20), child: socialRegister)
-              ],
-            ),
+            child: Form(
+                key: _formKey,
+                child: Column(children: [
+                  _showTitle(),
+                  _showFirstNameInput(),
+                  _showLastNameInput(),
+                  _showMobileNumberInput(),
+                  _showAlternateMobileNumberInput(),
+                  _showEmailInput(),
+                  _showPasswordInput(),
+                  _showConfirmPasswordInput(),
+                  _showHouseNumberInput(),
+                  _showStreetInput(),
+                  _showCityInput(),
+                  _showStateInput(),
+                  _showPincodeInput(),
+                  _showFormActions()
+                ])),
           ),
           Positioned(
             top: 35,
