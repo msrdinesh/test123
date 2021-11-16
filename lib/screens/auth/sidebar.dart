@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:feednext/pages/login_page.dart';
+import 'package:ecommerce_int2/screens/auth/login_page.dart';
 
 class sideBar extends StatelessWidget {
   @override
