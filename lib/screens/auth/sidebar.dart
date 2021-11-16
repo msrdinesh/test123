@@ -10,6 +10,7 @@ class sideBar extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
+            accountEmail: Text("msd11@iitbbs.ac.in"),
             accountName: Text('Hello, User'),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
