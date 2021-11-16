@@ -64,7 +64,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
 
   void _submit() {
     final form = _formKey.currentState;
-
+    print(form);
     if (form!.validate()) {
       form.save();
       // _registerUser();
