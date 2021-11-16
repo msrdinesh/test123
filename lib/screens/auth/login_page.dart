@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:feednext/sidebar.dart';
-import 'package:feednext/pages/products_page.dart';
-import 'package:feednext/pages/register_page.dart';
+import 'package:ecommerce_int2/screens/auth/sidebar.dart';
+import 'package:ecommerce_int2/screens/auth/products_page.dart';
+import 'package:ecommerce_int2/screens/auth/register_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
