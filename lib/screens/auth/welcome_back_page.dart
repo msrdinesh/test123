@@ -211,11 +211,10 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Spacer(flex: 3),
-                welcomeBack,
-                Spacer(),
-                subTitle,
-                Spacer(flex: 2),
-                loginForm
+                _showTitle(),
+                _showEmailInput(),
+                _showPasswordInput(),
+                _showFormActions()
               ],
             ),
           )
