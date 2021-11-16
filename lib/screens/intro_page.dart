@@ -16,9 +16,7 @@ class _IntroPageState extends State<IntroPage> {
     return Material(
       child: Container(
 //      width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-            color: Colors.grey[100],
-            image: DecorationImage(image: AssetImage('assets/background.png'))),
+        decoration: BoxDecoration(color: Colors.grey[100], image: DecorationImage(image: AssetImage('assets/background.png'))),
         child: Stack(
           children: <Widget>[
             PageView(
@@ -45,13 +43,11 @@ class _IntroPageState extends State<IntroPage> {
                       child: Text(
                         'Get Any Thing Online',
                         textAlign: TextAlign.right,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 32, vertical: 16.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16.0),
                       child: Text(
                         'You can buy anything ranging from digital products to hardware within few clicks.',
                         textAlign: TextAlign.right,
@@ -76,13 +72,11 @@ class _IntroPageState extends State<IntroPage> {
                       child: Text(
                         'Shipping to anywhere ',
                         textAlign: TextAlign.right,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 32, vertical: 16.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16.0),
                       child: Text(
                         'We will ship to anywhere in the world, With 30 day 100% money back policy.',
                         textAlign: TextAlign.right,
@@ -107,13 +101,11 @@ class _IntroPageState extends State<IntroPage> {
                       child: Text(
                         'On-time delivery',
                         textAlign: TextAlign.right,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 32, vertical: 16.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16.0),
                       child: Text(
                         'You can track your product with our powerful tracking service.',
                         textAlign: TextAlign.right,
@@ -137,28 +129,19 @@ class _IntroPageState extends State<IntroPage> {
                           margin: EdgeInsets.all(8.0),
                           height: 12,
                           width: 12,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.black, width: 2),
-                              color: pageIndex == 0 ? yellow : Colors.white),
+                          decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.black, width: 2), color: pageIndex == 0 ? yellow : Colors.white),
                         ),
                         Container(
                           margin: EdgeInsets.all(8.0),
                           height: 12,
                           width: 12,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.black, width: 2),
-                              color: pageIndex == 1 ? yellow : Colors.white),
+                          decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.black, width: 2), color: pageIndex == 1 ? yellow : Colors.white),
                         ),
                         Container(
                           margin: EdgeInsets.all(8.0),
                           height: 12,
                           width: 12,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.black, width: 2),
-                              color: pageIndex == 2 ? yellow : Colors.white),
+                          decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.black, width: 2), color: pageIndex == 2 ? yellow : Colors.white),
                         )
                       ],
                     ),
@@ -171,15 +154,10 @@ class _IntroPageState extends State<IntroPage> {
                             splashColor: Colors.transparent,
                             child: Text(
                               'SKIP',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16),
+                              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
                             ),
                             onPressed: () {
-                              Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                      builder: (context) => MainPage()));
+                              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MainPage()));
                             },
                           ),
                         ),
@@ -188,31 +166,20 @@ class _IntroPageState extends State<IntroPage> {
                                 splashColor: Colors.transparent,
                                 child: Text(
                                   'NEXT',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16),
+                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
                                 ),
                                 onPressed: () {
-                                  if (!(controller.page == 2.0))
-                                    controller.nextPage(
-                                        duration: Duration(milliseconds: 200),
-                                        curve: Curves.linear);
+                                  if (!(controller.page == 2.0)) controller.nextPage(duration: Duration(milliseconds: 200), curve: Curves.linear);
                                 },
                               )
                             : FlatButton(
                                 splashColor: Colors.transparent,
                                 child: Text(
                                   'FINISH',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16),
+                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
                                 ),
                                 onPressed: () {
-                                  Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
-                                          builder: (context) => MainPage()));
+                                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MainPage()));
                                 },
                               )
                       ],
