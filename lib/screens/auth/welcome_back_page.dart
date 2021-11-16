@@ -211,15 +211,15 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 28.0),
-            child: Form(
-                      key: _formKey,
-                      child: Column(children: [
-                        _showTitle(),
-                        _showEmailInput(),
-                        _showPasswordInput(),
-                        _showFormActions()
-                      ]))
+              padding: const EdgeInsets.only(left: 28.0),
+              child: Form(
+                  key: _formKey,
+                  child: Column(children: [
+                    _showTitle(),
+                    _showEmailInput(),
+                    _showPasswordInput(),
+                    _showFormActions()
+                  ])))
         ],
       ),
     );
