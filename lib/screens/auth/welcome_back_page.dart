@@ -13,7 +13,7 @@ class WelcomeBackPage extends StatefulWidget {
 
 class _WelcomeBackPageState extends State<WelcomeBackPage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final _formKey = new GlobalKey();
+  final _formKey = GlobalKey<FormState>();
 
   bool _isSubmitting = false, _obscureText = true;
   String? _email = "", _password = "";
