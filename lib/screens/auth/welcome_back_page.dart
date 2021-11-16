@@ -1,17 +1,15 @@
-
 import 'package:ecommerce_int2/app_properties.dart';
 import 'package:flutter/material.dart';
 
 import 'register_page.dart';
 
-class                            WelcomeBackPage extends StatefulWidget {
+class WelcomeBackPage extends StatefulWidget {
   @override
   _WelcomeBackPageState createState() => _WelcomeBackPageState();
 }
 
 class _WelcomeBackPageState extends State<WelcomeBackPage> {
-  TextEditingController email =
-      TextEditingController(text: 'example@email.com');
+  TextEditingController email = TextEditingController(text: 'example@email.com');
 
   TextEditingController password = TextEditingController(text: '12345678');
 
@@ -19,17 +17,13 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   Widget build(BuildContext context) {
     Widget welcomeBack = Text(
       'Welcome Back Roberto,',
-      style: TextStyle(
-          color: Colors.white,
-          fontSize: 34.0,
-          fontWeight: FontWeight.bold,
-          shadows: [
-            BoxShadow(
-              color: Color.fromRGBO(0, 0, 0, 0.15),
-              offset: Offset(0, 5),
-              blurRadius: 10.0,
-            )
-          ]),
+      style: TextStyle(color: Colors.white, fontSize: 34.0, fontWeight: FontWeight.bold, shadows: [
+        BoxShadow(
+          color: Color.fromRGBO(0, 0, 0, 0.15),
+          offset: Offset(0, 5),
+          blurRadius: 10.0,
+        )
+      ]),
     );
 
     Widget subTitle = Padding(
@@ -47,28 +41,18 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
       bottom: 40,
       child: InkWell(
         onTap: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (_) => RegisterPage()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (_) => RegisterPage()));
         },
         child: Container(
           width: MediaQuery.of(context).size.width / 2,
           height: 80,
-          child: Center(
-              child: new Text("Log In",
-                  style: const TextStyle(
-                      color: const Color(0xfffefefe),
-                      fontWeight: FontWeight.w600,
-                      fontStyle: FontStyle.normal,
-                      fontSize: 20.0))),
+          child: Center(child: new Text("Log In", style: const TextStyle(color: const Color(0xfffefefe), fontWeight: FontWeight.w600, fontStyle: FontStyle.normal, fontSize: 20.0))),
           decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [
-                    Color.fromRGBO(236, 60, 3, 1),
-                    Color.fromRGBO(234, 60, 3, 1),
-                    Color.fromRGBO(216, 78, 16, 1),
-                  ],
-                  begin: FractionalOffset.topCenter,
-                  end: FractionalOffset.bottomCenter),
+              gradient: LinearGradient(colors: [
+                Color.fromRGBO(236, 60, 3, 1),
+                Color.fromRGBO(234, 60, 3, 1),
+                Color.fromRGBO(216, 78, 16, 1),
+              ], begin: FractionalOffset.topCenter, end: FractionalOffset.bottomCenter),
               boxShadow: [
                 BoxShadow(
                   color: Color.fromRGBO(0, 0, 0, 0.16),
@@ -89,11 +73,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
             height: 160,
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.only(left: 32.0, right: 12.0),
-            decoration: BoxDecoration(
-                color: Color.fromRGBO(255, 255, 255, 0.8),
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    bottomLeft: Radius.circular(10))),
+            decoration: BoxDecoration(color: Color.fromRGBO(255, 255, 255, 0.8), borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10))),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -120,49 +100,15 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
       ),
     );
 
-    Widget forgotPassword = Padding(
-      padding: const EdgeInsets.only(bottom: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            'Forgot your password? ',
-            style: TextStyle(
-              fontStyle: FontStyle.italic,
-              color: Color.fromRGBO(255, 255, 255, 0.5),
-              fontSize: 14.0,
-            ),
-          ),
-          InkWell(
-            onTap: () {},
-            child: Text(
-              'Reset password',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 14.0,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-
     return Scaffold(
-
       body: Stack(
         children: <Widget>[
-
           Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage('assets/background.jpg'),
-                  fit: BoxFit.cover)
-            ),
+            decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/background.jpg'), fit: BoxFit.cover)),
           ),
           Container(
             decoration: BoxDecoration(
-                color: transparentYellow,
-
+              color: transparentYellow,
             ),
           ),
           Padding(
