@@ -14,8 +14,8 @@ class LoginPageState extends State<LoginPage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
 
-  bool _isSubmitting, _obscureText = true;
-  String _email, _password;
+  bool _isSubmitting = false, _obscureText = true;
+  String? _email = "", _password = "";
 
   Widget _showTitle() {
     return Text('Login', style: Theme.of(context).textTheme.headline1);
