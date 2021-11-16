@@ -1,7 +1,9 @@
 import 'package:ecommerce_int2/app_properties.dart';
+import 'package:ecommerce_int2/screens/auth/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'register_page.dart';
+import 'dart:convert';
 
 class WelcomeBackPage extends StatefulWidget {
   @override
@@ -28,7 +30,11 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
         padding: EdgeInsets.only(top: 20.0),
         child: TextFormField(
             onSaved: (val) => _password = val,
-            validator: (val) => val?.length < 6 ? 'Password too short' : null,
+            validator: (val) => val == null
+                ? "null"
+                : val.length < 6
+                    ? 'Password too short'
+                    : null,
             obscureText: _obscureText,
             decoration: InputDecoration(
                 suffixIcon: GestureDetector(
@@ -46,7 +52,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
     return Padding(
         padding: EdgeInsets.only(top: 20.0),
         child: Column(children: [
-          _isSubmitting == true ? CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Theme.of(context).accentColor)) : RaisedButton(child: Text('Submit', style: Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.black)), elevation: 8.0, shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))), color: Theme.of(context).accentColor, onPressed: _submit),
+          _isSubmitting == true ? CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Theme.of(context).accentColor)) : RaisedButton(child: Text('Submit', style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.black)), elevation: 8.0, shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))), color: Theme.of(context).accentColor, onPressed: _submit),
           FlatButton(child: Text('New user? Register'), onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new RegisterPage())))
         ]));
   }
@@ -54,7 +60,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   void _submit() {
     final form = _formKey.currentState;
 
-    if (form.validate()) {
+    if (form!.validate()) {
       form.save();
       // _registerUser();
       _redirectUser();
@@ -63,7 +69,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
 
   void _registerUser() async {
     setState(() => _isSubmitting = true);
-    http.Response response = await http.post('http://localhost:1337/auth/local', body: {
+    http.Response response = await http.post(Uri.parse('http://localhost:1337/auth/local'), body: {
       "identifier": _email,
       "password": _password
     });
@@ -82,13 +88,13 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
 
   void _showSuccessSnack() {
     final snackbar = SnackBar(content: Text('User successfully logged in!', style: TextStyle(color: Colors.green)));
-    _scaffoldKey.currentState.showSnackBar(snackbar);
-    _formKey.currentState.reset();
+    _scaffoldKey.currentState?.showSnackBar(snackbar);
+    _formKey.currentState?.reset();
   }
 
   void _showErrorSnack(String errorMsg) {
     final snackbar = SnackBar(content: Text(errorMsg, style: TextStyle(color: Colors.red)));
-    _scaffoldKey.currentState.showSnackBar(snackbar);
+    _scaffoldKey.currentState?.showSnackBar(snackbar);
     throw Exception('Error logging in: $errorMsg');
   }
 
