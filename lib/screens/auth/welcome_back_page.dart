@@ -224,6 +224,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
               width: 350.0,
               height: 300.0,
               child: Container(
+                  alignment: Alignment.center,
                   color: Colors.white,
                   child: Padding(
                       padding: const EdgeInsets.only(left: 28.0),
