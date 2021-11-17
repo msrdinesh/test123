@@ -8,8 +8,6 @@ import 'package:http/http.dart' as http;
 import 'register_page.dart';
 import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
-import 'package:universal_io/io.dart';
 
 class WelcomeBackPage extends StatefulWidget {
   @override
@@ -116,17 +114,12 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
     }
-    if ((defaultTargetPlatform == TargetPlatform.iOS) || (defaultTargetPlatform == TargetPlatform.android)) {
-      // Some android/ios specific code
-    } else if ((defaultTargetPlatform == TargetPlatform.linux) || (defaultTargetPlatform == TargetPlatform.macOS) || (defaultTargetPlatform == TargetPlatform.windows)) {
-      // Some desktop specific code there
-    } else {
-      try {
-        FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email, password: _password);
-      } catch (e) {
-        print(e.runtimeType);
-        // showError(e.runtimeTydpe,context);
-      }
+
+    try {
+      FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email, password: _password);
+    } catch (e) {
+      print(e.runtimeType);
+      // showError(e.runtimeTydpe,context);
     }
 
     setState(() => _isSubmitting = false);
@@ -153,7 +146,6 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   TextEditingController email = TextEditingController(text: 'example@email.com');
 
   TextEditingController password = TextEditingController(text: '12345678');
-
   final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
