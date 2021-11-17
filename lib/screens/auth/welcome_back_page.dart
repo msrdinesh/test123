@@ -218,7 +218,14 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
       body: Container(
           color: Colors.green,
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-            Text("hi there"),
+            RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(children: <TextSpan>[
+                TextSpan(text: "India's 1st ", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                TextSpan(text: "Feed & Fodder", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold)),
+                TextSpan(text: "buying App", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))
+              ]),
+            ),
             Stack(
               children: <Widget>[
                 Container(
