@@ -220,24 +220,26 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
               color: Colors.green,
             ),
           ),
-          SizedBox(
-              width: 400.0,
-              height: 400.0,
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Container(
-                      alignment: Alignment.center,
-                      color: Colors.white,
-                      child: Padding(
-                          padding: const EdgeInsets.only(left: 28.0),
-                          child: Form(
-                              key: _formKey,
-                              child: Column(children: [
-                                _showTitle(),
-                                _showEmailInput(),
-                                _showPasswordInput(),
-                                _showFormActions()
-                              ]))))))
+          Align(
+              alignment: Alignment.center,
+              child: SizedBox(
+                  width: 400.0,
+                  height: 400.0,
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                          alignment: Alignment.center,
+                          color: Colors.white,
+                          child: Padding(
+                              padding: const EdgeInsets.only(left: 28.0),
+                              child: Form(
+                                  key: _formKey,
+                                  child: Column(children: [
+                                    _showTitle(),
+                                    _showEmailInput(),
+                                    _showPasswordInput(),
+                                    _showFormActions()
+                                  ])))))))
         ],
       ),
     );
