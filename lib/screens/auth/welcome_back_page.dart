@@ -21,8 +21,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   String? _email = "", _password = "";
 
   Widget _showTitle() {
-    return Text('Login',,
-    style: TextStyle(fontSize: 25));
+    return Text('Login', style: TextStyle(fontSize: 25));
   }
 
   Widget _showEmailInput() {
