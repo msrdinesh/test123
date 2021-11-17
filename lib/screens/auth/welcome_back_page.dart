@@ -33,11 +33,11 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   final _formKey = GlobalKey<FormState>();
 
   checkAuthentication() async {
-    _auth.onAuthStateChanged.listen((user) async {
-      if (user != null) {
-        Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage()));
-      }
-    });
+    // _auth.onAuthStateChanged.listen((user) async {
+    //   if (user != null) {
+    //     Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage()));
+    //   }
+    // });
   }
 
   navigateToLoginScreen() {
