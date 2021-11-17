@@ -203,7 +203,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
     );
 
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: Color(0xff006400),
       appBar: AppBar(
           title: RichText(
               textAlign: TextAlign.center,
