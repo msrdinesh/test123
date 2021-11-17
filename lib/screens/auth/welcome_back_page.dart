@@ -217,7 +217,8 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
                     _showTitle(),
                     _showEmailInput(),
                     _showPasswordInput(),
-                    _showFormActions()
+                    _showFormActions(),
+                    loginForm
                   ])))
         ],
       ),
