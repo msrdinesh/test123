@@ -215,37 +215,39 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
             icon: Icon(Icons.arrow_back),
             onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage())),
           )),
-      body: Column(children: <Widget>[
-        Text("Hi there"),
-        Stack(
-          children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.green,
-              ),
-            ),
-            Align(
-                alignment: Alignment.center,
-                child: SizedBox(
-                    width: 300.0,
-                    height: 300.0,
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Container(
-                            alignment: Alignment.center,
-                            color: Colors.white,
-                            child: Padding(
-                                padding: const EdgeInsets.only(left: 28.0),
-                                child: Form(
-                                    key: _formKey,
-                                    child: Column(children: [
-                                      _showEmailInput(),
-                                      _showPasswordInput(),
-                                      _showFormActions()
-                                    ])))))))
-          ],
-        )
-      ]),
+      body: Container(
+          color: Colors.white,
+          child: Column(children: <Widget>[
+            Text("Hi there"),
+            Stack(
+              children: <Widget>[
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                  ),
+                ),
+                Align(
+                    alignment: Alignment.center,
+                    child: SizedBox(
+                        width: 300.0,
+                        height: 300.0,
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                                alignment: Alignment.center,
+                                color: Colors.white,
+                                child: Padding(
+                                    padding: const EdgeInsets.only(left: 28.0),
+                                    child: Form(
+                                        key: _formKey,
+                                        child: Column(children: [
+                                          _showEmailInput(),
+                                          _showPasswordInput(),
+                                          _showFormActions()
+                                        ])))))))
+              ],
+            )
+          ])),
     );
   }
 }
