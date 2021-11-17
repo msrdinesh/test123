@@ -218,7 +218,6 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
       body: Container(
           color: Colors.green,
           child: Column(children: <Widget>[
-            Text("Hi there"),
             Stack(
               children: <Widget>[
                 Container(
