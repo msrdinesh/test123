@@ -40,7 +40,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin<MainP
         child: Container(
             margin: const EdgeInsets.only(right: 10, left: 10),
             child: SizedBox(
-                height: 100,
+                height: 50,
                 width: 200,
                 child: TextFormField(
                     validator: (val) => val?.length != 10 ? 'Invalid Mobile Number' : null,
