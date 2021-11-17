@@ -26,7 +26,7 @@ class sideBar extends StatelessWidget {
                     ),
                   ),
                 ),
-                decoration: BoxDecoration(color: Colors.green),
+                decoration: BoxDecoration(color: Color(0x006400)),
               ),
               ListTile(leading: Icon(Icons.home), title: Text('Home'), onTap: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new WelcomeBackPage()))),
               ListTile(leading: Icon(Icons.person), title: Text('Profile'), onTap: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new WelcomeBackPage()))),
