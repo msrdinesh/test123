@@ -52,8 +52,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin<MainP
           RichText(
             textAlign: TextAlign.center,
             text: TextSpan(children: <TextSpan>[
-              TextSpan(text: "Feed", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30)),
-              TextSpan(text: "Next", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 30)),
+              TextSpan(text: "Feed", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 10)),
+              TextSpan(text: "Next", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 10)),
             ]),
           ),
           _showEmailInput()
