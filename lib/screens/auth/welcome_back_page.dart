@@ -222,7 +222,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
           ),
           SizedBox(
               width: 350.0,
-              height: 300.0,
+              height: 350.0,
               child: Container(
                   alignment: Alignment.center,
                   color: Colors.white,
