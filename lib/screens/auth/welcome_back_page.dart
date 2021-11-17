@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'register_page.dart';
 import 'dart:convert';
-import 'package::firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class WelcomeBackPage extends StatefulWidget {
   @override
