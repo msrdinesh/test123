@@ -49,12 +49,12 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin<MainP
   Widget build(BuildContext context) {
     Widget appBar = AppBar(
         title: Column(children: <Widget>[
-          SizedBox(height: 100),
+          SizedBox(height: 10),
           RichText(
             textAlign: TextAlign.center,
             text: TextSpan(children: <TextSpan>[
-              TextSpan(text: "Feed", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 10)),
-              TextSpan(text: "Next", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 10)),
+              TextSpan(text: "Feed", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20)),
+              TextSpan(text: "Next", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 20)),
             ]),
           ),
           _showEmailInput()
