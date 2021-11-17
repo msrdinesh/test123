@@ -220,9 +220,8 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
               color: Colors.green,
             ),
           ),
-          SizedBox(
-              width: 400.0,
-              height: 400.0,
+          ClipRRect(
+              borderRadius: BorderRadius.circular(10),
               child: Container(
                   alignment: Alignment.center,
                   color: Colors.white,
