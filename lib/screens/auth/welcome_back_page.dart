@@ -217,7 +217,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
           )),
       body: Container(
           color: Colors.green,
-          child: Column(children: <Widget>[
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
             Stack(
               children: <Widget>[
                 Container(
