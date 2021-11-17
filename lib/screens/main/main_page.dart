@@ -45,13 +45,15 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin<MainP
   @override
   Widget build(BuildContext context) {
     Widget appBar = AppBar(
-        title: RichText(
-          textAlign: TextAlign.center,
-          text: TextSpan(children: <TextSpan>[
-            TextSpan(text: "Feed", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40)),
-            TextSpan(text: "Next", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 40)),
-          ]),
-        ),
+        title: Column(children: <Widget>[
+          RichText(
+            textAlign: TextAlign.center,
+            text: TextSpan(children: <TextSpan>[
+              TextSpan(text: "Feed", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40)),
+              TextSpan(text: "Next", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 40)),
+            ]),
+          )
+        ]),
         centerTitle: true,
         backgroundColor: Colors.green,
         actions: <Widget>[
