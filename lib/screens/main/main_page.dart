@@ -39,16 +39,19 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin<MainP
         padding: EdgeInsets.only(top: 0),
         child: Container(
             margin: const EdgeInsets.only(right: 10, left: 10),
-            child: TextFormField(
-                validator: (val) => val?.length != 10 ? 'Invalid Mobile Number' : null,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    labelText: 'Mobile Number *',
-                    hintText: 'Mobile Number *',
-                    fillColor: Colors.white,
-                    filled: true))));
+            child: SizedBox(
+                height: 100,
+                width: 200,
+                child: TextFormField(
+                    validator: (val) => val?.length != 10 ? 'Invalid Mobile Number' : null,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        labelText: 'Mobile Number *',
+                        hintText: 'Mobile Number *',
+                        fillColor: Colors.white,
+                        filled: true)))));
   }
 
   @override
