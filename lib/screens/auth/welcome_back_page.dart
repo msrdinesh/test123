@@ -7,15 +7,61 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'register_page.dart';
 import 'dart:convert';
+import 'package::firebase_auth/firebase_auth.dart';
 
 class WelcomeBackPage extends StatefulWidget {
   @override
   _WelcomeBackPageState createState() => _WelcomeBackPageState();
 }
 
+
+
+showError(String errorMessage){
+  showDialog(
+    context: context,
+    builder: (BuildContext context){
+      return AlertDialog(
+        title: Text("Error"),
+        content: Text(errorMessage)
+        actions: <Widget>[
+          FlatButton(
+            child: Text("OK"));
+            onPressed: (){
+              Navigator.of(context).pop();
+            }
+        ]
+      );
+    } 
+  );
+}
+
 class _WelcomeBackPageState extends State<WelcomeBackPage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
+
+  checkAuthentication() async{
+    _auth.onAuthStateChanged.listen((user) async {
+      if(user!=null){
+        Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage())e(builder: (context) => new MainPage())
+      }
+    });
+  }
+
+  navigateToLoginScreen(){
+    Navigator.push(context, new MaterialPageRoute(builder: (context) => new RegisterPage()));e(builder: (context) => new RegisterPage()));
+  }
+
+@override 
+void initState(){
+  super.initState();
+  this.checkAuthentication();
+}
+@override 
+void initState(){
+  super.initState();
+  this.checkAuthentication();
+}
+
 
   bool _isSubmitting = false, _obscureText = true;
   String? _email = "", _password = "";
@@ -71,28 +117,25 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
     print(form);
     if (form!.validate()) {
       form.save();
-      // _registerUser();
+      _registerUser();
       _redirectUser();
     }
   }
 
   void _registerUser() async {
     setState(() => _isSubmitting = true);
-    http.Response response = await http.post(Uri.parse('http://localhost:1337/auth/local'), body: {
-      "identifier": _email,
-      "password": _password
-    });
-    final responseData = json.decode(response.body);
-    if (response.statusCode == 200) {
-      setState(() => _isSubmitting = false);
-      _showSuccessSnack();
-      _redirectUser();
-      print(responseData);
-    } else {
-      setState(() => _isSubmitting = false);
-      final String errorMsg = responseData['message'];
-      _showErrorSnack(errorMsg);
+    if(_formKey.currentState.validate()){
+      _formKey.currentState.save();
     }
+
+    try{
+      FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email,password:_password);
+    }
+    catch(e){
+      showError(e.message);
+    }
+
+    setState(() => _isSubmitting= false);
   }
 
   void _showSuccessSnack() {
@@ -116,7 +159,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   TextEditingController email = TextEditingController(text: 'example@email.com');
 
   TextEditingController password = TextEditingController(text: '12345678');
-
+   final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     Widget welcomeBack = Text(
