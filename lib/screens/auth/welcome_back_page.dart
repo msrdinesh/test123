@@ -226,6 +226,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
                 TextSpan(text: "buying App", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25))
               ]),
             ),
+            SizedBox(height: 10),
             Stack(
               children: <Widget>[
                 Container(
