@@ -231,7 +231,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
               children: <Widget>[
                 Container(
                   decoration: BoxDecoration(
-                    color: Color(0xffb74093),
+                    color: Color(0x336600),
                   ),
                 ),
                 Align(
