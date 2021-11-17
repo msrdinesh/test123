@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:ecommerce_int2/screens/auth/sidebar.dart';
 import 'package:ecommerce_int2/screens/auth/products_page.dart';
 import 'package:ecommerce_int2/screens/auth/register_page.dart';
+import 'package:ecommerce_int2/screens/intro_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -100,7 +101,7 @@ class LoginPageState extends State<LoginPage> {
 
   void _redirectUser() {
     Future.delayed(Duration(seconds: 2), () {
-      Navigator.push(context, new MaterialPageRoute(builder: (context) => new ProductsPage()));
+      Navigator.push(context, new MaterialPageRoute(builder: (context) => new IntroPage()));
     });
   }
 
