@@ -6,7 +6,7 @@ class sideBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Theme(
         data: Theme.of(context).copyWith(
-          canvasColor: Colors.blue, //This will change the drawer background to blue.
+          canvasColor: Colors.white, //This will change the drawer background to blue.
           //other styles
         ),
         child: Drawer(
