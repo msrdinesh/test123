@@ -39,7 +39,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   final _formKey = GlobalKey<FormState>();
 
   checkAuthentication() async{
-    _auth.authStateChanges().listen((user) async {
+    _auth.onAuthStateChanged.listen((user) async {
       if(user!=null){
         Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage());
       }
@@ -124,7 +124,7 @@ void initState(){
     }
 
     try{
-      UserCredential user = await _auth.signInWithEmailAndPassword(email: _email.toString(),password:_password.toString());
+      FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email.toString(),password:_password.toString());
     }
     catch(e){
       // showError(e.message);
