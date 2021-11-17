@@ -224,26 +224,23 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
           ),
           Align(
               alignment: Alignment.center,
-              child: Column(children: const <Widget>[
-                Text('Deliver features faster'),
-                SizedBox(
-                    width: 300.0,
-                    height: 300.0,
-                    child: ClipRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Container(
-                            alignment: Alignment.center,
-                            color: Colors.white,
-                            child: Padding(
-                                padding: const EdgeInsets.only(left: 28.0),
-                                child: Form(
-                                    key: _formKey,
-                                    child: Column(children: [
-                                      _showEmailInput(),
-                                      _showPasswordInput(),
-                                      _showFormActions()
-                                    ]))))))
-              ]))
+              child: SizedBox(
+                  width: 300.0,
+                  height: 300.0,
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                          alignment: Alignment.center,
+                          color: Colors.white,
+                          child: Padding(
+                              padding: const EdgeInsets.only(left: 28.0),
+                              child: Form(
+                                  key: _formKey,
+                                  child: Column(children: [
+                                    _showEmailInput(),
+                                    _showPasswordInput(),
+                                    _showFormActions()
+                                  ])))))))
         ],
       ),
     );
