@@ -56,11 +56,6 @@ void initState(){
   super.initState();
   this.checkAuthentication();
 }
-@override 
-void initState(){
-  super.initState();
-  this.checkAuthentication();
-}
 
 
   bool _isSubmitting = false, _obscureText = true;
