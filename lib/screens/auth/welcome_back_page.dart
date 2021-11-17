@@ -9,6 +9,7 @@ import 'register_page.dart';
 import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart';
 
 class WelcomeBackPage extends StatefulWidget {
   @override
@@ -34,6 +35,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   final _formKey = GlobalKey<FormState>();
 
   checkAuthentication() async {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
     _auth.onAuthStateChanged.listen((user) async {
       if (user != null) {
         Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage()));
@@ -117,7 +119,16 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
     }
 
     try {
-      FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
+      if ((defaultTargetPlatform == TargetPlatform.iOS) || (defaultTargetPlatform == TargetPlatform.android)) {
+        // Some android/ios specific code
+      } else if ((defaultTargetPlatform == TargetPlatform.linux) || (defaultTargetPlatform == TargetPlatform.macOS) || (defaultTargetPlatform == TargetPlatform.windows)) {
+        // Some desktop specific code there
+      } else {
+        // Some web specific code there
+
+        final FirebaseAuth _auth = FirebaseAuth.instance;
+        FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
+      }
     } catch (e) {
       // showError(e.message);
       showError("Error logged in", context);
@@ -147,7 +158,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   TextEditingController email = TextEditingController(text: 'example@email.com');
 
   TextEditingController password = TextEditingController(text: '12345678');
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     Widget welcomeBack = Text(
