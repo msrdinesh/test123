@@ -51,7 +51,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin<MainP
         title: Column(children: <Widget>[
           SizedBox(height: 50),
           Padding(
-            padding: EdgeInsets.all(1.0),
+            padding: EdgeInsets.all(0),
             child: RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(children: <TextSpan>[
@@ -59,7 +59,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin<MainP
                   TextSpan(text: "Next", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 20)),
                 ])),
           ),
-          Padding(padding: EdgeInsets.all(1.0), child: _showEmailInput())
+          Padding(padding: EdgeInsets.all(0), child: _showEmailInput())
         ]),
         centerTitle: true,
         backgroundColor: Colors.green,
