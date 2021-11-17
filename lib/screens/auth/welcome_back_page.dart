@@ -131,7 +131,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
       }
     } catch (e) {
       // showError(e.message);
-      showError("Error logged in", context);
+      showError("Error logging In", context);
     }
 
     setState(() => _isSubmitting = false);
