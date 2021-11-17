@@ -108,31 +108,33 @@ class LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
-      appBar: AppBar(
-          title: RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(children: <TextSpan>[
-                TextSpan(text: "Feed", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40)),
-                TextSpan(text: "Next", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 40)),
-              ])),
-          backgroundColor: Colors.green,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new ProductsPage())),
-          )),
-      body: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
-          child: Center(
-              child: SingleChildScrollView(
-                  child: Form(
-                      key: _formKey,
-                      child: Column(children: [
-                        _showTitle(),
-                        _showEmailInput(),
-                        _showPasswordInput(),
-                        _showFormActions()
-                      ]))))),
-    );
+        key: _scaffoldKey,
+        appBar: AppBar(
+            title: RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(children: <TextSpan>[
+                  TextSpan(text: "Feed", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40)),
+                  TextSpan(text: "Next", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 40)),
+                ])),
+            backgroundColor: Colors.green,
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new ProductsPage())),
+            )),
+        resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+          child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: Center(
+                  child: SingleChildScrollView(
+                      child: Form(
+                          key: _formKey,
+                          child: Column(children: [
+                            _showTitle(),
+                            _showEmailInput(),
+                            _showPasswordInput(),
+                            _showFormActions()
+                          ]))))),
+        ));
   }
 }
