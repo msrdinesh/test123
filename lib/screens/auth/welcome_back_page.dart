@@ -237,7 +237,6 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
                               child: Form(
                                   key: _formKey,
                                   child: Column(children: [
-                                    _showTitle(),
                                     _showEmailInput(),
                                     _showPasswordInput(),
                                     _showFormActions()
