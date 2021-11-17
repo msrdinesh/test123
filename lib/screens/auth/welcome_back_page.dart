@@ -116,7 +116,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
     }
 
     try {
-      FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email, password: _password);
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
     } catch (e) {
       print(e.runtimeType);
       // showError(e.runtimeTydpe,context);
