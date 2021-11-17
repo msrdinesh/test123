@@ -211,7 +211,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
           backgroundColor: Colors.green,
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
-            onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new ProductsPage())),
+            onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage())),
           )),
       body: Stack(
         children: <Widget>[
