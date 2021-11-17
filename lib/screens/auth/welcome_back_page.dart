@@ -223,8 +223,8 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
           Align(
               alignment: Alignment.center,
               child: SizedBox(
-                  width: 400.0,
-                  height: 400.0,
+                  width: 375.0,
+                  height: 375.0,
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Container(
