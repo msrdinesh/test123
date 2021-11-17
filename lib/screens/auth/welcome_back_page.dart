@@ -107,6 +107,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
     print(form);
     if (form!.validate()) {
       form.save();
+      print("here");
       _registerUser();
       _redirectUser();
     }
