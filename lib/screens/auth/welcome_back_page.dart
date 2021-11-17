@@ -31,24 +31,26 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   Widget _showPasswordInput() {
     return Padding(
         padding: EdgeInsets.only(top: 20.0),
-        child: TextFormField(
-            onSaved: (val) => _password = val,
-            validator: (val) => val == null
-                ? "null"
-                : val.length < 6
-                    ? 'Password too short'
-                    : null,
-            obscureText: _obscureText,
-            decoration: InputDecoration(
-              suffixIcon: GestureDetector(
-                  onTap: () {
-                    setState(() => _obscureText = !_obscureText);
-                  },
-                  child: Icon(_obscureText ? Icons.visibility : Icons.visibility_off)),
-              border: OutlineInputBorder(),
-              labelText: 'Password *',
-              hintText: 'Password *',
-            )));
+        child: Container(
+            margin: const EdgeInsets.only(right: 10, left: 10),
+            child: TextFormField(
+                onSaved: (val) => _password = val,
+                validator: (val) => val == null
+                    ? "null"
+                    : val.length < 6
+                        ? 'Password too short'
+                        : null,
+                obscureText: _obscureText,
+                decoration: InputDecoration(
+                  suffixIcon: GestureDetector(
+                      onTap: () {
+                        setState(() => _obscureText = !_obscureText);
+                      },
+                      child: Icon(_obscureText ? Icons.visibility : Icons.visibility_off)),
+                  border: OutlineInputBorder(),
+                  labelText: 'Password *',
+                  hintText: 'Password *',
+                ))));
   }
 
   Widget _showFormActions() {
