@@ -35,7 +35,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin<MainP
   late TabController tabController;
   late TabController bottomTabController;
   Widget _showEmailInput() {
-    return Padding(padding: EdgeInsets.only(top: 20.0), child: Container(margin: const EdgeInsets.only(right: 10, left: 10), child: TextFormField(onSaved: (val) => _email = val, validator: (val) => val?.length != 10 ? 'Invalid Mobile Number' : null, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Mobile Number *', hintText: 'Mobile Number *'))));
+    return Padding(padding: EdgeInsets.only(top: 20.0), child: Container(margin: const EdgeInsets.only(right: 10, left: 10), child: TextFormField(validator: (val) => val?.length != 10 ? 'Invalid Mobile Number' : null, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Mobile Number *', hintText: 'Mobile Number *'))));
   }
 
   @override
