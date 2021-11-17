@@ -221,9 +221,9 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
             RichText(
               textAlign: TextAlign.center,
               text: TextSpan(children: <TextSpan>[
-                TextSpan(text: "India's 1st ", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                TextSpan(text: "Feed & Fodder", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold)),
-                TextSpan(text: "buying App", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))
+                TextSpan(text: "India's 1st ", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25)),
+                TextSpan(text: "Feed & Fodder", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 25)),
+                TextSpan(text: "buying App", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25))
               ]),
             ),
             Stack(
