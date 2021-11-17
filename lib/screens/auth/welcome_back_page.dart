@@ -14,49 +14,41 @@ class WelcomeBackPage extends StatefulWidget {
   _WelcomeBackPageState createState() => _WelcomeBackPageState();
 }
 
-
-
-showError(String errorMessage,BuildContext context){
+showError(String errorMessage, BuildContext context) {
   showDialog(
-    context: context,
-    builder: (BuildContext context){
-      return AlertDialog(
-        title: Text("Error"),
-        content: Text(errorMessage),
-        actions: <Widget>[
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(title: Text("Error"), content: Text(errorMessage), actions: <Widget>[
           FlatButton(
-            child: Text("OK"),
-            onPressed: (){
-              Navigator.of(context).pop();
-            })
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              })
         ]);
-    } 
-  );
+      });
 }
 
 class _WelcomeBackPageState extends State<WelcomeBackPage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
 
-  checkAuthentication() async{
+  checkAuthentication() async {
     _auth.onAuthStateChanged.listen((user) async {
-      if(user!=null){
-        Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage());
+      if (user != null) {
+        Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage()));
       }
     });
   }
 
-  navigateToLoginScreen(){
+  navigateToLoginScreen() {
     Navigator.push(context, new MaterialPageRoute(builder: (context) => new RegisterPage()));
   }
 
-@override 
-void initState(){
-  super.initState();
-  this.checkAuthentication();
-}
-
-
+  @override
+  void initState() {
+    super.initState();
+    this.checkAuthentication();
+  }
 
   bool _isSubmitting = false, _obscureText = true;
   String? _email = "", _password = "";
@@ -119,19 +111,18 @@ void initState(){
 
   void _registerUser() async {
     setState(() => _isSubmitting = true);
-    if(_formKey.currentState!.validate()){
+    if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
     }
 
-    try{
-      FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email.toString(),password:_password.toString());
-    }
-    catch(e){
+    try {
+      FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
+    } catch (e) {
       // showError(e.message);
-      showError("Error logged in",context);
+      showError("Error logged in", context);
     }
 
-    setState(() => _isSubmitting= false);
+    setState(() => _isSubmitting = false);
   }
 
   void _showSuccessSnack() {
@@ -155,7 +146,7 @@ void initState(){
   TextEditingController email = TextEditingController(text: 'example@email.com');
 
   TextEditingController password = TextEditingController(text: '12345678');
-   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     Widget welcomeBack = Text(
