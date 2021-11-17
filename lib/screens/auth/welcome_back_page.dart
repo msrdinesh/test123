@@ -1,6 +1,7 @@
 import 'package:ecommerce_int2/app_properties.dart';
 import 'package:ecommerce_int2/screens/auth/register_page.dart';
 import 'package:ecommerce_int2/screens/auth/products_page.dart';
+import 'package:ecommerce_int2/screens/intro_page';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'register_page.dart';
@@ -105,7 +106,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
 
   void _redirectUser() {
     Future.delayed(Duration(seconds: 2), () {
-      Navigator.push(context, new MaterialPageRoute(builder: (context) => new ProductsPage()));
+      Navigator.push(context, new MaterialPageRoute(builder: (context) => new IntroPage()));
     });
   }
 
