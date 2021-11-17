@@ -203,7 +203,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
     );
 
     return Scaffold(
-      backgroundColor: Color(336600),
+      backgroundColor: Color(0x336600),
       appBar: AppBar(
           title: RichText(
               textAlign: TextAlign.center,
@@ -217,7 +217,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
             onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage())),
           )),
       body: Container(
-          color: Color(0x336600),
+          color: Color(0x006600),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
             RichText(
               textAlign: TextAlign.center,
