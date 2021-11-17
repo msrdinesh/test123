@@ -130,46 +130,45 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin<MainP
     );
 
     return Scaffold(
-      drawer: sideBar(),
-      bottomNavigationBar: CustomBottomBar(controller: bottomTabController),
-      body: CustomPaint(
-        painter: MainBackground(),
-        child: TabBarView(
-          controller: bottomTabController,
-          physics: NeverScrollableScrollPhysics(),
-          children: <Widget>[
-            SafeArea(
-              child: NestedScrollView(
-                headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-                  // These are the slivers that show up in the "outer" scroll view.
-                  return <Widget>[
-                    SliverToBoxAdapter(
-                      child: appBar,
-                    ),
-                    SliverToBoxAdapter(
-                      child: topHeader,
-                    ),
-                    SliverToBoxAdapter(
-                      child: ProductList(
-                        products: products,
+        bottomNavigationBar: CustomBottomBar(controller: bottomTabController),
+        body: CustomPaint(
+          painter: MainBackground(),
+          child: TabBarView(
+            controller: bottomTabController,
+            physics: NeverScrollableScrollPhysics(),
+            children: <Widget>[
+              SafeArea(
+                child: NestedScrollView(
+                  headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+                    // These are the slivers that show up in the "outer" scroll view.
+                    return <Widget>[
+                      SliverToBoxAdapter(
+                        child: appBar,
                       ),
-                    ),
-                    SliverToBoxAdapter(
-                      child: tabBar,
-                    )
-                  ];
-                },
-                body: TabView(
-                  tabController: tabController,
+                      SliverToBoxAdapter(
+                        child: topHeader,
+                      ),
+                      SliverToBoxAdapter(
+                        child: ProductList(
+                          products: products,
+                        ),
+                      ),
+                      SliverToBoxAdapter(
+                        child: tabBar,
+                      )
+                    ];
+                  },
+                  body: TabView(
+                    tabController: tabController,
+                  ),
                 ),
               ),
-            ),
-            CategoryListPage(),
-            CheckOutPage(),
-            ProfilePage()
-          ],
+              CategoryListPage(),
+              CheckOutPage(),
+              ProfilePage()
+            ],
+          ),
         ),
-      ),
-    );
+        drawer: sideBar());
   }
 }
