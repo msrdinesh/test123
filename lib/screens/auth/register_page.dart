@@ -136,9 +136,9 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   void _submit() {
-    final form = _formKey!.currentState;
+    final form = _formKey.currentState;
 
-    if (form!.validate()) {
+    if (form.validate()) {
       form.save();
       // _registerUser();
       _redirectUser();
