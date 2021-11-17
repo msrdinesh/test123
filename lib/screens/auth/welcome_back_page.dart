@@ -228,7 +228,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
                   width: 300.0,
                   height: 300.0,
                   child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(20),
                       child: Container(
                           alignment: Alignment.center,
                           color: Colors.white,
