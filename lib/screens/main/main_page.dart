@@ -49,7 +49,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin<MainP
   Widget build(BuildContext context) {
     Widget appBar = AppBar(
         title: Column(children: <Widget>[
-          SizedBox(height: 50),
           Padding(
             padding: EdgeInsets.all(0),
             child: RichText(
