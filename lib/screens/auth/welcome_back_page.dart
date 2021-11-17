@@ -208,8 +208,8 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
           title: RichText(
               textAlign: TextAlign.center,
               text: TextSpan(children: <TextSpan>[
-                TextSpan(text: "Feed", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40)),
-                TextSpan(text: "Next", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 40)),
+                TextSpan(text: "Feed", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30)),
+                TextSpan(text: "Next", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 30)),
               ])),
           backgroundColor: Color(0x006600),
           leading: IconButton(
