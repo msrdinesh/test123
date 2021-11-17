@@ -126,6 +126,15 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
       } else if ((defaultTargetPlatform == TargetPlatform.linux) || (defaultTargetPlatform == TargetPlatform.macOS) || (defaultTargetPlatform == TargetPlatform.windows)) {
         // Some desktop specific code there
         print("here1");
+
+        final FirebaseAuth _auth = FirebaseAuth.instance;
+        FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
+        print("here i am there");
+        if (user == null) {
+          print("user is null");
+        } else {
+          print("non null");
+        }
       } else {
         // Some web specific code there
 
