@@ -216,7 +216,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
             onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage())),
           )),
       body: Container(
-          color: Colors.white,
+          color: Colors.green,
           child: Column(children: <Widget>[
             Text("Hi there"),
             Stack(
