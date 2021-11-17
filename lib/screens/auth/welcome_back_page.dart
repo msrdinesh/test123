@@ -220,16 +220,18 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
               color: Colors.green,
             ),
           ),
-          Padding(
-              padding: const EdgeInsets.only(left: 28.0),
-              child: Form(
-                  key: _formKey,
-                  child: Column(children: [
-                    _showTitle(),
-                    _showEmailInput(),
-                    _showPasswordInput(),
-                    _showFormActions()
-                  ])))
+          Container(
+              color: Colors.white,
+              child: Padding(
+                  padding: const EdgeInsets.only(left: 28.0),
+                  child: Form(
+                      key: _formKey,
+                      child: Column(children: [
+                        _showTitle(),
+                        _showEmailInput(),
+                        _showPasswordInput(),
+                        _showFormActions()
+                      ]))))
         ],
       ),
     );
