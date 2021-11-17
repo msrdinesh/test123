@@ -31,6 +31,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   Widget _showPasswordInput() {
     return Padding(
         padding: EdgeInsets.only(top: 20.0),
+        Container(margin: const EdgeInsets.only(right: 10, left: 10),
         child: TextFormField(
             onSaved: (val) => _password = val,
             validator: (val) => val == null
@@ -48,7 +49,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
               border: OutlineInputBorder(),
               labelText: 'Password *',
               hintText: 'Password *',
-            )));
+            ))));
   }
 
   Widget _showFormActions() {
