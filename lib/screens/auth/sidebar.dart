@@ -5,10 +5,9 @@ class sideBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Theme(
-        data: Theme.of(context).copyWith(
-          canvasColor: Colors.white, //This will change the drawer background to blue.
-          //other styles
-        ),
+        data: Theme.of(context).copyWith(canvasColor: Colors.white, backgroundColor: Colors.white
+            //other styles
+            ),
         child: Drawer(
           child: ListView(
             // Remove padding
