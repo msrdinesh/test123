@@ -221,8 +221,8 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
             ),
           ),
           SizedBox(
-              width: 42.0,
-              height: 42.0,
+              width: 420.0,
+              height: 420.0,
               child: Container(
                   color: Colors.white,
                   child: Padding(
