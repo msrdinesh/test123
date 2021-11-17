@@ -122,8 +122,10 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
     try {
       if ((defaultTargetPlatform == TargetPlatform.iOS) || (defaultTargetPlatform == TargetPlatform.android)) {
         // Some android/ios specific code
+        print("here2");
       } else if ((defaultTargetPlatform == TargetPlatform.linux) || (defaultTargetPlatform == TargetPlatform.macOS) || (defaultTargetPlatform == TargetPlatform.windows)) {
         // Some desktop specific code there
+        print("here1");
       } else {
         // Some web specific code there
 
