@@ -41,7 +41,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   checkAuthentication() async{
     _auth.authStateChanges().listen((user) async {
       if(user!=null){
-        Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage()))
+        Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage());
       }
     });
   }
