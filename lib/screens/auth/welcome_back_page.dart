@@ -29,15 +29,7 @@ showError(String errorMessage, BuildContext context) {
 }
 
 class _WelcomeBackPageState extends State<WelcomeBackPage> {
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final _formKey = GlobalKey<FormState>();
-
-  checkAuthentication() async {
-    _auth.onAuthStateChanged.listen((user) async {
-      if (user != null) {
-        Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage()));
-      }
-    });
+  
   }
 
   navigateToLoginScreen() {
@@ -116,7 +108,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
     }
 
     try {
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
+      FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
     } catch (e) {
       print(e.runtimeType);
       // showError(e.runtimeTydpe,context);
