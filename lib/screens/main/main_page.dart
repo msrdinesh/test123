@@ -44,16 +44,27 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin<MainP
 
   @override
   Widget build(BuildContext context) {
-    Widget appBar = Container(
-      height: kToolbarHeight + MediaQuery.of(context).padding.top,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          IconButton(onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => NotificationsPage())), icon: Icon(Icons.notifications)),
-          IconButton(onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SearchPage())), icon: SvgPicture.asset('assets/icons/search_icon.svg'))
-        ],
-      ),
-    );
+    Widget appBar = AppBar(
+        title: RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(children: <TextSpan>[
+            TextSpan(text: "Feed", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40)),
+            TextSpan(text: "Next", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 40)),
+          ]),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.green,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.add_shopping_cart,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              // do something
+            },
+          )
+        ]);
 
     Widget topHeader = Padding(
         padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 4.0),
@@ -130,45 +141,46 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin<MainP
     );
 
     return Scaffold(
-        bottomNavigationBar: CustomBottomBar(controller: bottomTabController),
-        body: CustomPaint(
-          painter: MainBackground(),
-          child: TabBarView(
-            controller: bottomTabController,
-            physics: NeverScrollableScrollPhysics(),
-            children: <Widget>[
-              SafeArea(
-                child: NestedScrollView(
-                  headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-                    // These are the slivers that show up in the "outer" scroll view.
-                    return <Widget>[
-                      SliverToBoxAdapter(
-                        child: appBar,
+      drawer: sideBar(),
+      bottomNavigationBar: CustomBottomBar(controller: bottomTabController),
+      body: CustomPaint(
+        painter: MainBackground(),
+        child: TabBarView(
+          controller: bottomTabController,
+          physics: NeverScrollableScrollPhysics(),
+          children: <Widget>[
+            SafeArea(
+              child: NestedScrollView(
+                headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+                  // These are the slivers that show up in the "outer" scroll view.
+                  return <Widget>[
+                    SliverToBoxAdapter(
+                      child: appBar,
+                    ),
+                    SliverToBoxAdapter(
+                      child: topHeader,
+                    ),
+                    SliverToBoxAdapter(
+                      child: ProductList(
+                        products: products,
                       ),
-                      SliverToBoxAdapter(
-                        child: topHeader,
-                      ),
-                      SliverToBoxAdapter(
-                        child: ProductList(
-                          products: products,
-                        ),
-                      ),
-                      SliverToBoxAdapter(
-                        child: tabBar,
-                      )
-                    ];
-                  },
-                  body: TabView(
-                    tabController: tabController,
-                  ),
+                    ),
+                    SliverToBoxAdapter(
+                      child: tabBar,
+                    )
+                  ];
+                },
+                body: TabView(
+                  tabController: tabController,
                 ),
               ),
-              CategoryListPage(),
-              CheckOutPage(),
-              ProfilePage()
-            ],
-          ),
+            ),
+            CategoryListPage(),
+            CheckOutPage(),
+            ProfilePage()
+          ],
         ),
-        drawer: sideBar());
+      ),
+    );
   }
 }
