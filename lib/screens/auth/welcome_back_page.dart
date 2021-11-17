@@ -40,13 +40,15 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
                     : null,
             obscureText: _obscureText,
             decoration: InputDecoration(
-                suffixIcon: GestureDetector(onTap: () {
-                  setState(() => _obscureText = !_obscureText);
-                }),
-                border: OutlineInputBorder(),
-                labelText: 'Password *',
-                hintText: 'Password *',
-                icon: Icon(Icons.lock, color: Colors.grey))));
+              suffixIcon: GestureDetector(
+                  onTap: () {
+                    setState(() => _obscureText = !_obscureText);
+                  },
+                  child: Icon(_obscureText ? Icons.visibility : Icons.visibility_off)),
+              border: OutlineInputBorder(),
+              labelText: 'Password *',
+              hintText: 'Password *',
+            )));
   }
 
   Widget _showFormActions() {
