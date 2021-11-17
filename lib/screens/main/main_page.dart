@@ -48,8 +48,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin<MainP
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
-                        labelText: 'Mobile Number *',
-                        hintText: 'Mobile Number *',
+                        hintText: 'Search',
                         fillColor: Colors.white,
                         filled: true)))));
   }
