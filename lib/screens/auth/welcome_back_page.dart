@@ -211,7 +211,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
                 TextSpan(text: "Feed", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30)),
                 TextSpan(text: "Next", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 30)),
               ])),
-          backgroundColor: Color(0xff90ee90),
+          backgroundColor: Color(0xff00FF00),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage())),
