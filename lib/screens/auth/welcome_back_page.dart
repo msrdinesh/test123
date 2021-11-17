@@ -224,7 +224,11 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
           ),
           Align(
               alignment: Alignment.center,
-              child: SizedBox(
+              child:
+              Column(
+  children: const <Widget>[
+    Text('Deliver features faster'),
+               SizedBox(
                   width: 300.0,
                   height: 300.0,
                   child: ClipRRect(
@@ -240,7 +244,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
                                     _showEmailInput(),
                                     _showPasswordInput(),
                                     _showFormActions()
-                                  ])))))))
+                                  ]))))))))
         ],
       ),
     );
