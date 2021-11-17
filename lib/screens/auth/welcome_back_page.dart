@@ -25,7 +25,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   }
 
   Widget _showEmailInput() {
-    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _email = val, validator: (val) => val?.length != 10 ? 'Invalid Mobile Number' : null, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Mobile Number *', hintText: 'Mobile Number *', icon: Icon(Icons.mail, color: Colors.grey))));
+    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _email = val, validator: (val) => val?.length != 10 ? 'Invalid Mobile Number' : null, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Mobile Number *', hintText: 'Mobile Number *')));
   }
 
   Widget _showPasswordInput() {
@@ -40,11 +40,9 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
                     : null,
             obscureText: _obscureText,
             decoration: InputDecoration(
-                suffixIcon: GestureDetector(
-                    onTap: () {
-                      setState(() => _obscureText = !_obscureText);
-                    },
-                    child: Icon(_obscureText ? Icons.visibility : Icons.visibility_off)),
+                suffixIcon: GestureDetector(onTap: () {
+                  setState(() => _obscureText = !_obscureText);
+                }),
                 border: OutlineInputBorder(),
                 labelText: 'Password *',
                 hintText: 'Password *',
