@@ -216,7 +216,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
       body: Stack(
         children: <Widget>[
           Container(
-            decoration: BoxDecoration( fit: BoxFit.cover)),
+            decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/background.jpg'), fit: BoxFit.cover)),
           ),
           Container(
             decoration: BoxDecoration(
