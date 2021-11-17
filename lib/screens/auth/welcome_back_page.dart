@@ -203,25 +203,16 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
     return Scaffold(
       appBar: AppBar(
           title: RichText(
-            textAlign: TextAlign.center,
-            text: TextSpan(children: <TextSpan>[
-              TextSpan(text: "Feed", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40)),
-              TextSpan(text: "Next", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 40)),
-            ]),
-          ),
-          centerTitle: true,
+              textAlign: TextAlign.center,
+              text: TextSpan(children: <TextSpan>[
+                TextSpan(text: "Feed", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40)),
+                TextSpan(text: "Next", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 40)),
+              ])),
           backgroundColor: Colors.green,
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(
-                Icons.add_shopping_cart,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                // do something
-              },
-            )
-          ]),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new ProductsPage())),
+          )),
       body: Stack(
         children: <Widget>[
           Container(
