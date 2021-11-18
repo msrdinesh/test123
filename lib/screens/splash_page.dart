@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   }
 
   void navigationPage() {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => RegisterPage()));
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => WelcomeBackPage()));
   }
 
   Widget build(BuildContext context) {

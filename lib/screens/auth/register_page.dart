@@ -159,7 +159,7 @@ class _WelcomeBackPageState extends State<RegisterPage> {
 
     if (form!.validate()) {
       form!.save();
-      // _registerUser();
+      _registerUser();
       _redirectUser();
     }
   }
@@ -199,7 +199,7 @@ class _WelcomeBackPageState extends State<RegisterPage> {
 
   void _redirectUser() {
     Future.delayed(Duration(seconds: 2), () {
-      Navigator.push(context, new MaterialPageRoute(builder: (context) => new ProductsPage()));
+      Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage()));
     });
   }
 
