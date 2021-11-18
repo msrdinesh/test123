@@ -13,7 +13,7 @@ import 'package:flutter/foundation.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
-  _WelcomeBackPageState createState() => _WelcomeBackPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
 showError(String errorMessage, BuildContext context) {
