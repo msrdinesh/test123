@@ -158,7 +158,7 @@ class _RegisterPageState extends State<RegisterPage> {
     final form = _formKey.currentState;
 
     if (form!.validate()) {
-      form!.save();
+      form.save();
       // _registerUser();
       _redirectUser();
     }
@@ -225,31 +225,6 @@ class _RegisterPageState extends State<RegisterPage> {
             fontSize: 16.0,
           ),
         ));
-
-    Widget registerButton = Positioned(
-      left: MediaQuery.of(context).size.width / 4,
-      bottom: 40,
-      child: InkWell(
-        onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (_) => ForgotPasswordPage()));
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width / 2,
-          height: 80,
-          child: Center(child: new Text("Register", style: const TextStyle(color: const Color(0xfffefefe), fontWeight: FontWeight.w600, fontStyle: FontStyle.normal, fontSize: 20.0))),
-          decoration: BoxDecoration(
-              gradient: mainButton,
-              boxShadow: [
-                BoxShadow(
-                  color: Color.fromRGBO(0, 0, 0, 0.16),
-                  offset: Offset(0, 5),
-                  blurRadius: 10.0,
-                )
-              ],
-              borderRadius: BorderRadius.circular(9.0)),
-        ),
-      ),
-    );
 
     Widget registerForm = Container(
       height: 300,
