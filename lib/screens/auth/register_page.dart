@@ -177,20 +177,15 @@ class _WelcomeBackPageState extends State<RegisterPage> {
 
       } else if ((defaultTargetPlatform == TargetPlatform.linux) || (defaultTargetPlatform == TargetPlatform.macOS) || (defaultTargetPlatform == TargetPlatform.windows)) {
         // Some desktop specific code there
-        print("dinnu thopu");
         print(_email.toString());
         print(_password.toString());
-
-        print("here dinnu");
-        print("here");
         print(_email.toString());
         print(_password.toString());
         UserCredential user = await _auth.createUserWithEmailAndPassword(email: _email.toString().trim(), password: _password.toString().trim());
-        print("here i am there");
         if (user == null) {
-          print("user is null");
+          print("Error logging in the user");
         } else {
-          print("non null");
+          print("User is logged in");
           _redirectUser();
         }
       } else {
