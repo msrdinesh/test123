@@ -250,7 +250,7 @@ class _WelcomeBackPageState extends State<RegisterPage> {
                                   child: Form(
                                       key: _formKey,
                                       child: Column(children: [
-                                        _showTitle(),
+                                        // _showTitle(),
                                         _showFirstNameInput(),
                                         _showLastNameInput(),
                                         _showMobileNumberInput(),
