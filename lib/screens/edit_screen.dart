@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class EditContact extends StatefulWidget {
   @override
-  EditContact_State create() => EditContact_State();
+  _EditContactState createState() => _EditContactState();
 }
 
-class EditContact_State extends State<EditContact> {
+class _EditContactState extends State<EditContact> {
   @override
   Widget build(BuildContext context) {
-    return Continer();
+    return Container();
   }
 }

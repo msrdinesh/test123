@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class AddContact extends StatefulWidget {
   @override
-  AddContact_State create() => AddContact_State();
+  _AddContactState createState() => _AddContactState();
 }
 
-class AddContact_State extends State<AddContact> {
+class _AddContactState extends State<AddContact> {
   @override
   Widget build(BuildContext context) {
-    return Continer();
+    return Container();
   }
 }
