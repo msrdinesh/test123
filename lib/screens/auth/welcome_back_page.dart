@@ -126,10 +126,10 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
       } else if ((defaultTargetPlatform == TargetPlatform.linux) || (defaultTargetPlatform == TargetPlatform.macOS) || (defaultTargetPlatform == TargetPlatform.windows)) {
         // Some desktop specific code there
         print("dinnu thopu");
-        final FirebaseAuth _auth = FirebaseAuth.instance;
-        print("here dinnu");
         print(_email.toString());
         print(_password.toString());
+        final FirebaseAuth _auth = FirebaseAuth.instance;
+        print("here dinnu");
         print(_auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString()));
         print("here");
         UserCredential user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
