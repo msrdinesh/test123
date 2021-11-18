@@ -4,6 +4,9 @@ import 'package:ecommerce_int2/screens/auth/products_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ecommerce_int2/screens/main/main_page.dart';
+import 'package:flutter/foundation.dart';
 
 import 'forgot_password_page.dart';
 
@@ -13,6 +16,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
   TextEditingController email = TextEditingController(text: 'example@email.com');
@@ -23,6 +27,34 @@ class _RegisterPageState extends State<RegisterPage> {
   bool _isSubmitting = false, _obscureText = true;
   String? _firstname = "", _lastname = "", _mobileNumber = "", _alternateMobileNumber = "", _email = "", _password = "", _houseNumber = "", _street = "", _city = "", _state = "", _pincode = "";
   bool _sameDelivery = false;
+
+  @override
+  void initState() {
+    super.initState();
+    this.checkAuthentication();
+  }
+
+  showError(String errorMessage, BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(title: Text("Error"), content: Text(errorMessage), actions: <Widget>[
+            FlatButton(
+                child: Text("OK"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                })
+          ]);
+        });
+  }
+
+  checkAuthentication() async {
+    _auth.authStateChanges().listen((user) async {
+      if (user != null) {
+        Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage()));
+      }
+    });
+  }
 
   Widget _showTitle() {
     return Text('Create Account');
@@ -135,213 +167,246 @@ class _RegisterPageState extends State<RegisterPage> {
         ]));
   }
 
-  void _submit() {
-    final form = _formKey.currentState;
-
-    if (form!.validate()) {
-      form!.save();
-      // _registerUser();
-      _redirectUser();
-    }
-  }
-
-  void _registerUser() async {
-    setState(() => _isSubmitting = true);
-    http.Response response = await http.post(Uri.parse('http://localhost:1337/auth/local/register'), body: {
-      "mobileNumber": _mobileNumber,
-      "password": _password
-    });
-    final responseData = json.decode(response.body);
-    if (response.statusCode == 200) {
-      setState(() => _isSubmitting = false);
-      _showSuccessSnack();
-      _redirectUser();
-      print(responseData);
-    } else {
-      setState(() => _isSubmitting = false);
-      final String errorMsg = responseData['message'];
-      _showErrorSnack(errorMsg);
-    }
-  }
-
-  void _showSuccessSnack() {
-    final snackbar = SnackBar(content: Text('User $_mobileNumber successfully created!', style: TextStyle(color: Colors.green)));
-    if (_scaffoldKey != null) {
-      _scaffoldKey.currentState?.showSnackBar(snackbar);
-    }
-    _formKey.currentState?.reset();
-  }
-
-  void _showErrorSnack(String errorMsg) {
-    final snackbar = SnackBar(content: Text(errorMsg, style: TextStyle(color: Colors.red)));
-    _scaffoldKey.currentState?.showSnackBar(snackbar);
-    throw Exception('Error registering: $errorMsg');
-  }
-
   void _redirectUser() {
     Future.delayed(Duration(seconds: 2), () {
       Navigator.push(context, new MaterialPageRoute(builder: (context) => new ProductsPage()));
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    Widget title = Text(
-      'Glad To Meet You',
-      style: TextStyle(color: Colors.white, fontSize: 34.0, fontWeight: FontWeight.bold, shadows: [
-        BoxShadow(
-          color: Color.fromRGBO(0, 0, 0, 0.15),
-          offset: Offset(0, 5),
-          blurRadius: 10.0,
-        )
-      ]),
-    );
+  void _submit() {
+    final form = _formKey.currentState;
 
-    Widget subTitle = Padding(
-        padding: const EdgeInsets.only(right: 56.0),
-        child: Text(
-          'Create your new account for future uses.',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16.0,
-          ),
-        ));
+    if (form!.validate()) {
+      form!.save();
+      _registerUser();
+      _redirectUser();
+    }
+  }
 
-    Widget registerButton = Positioned(
-      left: MediaQuery.of(context).size.width / 4,
-      bottom: 40,
-      child: InkWell(
-        onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (_) => ForgotPasswordPage()));
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width / 2,
-          height: 80,
-          child: Center(child: new Text("Register", style: const TextStyle(color: const Color(0xfffefefe), fontWeight: FontWeight.w600, fontStyle: FontStyle.normal, fontSize: 20.0))),
-          decoration: BoxDecoration(
-              gradient: mainButton,
-              boxShadow: [
-                BoxShadow(
-                  color: Color.fromRGBO(0, 0, 0, 0.16),
-                  offset: Offset(0, 5),
-                  blurRadius: 10.0,
-                )
-              ],
-              borderRadius: BorderRadius.circular(9.0)),
-        ),
-      ),
-    );
+  void _registerUser() async {
+    setState(() => _isSubmitting = true);
 
-    Widget registerForm = Container(
-      height: 300,
-      child: Stack(
-        children: <Widget>[
-          Container(
-            height: 220,
-            width: MediaQuery.of(context).size.width,
-            padding: const EdgeInsets.only(left: 32.0, right: 12.0),
-            decoration: BoxDecoration(color: Color.fromRGBO(255, 255, 255, 0.8), borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10))),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: TextField(
-                    controller: email,
-                    style: TextStyle(fontSize: 16.0),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: TextField(
-                    controller: password,
-                    style: TextStyle(fontSize: 16.0),
-                    obscureText: true,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: TextField(
-                    controller: cmfPassword,
-                    style: TextStyle(fontSize: 16.0),
-                    obscureText: true,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          registerButton,
-        ],
-      ),
-    );
+    setState(() => _isSubmitting = true);
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+    }
 
-    Widget socialRegister = Column(
-      children: <Widget>[
-        Text(
-          'You can sign in with',
-          style: TextStyle(fontSize: 12.0, fontStyle: FontStyle.italic, color: Colors.white),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            IconButton(
-              icon: Icon(Icons.find_replace),
-              onPressed: () {},
+    try {
+      if ((defaultTargetPlatform == TargetPlatform.iOS) || (defaultTargetPlatform == TargetPlatform.android)) {
+        // Some android/ios specific code
+
+      } else if ((defaultTargetPlatform == TargetPlatform.linux) || (defaultTargetPlatform == TargetPlatform.macOS) || (defaultTargetPlatform == TargetPlatform.windows)) {
+        // Some desktop specific code there
+        print("dinnu thopu");
+        print(_email.toString());
+        print(_password.toString());
+
+        print("here dinnu");
+        print("here");
+        UserCredential user = await _auth.createUserWithEmailAndPassword(email: _email.toString(), password: _password.toString());
+        print("here i am there");
+        if (user == null) {
+          print("user is null");
+        } else {
+          print("non null");
+          // await _auth.currentUser!.updateProfile(displayName:user.displayName);
+        }
+      } else {
+        // Some web specific code there
+
+        print(_auth);
+        print("here dinnu");
+        print(_email.toString());
+        print(_password.toString());
+        UserCredential user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
+        print("here i am there");
+        if (user == null) {
+          print("user is null");
+        } else {
+          print("non null");
+        }
+      }
+    } catch (e) {
+      // showError(e.message);
+      print(e.toString());
+      showError(e.toString(), context);
+
+      setState(() => _isSubmitting = false);
+    }
+
+    void _showSuccessSnack() {
+      final snackbar = SnackBar(content: Text('User $_mobileNumber successfully created!', style: TextStyle(color: Colors.green)));
+      if (_scaffoldKey != null) {
+        _scaffoldKey.currentState?.showSnackBar(snackbar);
+      }
+      _formKey.currentState?.reset();
+    }
+
+    void _showErrorSnack(String errorMsg) {
+      final snackbar = SnackBar(content: Text(errorMsg, style: TextStyle(color: Colors.red)));
+      _scaffoldKey.currentState?.showSnackBar(snackbar);
+      throw Exception('Error registering: $errorMsg');
+    }
+
+    @override
+    Widget build(BuildContext context) {
+      Widget title = Text(
+        'Glad To Meet You',
+        style: TextStyle(color: Colors.white, fontSize: 34.0, fontWeight: FontWeight.bold, shadows: [
+          BoxShadow(
+            color: Color.fromRGBO(0, 0, 0, 0.15),
+            offset: Offset(0, 5),
+            blurRadius: 10.0,
+          )
+        ]),
+      );
+
+      Widget subTitle = Padding(
+          padding: const EdgeInsets.only(right: 56.0),
+          child: Text(
+            'Create your new account for future uses.',
+            style: TextStyle(
               color: Colors.white,
+              fontSize: 16.0,
             ),
-            IconButton(icon: Icon(Icons.find_replace), onPressed: () {}, color: Colors.white),
-          ],
-        )
-      ],
-    );
+          ));
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView(
-          child: Stack(
-        children: <Widget>[
-          Container(
-            decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/background.jpg'), fit: BoxFit.cover)),
-          ),
-          Container(
+      Widget registerButton = Positioned(
+        left: MediaQuery.of(context).size.width / 4,
+        bottom: 40,
+        child: InkWell(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (_) => ForgotPasswordPage()));
+          },
+          child: Container(
+            width: MediaQuery.of(context).size.width / 2,
+            height: 80,
+            child: Center(child: new Text("Register", style: const TextStyle(color: const Color(0xfffefefe), fontWeight: FontWeight.w600, fontStyle: FontStyle.normal, fontSize: 20.0))),
             decoration: BoxDecoration(
-              color: transparentYellow,
-            ),
+                gradient: mainButton,
+                boxShadow: [
+                  BoxShadow(
+                    color: Color.fromRGBO(0, 0, 0, 0.16),
+                    offset: Offset(0, 5),
+                    blurRadius: 10.0,
+                  )
+                ],
+                borderRadius: BorderRadius.circular(9.0)),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 28.0),
-            child: Form(
-                key: _formKey,
-                child: Column(children: [
-                  _showTitle(),
-                  _showFirstNameInput(),
-                  _showLastNameInput(),
-                  _showMobileNumberInput(),
-                  _showAlternateMobileNumberInput(),
-                  _showEmailInput(),
-                  _showPasswordInput(),
-                  _showConfirmPasswordInput(),
-                  _showHouseNumberInput(),
-                  _showStreetInput(),
-                  _showCityInput(),
-                  _showStateInput(),
-                  _showPincodeInput(),
-                  _showFormActions()
-                ])),
-          ),
-          Positioned(
-            top: 35,
-            left: 5,
-            child: IconButton(
-              color: Colors.white,
-              icon: Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.pop(context);
-              },
+        ),
+      );
+
+      Widget registerForm = Container(
+        height: 300,
+        child: Stack(
+          children: <Widget>[
+            Container(
+              height: 220,
+              width: MediaQuery.of(context).size.width,
+              padding: const EdgeInsets.only(left: 32.0, right: 12.0),
+              decoration: BoxDecoration(color: Color.fromRGBO(255, 255, 255, 0.8), borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10))),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: TextField(
+                      controller: email,
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: TextField(
+                      controller: password,
+                      style: TextStyle(fontSize: 16.0),
+                      obscureText: true,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: TextField(
+                      controller: cmfPassword,
+                      style: TextStyle(fontSize: 16.0),
+                      obscureText: true,
+                    ),
+                  ),
+                ],
+              ),
             ),
+            registerButton,
+          ],
+        ),
+      );
+
+      Widget socialRegister = Column(
+        children: <Widget>[
+          Text(
+            'You can sign in with',
+            style: TextStyle(fontSize: 12.0, fontStyle: FontStyle.italic, color: Colors.white),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(Icons.find_replace),
+                onPressed: () {},
+                color: Colors.white,
+              ),
+              IconButton(icon: Icon(Icons.find_replace), onPressed: () {}, color: Colors.white),
+            ],
           )
         ],
-      )),
-    );
+      );
+
+      return Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+            child: Stack(
+          children: <Widget>[
+            Container(
+              decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/background.jpg'), fit: BoxFit.cover)),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: transparentYellow,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 28.0),
+              child: Form(
+                  key: _formKey,
+                  child: Column(children: [
+                    _showTitle(),
+                    _showFirstNameInput(),
+                    _showLastNameInput(),
+                    _showMobileNumberInput(),
+                    _showAlternateMobileNumberInput(),
+                    _showEmailInput(),
+                    _showPasswordInput(),
+                    _showConfirmPasswordInput(),
+                    _showHouseNumberInput(),
+                    _showStreetInput(),
+                    _showCityInput(),
+                    _showStateInput(),
+                    _showPincodeInput(),
+                    _showFormActions()
+                  ])),
+            ),
+            Positioned(
+              top: 35,
+              left: 5,
+              child: IconButton(
+                color: Colors.white,
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            )
+          ],
+        )),
+      );
+    }
   }
 }
