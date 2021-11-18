@@ -129,7 +129,6 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
         print(_password.toString());
 
         print("here dinnu");
-        print(_auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString()));
         print("here");
         UserCredential user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
         print("here i am there");
