@@ -224,15 +224,6 @@ class _WelcomeBackPageState extends State<RegisterPage> {
             Container(
                 color: Color(0x006600),
                 child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-                  RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(children: <TextSpan>[
-                      TextSpan(text: "India's 1st ", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25)),
-                      TextSpan(text: "Feed & Fodder", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 25)),
-                      TextSpan(text: "buying App", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25))
-                    ]),
-                  ),
-                  SizedBox(height: 30),
                   Stack(
                     children: <Widget>[
                       Container(
