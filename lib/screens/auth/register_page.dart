@@ -89,7 +89,7 @@ class _WelcomeBackPageState extends State<RegisterPage> {
     return Padding(
         padding: EdgeInsets.only(top: 20.0),
         child: TextFormField(
-            onSaved: (val) => _mobileNumber = val,
+            onSaved: (val) => _email = val,
             validator: (val) => !val!.contains('@') ? 'Enter a valid mobile number' : null,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
