@@ -36,7 +36,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
 
   checkAuthentication() async {
     final FirebaseAuth _auth = FirebaseAuth.instance;
-    _auth.onAuthStateChanged.listen((user) async {
+    _auth.authStateChanges().listen((user) async {
       if (user != null) {
         Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage()));
       }
@@ -132,7 +132,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
         print(_password.toString());
         print(_auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString()));
         print("here");
-        FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
+        UserCredential user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
         print("here i am there");
         if (user == null) {
           print("user is null");
@@ -147,7 +147,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
         print("here dinnu");
         print(_email.toString());
         print(_password.toString());
-        FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
+        UserCredential user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
         print("here i am there");
         if (user == null) {
           print("user is null");
