@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  DatabaseReference _databaseReference = FirebaseDatabase.instance.reference();
+  // DatabaseReference _databaseReference = FirebaseDatabase.instance.reference();
 
   navigatToAddScreen() {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
