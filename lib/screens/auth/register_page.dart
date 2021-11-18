@@ -3,6 +3,7 @@ import 'package:ecommerce_int2/screens/auth/register_page.dart';
 import 'package:ecommerce_int2/screens/auth/products_page.dart';
 import 'package:ecommerce_int2/screens/intro_page.dart';
 import 'package:ecommerce_int2/screens/main/main_page.dart';
+import 'package:ecommerce_int2/screens/auth/welcome_back_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'register_page.dart';
