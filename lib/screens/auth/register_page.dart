@@ -159,9 +159,9 @@ class _WelcomeBackPageState extends State<RegisterPage> {
     final form = _formKey.currentState;
 
     if (form!.validate()) {
-      form!.save();
+      form.save();
       _registerUser();
-      _redirectUser();
+      // _redirectUser();
     }
   }
 
@@ -204,6 +204,7 @@ class _WelcomeBackPageState extends State<RegisterPage> {
           print("user is null");
         } else {
           print("non null");
+          _redirectUser();
         }
       }
     } catch (e) {
