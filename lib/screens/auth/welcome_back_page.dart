@@ -35,8 +35,6 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
   final _formKey = GlobalKey<FormState>();
 
   checkAuthentication() async {
-    final FirebaseAuth _auth = FirebaseAuth.instance;
-    _auth.authStateChanges().listen((user) async {
       if (user != null) {
         Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage()));
       }
@@ -142,7 +140,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
       } else {
         // Some web specific code there
 
-        final FirebaseAuth _auth = FirebaseAuth.instance;
+        
         print(_auth);
         print("here dinnu");
         print(_email.toString());
