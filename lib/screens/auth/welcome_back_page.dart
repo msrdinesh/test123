@@ -119,39 +119,39 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
       _formKey.currentState!.save();
     }
 
-    // try {
-    if ((defaultTargetPlatform == TargetPlatform.iOS) || (defaultTargetPlatform == TargetPlatform.android)) {
-      // Some android/ios specific code
+    try {
+      if ((defaultTargetPlatform == TargetPlatform.iOS) || (defaultTargetPlatform == TargetPlatform.android)) {
+        // Some android/ios specific code
 
-    } else if ((defaultTargetPlatform == TargetPlatform.linux) || (defaultTargetPlatform == TargetPlatform.macOS) || (defaultTargetPlatform == TargetPlatform.windows)) {
-      // Some desktop specific code there
+      } else if ((defaultTargetPlatform == TargetPlatform.linux) || (defaultTargetPlatform == TargetPlatform.macOS) || (defaultTargetPlatform == TargetPlatform.windows)) {
+        // Some desktop specific code there
 
-      final FirebaseAuth _auth = FirebaseAuth.instance;
+        final FirebaseAuth _auth = FirebaseAuth.instance;
 
-      FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
-      print("here i am there");
-      if (user == null) {
-        print("user is null");
+        FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
+        print("here i am there");
+        if (user == null) {
+          print("user is null");
+        } else {
+          print("non null");
+        }
       } else {
-        print("non null");
-      }
-    } else {
-      // Some web specific code there
+        // Some web specific code there
 
-      final FirebaseAuth _auth = FirebaseAuth.instance;
+        final FirebaseAuth _auth = FirebaseAuth.instance;
 
-      FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
-      print("here i am there");
-      if (user == null) {
-        print("user is null");
-      } else {
-        print("non null");
+        FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
+        print("here i am there");
+        if (user == null) {
+          print("user is null");
+        } else {
+          print("non null");
+        }
       }
+    } catch (e) {
+      // showError(e.message);
+      showError("Error logging In", context);
     }
-    // } catch (e) {
-    //   // showError(e.message);
-    //   showError("Error logging In", context);
-    // }
 
     setState(() => _isSubmitting = false);
   }
