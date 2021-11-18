@@ -30,7 +30,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   void initState() {
     super.initState();
-    this.checkAuthentication();
+    // this.checkAuthentication();
   }
 
   showError(String errorMessage, BuildContext context) {
