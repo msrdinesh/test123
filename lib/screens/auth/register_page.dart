@@ -30,7 +30,7 @@ showError(String errorMessage, BuildContext context) {
       });
 }
 
-class _WelcomeBackPageState extends State<WelcomeBackPage> {
+class _WelcomeBackPageState extends State<RegisterPage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
 
