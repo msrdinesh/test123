@@ -33,8 +33,10 @@ showError(String errorMessage, BuildContext context) {
 class _WelcomeBackPageState extends State<WelcomeBackPage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   checkAuthentication() async {
+    _auth.authStateChanges().listen((user) async {
       if (user != null) {
         Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage()));
       }
@@ -53,7 +55,6 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
 
   bool _isSubmitting = false, _obscureText = true;
   String? _email = "", _password = "";
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   Widget _showTitle() {
     return Text('Login', style: TextStyle(fontSize: 25));
   }
@@ -140,7 +141,6 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
       } else {
         // Some web specific code there
 
-        
         print(_auth);
         print("here dinnu");
         print(_email.toString());
