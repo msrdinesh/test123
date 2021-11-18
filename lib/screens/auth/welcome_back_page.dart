@@ -55,7 +55,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
 
   bool _isSubmitting = false, _obscureText = true;
   String? _email = "", _password = "";
-
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   Widget _showTitle() {
     return Text('Login', style: TextStyle(fontSize: 25));
   }
@@ -128,7 +128,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
         print("dinnu thopu");
         print(_email.toString());
         print(_password.toString());
-        final FirebaseAuth _auth = FirebaseAuth.instance;
+
         print("here dinnu");
         print(_auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString()));
         print("here");
