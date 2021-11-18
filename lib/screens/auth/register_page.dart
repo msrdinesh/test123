@@ -226,49 +226,6 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
         ));
 
-    Widget registerForm = Container(
-      height: 300,
-      child: Stack(
-        children: <Widget>[
-          Container(
-            height: 220,
-            width: MediaQuery.of(context).size.width,
-            padding: const EdgeInsets.only(left: 32.0, right: 12.0),
-            decoration: BoxDecoration(color: Color.fromRGBO(255, 255, 255, 0.8), borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10))),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: TextField(
-                    controller: email,
-                    style: TextStyle(fontSize: 16.0),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: TextField(
-                    controller: password,
-                    style: TextStyle(fontSize: 16.0),
-                    obscureText: true,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: TextField(
-                    controller: cmfPassword,
-                    style: TextStyle(fontSize: 16.0),
-                    obscureText: true,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          registerButton,
-        ],
-      ),
-    );
-
     Widget socialRegister = Column(
       children: <Widget>[
         Text(
