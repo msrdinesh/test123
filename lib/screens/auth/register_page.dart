@@ -206,52 +206,71 @@ class _WelcomeBackPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView(
-          child: Stack(
-        children: <Widget>[
-          Container(
-            decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/background.jpg'), fit: BoxFit.cover)),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              color: transparentYellow,
+      backgroundColor: Color(0xff006400),
+      appBar: AppBar(
+          title: RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(children: <TextSpan>[
+                TextSpan(text: "Feed", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30)),
+                TextSpan(text: "Next", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 30)),
+              ])),
+          backgroundColor: Colors.green,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage())),
+          )),
+      body: Container(
+          color: Color(0x006600),
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+            RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(children: <TextSpan>[
+                TextSpan(text: "India's 1st ", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25)),
+                TextSpan(text: "Feed & Fodder", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 25)),
+                TextSpan(text: "buying App", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25))
+              ]),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 28.0),
-            child: Form(
-                key: _formKey,
-                child: Column(children: [
-                  _showTitle(),
-                  _showFirstNameInput(),
-                  _showLastNameInput(),
-                  _showMobileNumberInput(),
-                  _showAlternateMobileNumberInput(),
-                  _showEmailInput(),
-                  _showPasswordInput(),
-                  _showConfirmPasswordInput(),
-                  _showHouseNumberInput(),
-                  _showStreetInput(),
-                  _showCityInput(),
-                  _showStateInput(),
-                  _showPincodeInput(),
-                  _showFormActions()
-                ])),
-          ),
-          Positioned(
-            top: 35,
-            left: 5,
-            child: IconButton(
-              color: Colors.white,
-              icon: Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          )
-        ],
-      )),
+            SizedBox(height: 30),
+            Stack(
+              children: <Widget>[
+                Container(
+                  decoration: BoxDecoration(
+                    color: Color(0x336600),
+                  ),
+                ),
+                Align(
+                    alignment: Alignment.center,
+                    child: SizedBox(
+                        width: 300.0,
+                        height: 300.0,
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                                alignment: Alignment.center,
+                                color: Colors.white,
+                                child: Padding(
+                                    padding: const EdgeInsets.only(left: 28.0),
+                                    child: Form(
+                                        key: _formKey,
+                                        child: Column(children: [
+                                          _showTitle(),
+                                          _showFirstNameInput(),
+                                          _showLastNameInput(),
+                                          _showMobileNumberInput(),
+                                          _showAlternateMobileNumberInput(),
+                                          _showEmailInput(),
+                                          _showPasswordInput(),
+                                          _showConfirmPasswordInput(),
+                                          _showHouseNumberInput(),
+                                          _showStreetInput(),
+                                          _showCityInput(),
+                                          _showStateInput(),
+                                          _showPincodeInput(),
+                                          _showFormActions()
+                                        ])))))))
+              ],
+            )
+          ])),
     );
   }
 }
