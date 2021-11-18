@@ -140,6 +140,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
 
         final FirebaseAuth _auth = FirebaseAuth.instance;
         print(_auth);
+        print("here dinnu");
         print(_email.toString());
         print(_password.toString());
         FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
