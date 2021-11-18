@@ -50,7 +50,7 @@ class _WelcomeBackPageState extends State<RegisterPage> {
   @override
   void initState() {
     super.initState();
-    this.checkAuthentication();
+    // this.checkAuthentication();
   }
 
   bool _isSubmitting = false, _obscureText = true;
