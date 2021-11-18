@@ -183,7 +183,9 @@ class _WelcomeBackPageState extends State<RegisterPage> {
 
         print("here dinnu");
         print("here");
-        UserCredential user = await _auth.createUserWithEmailAndPassword(email: _email.toString(), password: _password.toString());
+        print(_email.toString());
+        print(_password.toString());
+        UserCredential user = await _auth.createUserWithEmailAndPassword(email: _email.toString().trim(), password: _password.toString().trim());
         print("here i am there");
         if (user == null) {
           print("user is null");
