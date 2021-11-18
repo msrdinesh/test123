@@ -30,166 +30,182 @@ showError(String errorMessage, BuildContext context) {
       });
 }
 
-class _WelcomeBackPageState extends State<RegisterPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
+  TextEditingController email = TextEditingController(text: 'example@email.com');
 
-  checkAuthentication() async {
-    final FirebaseAuth _auth = FirebaseAuth.instance;
-    _auth.authStateChanges().listen((user) async {
-      if (user != null) {
-        Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage()));
-      }
-    });
-  }
+  TextEditingController password = TextEditingController(text: '12345678');
 
-  navigateToLoginScreen() {
-    Navigator.push(context, new MaterialPageRoute(builder: (context) => new RegisterPage()));
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    // this.checkAuthentication();
-  }
-
+  TextEditingController cmfPassword = TextEditingController(text: '12345678');
   bool _isSubmitting = false, _obscureText = true;
-  String? _email = "", _password = "";
+  String? _firstname = "", _lastname = "", _mobileNumber = "", _alternateMobileNumber = "", _email = "", _password = "", _houseNumber = "", _street = "", _city = "", _state = "", _pincode = "";
+  bool _sameDelivery = false;
 
   Widget _showTitle() {
-    return Text('Login', style: TextStyle(fontSize: 25));
+    return Text('Create Account');
+  }
+
+  Widget _showFirstNameInput() {
+    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _firstname = val, validator: (val) => val!.length < 3 ? 'Firstname too short' : null, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'First Name *', hintText: 'First Name *')));
+  }
+
+  Widget _showLastNameInput() {
+    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _lastname = val, validator: (val) => val!.length < 2 ? 'Lastname too short' : null, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Last Name', hintText: 'Last Name')));
+  }
+
+  Widget _showConfirmPasswordInput() {
+    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _lastname = val, validator: (val) => val == _password ? null : 'Password is not matching', decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Confirm Password *', hintText: 'Confirm Password *')));
+  }
+
+  Widget _showMobileNumberInput() {
+    return Padding(
+        padding: EdgeInsets.only(top: 20.0),
+        child: TextFormField(
+            onSaved: (val) => _mobileNumber = val,
+            validator: (val) => val!.length != 10 ? 'Enter a valid mobile number' : null,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Mobile Number *',
+              hintText: 'Mobile Number *',
+            )));
+  }
+
+  Widget _showAlternateMobileNumberInput() {
+    return Padding(
+        padding: EdgeInsets.only(top: 20.0),
+        child: TextFormField(
+            onSaved: (val) => _mobileNumber = val,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Alternate Mobile Number',
+              hintText: 'Alternate Mobile Number',
+            )));
   }
 
   Widget _showEmailInput() {
-    return Padding(padding: EdgeInsets.only(top: 20.0), child: Container(margin: const EdgeInsets.only(right: 10, left: 10), child: TextFormField(onSaved: (val) => _email = val, validator: (val) => val?.length != 10 ? 'Invalid Mobile Number' : null, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Mobile Number *', hintText: 'Mobile Number *'))));
+    return Padding(
+        padding: EdgeInsets.only(top: 20.0),
+        child: TextFormField(
+            onSaved: (val) => _mobileNumber = val,
+            validator: (val) => !val!.contains('@') ? 'Enter a valid mobile number' : null,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Email *',
+              hintText: 'Email *',
+            )));
+  }
+
+  Widget _showHouseNumberInput() {
+    return Padding(
+        padding: EdgeInsets.only(top: 20.0),
+        child: TextFormField(
+            onSaved: (val) => _houseNumber = val,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'House Number',
+              hintText: 'House Number',
+            )));
+  }
+
+  Widget _showStreetInput() {
+    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _street = val, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Street/Area', hintText: 'Street/Area')));
+  }
+
+  Widget _showCityInput() {
+    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _city = val, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'City/Town/Village *', hintText: 'City/Town/Village *')));
+  }
+
+  Widget _showStateInput() {
+    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _state = val, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'State *', hintText: 'State *')));
+  }
+
+  Widget _showPincodeInput() {
+    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _pincode = val, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Pincode *', hintText: 'Pincode *')));
   }
 
   Widget _showPasswordInput() {
     return Padding(
         padding: EdgeInsets.only(top: 20.0),
-        child: Container(
-            margin: const EdgeInsets.only(right: 10, left: 10),
-            child: TextFormField(
-                onSaved: (val) => _password = val,
-                validator: (val) => val == null
-                    ? "null"
-                    : val.length < 6
-                        ? 'Password too short'
-                        : null,
-                obscureText: _obscureText,
-                decoration: InputDecoration(
-                  suffixIcon: GestureDetector(
-                      onTap: () {
-                        setState(() => _obscureText = !_obscureText);
-                      },
-                      child: Icon(_obscureText ? Icons.visibility : Icons.visibility_off)),
-                  border: OutlineInputBorder(),
-                  labelText: 'Password *',
-                  hintText: 'Password *',
-                ))));
+        child: TextFormField(
+            onChanged: (val) => _password = val,
+            onSaved: (val) => _password = val,
+            validator: (val) => val!.length < 6 ? 'Username too short' : null,
+            obscureText: _obscureText,
+            decoration: InputDecoration(
+              suffixIcon: GestureDetector(
+                  onTap: () {
+                    setState(() => _obscureText = !_obscureText);
+                  },
+                  child: Icon(_obscureText ? Icons.visibility : Icons.visibility_off)),
+              border: OutlineInputBorder(),
+              labelText: 'Password',
+              hintText: 'Enter password, min length 6',
+            )));
   }
 
   Widget _showFormActions() {
     return Padding(
         padding: EdgeInsets.only(top: 20.0),
         child: Column(children: [
-          _isSubmitting == true ? CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Theme.of(context).accentColor)) : RaisedButton(child: Text('Submit', style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.black)), elevation: 8.0, shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))), color: Theme.of(context).accentColor, onPressed: _submit),
-          FlatButton(
-              child: Text('New user? Register'),
-              onPressed: () => {
-                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new RegisterPage()))
-                  })
+          _isSubmitting == true ? CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Theme.of(context).primaryColor)) : RaisedButton(child: Text('Continue', style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.black)), elevation: 8.0, shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))), color: Theme.of(context).primaryColor, onPressed: _submit),
+          FlatButton(child: Text('Existing user? Login'), onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new WelcomeBackPage())))
         ]));
   }
 
   void _submit() {
     final form = _formKey.currentState;
-    print(form);
+
     if (form!.validate()) {
-      form.save();
-      print("here");
-      _registerUser();
+      form!.save();
+      // _registerUser();
       _redirectUser();
     }
   }
 
   void _registerUser() async {
     setState(() => _isSubmitting = true);
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
+    http.Response response = await http.post(Uri.parse('http://localhost:1337/auth/local/register'), body: {
+      "mobileNumber": _mobileNumber,
+      "password": _password
+    });
+    final responseData = json.decode(response.body);
+    if (response.statusCode == 200) {
+      setState(() => _isSubmitting = false);
+      _showSuccessSnack();
+      _redirectUser();
+      print(responseData);
+    } else {
+      setState(() => _isSubmitting = false);
+      final String errorMsg = responseData['message'];
+      _showErrorSnack(errorMsg);
     }
-
-    try {
-      if ((defaultTargetPlatform == TargetPlatform.iOS) || (defaultTargetPlatform == TargetPlatform.android)) {
-        // Some android/ios specific code
-
-      } else if ((defaultTargetPlatform == TargetPlatform.linux) || (defaultTargetPlatform == TargetPlatform.macOS) || (defaultTargetPlatform == TargetPlatform.windows)) {
-        // Some desktop specific code there
-        print("dinnu thopu");
-        final FirebaseAuth _auth = FirebaseAuth.instance;
-        print("here dinnu");
-        print(_email.toString());
-        print(_password.toString());
-        print(_auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString()));
-        print("here");
-        UserCredential user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
-        print("here i am there");
-        if (user == null) {
-          print("user is null");
-        } else {
-          print("non null");
-        }
-      } else {
-        // Some web specific code there
-
-        final FirebaseAuth _auth = FirebaseAuth.instance;
-        print(_auth);
-        print("here dinnu");
-        print(_email.toString());
-        print(_password.toString());
-        UserCredential user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
-        print("here i am there");
-        if (user == null) {
-          print("user is null");
-        } else {
-          print("non null");
-        }
-      }
-    } catch (e) {
-      // showError(e.message);
-      print(e.toString());
-      showError(e.toString(), context);
-    }
-
-    setState(() => _isSubmitting = false);
   }
 
   void _showSuccessSnack() {
-    final snackbar = SnackBar(content: Text('User successfully logged in!', style: TextStyle(color: Colors.green)));
-    _scaffoldKey.currentState?.showSnackBar(snackbar);
+    final snackbar = SnackBar(content: Text('User $_mobileNumber successfully created!', style: TextStyle(color: Colors.green)));
+    if (_scaffoldKey != null) {
+      _scaffoldKey.currentState?.showSnackBar(snackbar);
+    }
     _formKey.currentState?.reset();
   }
 
   void _showErrorSnack(String errorMsg) {
     final snackbar = SnackBar(content: Text(errorMsg, style: TextStyle(color: Colors.red)));
     _scaffoldKey.currentState?.showSnackBar(snackbar);
-    throw Exception('Error logging in: $errorMsg');
+    throw Exception('Error registering: $errorMsg');
   }
 
   void _redirectUser() {
     Future.delayed(Duration(seconds: 2), () {
-      Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage()));
+      Navigator.push(context, new MaterialPageRoute(builder: (context) => new ProductsPage()));
     });
   }
 
-  TextEditingController email = TextEditingController(text: 'example@email.com');
-
-  TextEditingController password = TextEditingController(text: '12345678');
-
   @override
   Widget build(BuildContext context) {
-    Widget welcomeBack = Text(
-      'Welcome Back Roberto,',
+    Widget title = Text(
+      'Glad To Meet You',
       style: TextStyle(color: Colors.white, fontSize: 34.0, fontWeight: FontWeight.bold, shadows: [
         BoxShadow(
           color: Color.fromRGBO(0, 0, 0, 0.15),
@@ -202,28 +218,26 @@ class _WelcomeBackPageState extends State<RegisterPage> {
     Widget subTitle = Padding(
         padding: const EdgeInsets.only(right: 56.0),
         child: Text(
-          'Login to your account using\nMobile number',
+          'Create your new account for future uses.',
           style: TextStyle(
             color: Colors.white,
             fontSize: 16.0,
           ),
         ));
 
-    Widget loginButton = Positioned(
+    Widget registerButton = Positioned(
       left: MediaQuery.of(context).size.width / 4,
       bottom: 40,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (_) => ForgotPasswordPage()));
+        },
         child: Container(
           width: MediaQuery.of(context).size.width / 2,
           height: 80,
-          child: Center(child: new Text("Log In", style: const TextStyle(color: const Color(0xfffefefe), fontWeight: FontWeight.w600, fontStyle: FontStyle.normal, fontSize: 20.0))),
+          child: Center(child: new Text("Register", style: const TextStyle(color: const Color(0xfffefefe), fontWeight: FontWeight.w600, fontStyle: FontStyle.normal, fontSize: 20.0))),
           decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [
-                Color.fromRGBO(236, 60, 3, 1),
-                Color.fromRGBO(234, 60, 3, 1),
-                Color.fromRGBO(216, 78, 16, 1),
-              ], begin: FractionalOffset.topCenter, end: FractionalOffset.bottomCenter),
+              gradient: mainButton,
               boxShadow: [
                 BoxShadow(
                   color: Color.fromRGBO(0, 0, 0, 0.16),
@@ -236,12 +250,12 @@ class _WelcomeBackPageState extends State<RegisterPage> {
       ),
     );
 
-    Widget loginForm = Container(
-      height: 240,
+    Widget registerForm = Container(
+      height: 300,
       child: Stack(
         children: <Widget>[
           Container(
-            height: 160,
+            height: 220,
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.only(left: 32.0, right: 12.0),
             decoration: BoxDecoration(color: Color.fromRGBO(255, 255, 255, 0.8), borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10))),
@@ -263,69 +277,89 @@ class _WelcomeBackPageState extends State<RegisterPage> {
                     obscureText: true,
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: TextField(
+                    controller: cmfPassword,
+                    style: TextStyle(fontSize: 16.0),
+                    obscureText: true,
+                  ),
+                ),
               ],
             ),
           ),
-          loginButton,
+          registerButton,
         ],
       ),
     );
 
-    return Scaffold(
-      backgroundColor: Color(0xff006400),
-      appBar: AppBar(
-          title: RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(children: <TextSpan>[
-                TextSpan(text: "Feed", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30)),
-                TextSpan(text: "Next", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 30)),
-              ])),
-          backgroundColor: Colors.green,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new MainPage())),
-          )),
-      body: Container(
-          color: Color(0x006600),
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-            RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(children: <TextSpan>[
-                TextSpan(text: "India's 1st ", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25)),
-                TextSpan(text: "Feed & Fodder", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 25)),
-                TextSpan(text: "buying App", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25))
-              ]),
+    Widget socialRegister = Column(
+      children: <Widget>[
+        Text(
+          'You can sign in with',
+          style: TextStyle(fontSize: 12.0, fontStyle: FontStyle.italic, color: Colors.white),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.find_replace),
+              onPressed: () {},
+              color: Colors.white,
             ),
-            SizedBox(height: 30),
-            Stack(
-              children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color(0x336600),
-                  ),
-                ),
-                Align(
-                    alignment: Alignment.center,
-                    child: SizedBox(
-                        width: 300.0,
-                        height: 300.0,
-                        child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Container(
-                                alignment: Alignment.center,
-                                color: Colors.white,
-                                child: Padding(
-                                    padding: const EdgeInsets.only(left: 28.0),
-                                    child: Form(
-                                        key: _formKey,
-                                        child: Column(children: [
-                                          _showEmailInput(),
-                                          _showPasswordInput(),
-                                          _showFormActions()
-                                        ])))))))
-              ],
-            )
-          ])),
+            IconButton(icon: Icon(Icons.find_replace), onPressed: () {}, color: Colors.white),
+          ],
+        )
+      ],
+    );
+
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: SingleChildScrollView(
+          child: Stack(
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/background.jpg'), fit: BoxFit.cover)),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: transparentYellow,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 28.0),
+            child: Form(
+                key: _formKey,
+                child: Column(children: [
+                  _showTitle(),
+                  _showFirstNameInput(),
+                  _showLastNameInput(),
+                  _showMobileNumberInput(),
+                  _showAlternateMobileNumberInput(),
+                  _showEmailInput(),
+                  _showPasswordInput(),
+                  _showConfirmPasswordInput(),
+                  _showHouseNumberInput(),
+                  _showStreetInput(),
+                  _showCityInput(),
+                  _showStateInput(),
+                  _showPincodeInput(),
+                  _showFormActions()
+                ])),
+          ),
+          Positioned(
+            top: 35,
+            left: 5,
+            child: IconButton(
+              color: Colors.white,
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          )
+        ],
+      )),
     );
   }
 }
