@@ -32,6 +32,7 @@ showError(String errorMessage, BuildContext context) {
 }
 
 class _WelcomeBackPageState extends State<RegisterPage> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
   TextEditingController email = TextEditingController(text: 'example@email.com');
@@ -166,21 +167,52 @@ class _WelcomeBackPageState extends State<RegisterPage> {
 
   void _registerUser() async {
     setState(() => _isSubmitting = true);
-    http.Response response = await http.post(Uri.parse('http://localhost:1337/auth/local/register'), body: {
-      "mobileNumber": _mobileNumber,
-      "password": _password
-    });
-    final responseData = json.decode(response.body);
-    if (response.statusCode == 200) {
-      setState(() => _isSubmitting = false);
-      _showSuccessSnack();
-      _redirectUser();
-      print(responseData);
-    } else {
-      setState(() => _isSubmitting = false);
-      final String errorMsg = responseData['message'];
-      _showErrorSnack(errorMsg);
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
     }
+
+    try {
+      if ((defaultTargetPlatform == TargetPlatform.iOS) || (defaultTargetPlatform == TargetPlatform.android)) {
+        // Some android/ios specific code
+
+      } else if ((defaultTargetPlatform == TargetPlatform.linux) || (defaultTargetPlatform == TargetPlatform.macOS) || (defaultTargetPlatform == TargetPlatform.windows)) {
+        // Some desktop specific code there
+        print("dinnu thopu");
+        print(_email.toString());
+        print(_password.toString());
+
+        print("here dinnu");
+        print("here");
+        UserCredential user = await _auth.createUserWithEmailAndPassword(email: _email.toString(), password: _password.toString());
+        print("here i am there");
+        if (user == null) {
+          print("user is null");
+        } else {
+          print("non null");
+          _redirectUser();
+        }
+      } else {
+        // Some web specific code there
+
+        print(_auth);
+        print("here dinnu");
+        print(_email.toString());
+        print(_password.toString());
+        UserCredential user = await _auth.signInWithEmailAndPassword(email: _email.toString(), password: _password.toString());
+        print("here i am there");
+        if (user == null) {
+          print("user is null");
+        } else {
+          print("non null");
+        }
+      }
+    } catch (e) {
+      // showError(e.message);
+      print(e.toString());
+      showError(e.toString(), context);
+    }
+
+    setState(() => _isSubmitting = false);
   }
 
   void _showSuccessSnack() {
