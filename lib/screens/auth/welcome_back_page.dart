@@ -108,7 +108,6 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
       form.save();
       print("here");
       _registerUser();
-      _redirectUser();
     }
   }
 
@@ -136,6 +135,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
           print("user is null");
         } else {
           print("non null");
+          _redirectUser();
         }
       } else {
         // Some web specific code there
