@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ecommerce_int2/widgets/home_body.dart';
-import '../cart_screen.dart';
-import 'sidebar.dart';
+import '../screens/cart_screen.dart';
+import 'auth/sidebar.dart';
 
-class ProductsPage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
