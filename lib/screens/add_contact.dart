@@ -131,7 +131,24 @@ class _AddContactState extends State<AddContact> {
                               _firstName = value;
                             });
                           },
-                          decoration: InputDecoration(labelText: "Address", border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)))))
+                          decoration: InputDecoration(labelText: "Address", border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0))))),
+                  Container(
+                    padding: EdgeInsets.only(top:20.0),
+                    child: RaisedButton(
+                      padding: EdgeInsets.fromLTRB(100,20,100,20),
+                      onPressed: (){
+                        saveContact(context);
+                      }
+                      color: Colors.red,
+                      child: Text(
+                        "Save",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.white
+                        )
+                      )
+                    )
+                  )
                 ]))));
   }
 }
