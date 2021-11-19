@@ -1,23 +1,21 @@
 import 'package:flutter/foundation.dart';
 
 class CartItem {
-  final String id;
-  final String name;
-  final int quantity;
-  final double price;
+  String id = "";
+  String name = "";
+  int quantity = 0;
+  double price = 0.0;
 
-  CartItem(
-      {@required this.id,
-      @required this.name,
-      @required this.quantity,
-      @required this.price});
+  CartItem({@required this.id, @required this.name, @required this.quantity, @required this.price});
 }
 
 class Cart with ChangeNotifier {
   Map<String, CartItem> _items = {};
 
   Map<String, CartItem> get items {
-    return {..._items};
+    return {
+      ..._items
+    };
   }
 
   int get itemCount {
@@ -26,13 +24,7 @@ class Cart with ChangeNotifier {
 
   void addItem(String pdtid, String name, double price) {
     if (_items.containsKey(pdtid)) {
-      _items.update(
-          pdtid,
-          (existingCartItem) => CartItem(
-              id: DateTime.now().toString(),
-              name: existingCartItem.name,
-              quantity: existingCartItem.quantity + 1,
-              price: existingCartItem.price));
+      _items.update(pdtid, (existingCartItem) => CartItem(id: DateTime.now().toString(), name: existingCartItem.name, quantity: existingCartItem.quantity + 1, price: existingCartItem.price));
     } else {
       _items.putIfAbsent(
           pdtid,
@@ -55,14 +47,8 @@ class Cart with ChangeNotifier {
     if (!_items.containsKey(id)) {
       return;
     }
-    if (_items[id].quantity > 1) {
-      _items.update(
-          id,
-          (existingCartItem) => CartItem(
-              id: DateTime.now().toString(),
-              name: existingCartItem.name,
-              quantity: existingCartItem.quantity - 1,
-              price: existingCartItem.price));
+    if (_items[id]!.quantity > 1) {
+      _items.update(id, (existingCartItem) => CartItem(id: DateTime.now().toString(), name: existingCartItem.name, quantity: existingCartItem.quantity - 1, price: existingCartItem.price));
     }
     notifyListeners();
   }
