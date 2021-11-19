@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecom/screens/pdt_detail_screen.dart';
+import 'package:ecommerce_int2/screens/pdt_detail_screen.dart';
 import 'package:provider/provider.dart';
 import '../models/products.dart';
 import '../models/cart.dart';
 
 class PdtItem extends StatelessWidget {
-  final String name;
-  final String imageUrl;
+  String name = "";
+  String imageUrl = "";
 
   PdtItem({this.name, this.imageUrl});
   @override
