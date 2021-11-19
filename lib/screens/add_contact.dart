@@ -64,39 +64,28 @@ class _AddContactState extends State<AddContact> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Add contact")
-      ),
-      body:Container(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: ListView(
-            children:<Widget>[
-              Container(
-                margin: EdgeInsets.only(top: 20.0),
-                child: GestureDetector(
-                  onTap:(){
-                    this.pickImage();
-                  },
-                  child: Center(
-                    child: Container(
-                      width: 100.0,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: _photoUrl =="empty"? AssetImage("assets/logo.png")
-                        ),
-                      )
-                    )
-                  )
-                )
-              )
-            ]
-          )
-        ))
-      )
-    );
+        appBar: AppBar(title: Text("Add contact")),
+        body: Container(
+            child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: ListView(children: <Widget>[
+                  Container(
+                      margin: EdgeInsets.only(top: 20.0),
+                      child: GestureDetector(
+                          onTap: () {
+                            this.pickImage();
+                          },
+                          child: Center(
+                            child: Container(
+                                width: 100.0,
+                                height: 100.0,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: _photoUrl == "empty" ? AssetImage("assets/logo.png") : NetworkImage(_photoUrl) as ImageProvider,
+                                    ))),
+                          )))
+                ]))));
   }
 }
