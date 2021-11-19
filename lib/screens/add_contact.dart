@@ -28,8 +28,11 @@ class _AddContactState extends State<AddContact> {
       print(this._email.isNotEmpty);
       print(this._address.isNotEmpty);
       Contact contact = Contact(_firstName, _lastName, _phoneNumber, _email, _address, _photoUrl);
+      print("here");
       await _databaseReferance.push().set(contact.toJson());
+      print("here1");
       navigateToLastScreen(context);
+      print("here2");
     } else {
       print(this._firstName.isNotEmpty);
       print(this._lastName.isNotEmpty);
