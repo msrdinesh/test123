@@ -1,12 +1,12 @@
 import 'package:flutter/foundation.dart';
 
 class Product with ChangeNotifier {
-  final String id = "";
-  final String category = "";
-  final String name = "";
-  final String description = "";
-  final String imgUrl = "";
-  final double price = 0;
+  String id = "";
+  String category = "";
+  String name = "";
+  String description = "";
+  String imgUrl = "";
+  double price = 0;
 
   Product({this.id, this.category, this.name, this.description, this.imgUrl, this.price});
 }
