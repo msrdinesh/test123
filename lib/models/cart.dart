@@ -6,7 +6,7 @@ class CartItem {
   int quantity = 0;
   double price = 0.0;
 
-  CartItem({@required this.id, @required this.name, @required this.quantity, @required this.price});
+  CartItem({this.id, this.name, this.quantity, this.price});
 }
 
 class Cart with ChangeNotifier {
