@@ -85,7 +85,16 @@ class _AddContactState extends State<AddContact> {
                                       fit: BoxFit.cover,
                                       image: _photoUrl == "empty" ? AssetImage("assets/logo.png") : NetworkImage(_photoUrl) as ImageProvider,
                                     ))),
-                          )))
+                          ))),
+                  Container(
+                      margin: EdgeInsets.only(top: 20.0),
+                      child: TextField(
+                          onChanged: (value) {
+                            setState(() {
+                              _firstName = value;
+                            });
+                          },
+                          decoration: InputDecoration(labelText: "First Name", border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)))))
                 ]))));
   }
 }
