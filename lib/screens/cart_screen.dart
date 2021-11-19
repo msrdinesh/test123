@@ -41,7 +41,7 @@ class CartScreen extends StatelessWidget {
 class CheckoutButton extends StatefulWidget {
   final Cart cart;
 
-  const CheckoutButton({@required this.cart});
+  const CheckoutButton({this.cart});
   @override
   _CheckoutButtonState createState() => _CheckoutButtonState();
 }

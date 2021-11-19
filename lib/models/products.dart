@@ -6,9 +6,9 @@ class Product with ChangeNotifier {
   final String name = "";
   final String description = "";
   final String imgUrl = "";
-  final double price = 0.0;
+  final double price = 0;
 
-  Product({@required this.id, @required this.category, @required this.name, @required this.description, @required this.imgUrl, @required this.price});
+  Product({this.id, this.category, this.name, this.description, this.imgUrl, this.price});
 }
 
 class Products with ChangeNotifier {
