@@ -1,7 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 
 class Contact{
-  String _id;
+  String _id="";
   String _firstName;
   String _lastName;
   String _phoneNumber;
@@ -16,7 +16,7 @@ Contact(this._firstName,this._lastName,this._phoneNumber,this._email,this._addre
 
 }
 //constructor for edit
-Contact.withId(this._id,this._firstName,this._lastName,this._phoneNumber,this._email,this._address,this._photoUrl)
+Contact.withId(this._id,this._firstName,this._lastName,this._phoneNumber,this._email,this._address,this._photoUrl);
 
 //getters
 String get id => this._id;
