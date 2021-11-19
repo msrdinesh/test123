@@ -13,6 +13,7 @@ class AddContact extends StatefulWidget {
 
 class _AddContactState extends State<AddContact> {
   DatabaseReference _databaseReferance = FirebaseDatabase.instance.reference();
+  bool _isSubmitting = false;
   String _firstName = "";
   String _lastName = "";
   String _phoneNumber = "";
@@ -29,7 +30,9 @@ class _AddContactState extends State<AddContact> {
       print(this._address.isNotEmpty);
       Contact contact = Contact(_firstName, _lastName, _phoneNumber, _email, _address, _photoUrl);
       print("here");
+      setState(() => _isSubmitting = true);
       await _databaseReferance.push().set(contact.toJson());
+      setState(() => _isSubmitting = false);
       print("here1");
       navigateToLastScreen(context);
       print("here2");
@@ -147,13 +150,15 @@ class _AddContactState extends State<AddContact> {
                           decoration: InputDecoration(labelText: "Address", border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0))))),
                   Container(
                       padding: EdgeInsets.only(top: 20.0),
-                      child: RaisedButton(
-                          padding: EdgeInsets.fromLTRB(100, 20, 100, 20),
-                          onPressed: () {
-                            saveContact(context);
-                          },
-                          color: Colors.red,
-                          child: Text("Save", style: TextStyle(fontSize: 20.0, color: Colors.white))))
+                      child: _isSubmitting == true
+                          ? CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Theme.of(context).accentColor))
+                          : RaisedButton(
+                              padding: EdgeInsets.fromLTRB(100, 20, 100, 20),
+                              onPressed: () {
+                                saveContact(context);
+                              },
+                              color: Colors.red,
+                              child: Text("Save", style: TextStyle(fontSize: 20.0, color: Colors.white))))
                 ]))));
   }
 }
