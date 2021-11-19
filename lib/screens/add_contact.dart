@@ -22,10 +22,20 @@ class _AddContactState extends State<AddContact> {
 
   saveContact(BuildContext context) async {
     if (this._firstName.isNotEmpty && this._lastName.isNotEmpty && this._phoneNumber.isNotEmpty && this._email.isNotEmpty && this._address.isNotEmpty) {
+      print(this._firstName.isNotEmpty);
+      print(this._lastName.isNotEmpty);
+      print(this._phoneNumber.isNotEmpty);
+      print(this._email.isNotEmpty);
+      print(this._address.isNotEmpty);
       Contact contact = Contact(_firstName, _lastName, _phoneNumber, _email, _address, _photoUrl);
       await _databaseReferance.push().set(contact.toJson());
       navigateToLastScreen(context);
     } else {
+      print(this._firstName.isNotEmpty);
+      print(this._lastName.isNotEmpty);
+      print(this._phoneNumber.isNotEmpty);
+      print(this._email.isNotEmpty);
+      print(this._address.isNotEmpty);
       showDialog(
           context: context,
           builder: (context) {
