@@ -111,7 +111,7 @@ class _AddContactState extends State<AddContact> {
                       child: TextField(
                           onChanged: (value) {
                             setState(() {
-                              _firstName = value;
+                              _lastName = value;
                             });
                           },
                           decoration: InputDecoration(labelText: "Last Name", border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0))))),
@@ -120,7 +120,7 @@ class _AddContactState extends State<AddContact> {
                       child: TextField(
                           onChanged: (value) {
                             setState(() {
-                              _firstName = value;
+                              _phoneNumber = value;
                             });
                           },
                           decoration: InputDecoration(labelText: "Phone number", border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0))))),
@@ -129,7 +129,7 @@ class _AddContactState extends State<AddContact> {
                       child: TextField(
                           onChanged: (value) {
                             setState(() {
-                              _firstName = value;
+                              _email = value;
                             });
                           },
                           decoration: InputDecoration(labelText: "Email", border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0))))),
@@ -138,7 +138,7 @@ class _AddContactState extends State<AddContact> {
                       child: TextField(
                           onChanged: (value) {
                             setState(() {
-                              _firstName = value;
+                              _address = value;
                             });
                           },
                           decoration: InputDecoration(labelText: "Address", border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0))))),
