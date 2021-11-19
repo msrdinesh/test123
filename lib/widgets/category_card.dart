@@ -14,10 +14,7 @@ class CategoryCard extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
-            BoxShadow(
-              blurRadius: 5,
-              color: Colors.blueGrey
-            )
+            BoxShadow(blurRadius: 5, color: Colors.blueGrey)
           ],
         ),
         width: 100,
@@ -26,7 +23,9 @@ class CategoryCard extends StatelessWidget {
           child: Column(
             children: <Widget>[
               icon,
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Text(name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))
             ],
           ),

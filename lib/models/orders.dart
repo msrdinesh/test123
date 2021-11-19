@@ -22,7 +22,9 @@ class Orders with ChangeNotifier {
   List<OrderItem> _orders = [];
 
   List<OrderItem> get orders {
-    return [..._orders];
+    return [
+      ..._orders
+    ];
   }
 
   Future<void> addOrder(List<CartItem> cartProducts, double total) async {
@@ -43,13 +45,7 @@ class Orders with ChangeNotifier {
                     })
                 .toList(),
           }));
-      _orders.insert(
-          0,
-          OrderItem(
-              id: json.decode(response.body)['name'],
-              amount: total,
-              dateTime: timeStamp,
-              products: cartProducts));
+      _orders.insert(0, OrderItem(id: json.decode(response.body)['name'], amount: total, dateTime: timeStamp, products: cartProducts));
       notifyListeners();
     } catch (err) {
       throw err;

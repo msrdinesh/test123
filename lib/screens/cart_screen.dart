@@ -20,14 +20,7 @@ class CartScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: ListView.builder(
-                itemCount: cart.items.length,
-                itemBuilder: (ctx, i) => CartPdt(
-                    cart.items.values.toList()[i].id,
-                    cart.items.keys.toList()[i],
-                    cart.items.values.toList()[i].price,
-                    cart.items.values.toList()[i].quantity,
-                    cart.items.values.toList()[i].name)),
+            child: ListView.builder(itemCount: cart.items.length, itemBuilder: (ctx, i) => CartPdt(cart.items.values.toList()[i].id, cart.items.keys.toList()[i], cart.items.values.toList()[i].price, cart.items.values.toList()[i].quantity, cart.items.values.toList()[i].name)),
           ),
           CheckoutButton(
             cart: cart,
@@ -61,8 +54,7 @@ class _CheckoutButtonState extends State<CheckoutButton> {
       onPressed: widget.cart.totalAmount <= 0
           ? null
           : () async {
-              await Provider.of<Orders>(context, listen: false).addOrder(
-                  widget.cart.items.values.toList(), widget.cart.totalAmount);
+              await Provider.of<Orders>(context, listen: false).addOrder(widget.cart.items.values.toList(), widget.cart.totalAmount);
               widget.cart.clear();
             },
     );

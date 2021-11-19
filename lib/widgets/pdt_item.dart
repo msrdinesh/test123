@@ -15,8 +15,7 @@ class PdtItem extends StatelessWidget {
     final cart = Provider.of<Cart>(context);
     return GestureDetector(
       onTap: () {
-        Navigator.of(context)
-            .pushNamed(DetailPage.routeName, arguments: pdt.id);
+        Navigator.of(context).pushNamed(DetailPage.routeName, arguments: pdt.id);
       },
       child: Padding(
         padding: const EdgeInsets.all(15.0),
