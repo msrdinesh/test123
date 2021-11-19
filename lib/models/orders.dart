@@ -31,7 +31,7 @@ class Orders with ChangeNotifier {
     final url = 'https://first-ecom.firebaseio.com/orders.json';
     final timeStamp = DateTime.now();
     try {
-      final response = await http.post(url,
+      final response = await http.post(Uri.parse(url),
           body: json.encode({
             'id': DateTime.now().toString(),
             'amount': total,
