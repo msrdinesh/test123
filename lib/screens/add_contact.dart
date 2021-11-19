@@ -104,7 +104,25 @@ class _AddContactState extends State<AddContact> {
                               _firstName = value;
                             });
                           },
-                          decoration: InputDecoration(labelText: "Last Name", border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)))))
+                          decoration: InputDecoration(labelText: "Last Name", border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0))))),
+                  Container(
+                      margin: EdgeInsets.only(top: 20.0),
+                      child: TextField(
+                          onChanged: (value) {
+                            setState(() {
+                              _firstName = value;
+                            });
+                          },
+                          decoration: InputDecoration(labelText: "Phone number", border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0))))),
+                  Container(
+                      margin: EdgeInsets.only(top: 20.0),
+                      child: TextField(
+                          onChanged: (value) {
+                            setState(() {
+                              _firstName = value;
+                            });
+                          },
+                          decoration: InputDecoration(labelText: "Email", border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)))))
                 ]))));
   }
 }
