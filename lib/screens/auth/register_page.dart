@@ -15,24 +15,13 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
-  TextEditingController email =
-      TextEditingController(text: 'example@email.com');
+  TextEditingController email = TextEditingController(text: 'example@email.com');
 
   TextEditingController password = TextEditingController(text: '12345678');
 
   TextEditingController cmfPassword = TextEditingController(text: '12345678');
   bool _isSubmitting = false, _obscureText = true;
-  String? _firstname = "",
-      _lastname = "",
-      _mobileNumber = "",
-      _alternateMobileNumber = "",
-      _email = "",
-      _password = "",
-      _houseNumber = "",
-      _street = "",
-      _city = "",
-      _state = "",
-      _pincode = "";
+  String? _firstname = "", _lastname = "", _mobileNumber = "", _alternateMobileNumber = "", _email = "", _password = "", _houseNumber = "", _street = "", _city = "", _state = "", _pincode = "";
   bool _sameDelivery = false;
 
   Widget _showTitle() {
@@ -40,40 +29,15 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Widget _showFirstNameInput() {
-    return Padding(
-        padding: EdgeInsets.only(top: 20.0),
-        child: TextFormField(
-            onSaved: (val) => _firstname = val,
-            validator: (val) => val!.length < 3 ? 'Firstname too short' : null,
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'First Name *',
-                hintText: 'First Name *')));
+    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _firstname = val, validator: (val) => val!.length < 3 ? 'Firstname too short' : null, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'First Name *', hintText: 'First Name *')));
   }
 
   Widget _showLastNameInput() {
-    return Padding(
-        padding: EdgeInsets.only(top: 20.0),
-        child: TextFormField(
-            onSaved: (val) => _lastname = val,
-            validator: (val) => val!.length < 2 ? 'Lastname too short' : null,
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Last Name',
-                hintText: 'Last Name')));
+    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _lastname = val, validator: (val) => val!.length < 2 ? 'Lastname too short' : null, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Last Name', hintText: 'Last Name')));
   }
 
   Widget _showConfirmPasswordInput() {
-    return Padding(
-        padding: EdgeInsets.only(top: 20.0),
-        child: TextFormField(
-            onSaved: (val) => _lastname = val,
-            validator: (val) =>
-                val == _password ? null : 'Password is not matching',
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Confirm Password *',
-                hintText: 'Confirm Password *')));
+    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _lastname = val, validator: (val) => val == _password ? null : 'Password is not matching', decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Confirm Password *', hintText: 'Confirm Password *')));
   }
 
   Widget _showMobileNumberInput() {
@@ -81,8 +45,7 @@ class _RegisterPageState extends State<RegisterPage> {
         padding: EdgeInsets.only(top: 20.0),
         child: TextFormField(
             onSaved: (val) => _mobileNumber = val,
-            validator: (val) =>
-                val!.length != 10 ? 'Enter a valid mobile number' : null,
+            validator: (val) => val!.length != 10 ? 'Enter a valid mobile number' : null,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               labelText: 'Mobile Number *',
@@ -107,8 +70,7 @@ class _RegisterPageState extends State<RegisterPage> {
         padding: EdgeInsets.only(top: 20.0),
         child: TextFormField(
             onSaved: (val) => _mobileNumber = val,
-            validator: (val) =>
-                !val!.contains('@') ? 'Enter a valid mobile number' : null,
+            validator: (val) => !val!.contains('@') ? 'Enter a valid mobile number' : null,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               labelText: 'Email *',
@@ -129,47 +91,19 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Widget _showStreetInput() {
-    return Padding(
-        padding: EdgeInsets.only(top: 20.0),
-        child: TextFormField(
-            onSaved: (val) => _street = val,
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Street/Area',
-                hintText: 'Street/Area')));
+    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _street = val, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Street/Area', hintText: 'Street/Area')));
   }
 
   Widget _showCityInput() {
-    return Padding(
-        padding: EdgeInsets.only(top: 20.0),
-        child: TextFormField(
-            onSaved: (val) => _city = val,
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'City/Town/Village *',
-                hintText: 'City/Town/Village *')));
+    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _city = val, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'City/Town/Village *', hintText: 'City/Town/Village *')));
   }
 
   Widget _showStateInput() {
-    return Padding(
-        padding: EdgeInsets.only(top: 20.0),
-        child: TextFormField(
-            onSaved: (val) => _state = val,
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'State *',
-                hintText: 'State *')));
+    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _state = val, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'State *', hintText: 'State *')));
   }
 
   Widget _showPincodeInput() {
-    return Padding(
-        padding: EdgeInsets.only(top: 20.0),
-        child: TextFormField(
-            onSaved: (val) => _pincode = val,
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Pincode *',
-                hintText: 'Pincode *')));
+    return Padding(padding: EdgeInsets.only(top: 20.0), child: TextFormField(onSaved: (val) => _pincode = val, decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Pincode *', hintText: 'Pincode *')));
   }
 
   Widget _showPasswordInput() {
@@ -185,8 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   onTap: () {
                     setState(() => _obscureText = !_obscureText);
                   },
-                  child: Icon(
-                      _obscureText ? Icons.visibility : Icons.visibility_off)),
+                  child: Icon(_obscureText ? Icons.visibility : Icons.visibility_off)),
               border: OutlineInputBorder(),
               labelText: 'Password',
               hintText: 'Enter password, min length 6',
@@ -197,27 +130,8 @@ class _RegisterPageState extends State<RegisterPage> {
     return Padding(
         padding: EdgeInsets.only(top: 20.0),
         child: Column(children: [
-          _isSubmitting == true
-              ? CircularProgressIndicator(
-                  valueColor:
-                      AlwaysStoppedAnimation(Theme.of(context).primaryColor))
-              : RaisedButton(
-                  child: Text('Continue',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText1!
-                          .copyWith(color: Colors.black)),
-                  elevation: 8.0,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                  color: Theme.of(context).primaryColor,
-                  onPressed: _submit),
-          FlatButton(
-              child: Text('Existing user? Login'),
-              onPressed: () => Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                      builder: (context) => new WelcomeBackPage())))
+          _isSubmitting == true ? CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Theme.of(context).primaryColor)) : RaisedButton(child: Text('Continue', style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.black)), elevation: 8.0, shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))), color: Theme.of(context).primaryColor, onPressed: _submit),
+          FlatButton(child: Text('Existing user? Login'), onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new WelcomeBackPage())))
         ]));
   }
 
@@ -225,7 +139,7 @@ class _RegisterPageState extends State<RegisterPage> {
     final form = _formKey.currentState;
 
     if (form!.validate()) {
-      form!.save();
+      form.save();
       // _registerUser();
       _redirectUser();
     }
@@ -233,9 +147,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void _registerUser() async {
     setState(() => _isSubmitting = true);
-    http.Response response = await http.post(
-        Uri.parse('http://localhost:1337/auth/local/register'),
-        body: {"mobileNumber": _mobileNumber, "password": _password});
+    http.Response response = await http.post(Uri.parse('http://localhost:1337/auth/local/register'), body: {
+      "mobileNumber": _mobileNumber,
+      "password": _password
+    });
     final responseData = json.decode(response.body);
     if (response.statusCode == 200) {
       setState(() => _isSubmitting = false);
@@ -250,9 +165,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   void _showSuccessSnack() {
-    final snackbar = SnackBar(
-        content: Text('User $_mobileNumber successfully created!',
-            style: TextStyle(color: Colors.green)));
+    final snackbar = SnackBar(content: Text('User $_mobileNumber successfully created!', style: TextStyle(color: Colors.green)));
     if (_scaffoldKey != null) {
       _scaffoldKey.currentState?.showSnackBar(snackbar);
     }
@@ -260,16 +173,14 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   void _showErrorSnack(String errorMsg) {
-    final snackbar =
-        SnackBar(content: Text(errorMsg, style: TextStyle(color: Colors.red)));
+    final snackbar = SnackBar(content: Text(errorMsg, style: TextStyle(color: Colors.red)));
     _scaffoldKey.currentState?.showSnackBar(snackbar);
     throw Exception('Error registering: $errorMsg');
   }
 
   void _redirectUser() {
     Future.delayed(Duration(seconds: 2), () {
-      Navigator.push(context,
-          new MaterialPageRoute(builder: (context) => new ProductsPage()));
+      Navigator.push(context, new MaterialPageRoute(builder: (context) => new ProductsPage()));
     });
   }
 
@@ -277,17 +188,13 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     Widget title = Text(
       'Glad To Meet You',
-      style: TextStyle(
-          color: Colors.white,
-          fontSize: 34.0,
-          fontWeight: FontWeight.bold,
-          shadows: [
-            BoxShadow(
-              color: Color.fromRGBO(0, 0, 0, 0.15),
-              offset: Offset(0, 5),
-              blurRadius: 10.0,
-            )
-          ]),
+      style: TextStyle(color: Colors.white, fontSize: 34.0, fontWeight: FontWeight.bold, shadows: [
+        BoxShadow(
+          color: Color.fromRGBO(0, 0, 0, 0.15),
+          offset: Offset(0, 5),
+          blurRadius: 10.0,
+        )
+      ]),
     );
 
     Widget subTitle = Padding(
@@ -305,19 +212,12 @@ class _RegisterPageState extends State<RegisterPage> {
       bottom: 40,
       child: InkWell(
         onTap: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (_) => ForgotPasswordPage()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (_) => ForgotPasswordPage()));
         },
         child: Container(
           width: MediaQuery.of(context).size.width / 2,
           height: 80,
-          child: Center(
-              child: new Text("Register",
-                  style: const TextStyle(
-                      color: const Color(0xfffefefe),
-                      fontWeight: FontWeight.w600,
-                      fontStyle: FontStyle.normal,
-                      fontSize: 20.0))),
+          child: Center(child: new Text("Register", style: const TextStyle(color: const Color(0xfffefefe), fontWeight: FontWeight.w600, fontStyle: FontStyle.normal, fontSize: 20.0))),
           decoration: BoxDecoration(
               gradient: mainButton,
               boxShadow: [
@@ -340,11 +240,7 @@ class _RegisterPageState extends State<RegisterPage> {
             height: 220,
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.only(left: 32.0, right: 12.0),
-            decoration: BoxDecoration(
-                color: Color.fromRGBO(255, 255, 255, 0.8),
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    bottomLeft: Radius.circular(10))),
+            decoration: BoxDecoration(color: Color.fromRGBO(255, 255, 255, 0.8), borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10))),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -383,8 +279,7 @@ class _RegisterPageState extends State<RegisterPage> {
       children: <Widget>[
         Text(
           'You can sign in with',
-          style: TextStyle(
-              fontSize: 12.0, fontStyle: FontStyle.italic, color: Colors.white),
+          style: TextStyle(fontSize: 12.0, fontStyle: FontStyle.italic, color: Colors.white),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -394,10 +289,7 @@ class _RegisterPageState extends State<RegisterPage> {
               onPressed: () {},
               color: Colors.white,
             ),
-            IconButton(
-                icon: Icon(Icons.find_replace),
-                onPressed: () {},
-                color: Colors.white),
+            IconButton(icon: Icon(Icons.find_replace), onPressed: () {}, color: Colors.white),
           ],
         )
       ],
@@ -409,10 +301,7 @@ class _RegisterPageState extends State<RegisterPage> {
           child: Stack(
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/background.jpg'),
-                    fit: BoxFit.cover)),
+            decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/background.jpg'), fit: BoxFit.cover)),
           ),
           Container(
             decoration: BoxDecoration(
