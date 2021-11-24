@@ -1,25 +1,36 @@
-
-import 'package:ecommerce_int2/screens/splash_page.dart';
 import 'package:flutter/material.dart';
+import 'package:gallery_view/gallery_view.dart';
 
+void main() {
+  runApp(GalleryGridScreen());
+}
 
+class GalleryGridScreen extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
 
-void main() => runApp(MyApp());
+class _MyAppState extends State<GalleryGridScreen> {
+  String _platformVersion = 'Unknown';
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'eCommerce int2',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.light,
-        canvasColor: Colors.transparent,
-        primarySwatch: Colors.blue,
-        fontFamily: "Montserrat",
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Gallery'),
+        ),
+        body: GalleryView(crossAxisCount: 2, imageUrlList: [
+          "https://upload.wikimedia.org/wikipedia/en/b/b9/Rich_Dad_Poor_Dad.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/5/59/DualShock_4.jpg",
+          "https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png"
+        ]),
       ),
-      home: SplashScreen(),
     );
   }
 }
