@@ -1,9 +1,9 @@
-import 'package:e_commers/Bloc/Auth/auth_bloc.dart';
-import 'package:e_commers/Bloc/Cart/cart_bloc.dart';
-import 'package:e_commers/Bloc/General/general_bloc.dart';
-import 'package:e_commers/Bloc/Personal/personal_bloc.dart';
-import 'package:e_commers/Bloc/Product/product_bloc.dart';
-import 'package:e_commers/Routes/Routes.dart';
+import 'package:../Bloc/Auth/auth_bloc.dart';
+import 'package:../Bloc/Cart/cart_bloc.dart';
+import 'package:../Bloc/General/general_bloc.dart';
+import 'package:../Bloc/Personal/personal_bloc.dart';
+import 'package:../Bloc/Product/product_bloc.dart';
+import 'package:../Routes/Routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
