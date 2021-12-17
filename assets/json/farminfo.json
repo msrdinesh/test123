@@ -1,0 +1,28 @@
+{
+    "animalType": {
+        "Cattle": {
+            "Cows": {
+                "Lactating": {},
+                "Dry": {}
+            },
+            "calves": {},
+            "Heffers": {},
+            "Bulls": {}
+        },
+        "Buffalo": {
+            "Female": {
+                "Lactating": {},
+                "Dry": {}
+            },
+            "Male": {}
+        },
+        "Sheep": {
+            "Female": {},
+            "Male": {}
+        },
+        "Goat": {
+            "Female": {},
+            "Male": {}
+        }
+    }
+}

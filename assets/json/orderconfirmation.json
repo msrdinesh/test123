@@ -1,0 +1,81 @@
+{
+    "durationToDelivery": 2,
+    "durationunits": "Days",
+    "deliveryaddress": {
+        "addressId": 132,
+        "doorNumber": "1-29",
+        "street": "Main",
+        "city": "Hyderabad",
+        "state": "Telengana",
+        "pincode": "531200"
+    },
+    "paymentmethod": {
+        "paymentType": "BHIM UPI"
+    },
+    "orderDetails": {
+        "orderId": 1,
+        "totalamount": 1000000,
+        "currencyRepresentation": "₹",
+        "currency": "INR"
+    },
+    "products": [
+        {
+            "productId": 4,
+            "productName": "Wrapping Films",
+            "productTypeId": 6,
+            "productTypeName": "Polypropylene",
+            "brandId": 4,
+            "priceId": 6,
+            "resourceUrl": "https://cogninelabs.s3.ap-south-1.amazonaws.com/Silage-Bales-Large-02.jpg",
+            "specificationId": 6,
+            "specificationName": "950 mm",
+            "currency": "INR",
+            "value": 145.0,
+            "appliedAgainst": "per kg",
+            "taxpercent": "18%",
+            "taxRepresentation": "GST",
+            "currencyRepresentation": "₹",
+            "quantity": 1.0,
+            "unitsId": 1,
+            "units": "kg"
+        },
+        {
+            "productId": 2,
+            "productName": "Silage Baler cum Wrapper",
+            "productTypeId": 3,
+            "productTypeName": "Mini",
+            "brandId": 2,
+            "priceId": 3,
+            "resourceUrl": "https://cogninelabs.s3.ap-south-1.amazonaws.com/MSB500 02.png",
+            "specificationId": 3,
+            "specificationName": "Bale Weight 60-80kg",
+            "currency": "INR",
+            "value": 950000,
+            "taxpercent": "18%",
+            "taxRepresentation": "GST",
+            "currencyRepresentation": "₹",
+            "quantity": 1
+        },
+        {
+            "productId": 1,
+            "productName": "Corn Silage Bales",
+            "productTypeId": 1,
+            "productTypeName": "Large",
+            "brandId": 1,
+            "priceId": 1,
+            "resourceUrl": "https://cogninelabs.s3.ap-south-1.amazonaws.com/Silage-Bales-Large-03.jpg",
+            "specificationId": 1,
+            "specificationName": "Bale Weight 370 - 400kg",
+            "currency": "INR",
+            "value": 6.5,
+            "appliedAgainst": "per kg",
+            "taxRepresentation": "GST",
+            "currencyRepresentation": "₹",
+            "productDiscount": "30%",
+            "minimumQuantity": 2000.0,
+            "quantity": 4937.0,
+            "unitsId": 1,
+            "units": "kg"
+        }
+    ]
+}

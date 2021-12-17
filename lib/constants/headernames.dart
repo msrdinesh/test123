@@ -1,0 +1,12 @@
+final String registrationHeaderName = "Create Account";
+final String registrationSideHeaderName = "Personal Details";
+final String registrationCommunicationHeaderName = 'Communication Address';
+final String registrationAnimalHeaderName = "Farm Details";
+final String otpValidationHeaderName = "OTP Validation";
+final String forgotPasswordHeaderName = "Forgot Password";
+final String offerDetailsHeaderName = "Offer Details";
+final String editPasswordHeaderName = "Edit Password";
+final String editaccoutHeadername = "View Profile";
+final String subcription = 'Your Subscription';
+final String editSubcription = "Edit Subscription";
+final String editProfile = "Edit Profile";

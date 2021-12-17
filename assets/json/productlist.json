@@ -1,0 +1,42 @@
+{
+    "productCount": 3,
+    "listOfProducts": [
+        {
+            "productId": 1,
+            "productName": "Corn Silage Bales",
+            "productDescription": "Corn Silage is a high moisture fodder that farmers use to feed their domestic animals, especially during the dry season made of corn. Silage are made by chopping the crops into small pieces and then storing them",
+            "specificationId": 1,
+            "currency": "INR",
+            "value": 6.5,
+            "appliedAgainst": "per kg",
+            "currencyRepresentation": "₹",
+            "resourceUrl": "https://cogninelabs.s3.ap-south-1.amazonaws.com/cognine+logo.jpg",
+            "productDiscount": "30%"
+        },
+        {
+            "productId": 2,
+            "productName": "Silage Baler cum Wrapper",
+            "productDescription": "MSB500 silage bale making machine is a completely indigenous and semi-automatic silage machine with easy-to-operate features. This silage baler machine can be handled by a single person along with two assistants.",
+            "specificationId": 3,
+            "currency": "INR",
+            "value": 950000.0,
+            "taxpercent": "18%",
+            "texRepresentation": "GST",
+            "currencyRepresentation": "₹",
+            "resourceUrl": "https://cogninelabs.s3.ap-south-1.amazonaws.com/cognine+logo.jpg"
+        },
+        {
+            "productId": 3,
+            "productName": "Maize Harvester",
+            "productDescription": "Single Row Maize harvester, forage equipment never tires your tractor through its light structure and strong tranmsmission system; performs more harvesting with less fuel consumption. Single Row Maize Chopper can harvest only one corn-row has a full hydraulic system so it presents high-level performance. The safety has been kept forefront at the machine, safety pin practice has been integrated into a gear system to prevent possible damages.",
+            "specificationId": 4,
+            "currency": "INR",
+            "value": 450000.0,
+            "taxpercent": "18%",
+            "texRepresentation": "GST",
+            "currencyRepresentation": "₹",
+            "resourceUrl": "https://cogninelabs.s3.ap-south-1.amazonaws.com/cognine+logo.jpg"
+        }
+    ],
+    "status": null
+}

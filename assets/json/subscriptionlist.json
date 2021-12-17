@@ -1,0 +1,64 @@
+{
+    "havePostPaidSubscription": true,
+    "prepaidSubscriptionList": [
+        {
+            "subscriptionId": 1,
+            "subscribedDate": "27-3-2020",
+            "numberOfProducts": 3,
+            "deliverEvery": 10,
+            "units": "Days",
+            "occuurences": 10,
+            "addressId": 1,
+            "resourceUrl": "https://feednextmedia.s3.ap-south-1.amazonaws.com/Silage-Bales-Small-02.jpg"
+        },
+        {
+            "subscriptionId": 2,
+            "subscribedDate": "26-3-2020",
+            "deliverEvery": 7,
+            "numberOfProducts": 2,
+            "units": "Days",
+            "occuurences": 10,
+            "addressId": 1,
+            "resourceUrl": "https://feednextmedia.s3.ap-south-1.amazonaws.com/Silage-Bales-Small-02.jpg"
+        },
+        {
+            "subscriptionId": 3,
+            "subscribedDate": "25-3-2020",
+            "numberOfProducts": 1,
+            "deliverEvery": 20,
+            "units": "Days",
+            "occuurences": 5,
+            "addressId": 2,
+            "resourceUrl": "https://feednextmedia.s3.ap-south-1.amazonaws.com/Silage-Bales-Small-02.jpg"
+        }
+    ],
+    "postpaidSubscriptionList": [
+        {
+            "subscriptionId": 5,
+            "subscribedDate": "25-3-2020",
+            "numberOfProducts": 1,
+            "deliverEvery": 14,
+            "units": "Days",
+            "addressId": 2,
+            "resourceUrl": "https://feednextmedia.s3.ap-south-1.amazonaws.com/Silage-Bales-Small-02.jpg"
+        },
+        {
+            "subscriptionId": 6,
+            "subscribedDate": "27-3-2020",
+            "numberOfProducts": 1,
+            "deliverEvery": 14,
+            "units": "Days",
+            "addressId": 2,
+            "resourceUrl": "https://feednextmedia.s3.ap-south-1.amazonaws.com/Silage-Bales-Small-02.jpg"
+        },
+        {
+            "subscriptionId": 7,
+            "subscribedDate": "24-3-2020",
+            "numberOfProducts": 1,
+            "deliverEvery": 14,
+            "units": "Days",
+            "addressId": 2,
+            "resourceUrl": "https://feednextmedia.s3.ap-south-1.amazonaws.com/Silage-Bales-Small-02.jpg"
+        }
+    ]
+}

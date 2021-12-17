@@ -1,0 +1,53 @@
+{
+    "categories": [
+        {
+            "categoryId": 1,
+            "categoryName": "Silage Bales",
+            "resourceUrl": "https://feednextmedia.s3.ap-south-1.amazonaws.com/Silage-Bales-Large-03.jpg",
+            "subCategories": [
+                {
+                    "subCategoryId": 1,
+                    "subCategoryName": "Large Bales"
+                },
+                {
+                    "subCategoryId": 2,
+                    "subCategoryName": "Small Bales"
+                }
+            ]
+        },
+        {
+            "categoryId": 2,
+            "categoryName": "Feed Concentration",
+            "resourceUrl": "https://feednextmedia.s3.ap-south-1.amazonaws.com/Silage-Bales-Small-02.jpg",
+            "subCategories": [
+                {
+                    "subCategoryId": 3,
+                    "subCategoryName": "18% Concentration"
+                },
+                {
+                    "subCategoryId": 4,
+                    "subCategoryName": "25% Concentration"
+                },
+                {
+                    "subCategoryId": 5,
+                    "subCategoryName": "30% Concentration"
+                }
+            ]
+        },
+        {
+            "categoryId": 3,
+            "categoryName": "Machinery",
+            "resourceUrl": "https://feednextmedia.s3.ap-south-1.amazonaws.com/MSB500 02.png"
+        },
+        {
+            "categoryId": 4,
+            "categoryName": "Mineral Mixtures",
+            "resourceUrl": "https://feednextmedia.s3.ap-south-1.amazonaws.com/Silage-Bales-Small-02.jpg"
+        },
+        {
+            "categoryId": 5,
+            "categoryName": "Favorites",
+            "resourceUrl": "Icons.favorite"
+        }
+    ]
+}
