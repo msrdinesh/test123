@@ -18,18 +18,15 @@ import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class SubscrptionConformationPage extends StatefulWidget {
   @override
-  _SubscrptionConformationPageState createState() =>
-      _SubscrptionConformationPageState();
+  _SubscrptionConformationPageState createState() => _SubscrptionConformationPageState();
 }
 
-class _SubscrptionConformationPageState
-    extends State<SubscrptionConformationPage> {
+class _SubscrptionConformationPageState extends State<SubscrptionConformationPage> {
   final scafFoldkey = GlobalKey<ScaffoldState>();
   final OrderSummaryService orderSummaryService = OrderSummaryService();
   final ApiErros apiErros = ApiErros();
   final RefreshTokenService refreshTokenService = RefreshTokenService();
-  final SharedPreferenceService _sharedPreferenceService =
-      SharedPreferenceService();
+  final SharedPreferenceService _sharedPreferenceService = SharedPreferenceService();
   final AppFonts appFonts = AppFonts();
 
   Razorpay _razorpay;
@@ -69,47 +66,33 @@ class _SubscrptionConformationPageState
               child: Dialog(
                 backgroundColor: Colors.transparent,
                 elevation: 100,
-                child: customizedCircularLoadingIconWithColorAndSize(
-                    50, Colors.white),
+                child: customizedCircularLoadingIconWithColorAndSize(50, Colors.white),
               ));
         });
   }
 
   displayStockNotAvailableMessage(List listOfProductsNotAvailable) {
     if (listOfProductsNotAvailable.length == listOfProductsToBeOrder.length) {
-      showErrorNotifications(
-          'Stock not available for selected products', context, scafFoldkey);
+      showErrorNotifications('Stock not available for selected products', context, scafFoldkey);
     } else {
       List notAvailableProducts = [];
       listOfProductsToBeOrder.forEach((val) {
-        if (listOfProductsNotAvailable
-                .indexWhere((res) => res['productId'] == val['productId']) !=
-            -1) {
+        if (listOfProductsNotAvailable.indexWhere((res) => res['productId'] == val['productId']) != -1) {
           String productName = val['productName'];
-          if (val['specificationName'] != null &&
-              val['specificationName'] != "") {
+          if (val['specificationName'] != null && val['specificationName'] != "") {
             productName = productName + " (" + val['specificationName'] + ")";
           }
           notAvailableProducts.add(productName);
         }
       });
-      showErrorNotifications(
-          'Stock not available for ' + notAvailableProducts.join(', '),
-          context,
-          scafFoldkey);
+      showErrorNotifications('Stock not available for ' + notAvailableProducts.join(', '), context, scafFoldkey);
     }
   }
 
-  checkAndRemoveCartDetailsFrommErpDataTable(
-      bool openPaymentGateWay, generatedOrderId) {
-    orderSummaryService
-        .removeProductQuantityFromErpDataTabel(
-            selectedDeliveryAddress['pincode'].toString())
-        .then((val) {
+  checkAndRemoveCartDetailsFrommErpDataTable(bool openPaymentGateWay, generatedOrderId) {
+    orderSummaryService.removeProductQuantityFromErpDataTabel(selectedDeliveryAddress['pincode'].toString()).then((val) {
       final data = json.decode(val.body);
-      if (data != null &&
-          data['listOfProductsNotAvailable'] != null &&
-          data['listOfProductsNotAvailable'].length == 0) {
+      if (data != null && data['listOfProductsNotAvailable'] != null && data['listOfProductsNotAvailable'].length == 0) {
         // sendOrderDetails();
         if (openPaymentGateWay) {
           //_callPayUNative();
@@ -121,12 +104,9 @@ class _SubscrptionConformationPageState
           selectedDeliveryAddress = {};
           _sharedPreferenceService.removeTransactionKey();
           // subscriptionDetails = {};
-          Navigator.pushNamedAndRemoveUntil(context, '/orderconfirmation',
-              ModalRoute.withName('/orderconfirmation'));
+          Navigator.pushNamedAndRemoveUntil(context, '/orderconfirmation', ModalRoute.withName('/orderconfirmation'));
         }
-      } else if (data != null &&
-          data['listOfProductsNotAvailable'] != null &&
-          data['listOfProductsNotAvailable'].length > 0) {
+      } else if (data != null && data['listOfProductsNotAvailable'] != null && data['listOfProductsNotAvailable'].length > 0) {
         if (generatedOrderId != null) {
           orderId = generatedOrderId;
           // orderIdFromDeepLink = 0;
@@ -134,8 +114,7 @@ class _SubscrptionConformationPageState
           selectedDeliveryAddress = {};
           _sharedPreferenceService.removeTransactionKey();
           // subscriptionDetails = {};
-          Navigator.pushNamedAndRemoveUntil(context, '/orderconfirmation',
-              ModalRoute.withName('/orderconfirmation'));
+          Navigator.pushNamedAndRemoveUntil(context, '/orderconfirmation', ModalRoute.withName('/orderconfirmation'));
         } else {
           displayStockNotAvailableMessage(data['listOfProductsNotAvailable']);
         }
@@ -144,10 +123,8 @@ class _SubscrptionConformationPageState
         refreshTokenService.getAccessTokenUsingRefreshToken().then(
           (res) {
             final refreshTokenData = json.decode(res.body);
-            if (refreshTokenService.getAccessTokenFromData(
-                refreshTokenData, context, setState)) {
-              checkAndRemoveCartDetailsFrommErpDataTable(
-                  openPaymentGateWay, generatedOrderId);
+            if (refreshTokenService.getAccessTokenFromData(refreshTokenData, context, setState)) {
+              checkAndRemoveCartDetailsFrommErpDataTable(openPaymentGateWay, generatedOrderId);
             }
           },
         );
@@ -160,8 +137,7 @@ class _SubscrptionConformationPageState
           selectedDeliveryAddress = {};
           _sharedPreferenceService.removeTransactionKey();
           // subscriptionDetails = {};
-          Navigator.pushNamedAndRemoveUntil(context, '/orderconfirmation',
-              ModalRoute.withName('/orderconfirmation'));
+          Navigator.pushNamedAndRemoveUntil(context, '/orderconfirmation', ModalRoute.withName('/orderconfirmation'));
         } else {
           apiErros.apiLoggedErrors(data, context, scafFoldkey);
         }
@@ -174,11 +150,9 @@ class _SubscrptionConformationPageState
         selectedDeliveryAddress = {};
         _sharedPreferenceService.removeTransactionKey();
         // subscriptionDetails = {};
-        Navigator.pushNamedAndRemoveUntil(context, '/orderconfirmation',
-            ModalRoute.withName('/orderconfirmation'));
+        Navigator.pushNamedAndRemoveUntil(context, '/orderconfirmation', ModalRoute.withName('/orderconfirmation'));
       } else {
-        apiErros.apiErrorNotifications(
-            err, context, '/subscriptionconformation', scafFoldkey);
+        apiErros.apiErrorNotifications(err, context, '/subscriptionconformation', scafFoldkey);
       }
     });
   }
@@ -232,19 +206,15 @@ class _SubscrptionConformationPageState
 
       // data['orderId']
       if (data != null && data['orderId'] != null) {
-        _sharedPreferenceService
-            .checkAccessTokenAndUpdateuserDetails()
-            .then((txnKey) {
-          if (txnKey.getString('transactionKey') != null &&
-              txnKey.getString('transactionKey').length > 0) {
+        _sharedPreferenceService.checkAccessTokenAndUpdateuserDetails().then((txnKey) {
+          if (txnKey.getString('transactionKey') != null && txnKey.getString('transactionKey').length > 0) {
             orderId = data['orderId'];
             orderIdFromDeepLink = "";
             currentOrderInfo = {};
             selectedDeliveryAddress = {};
             _sharedPreferenceService.removeTransactionKey();
             // subscriptionDetails = {};
-            Navigator.pushNamedAndRemoveUntil(context, '/orderconfirmation',
-                ModalRoute.withName('/orderconfirmation'));
+            Navigator.pushNamedAndRemoveUntil(context, '/orderconfirmation', ModalRoute.withName('/orderconfirmation'));
           } else {
             checkAndRemoveCartDetailsFrommErpDataTable(false, data['orderId']);
           }
@@ -254,8 +224,7 @@ class _SubscrptionConformationPageState
         refreshTokenService.getAccessTokenUsingRefreshToken().then(
           (res) {
             final refreshTokenData = json.decode(res.body);
-            if (refreshTokenService.getAccessTokenFromData(
-                refreshTokenData, context, setState)) {
+            if (refreshTokenService.getAccessTokenFromData(refreshTokenData, context, setState)) {
               sendOrderDetails(payMode, txnId);
             } else {
               Navigator.pop(context);
@@ -263,8 +232,7 @@ class _SubscrptionConformationPageState
               _sharedPreferenceService.addFailedOrderDetails(currentOrderInfo);
               makeApiCallsOnFailedOrders(context);
               noOfProductsAddedInCart = 0;
-              Navigator.pushReplacementNamed(
-                  context, '/ordercreationfailedscreen');
+              Navigator.pushReplacementNamed(context, '/ordercreationfailedscreen');
             }
           },
         );
@@ -296,7 +264,6 @@ class _SubscrptionConformationPageState
           return Future.value(false);
         },
         child: Scaffold(
-            resizeToAvoidBottomPadding: false,
             key: scafFoldkey,
             appBar: plainAppBarWidget,
             body: Container(
@@ -312,8 +279,7 @@ class _SubscrptionConformationPageState
                             alignment: Alignment.topLeft,
                             child: Text(
                               "Subscription Confirmation",
-                              style: appFonts.getTextStyle(
-                                  'subscription_confirmation_heading_style'),
+                              style: appFonts.getTextStyle('subscription_confirmation_heading_style'),
                             )),
                       ),
                       Padding(
@@ -337,8 +303,7 @@ class _SubscrptionConformationPageState
                                   margin: EdgeInsets.only(left: 10),
                                   child: Text(
                                     "Would you like to subscribe? ",
-                                    style: appFonts.getTextStyle(
-                                        'subscription_confirmation_sub_heading_style'),
+                                    style: appFonts.getTextStyle('subscription_confirmation_sub_heading_style'),
                                   )),
                               Padding(
                                 padding: EdgeInsets.only(top: 20),
@@ -349,13 +314,11 @@ class _SubscrptionConformationPageState
                                   child: RaisedButton(
                                 color: mainAppColor,
                                 onPressed: () {
-                                  Navigator.popAndPushNamed(
-                                      context, '/subscriptionsummary');
+                                  Navigator.popAndPushNamed(context, '/subscriptionsummary');
                                 },
                                 child: Text(
                                   "Yes, Subscribe my orders.",
-                                  style: appFonts
-                                      .getTextStyle('button_text_color_white'),
+                                  style: appFonts.getTextStyle('button_text_color_white'),
                                   textAlign: TextAlign.center,
                                 ),
                               )),
@@ -364,13 +327,11 @@ class _SubscrptionConformationPageState
                                   width: MediaQuery.of(context).size.width,
                                   child: FlatButton(
                                     onPressed: () {
-                                      checkAndRemoveCartDetailsFrommErpDataTable(
-                                          true, null);
+                                      checkAndRemoveCartDetailsFrommErpDataTable(true, null);
                                     },
                                     child: Text(
                                       "Skip subscription, take me to payment",
-                                      style: appFonts.getTextStyle(
-                                          'subscription_confirmation_skip_link_style'),
+                                      style: appFonts.getTextStyle('subscription_confirmation_skip_link_style'),
                                     ),
                                   )),
                               // Padding(padding: EdgeInsets.only(bottom: 10)),
@@ -383,10 +344,7 @@ class _SubscrptionConformationPageState
 
   addQuantityToInventoryOnPaymentFail() {
     displayLoadingIcon(context);
-    orderSummaryService
-        .addQuantityToInventoryOnPaymentFail(
-            selectedDeliveryAddress['pincode'].toString())
-        .then((val) {
+    orderSummaryService.addQuantityToInventoryOnPaymentFail(selectedDeliveryAddress['pincode'].toString()).then((val) {
       final data = json.decode(val.body);
       Navigator.of(context).pop();
       if (data['status'] != null && data['status'] == "SUCCESS") {
@@ -395,14 +353,12 @@ class _SubscrptionConformationPageState
         routeNameBeforePayment = '/ordersummary';
         Navigator.pushReplacementNamed(context, '/paymentfailederrorscreen');
       } else if (data['status'] != null && data['status'] == "FAILED") {
-        showErrorNotifications(
-            "Failed to add products into inventory", context, scafFoldkey);
+        showErrorNotifications("Failed to add products into inventory", context, scafFoldkey);
       } else if (data['error'] != null && data['error'] == "invalid_token") {
         refreshTokenService.getAccessTokenUsingRefreshToken().then(
           (res) {
             final refreshTokenData = json.decode(res.body);
-            if (refreshTokenService.getAccessTokenFromData(
-                refreshTokenData, context, setState)) {
+            if (refreshTokenService.getAccessTokenFromData(refreshTokenData, context, setState)) {
               addQuantityToInventoryOnPaymentFail();
             }
           },
@@ -411,8 +367,7 @@ class _SubscrptionConformationPageState
         apiErros.apiLoggedErrors(data, context, scafFoldkey);
       }
     }, onError: (err) {
-      apiErros.apiErrorNotifications(
-          err, context, '/subscriptionconformation', scafFoldkey);
+      apiErros.apiErrorNotifications(err, context, '/subscriptionconformation', scafFoldkey);
     });
   }
 
@@ -433,8 +388,7 @@ class _SubscrptionConformationPageState
       'payment_capture': 1,
     };
 
-    String orderId =
-        await OrderConfirmationService().createRazorPayOrder(orderDetails);
+    String orderId = await OrderConfirmationService().createRazorPayOrder(orderDetails);
     var options = {
       'key': signInDetails['razorPayKey'].toString(),
       'amount': currentOrderInfo['transactionAmount'] * 100,
@@ -458,9 +412,7 @@ class _SubscrptionConformationPageState
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     displayLoadingIcon(context);
-    OrderConfirmationService()
-        .fetchRazorPayPayment(response.paymentId)
-        .then((value) {
+    OrderConfirmationService().fetchRazorPayPayment(response.paymentId).then((value) {
       Navigator.pop(context);
       print('payment Mode');
       print(value);
@@ -489,14 +441,11 @@ class _SubscrptionConformationPageState
         "email": signInDetails['emailId'],
         "phone": signInDetails['mobileNo'],
         "hashURL": getHashUrl,
-        "transactionId":
-            transactionId, //Send a transactionID/orderID to update it with status later
-        "access_token":
-            signInDetails['access_token'] //Access Token for Hash genaration
+        "transactionId": transactionId, //Send a transactionID/orderID to update it with status later
+        "access_token": signInDetails['access_token'] //Access Token for Hash genaration
       };
       _sharedPreferenceService.addTransactionKey(transactionId);
-      addQuantityToInventoryAfterCertainTime(
-          selectedDeliveryAddress['pincode'].toString());
+      addQuantityToInventoryAfterCertainTime(selectedDeliveryAddress['pincode'].toString());
       response = await platform.invokeMethod('callPayU', params);
       var jsonVal = jsonDecode(response);
       if (jsonVal["status"] == "success") {

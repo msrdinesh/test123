@@ -66,21 +66,23 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
       subCategoriesForDisplay = [];
     });
 
-    Map requestObj = {"pageNumber": pageNo, "limit": limit, "screenName": "HS"};
+    Map requestObj = {
+      "pageNumber": pageNo,
+      "limit": limit,
+      "screenName": "HS"
+    };
 
     if (productSearchData['productSearchData'] != '') {
       requestObj['productSearchData'] = productSearchData['productSearchData'];
     } else {
       requestObj['productSearchData'] = "";
     }
-    if (productSearchData['productCategory'] != null &&
-        productSearchData['productCategory'].length > 0) {
+    if (productSearchData['productCategory'] != null && productSearchData['productCategory'].length > 0) {
       requestObj['userId'] = checkFavorites() ? signInDetails['userId'] : null;
       requestObj['productCategory'] = productSearchData['productCategory'];
     }
 
-    if (requestObj['productCategory'] != null &&
-        requestObj['productCategory'].length > 0) {
+    if (requestObj['productCategory'] != null && requestObj['productCategory'].length > 0) {
       getSubCategoriesBasedOnCategories(requestObj['productCategory']);
     }
 
@@ -159,20 +161,10 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
           setState(() {});
           setState(() {
             initializeShowMoreOrLessBooleans();
-            showProductDetails(
-                productDetails,
-                this.setState,
-                productShowMoreOrLess,
-                AlwaysScrollableScrollPhysics(),
-                false,
-                context,
-                '/search');
+            showProductDetails(productDetails, this.setState, productShowMoreOrLess, AlwaysScrollableScrollPhysics(), false, context, '/search');
           });
           scrollController.addListener(() {
-            if (totalNumberOfProducts > productDetails.length &&
-                !isMoreProductsLoading &&
-                scrollController.position.pixels ==
-                    scrollController.position.maxScrollExtent) {
+            if (totalNumberOfProducts > productDetails.length && !isMoreProductsLoading && scrollController.position.pixels == scrollController.position.maxScrollExtent) {
               pageNo = pageNo + 1;
               fetchProductListDetails(true);
             }
@@ -197,12 +189,10 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
     bool isFavorites = false;
     productSearchData['productCategory'].toList().forEach((val) {
       // if(val[''])
-      int index = filterProducts
-          .indexWhere((res) => res['categoryId'] == val['categoryId']);
+      int index = filterProducts.indexWhere((res) => res['categoryId'] == val['categoryId']);
       if (filterProducts[index]['categoryName'] == "Favorites") {
         isFavorites = true;
-        productSearchData['productCategory']
-            .removeAt(productSearchData['productCategory'].indexOf(val));
+        productSearchData['productCategory'].removeAt(productSearchData['productCategory'].indexOf(val));
       }
     });
     print(isFavorites);
@@ -246,8 +236,7 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
     });
     List filterProductsData = getSelectedCategoryInfo();
     if (searchFieldController.text.trim() != '') {
-      productSearchData['productSearchData'] =
-          searchFieldController.text.trim();
+      productSearchData['productSearchData'] = searchFieldController.text.trim();
     } else {
       productSearchData['productSearchData'] = "";
       // searchFieldController.text.trim();
@@ -328,10 +317,11 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
     List selectedCategories = [];
     filterProducts.forEach((val) {
       if (val['isSelected']) {
-        Map obj = {'categoryId': val['categoryId']};
+        Map obj = {
+          'categoryId': val['categoryId']
+        };
         if (val['subCategories'] != null) {
-          List subCategoriesOfCurrentCategory =
-              getSelectedSubCategoriesOfCurrentCategory(val['categoryName']);
+          List subCategoriesOfCurrentCategory = getSelectedSubCategoriesOfCurrentCategory(val['categoryName']);
           if (subCategoriesOfCurrentCategory.length > 0) {
             obj['subCategories'] = subCategoriesOfCurrentCategory;
           }
@@ -355,7 +345,9 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
     subCategoriesList.forEach((val) {
       if (val['path'].toString().indexOf(categoryName) != -1) {
         if (val['isChecked']) {
-          Map obj = {'subCategoryId': val['subCategoryId']};
+          Map obj = {
+            'subCategoryId': val['subCategoryId']
+          };
           selectedSubCategories.add(obj);
         }
       }
@@ -365,15 +357,13 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
 
   setSubCategoriesOnSelectionOfCategory(String categoryName) {
     subCategoriesList.forEach((val) {
-      if (val['path'].toString().startsWith(categoryName) &&
-          !val['manualSelection']) {
+      if (val['path'].toString().startsWith(categoryName) && !val['manualSelection']) {
         val['isChecked'] = true;
       }
     });
   }
 
-  Widget displaySubCategoriesUsingCategoryInfo(
-      bool isChecked, String categoryName) {
+  Widget displaySubCategoriesUsingCategoryInfo(bool isChecked, String categoryName) {
     List subCategories = getSubCategoriesUsingCategory(categoryName);
     return ListView.builder(
         itemCount: subCategories.length,
@@ -406,12 +396,8 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
 
   getSubCategoriesBasedOnCategories(List categoryList) {
     filterProducts.forEach((obj) {
-      if (obj['categoryId'] != null &&
-          categoryList.indexWhere(
-                  (val) => val['categoryId'] == obj['categoryId']) !=
-              -1) {
-        List currentSubCategories =
-            getSubCategoriesUsingCategory(obj['categoryName']);
+      if (obj['categoryId'] != null && categoryList.indexWhere((val) => val['categoryId'] == obj['categoryId']) != -1) {
+        List currentSubCategories = getSubCategoriesUsingCategory(obj['categoryName']);
         setState(() {
           currentSubCategories.forEach((val) {
             subCategoriesForDisplay.add(val);
@@ -438,22 +424,13 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
                           // res['isChecked'] != null && !res['isChecked']
                           //     ?
                           Container(
-                              decoration: BoxDecoration(
-                                  border: res['isChecked'] != null &&
-                                          res['isChecked']
-                                      ? Border.all(
-                                          color: mainAppColor, width: 2)
-                                      : Border.all(
-                                          color: Colors.white, width: 0),
-                                  borderRadius: new BorderRadius.all(
-                                      Radius.circular(50.0)),
-                                  boxShadow: [
-                                    new BoxShadow(
-                                      color: Colors.grey.shade400,
-                                      offset: Offset(1, 2),
-                                      blurRadius: 2,
-                                    )
-                                  ]),
+                              decoration: BoxDecoration(border: res['isChecked'] != null && res['isChecked'] ? Border.all(color: mainAppColor, width: 2) : Border.all(color: Colors.white, width: 0), borderRadius: new BorderRadius.all(Radius.circular(50.0)), boxShadow: [
+                                new BoxShadow(
+                                  color: Colors.grey.shade400,
+                                  offset: Offset(1, 2),
+                                  blurRadius: 2,
+                                )
+                              ]),
                               child: ClipRRect(
                                   borderRadius: BorderRadius.circular(25),
                                   child: CachedNetworkImage(
@@ -478,8 +455,7 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
                           : Container()),
                   AppStyles().customPadding(1),
                   Container(
-                    child: splitAndDisplay(
-                        res["subCategoryName"], res['isChecked']),
+                    child: splitAndDisplay(res["subCategoryName"], res['isChecked']),
                   )
                 ],
               )));
@@ -495,11 +471,7 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
         _widgets.add(Text(
           res,
           textAlign: TextAlign.center,
-          style: TextStyle(
-              fontSize: 12,
-              fontWeight: isCheked != null && isCheked
-                  ? FontWeight.w700
-                  : FontWeight.normal),
+          style: TextStyle(fontSize: 12, fontWeight: isCheked != null && isCheked ? FontWeight.w700 : FontWeight.normal),
         ));
       });
       return Column(
@@ -509,11 +481,7 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
       return Text(
         subCategoryName,
         textAlign: TextAlign.center,
-        style: TextStyle(
-            fontSize: 12,
-            fontWeight: isCheked != null && isCheked
-                ? FontWeight.w700
-                : FontWeight.normal),
+        style: TextStyle(fontSize: 12, fontWeight: isCheked != null && isCheked ? FontWeight.w700 : FontWeight.normal),
       );
     }
   }
@@ -537,8 +505,7 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
       productSearchData['productCategory'] = [];
       List filterProductsData = getSelectedCategoryInfo();
       if (searchFieldController.text.trim() != '') {
-        productSearchData['productSearchData'] =
-            searchFieldController.text.trim();
+        productSearchData['productSearchData'] = searchFieldController.text.trim();
       } else {
         productSearchData['productSearchData'] = "";
         // searchFieldController.text.trim();
@@ -548,16 +515,7 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
     fetchProductListDetails(false);
   }
 
-  Widget appBarWidgetForSearchScreen(
-      context,
-      bool showSearchIcon,
-      state,
-      bool isCartPage,
-      String previousRouteName,
-      GlobalKey<FormFieldState> searchFieldKey,
-      TextEditingController searchFieldController,
-      FocusNode searchFocusNode,
-      GlobalKey<ScaffoldState> scaffoldkey) {
+  Widget appBarWidgetForSearchScreen(context, bool showSearchIcon, state, bool isCartPage, String previousRouteName, GlobalKey<FormFieldState> searchFieldKey, TextEditingController searchFieldController, FocusNode searchFocusNode, GlobalKey<ScaffoldState> scaffoldkey) {
     return AppBar(
       // elevation: 100,
       centerTitle: true,
@@ -591,8 +549,7 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
       // backgroundColor: Colors.white,
       title: GestureDetector(
         onTap: () {
-          Navigator.pushNamedAndRemoveUntil(
-              context, '/home', ModalRoute.withName('/home'));
+          Navigator.pushNamedAndRemoveUntil(context, '/home', ModalRoute.withName('/home'));
         },
         child: Image(
           image: AssetImage(cornextLogoImagePath2),
@@ -707,7 +664,7 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
         noOfProductsAddedInCart != null && noOfProductsAddedInCart != 0
             ? Badge(
                 // badgeColor: Colors.red[700],
-                position: BadgePosition(top: 1.2, right: 10),
+                position: BadgePosition(top: 1.2),
                 badgeContent: Text(
                   noOfProductsAddedInCart.toString(),
                   // "100",
@@ -780,16 +737,7 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
         onWillPop: onBackButtonPressed,
         child: Scaffold(
           key: scafflodkey,
-          appBar: appBarWidgetForSearchScreen(
-              context,
-              false,
-              this.setState,
-              false,
-              '/search',
-              searchFieldKey,
-              searchFieldController,
-              searchFocusNode,
-              scafflodkey),
+          appBar: appBarWidgetForSearchScreen(context, false, this.setState, false, '/search', searchFieldKey, searchFieldController, searchFocusNode, scafflodkey),
           endDrawer: Drawer(
               child: Column(children: [
             AppStyles().customPadding(10),
@@ -813,8 +761,7 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
                               height: 40,
                               child: CheckboxListTile(
                                 value: filterProducts[index]['isSelected'],
-                                controlAffinity:
-                                    ListTileControlAffinity.leading,
+                                controlAffinity: ListTileControlAffinity.leading,
                                 activeColor: mainAppColor,
                                 onChanged: (val) {
                                   setState(() {
@@ -825,11 +772,9 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
                                   //       filterProducts[index]['subCategories']);
                                   // }
                                 },
-                                title:
-                                    Text(filterProducts[index]['categoryName']),
+                                title: Text(filterProducts[index]['categoryName']),
                               )),
-                          filterProducts[index]['subCategories'] != null &&
-                                  filterProducts[index]['isSelected']
+                          filterProducts[index]['subCategories'] != null && filterProducts[index]['isSelected']
                               ? displaySubCategoriesUsingCategoryInfo(
                                   filterProducts[index]['isSelected'],
                                   filterProducts[index]['categoryName'],
@@ -1005,15 +950,11 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
                                 child: Column(children: [
                                   subCategoriesForDisplay.length > 0
                                       ? Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width -
-                                              10,
+                                          width: MediaQuery.of(context).size.width - 10,
                                           height: 86,
                                           margin: EdgeInsets.only(top: 12),
                                           child: ListView(
-                                              physics:
-                                                  AlwaysScrollableScrollPhysics(),
+                                              physics: AlwaysScrollableScrollPhysics(),
                                               // shrinkWrap: true,
                                               scrollDirection: Axis.horizontal,
                                               children: displaySubCategories()))
@@ -1026,20 +967,11 @@ class ProductSearchAndFilter extends State<ProductSearchAndFilterPage> {
                                   Container(
                                       // margin:
                                       //     EdgeInsets.only(left: 7, right: 7),
-                                      child: showFilterProductDetails(
-                                          productDetails,
-                                          this.setState,
-                                          productShowMoreOrLess,
-                                          NeverScrollableScrollPhysics(),
-                                          true,
-                                          context,
-                                          '/search')),
+                                      child: showFilterProductDetails(productDetails, this.setState, productShowMoreOrLess, NeverScrollableScrollPhysics(), true, context, '/search')),
                                   isMoreProductsLoading
                                       ? Container(
                                           child: Center(
-                                            child:
-                                                customizedCircularLoadingIcon(
-                                                    30),
+                                            child: customizedCircularLoadingIcon(30),
                                           ),
                                         )
                                       : Container()
