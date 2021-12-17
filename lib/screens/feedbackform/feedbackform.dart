@@ -33,7 +33,7 @@ class FeedbackPage extends StatefulWidget {
 }
 
 class FeedbackPageState extends State<FeedbackPage> {
-  File _image;
+  XFile _image;
   bool choice = false;
   // int orderId = 2;
 // int count = 0;
@@ -283,7 +283,7 @@ class FeedbackPageState extends State<FeedbackPage> {
     // Navigator.of(context).pop();
     displayLoadingIcon(context);
     try {
-      File picture = await ImagePicker.pickImage(source: ImageSource.camera);
+      XFile picture = await ImagePicker().pickImage(source: ImageSource.camera);
 
       setState(() {
         _image = picture;
@@ -316,7 +316,7 @@ class FeedbackPageState extends State<FeedbackPage> {
   openVideo(BuildContext context) async {
     displayLoadingIcon(context);
     try {
-      var picture = await ImagePicker.pickVideo(source: ImageSource.camera);
+      var picture = await ImagePicker().pickVideo(source: ImageSource.camera);
       // Navigator.of(context).pop();
       setState(() {
         _image = picture;
@@ -358,7 +358,7 @@ class FeedbackPageState extends State<FeedbackPage> {
           }
           return customizedCircularLoadingIcon(20);
         },
-        image: FileImage(_image),
+        image: FileImage(File(_image.path)),
         height: 100,
         width: 150,
         fit: BoxFit.fill,

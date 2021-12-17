@@ -642,12 +642,7 @@ class HomeScreen extends State<HomePage> {
         aspectRatio: MediaQuery.of(context).orientation == Orientation.portrait ? MediaQuery.of(context).size.width / (MediaQuery.of(context).size.width / 2.08) : 9.0,
 
         autoPlay: true,
-        onPageChanged: (index) {
-          setState(() {
-            _currentIndex = index;
-            // chewieController.pause();
-          });
-        },
+
         // dotSpacing: 2,
         // animationCurve: Curves.fastOutSlowIn,
         // animationDuration: Duration(seconds: 1),

@@ -22,12 +22,10 @@ final scaffoldkey = GlobalKey<ScaffoldState>();
 
 class ProductDetailsImagesAndVideosPage extends StatefulWidget {
   @override
-  ProductDetailsImagesAndVideos createState() =>
-      ProductDetailsImagesAndVideos();
+  ProductDetailsImagesAndVideos createState() => ProductDetailsImagesAndVideos();
 }
 
-class ProductDetailsImagesAndVideos
-    extends State<ProductDetailsImagesAndVideosPage> {
+class ProductDetailsImagesAndVideos extends State<ProductDetailsImagesAndVideosPage> {
   int currentImageOrVideo;
   List _iconVideoController = [];
   List _controller = [];
@@ -74,11 +72,11 @@ class ProductDetailsImagesAndVideos
               VideoPlayerController _iconController;
               _videoController = VideoPlayerController.file(file)
                 ..initialize().then((val) {
-                  if(!isVideoIntialized){
-                  setState(() {
-                    _videoController.play();
-                    isVideoIntialized = true;
-                  });
+                  if (!isVideoIntialized) {
+                    setState(() {
+                      _videoController.play();
+                      isVideoIntialized = true;
+                    });
                   }
                 });
               _iconController = VideoPlayerController.file(file)
@@ -130,7 +128,7 @@ class ProductDetailsImagesAndVideos
           VideoPlayerController _iconController;
           _videoController = VideoPlayerController.network(res['resourceUrl'])
             ..initialize().then((val) {
-              if(!isVideoIntialized){
+              if (!isVideoIntialized) {
                 setState(() {
                   _videoController.play();
                   isVideoIntialized = true;
@@ -161,7 +159,10 @@ class ProductDetailsImagesAndVideos
           //     }
           //   }
           // });
-          Map obj = {'controller': _videoController, 'url': res['resourceUrl']};
+          Map obj = {
+            'controller': _videoController,
+            'url': res['resourceUrl']
+          };
           Map iconObj = {
             'controller': _iconController,
             'url': res['resourceUrl']
@@ -179,9 +180,9 @@ class ProductDetailsImagesAndVideos
         });
       }
     });
-    if(_controller.length > 0){
+    if (_controller.length > 0) {
       setState(() {
-        allControllers =   {
+        allControllers = {
           'productCarouselVideoControllers': _controller
         };
       });
@@ -195,12 +196,13 @@ class ProductDetailsImagesAndVideos
 
   getSearchedData() {
     if (searchFieldController.text.trim() != '') {
-      productSearchData['productSearchData'] =
-          searchFieldController.text.trim();
+      productSearchData['productSearchData'] = searchFieldController.text.trim();
       List filterProductsData = [];
       filterProducts.forEach((val) {
         if (val['isSelected']) {
-          Map obj = {'productCategoryId': val['productCategoryId']};
+          Map obj = {
+            'productCategoryId': val['productCategoryId']
+          };
           filterProductsData.add(obj);
         }
       });
@@ -209,8 +211,7 @@ class ProductDetailsImagesAndVideos
       }
       reset();
       _controller.add((videoController) {
-        if (videoController['controller'] != null &&
-            videoController['controller'].value.initialized) {
+        if (videoController['controller'] != null && videoController['controller'].value.initialized) {
           videoController['controller'].pause();
         }
       });
@@ -237,7 +238,7 @@ class ProductDetailsImagesAndVideos
         videoController['controller'].dispose();
       }
     });
-    _iconVideoController.forEach((videoController){
+    _iconVideoController.forEach((videoController) {
       if (videoController['controller'] != null) {
         videoController['controller'].dispose();
       }
@@ -250,10 +251,7 @@ class ProductDetailsImagesAndVideos
     // int index = 0;
     return productGalleryList.map((res) {
       var container = Container(
-        decoration: BoxDecoration(
-            border: productGalleryList.indexOf(res) == currentImageOrVideo
-                ? Border.all(color: Colors.grey, width: 1)
-                : null),
+        decoration: BoxDecoration(border: productGalleryList.indexOf(res) == currentImageOrVideo ? Border.all(color: Colors.grey, width: 1) : null),
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -282,16 +280,12 @@ class ProductDetailsImagesAndVideos
                         // : Container()))
 
                         // Un comment this when ever vidoe
-                        _iconVideoController.indexWhere((val)=> val['url'] == res['resourceUrl']) != -1 && _iconVideoController[_iconVideoController.indexWhere((val)=> val['url'] == res['resourceUrl'])]['controller'] != null && _iconVideoController[_iconVideoController.indexWhere((val)=> val['url'] == res['resourceUrl'])]['controller'].value.initialized 
+                        _iconVideoController.indexWhere((val) => val['url'] == res['resourceUrl']) != -1 && _iconVideoController[_iconVideoController.indexWhere((val) => val['url'] == res['resourceUrl'])]['controller'] != null && _iconVideoController[_iconVideoController.indexWhere((val) => val['url'] == res['resourceUrl'])]['controller'].value.initialized
                             ? Container(
                                 height: 50.0,
                                 width: 50.0,
                                 child: Stack(children: [
-                                  Center(
-                                      child: AspectRatio(
-                                          aspectRatio: _iconVideoController[_iconVideoController.indexWhere((val)=> val['url'] == res['resourceUrl'])]['controller'].value.aspectRatio,
-                                          child: VideoPlayer(
-                                              _iconVideoController[_iconVideoController.indexWhere((val)=> val['url'] == res['resourceUrl'])]['controller']))),
+                                  Center(child: AspectRatio(aspectRatio: _iconVideoController[_iconVideoController.indexWhere((val) => val['url'] == res['resourceUrl'])]['controller'].value.aspectRatio, child: VideoPlayer(_iconVideoController[_iconVideoController.indexWhere((val) => val['url'] == res['resourceUrl'])]['controller']))),
                                   Center(
                                       child: Icon(
                                     Icons.play_arrow,
@@ -318,7 +312,7 @@ class ProductDetailsImagesAndVideos
         setState(() {
           videoController['controller'].pause();
         });
-      } else if(videoController['url'] == url && !videoController['controller'].value.isPlaying){
+      } else if (videoController['url'] == url && !videoController['controller'].value.isPlaying) {
         setState(() {
           videoController['controller'].play();
         });
@@ -345,21 +339,16 @@ class ProductDetailsImagesAndVideos
               onTap: () {
                 playOrPauseVideo(res['resourceUrl']);
               },
-              child: _controller.indexWhere((val)=> val['url'] == res['resourceUrl']) != -1 && _controller[_controller.indexWhere((val)=> val['url'] == res['resourceUrl'])]['controller'] != null && _controller[_controller.indexWhere((val)=> val['url'] == res['resourceUrl'])]['controller'].value.initialized
+              child: _controller.indexWhere((val) => val['url'] == res['resourceUrl']) != -1 && _controller[_controller.indexWhere((val) => val['url'] == res['resourceUrl'])]['controller'] != null && _controller[_controller.indexWhere((val) => val['url'] == res['resourceUrl'])]['controller'].value.initialized
                   ? Container(
                       // flex: 5,
                       // height: 300,
                       constraints: BoxConstraints(maxHeight: 250),
                       child: Stack(children: [
-                        Center(
-                            child: AspectRatio(
-                                aspectRatio: _controller[_controller.indexWhere((val)=> val['url'] == res['resourceUrl'])]['controller'].value.aspectRatio,
-                                child: VideoPlayer(_controller[_controller.indexWhere((val)=> val['url'] == res['resourceUrl'])]['controller']))),
+                        Center(child: AspectRatio(aspectRatio: _controller[_controller.indexWhere((val) => val['url'] == res['resourceUrl'])]['controller'].value.aspectRatio, child: VideoPlayer(_controller[_controller.indexWhere((val) => val['url'] == res['resourceUrl'])]['controller']))),
                         Center(
                             child: Icon(
-                          _controller[_controller.indexWhere((val)=> val['url'] == res['resourceUrl'])]['controller'].value.isPlaying
-                              ? Icons.pause
-                              : Icons.play_arrow,
+                          _controller[_controller.indexWhere((val) => val['url'] == res['resourceUrl'])]['controller'].value.isPlaying ? Icons.pause : Icons.play_arrow,
                           // label: ,
                           color: Colors.white,
                           size: 40,
@@ -394,15 +383,12 @@ class ProductDetailsImagesAndVideos
       items: getProductImages(),
       initialPage: 0,
       viewportFraction: 1.0,
-      aspectRatio: MediaQuery.of(context).orientation == Orientation.portrait
-          ? 1.0
-          : 3.0,
-      enlargeCenterPage: true,
+      aspectRatio: MediaQuery.of(context).orientation == Orientation.portrait ? 1.0 : 3.0,
       onPageChanged: (index) {
-        _controller.forEach((videoController){
-         if(videoController['controller'] != null){
-           videoController['controller'].pause();
-         }
+        _controller.forEach((videoController) {
+          if (videoController['controller'] != null) {
+            videoController['controller'].pause();
+          }
         });
         setState(() {
           currentImageIndex(index);
@@ -414,14 +400,11 @@ class ProductDetailsImagesAndVideos
 
   @override
   Widget build(BuildContext context) {
-    if (_controller != null &&
-        productGalleryList.length > 0 &&
-        productGalleryList[currentImageOrVideo]['resourceUrl'].indexOf('mp4') ==
-            -1) {
-      _controller.forEach((videoController){
-         if(videoController['controller'] != null){
-           videoController['controller'].pause();
-         }
+    if (_controller != null && productGalleryList.length > 0 && productGalleryList[currentImageOrVideo]['resourceUrl'].indexOf('mp4') == -1) {
+      _controller.forEach((videoController) {
+        if (videoController['controller'] != null) {
+          videoController['controller'].pause();
+        }
       });
     }
 
@@ -430,20 +413,8 @@ class ProductDetailsImagesAndVideos
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           key: scaffoldkey,
-          appBar: appBarWidgetWithIconsAnSearchboxAndFilterIcon(
-              context,
-              true,
-              this.setState,
-              false,
-              '/productvideosandimages',
-              searchFieldKey,
-              searchFieldController,
-              searchFocusNode,
-              scaffoldkey),
-          endDrawer: showOrHideSearchAndFilter
-              ? filterDrawer(this.setState, context, scaffoldkey, false,
-                  searchFieldController)
-              : null,
+          appBar: appBarWidgetWithIconsAnSearchboxAndFilterIcon(context, true, this.setState, false, '/productvideosandimages', searchFieldKey, searchFieldController, searchFocusNode, scaffoldkey),
+          endDrawer: showOrHideSearchAndFilter ? filterDrawer(this.setState, context, scaffoldkey, false, searchFieldController) : null,
           body: Column(children: <Widget>[
             Column(children: <Widget>[
               // AppStyles().customPadding(5),
@@ -511,60 +482,55 @@ class ProductDetailsImagesAndVideos
                 decoration: BoxDecoration(color: Colors.white),
                 // height: MediaQuery.of(context).size.height / 4,
                 margin: EdgeInsets.only(top: 30),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                          alignment: Alignment.center, child: getCarousel()
-                          // currentImageOrVideo.indexOf('mp4') == -1
-                          //     ? Image(
-                          //         image: NetworkImage(currentImageOrVideo),
-                          //         fit: BoxFit.cover,
-                          //         // height: 250,
-                          //         // width: MediaQuery.of(context).size.width - 100,
-                          //       )
-                          //     : GestureDetector(
-                          //         onTap: () {
-                          //           setState(() {
-                          //             if (_controller.value.isPlaying) {
-                          //               _controller.pause();
-                          //             } else {
-                          //               _controller.play();
-                          //             }
-                          //           });
-                          //         },
-                          //         child: _controller.value.initialized
-                          //             ? Container(
-                          //                 // flex: 5,
-                          //                 // height: 300,
-                          //                 constraints: BoxConstraints(maxHeight: 250),
-                          //                 child: Stack(children: [
-                          //                   Center(
-                          //                       child: AspectRatio(
-                          //                           aspectRatio:
-                          //                               _controller.value.aspectRatio,
-                          //                           child: VideoPlayer(_controller))),
-                          //                   Center(
-                          //                       child: Icon(
-                          //                     _controller.value.isPlaying
-                          //                         ? Icons.pause
-                          //                         : Icons.play_arrow,
-                          //                     // label: ,
-                          //                     color: Colors.white,
-                          //                     size: 40,
-                          //                   ))
-                          //                 ]),
-                          //               )
-                          //             : Container()),
-                          ),
-                      // height: 200,
-                    ])),
+                child: Column(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Container(alignment: Alignment.center, child: getCarousel()
+                      // currentImageOrVideo.indexOf('mp4') == -1
+                      //     ? Image(
+                      //         image: NetworkImage(currentImageOrVideo),
+                      //         fit: BoxFit.cover,
+                      //         // height: 250,
+                      //         // width: MediaQuery.of(context).size.width - 100,
+                      //       )
+                      //     : GestureDetector(
+                      //         onTap: () {
+                      //           setState(() {
+                      //             if (_controller.value.isPlaying) {
+                      //               _controller.pause();
+                      //             } else {
+                      //               _controller.play();
+                      //             }
+                      //           });
+                      //         },
+                      //         child: _controller.value.initialized
+                      //             ? Container(
+                      //                 // flex: 5,
+                      //                 // height: 300,
+                      //                 constraints: BoxConstraints(maxHeight: 250),
+                      //                 child: Stack(children: [
+                      //                   Center(
+                      //                       child: AspectRatio(
+                      //                           aspectRatio:
+                      //                               _controller.value.aspectRatio,
+                      //                           child: VideoPlayer(_controller))),
+                      //                   Center(
+                      //                       child: Icon(
+                      //                     _controller.value.isPlaying
+                      //                         ? Icons.pause
+                      //                         : Icons.play_arrow,
+                      //                     // label: ,
+                      //                     color: Colors.white,
+                      //                     size: 40,
+                      //                   ))
+                      //                 ]),
+                      //               )
+                      //             : Container()),
+                      ),
+                  // height: 200,
+                ])),
           ]),
           floatingActionButton: Container(
               height: 50,
-              margin: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width / 8),
+              margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width / 8),
               alignment: Alignment.center,
               child: new ListView(
                 scrollDirection: Axis.horizontal,
