@@ -20,7 +20,7 @@ import 'package:cornext_mobile/screens/subcriptions/subcriptionlist.dart';
 import 'package:cornext_mobile/screens/subcriptions/subscriptionconfarmation.dart';
 import 'package:flutter/material.dart';
 import 'package:cornext_mobile/screens/farmdetails/farmdetails.dart';
-import 'package:cornext_mobile/screens/productsearch&filter/productsearchandfilter.dart';
+import 'package:cornext_mobile/screens/productsearchandfilter/productsearchandfilter.dart';
 import 'package:cornext_mobile/screens/productdetails/productdetails.dart';
 import 'package:cornext_mobile/screens/errorscreen/errorscreen.dart';
 import 'package:cornext_mobile/screens/productdetails/productdetailsimagesandvideos.dart';
