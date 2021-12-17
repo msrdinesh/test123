@@ -152,8 +152,7 @@ displayLoadingIcon(context) {
             child: Dialog(
               backgroundColor: Colors.transparent,
               elevation: 100,
-              child: customizedCircularLoadingIconWithColorAndSize(
-                  50, Colors.white),
+              child: customizedCircularLoadingIconWithColorAndSize(50, Colors.white),
             ));
       });
 }
@@ -190,16 +189,14 @@ deleteTokenOnLogout(context, scaffoldKey, state) {
       }
       Navigator.pushNamed(context, '/login');
     } else if (data != null && data == 'FAILED') {
-      showErrorNotifications(
-          "Failed to logout. Please try again", context, scaffoldKey);
+      showErrorNotifications("Failed to logout. Please try again", context, scaffoldKey);
     } else if (data['error'] != null && data['error'] == "invalid_token") {
       // Navigator.pop(context);
       RefreshTokenService().getAccessTokenUsingRefreshToken().then(
         (res) {
           final refreshTokenData = json.decode(res.body);
           // print(data);
-          if (RefreshTokenService()
-              .getAccessTokenFromData(refreshTokenData, context, state)) {
+          if (RefreshTokenService().getAccessTokenFromData(refreshTokenData, context, state)) {
             deleteTokenOnLogout(context, scaffoldKey, state);
           }
         },
@@ -233,8 +230,7 @@ deleteTokenOnLogout(context, scaffoldKey, state) {
   });
 }
 
-Widget appBarWidgetWithIcons(context, bool showSearchIcon, state,
-    bool isCartPage, String previousRouteName) {
+Widget appBarWidgetWithIcons(context, bool showSearchIcon, state, bool isCartPage, String previousRouteName) {
   return AppBar(
     // elevation: 100,
     centerTitle: true,
@@ -268,8 +264,7 @@ Widget appBarWidgetWithIcons(context, bool showSearchIcon, state,
     // backgroundColor: Colors.white,
     title: GestureDetector(
       onTap: () {
-        Navigator.pushNamedAndRemoveUntil(
-            context, '/home', ModalRoute.withName('/home'));
+        Navigator.pushNamedAndRemoveUntil(context, '/home', ModalRoute.withName('/home'));
       },
       child: Image(
         image: AssetImage(cornextLogoImagePath2),
@@ -297,7 +292,7 @@ Widget appBarWidgetWithIcons(context, bool showSearchIcon, state,
       noOfProductsAddedInCart != null && noOfProductsAddedInCart != 0
           ? Badge(
               // badgeColor: Colors.red[700],
-              position: BadgePosition(top: 1.2, right: 10),
+              position: BadgePosition(top: 1.2),
               badgeContent: Text(
                 noOfProductsAddedInCart.toString(),
                 // "100",
@@ -376,9 +371,7 @@ Widget appBarDrawer(context, state, GlobalKey<ScaffoldState> scaffoldKey) {
           accountName: Container(
               padding: EdgeInsets.only(top: 18),
               child: Text(
-                signInDetails['userName'] != null
-                    ? signInDetails['userName']
-                    : '',
+                signInDetails['userName'] != null ? signInDetails['userName'] : '',
                 style: AppFonts().getTextStyle('appbar_username'),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -418,8 +411,7 @@ Widget appBarDrawer(context, state, GlobalKey<ScaffoldState> scaffoldKey) {
           title: Text("Home"),
           leading: Icon(Icons.home),
           onTap: () {
-            Navigator.pushNamedAndRemoveUntil(
-                context, '/home', ModalRoute.withName('/home'));
+            Navigator.pushNamedAndRemoveUntil(context, '/home', ModalRoute.withName('/home'));
           },
         ),
         Divider(),
@@ -539,8 +531,7 @@ List getSubCategoriesUsingCategory(String categoryName) {
   return returnList;
 }
 
-Widget displaySubCategoriesUsingCategory(
-    bool isChecked, String categoryName, state) {
+Widget displaySubCategoriesUsingCategory(bool isChecked, String categoryName, state) {
   List subCategories = getSubCategoriesUsingCategory(categoryName);
   return ListView.builder(
       itemCount: subCategories.length,
@@ -573,8 +564,7 @@ Widget displaySubCategoriesUsingCategory(
       });
 }
 
-Widget filterDrawer(state, context, GlobalKey<ScaffoldState> scaffoldKey,
-    bool isSearchScreen, TextEditingController searchController) {
+Widget filterDrawer(state, context, GlobalKey<ScaffoldState> scaffoldKey, bool isSearchScreen, TextEditingController searchController) {
   return Drawer(
       child: Column(children: [
     AppStyles().customPadding(15),
@@ -601,13 +591,7 @@ Widget filterDrawer(state, context, GlobalKey<ScaffoldState> scaffoldKey,
                         },
                         title: Text(filterProducts[index]['categoryName']),
                       )),
-                  filterProducts[index]['subCategories'] != null &&
-                          filterProducts[index]['isSelected']
-                      ? displaySubCategoriesUsingCategory(
-                          filterProducts[index]['isSelected'],
-                          filterProducts[index]['categoryName'],
-                          state)
-                      : Container()
+                  filterProducts[index]['subCategories'] != null && filterProducts[index]['isSelected'] ? displaySubCategoriesUsingCategory(filterProducts[index]['isSelected'], filterProducts[index]['categoryName'], state) : Container()
                 ],
               );
             })),
@@ -629,8 +613,7 @@ Widget filterDrawer(state, context, GlobalKey<ScaffoldState> scaffoldKey,
           // shape: new RoundedRectangleBorder(
           //     borderRadius: new BorderRadius.circular(20.0)),
           onPressed: () {
-            applyFilter(
-                state, context, scaffoldKey, isSearchScreen, searchController);
+            applyFilter(state, context, scaffoldKey, isSearchScreen, searchController);
           },
           child: Text(
             "Apply",
@@ -662,10 +645,11 @@ List getSelectedCategoryInfo() {
   List selectedCategories = [];
   filterProducts.forEach((val) {
     if (val['isSelected']) {
-      Map obj = {'categoryId': val['categoryId']};
+      Map obj = {
+        'categoryId': val['categoryId']
+      };
       if (val['subCategories'] != null) {
-        List subCategoriesOfCurrentCategory =
-            getSelectedSubCategoriesOfCurrentCategory(val['categoryName']);
+        List subCategoriesOfCurrentCategory = getSelectedSubCategoriesOfCurrentCategory(val['categoryName']);
         if (subCategoriesOfCurrentCategory.length > 0) {
           obj['subCategories'] = subCategoriesOfCurrentCategory;
         }
@@ -698,7 +682,9 @@ List getSelectedSubCategoriesOfCurrentCategory(String categoryName) {
   subCategoriesList.forEach((val) {
     if (val['path'].toString().indexOf(categoryName) != -1) {
       if (val['isChecked']) {
-        Map obj = {'subCategoryId': val['subCategoryId']};
+        Map obj = {
+          'subCategoryId': val['subCategoryId']
+        };
         selectedSubCategories.add(obj);
       }
     }
@@ -706,8 +692,7 @@ List getSelectedSubCategoriesOfCurrentCategory(String categoryName) {
   return selectedSubCategories;
 }
 
-applyFilter(state, context, GlobalKey<ScaffoldState> scaffoldKey,
-    bool isSearchScreen, TextEditingController searchController) {
+applyFilter(state, context, GlobalKey<ScaffoldState> scaffoldKey, bool isSearchScreen, TextEditingController searchController) {
   List filterProductsData = getSelectedCategoryInfo();
   if (searchController.text != '') {
     productSearchData['productSearchData'] = searchController.text.trim();
@@ -748,8 +733,7 @@ applyFilter(state, context, GlobalKey<ScaffoldState> scaffoldKey,
   // }
 }
 
-getSearchedData(
-    int categoryId, TextEditingController searchFieldController, context) {
+getSearchedData(int categoryId, TextEditingController searchFieldController, context) {
   // if (searchFieldController.text.trim() != '') {
   productSearchData['productSearchData'] = searchFieldController.text.trim();
   List filterProductsData = [];
@@ -763,7 +747,9 @@ getSearchedData(
   // });
   // getSelectedCategoriesInfo();
   if (categoryId != null) {
-    Map obj = {'categoryId': categoryId};
+    Map obj = {
+      'categoryId': categoryId
+    };
     // Uncomment this for default highlightion of subcategoris
     // final categoryName = filterProducts[filterProducts.indexWhere(
     //     (val) => val['categoryId'] == categoryId)]['categoryName'];
@@ -777,29 +763,19 @@ getSearchedData(
     filterProductsData.add(obj);
     productSearchData['productCategory'] = filterProductsData;
   }
-  if (productSearchData['productSearchData'] != "" ||
-      productSearchData['productCategory'].length > 0) {
+  if (productSearchData['productSearchData'] != "" || productSearchData['productCategory'].length > 0) {
     // reset();
     Navigator.of(context).pushNamed('/search');
   }
   // }
 }
 
-Widget appBarWidgetWithIconsAnSearchbox(
-    context,
-    bool showSearchIcon,
-    state,
-    bool isCartPage,
-    String previousRouteName,
-    GlobalKey<FormFieldState> searchFieldKey,
-    TextEditingController searchFieldController,
-    FocusNode searchFocusNode) {
+Widget appBarWidgetWithIconsAnSearchbox(context, bool showSearchIcon, state, bool isCartPage, String previousRouteName, GlobalKey<FormFieldState> searchFieldKey, TextEditingController searchFieldController, FocusNode searchFocusNode) {
   return AppBar(
     centerTitle: true,
     title: GestureDetector(
       onTap: () {
-        Navigator.pushNamedAndRemoveUntil(
-            context, '/home', ModalRoute.withName('/home'));
+        Navigator.pushNamedAndRemoveUntil(context, '/home', ModalRoute.withName('/home'));
       },
       child: Image(
         image: AssetImage(cornextLogoImagePath2),
@@ -838,8 +814,7 @@ Widget appBarWidgetWithIconsAnSearchbox(
                   hintText: "Search",
                   border: AppStyles().searchBarBorder,
                   // prefix: Text("+91 "),
-                  contentPadding: EdgeInsets.only(
-                      bottom: 1.0, left: 10, right: 10, top: 1.0),
+                  contentPadding: EdgeInsets.only(bottom: 1.0, left: 10, right: 10, top: 1.0),
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                       borderSide: BorderSide(
@@ -950,14 +925,15 @@ Widget appBarWidgetWithIconsAnSearchbox(
   );
 }
 
-getSearchedDataForOtherScreens(
-    TextEditingController searchFieldController, state, context) {
+getSearchedDataForOtherScreens(TextEditingController searchFieldController, state, context) {
   if (searchFieldController.text.trim() != '') {
     productSearchData['productSearchData'] = searchFieldController.text.trim();
     List filterProductsData = [];
     filterProducts.forEach((val) {
       if (val['isSelected']) {
-        Map obj = {'productCategoryId': val['productCategoryId']};
+        Map obj = {
+          'productCategoryId': val['productCategoryId']
+        };
         filterProductsData.add(obj);
       }
     });
@@ -976,29 +952,23 @@ getSearchedDataForOtherScreens(
 resetAllVideoControllers(Map videoControllers) {
   print(videoControllers);
   if (videoControllers != null) {
-    if (videoControllers['productCarouselVideoControllers'] != null &&
-        videoControllers['productCarouselVideoControllers'].length > 0) {
-      videoControllers['productCarouselVideoControllers']
-          .forEach((videoController) {
+    if (videoControllers['productCarouselVideoControllers'] != null && videoControllers['productCarouselVideoControllers'].length > 0) {
+      videoControllers['productCarouselVideoControllers'].forEach((videoController) {
         if (videoController['controller'] != null) {
           videoController['controller'].pause();
         }
       });
     }
 
-    if (videoControllers['testimonialVideoControllers'] != null &&
-        videoControllers['testimonialVideoControllers'].length > 0) {
-      videoControllers['testimonialVideoControllers']
-          .forEach((videoController) {
+    if (videoControllers['testimonialVideoControllers'] != null && videoControllers['testimonialVideoControllers'].length > 0) {
+      videoControllers['testimonialVideoControllers'].forEach((videoController) {
         if (videoController['controller'] != null) {
           videoController['controller'].pause();
         }
       });
     }
-    if (videoControllers['instructionsVideoControllers'] != null &&
-        videoControllers['instructionsVideoControllers'].length > 0) {
-      videoControllers['instructionsVideoControllers']
-          .forEach((videoController) {
+    if (videoControllers['instructionsVideoControllers'] != null && videoControllers['instructionsVideoControllers'].length > 0) {
+      videoControllers['instructionsVideoControllers'].forEach((videoController) {
         if (videoController['controller'] != null) {
           videoController['controller'].pause();
         }
@@ -1007,22 +977,12 @@ resetAllVideoControllers(Map videoControllers) {
   }
 }
 
-Widget appBarWidgetWithIconsAnSearchboxAndFilterIcon(
-    context,
-    bool showSearchIcon,
-    state,
-    bool isCartPage,
-    String previousRouteName,
-    GlobalKey<FormFieldState> searchFieldKey,
-    TextEditingController searchFieldController,
-    FocusNode searchFocusNode,
-    GlobalKey<ScaffoldState> scaffoldkey) {
+Widget appBarWidgetWithIconsAnSearchboxAndFilterIcon(context, bool showSearchIcon, state, bool isCartPage, String previousRouteName, GlobalKey<FormFieldState> searchFieldKey, TextEditingController searchFieldController, FocusNode searchFocusNode, GlobalKey<ScaffoldState> scaffoldkey) {
   return AppBar(
     centerTitle: true,
     title: GestureDetector(
       onTap: () {
-        Navigator.pushNamedAndRemoveUntil(
-            context, '/home', ModalRoute.withName('/home'));
+        Navigator.pushNamedAndRemoveUntil(context, '/home', ModalRoute.withName('/home'));
       },
       child: Image(
         image: AssetImage(cornextLogoImagePath2),
@@ -1047,8 +1007,7 @@ Widget appBarWidgetWithIconsAnSearchboxAndFilterIcon(
                           cursorColor: mainAppColor,
                           controller: searchFieldController,
                           onFieldSubmitted: (val) {
-                            getSearchedDataForOtherScreens(
-                                searchFieldController, state, context);
+                            getSearchedDataForOtherScreens(searchFieldController, state, context);
                           },
                           key: searchFieldKey,
                           focusNode: searchFocusNode,
@@ -1068,8 +1027,7 @@ Widget appBarWidgetWithIconsAnSearchboxAndFilterIcon(
                                 icon: Icon(Icons.search),
                                 onPressed: () {
                                   // getSearchedData();
-                                  getSearchedDataForOtherScreens(
-                                      searchFieldController, state, context);
+                                  getSearchedDataForOtherScreens(searchFieldController, state, context);
                                 },
                                 color: mainAppColor,
                                 tooltip: 'Search',
@@ -1089,8 +1047,7 @@ Widget appBarWidgetWithIconsAnSearchboxAndFilterIcon(
                           ),
                           Text(
                             "Filter",
-                            style: AppFonts()
-                                .getTextStyle('button_text_color_black'),
+                            style: AppFonts().getTextStyle('button_text_color_black'),
                           )
                         ],
                       ),
