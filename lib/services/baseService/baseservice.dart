@@ -19,13 +19,13 @@ class BaseService {
   //       ((X509Certificate cert, String host, int port) => false));
 
   Future postDetails(String url, requestObj) {
-    return http.post(url, body: json.encode(requestObj), headers: {
+    return http.post(Uri.parse(url), body: json.encode(requestObj), headers: {
       'Content-type': 'application/json',
     });
   }
 
   Future getDetails(String url) {
-    return http.get(url, headers: {
+    return http.get(Uri.parse(url), headers: {
       'Content-type': 'application/json',
     });
   }
@@ -43,26 +43,18 @@ class BaseService {
     // var uri = Uri.http('113.193.236.139:9898/cornext/', '', queryParameters);
     String encodedPassword = _utilities.passwordEncode(userDetails['password']);
     print(encodedPassword);
-    return http.post(
-        signInUrl +
-            'username=' +
-            userDetails['username'] +
-            '&password=' +
-            encodedPassword +
-            '&grant_type=password',
-        headers: {
-          // "client_id": clientId,
-          // "client_secret": clientSecret,
-          'Content-type': 'application/json',
-          'authorization':
-              'Basic ' + base64Encode(utf8.encode('$clientId:$clientSecret'))
-        });
+    return http.post(Uri.parse(signInUrl + 'username=' + userDetails['username'] + '&password=' + encodedPassword + '&grant_type=password'), headers: {
+      // "client_id": clientId,
+      // "client_secret": clientSecret,
+      'Content-type': 'application/json',
+      'authorization': 'Basic ' + base64Encode(utf8.encode('$clientId:$clientSecret'))
+    });
   }
 
   Future postDetailsByAccessToken(String url, requestObj) {
     // if (getAccessToken() != null) {
     final String token = signInDetails['access_token'];
-    return http.post(url, body: json.encode(requestObj), headers: {
+    return http.post(Uri.parse(url), body: json.encode(requestObj), headers: {
       'Content-type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer $token'
@@ -73,14 +65,14 @@ class BaseService {
   }
 
   Future postToRazorPay(String url, requestObj, key, secret) async {
-    return http.post(url, body: json.encode(requestObj), headers: {
+    return http.post(Uri.parse(url), body: json.encode(requestObj), headers: {
       'Content-type': 'application/json',
       'authorization': 'Basic ' + base64Encode(utf8.encode('$key:$secret'))
     });
   }
 
   Future getFromRazorPay(String url, key, secret) async {
-    return http.get(url, headers: {
+    return http.get(Uri.parse(url), headers: {
       'Content-type': 'application/json',
       'authorization': 'Basic ' + base64Encode(utf8.encode('$key:$secret'))
     });
@@ -88,7 +80,7 @@ class BaseService {
 
   Future getInfoByAccessToken(url) {
     final String token = signInDetails['access_token'];
-    return http.get(url, headers: {
+    return http.get(Uri.parse(url), headers: {
       'Content-type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer $token'
@@ -100,7 +92,7 @@ class BaseService {
     // print(signInDeatils['userId']);
     final String userId = signInDetails['userId'].toString();
     // print(userId);
-    return http.get(url + userId.toString(), headers: {
+    return http.get(Uri.parse(url + userId.toString()), headers: {
       'Content-type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer $token'
@@ -109,10 +101,9 @@ class BaseService {
 
   Future getAccessTokenUsingRefreshToken() {
     final token = signInDetails['refresh_token'];
-    return http.post(refreshTokenUrl + "$token", headers: {
+    return http.post(Uri.parse(refreshTokenUrl + "$token"), headers: {
       'Content-type': 'application/json',
-      'authorization':
-          'Basic ' + base64Encode(utf8.encode('$clientId:$clientSecret'))
+      'authorization': 'Basic ' + base64Encode(utf8.encode('$clientId:$clientSecret'))
     });
   }
 }

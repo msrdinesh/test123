@@ -1164,9 +1164,6 @@ class ProductDetails extends State<ProductDetailsPage> {
       viewportFraction: 1.0,
       aspectRatio: 2.0,
       items: isTestimonials ? getTestimonialImagesOrVideos(images) : getInstructionsImagesOrVideos(images),
-      onPageChanged: (index) {
-        onTestimonialOrInstructionsPageChange(isTestimonials);
-      },
     );
   }
 
