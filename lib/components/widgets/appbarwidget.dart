@@ -1099,7 +1099,7 @@ Widget appBarWidgetWithIconsAnSearchboxAndFilterIcon(context, bool showSearchIco
       noOfProductsAddedInCart != null && noOfProductsAddedInCart != 0
           ? Badge(
               // badgeColor: Colors.red[700],
-              position: BadgePosition(top: 1.2, right: 10),
+              position: BadgePosition(top: 1.2),
               badgeContent: Text(
                 noOfProductsAddedInCart.toString(),
                 // "100",
