@@ -1164,7 +1164,6 @@ class ProductDetails extends State<ProductDetailsPage> {
       viewportFraction: 1.0,
       aspectRatio: 2.0,
       items: isTestimonials ? getTestimonialImagesOrVideos(images) : getInstructionsImagesOrVideos(images),
-      enlargeCenterPage: true,
       onPageChanged: (index) {
         onTestimonialOrInstructionsPageChange(isTestimonials);
       },
@@ -1202,7 +1201,6 @@ class ProductDetails extends State<ProductDetailsPage> {
             items: getProductImages(),
             viewportFraction: 1.0,
             aspectRatio: MediaQuery.of(context).orientation == Orientation.portrait ? 2.0 : 5.0,
-            enlargeCenterPage: true,
           )),
       Positioned(
           // top: 10,

@@ -379,22 +379,7 @@ class ProductDetailsImagesAndVideos extends State<ProductDetailsImagesAndVideosP
   }
 
   Widget getCarousel() {
-    carouselSlider = new CarouselSlider(
-      items: getProductImages(),
-      initialPage: 0,
-      viewportFraction: 1.0,
-      aspectRatio: MediaQuery.of(context).orientation == Orientation.portrait ? 1.0 : 3.0,
-      onPageChanged: (index) {
-        _controller.forEach((videoController) {
-          if (videoController['controller'] != null) {
-            videoController['controller'].pause();
-          }
-        });
-        setState(() {
-          currentImageIndex(index);
-        });
-      },
-    );
+    carouselSlider = new CarouselSlider(items: getProductImages(), initialPage: 0, viewportFraction: 1.0, aspectRatio: MediaQuery.of(context).orientation == Orientation.portrait ? 1.0 : 3.0);
     return carouselSlider;
   }
 
