@@ -100,8 +100,7 @@ class HomeScreen extends State<HomePage> {
   checkAndDisplayLoginSuccessMessage() {
     timer = Timer(Duration(microseconds: 200), () {
       if (displayRegistrationSuccessMessage) {
-        showSuccessNotifications(
-            "Account Created Successfully", context, scafflodkey);
+        showSuccessNotifications("Account Created Successfully", context, scafflodkey);
         if (timer != null) {
           timer.cancel();
         }
@@ -127,8 +126,7 @@ class HomeScreen extends State<HomePage> {
         setState(() {
           canDisplayAppUpdatePopup = false;
         });
-        Navigator.of(context).pushNamedAndRemoveUntil(
-            '/appupdate', ModalRoute.withName('appupdate'));
+        Navigator.of(context).pushNamedAndRemoveUntil('/appupdate', ModalRoute.withName('appupdate'));
       } else if (data['appVersion'] > appVersion && !data['mandatoryUpdate']) {
         setState(() {
           canDisplayAppUpdatePopup = false;
@@ -238,8 +236,7 @@ class HomeScreen extends State<HomePage> {
           RefreshTokenService().getAccessTokenUsingRefreshToken().then((res) {
             final refreshTokenData = json.decode(res.body);
             // print(data);
-            if (RefreshTokenService()
-                .getAccessTokenFromData(refreshTokenData, context, setState)) {
+            if (RefreshTokenService().getAccessTokenFromData(refreshTokenData, context, setState)) {
               fetchFilterDetails();
             }
           });
@@ -287,8 +284,7 @@ class HomeScreen extends State<HomePage> {
         RefreshTokenService().getAccessTokenUsingRefreshToken().then((res) {
           final refreshTokenData = json.decode(res.body);
           print(refreshTokenData);
-          if (RefreshTokenService()
-              .getAccessTokenFromData(refreshTokenData, context, setState)) {
+          if (RefreshTokenService().getAccessTokenFromData(refreshTokenData, context, setState)) {
             fetchCartDetails();
           }
         });
@@ -299,14 +295,15 @@ class HomeScreen extends State<HomePage> {
   }
 
   checkAccessTokenAndUpdateUserDetails() {
-    SharedPreferenceService()
-        .checkAccessTokenAndUpdateuserDetails()
-        .then((val) {
+    SharedPreferenceService().checkAccessTokenAndUpdateuserDetails().then((val) {
       if (val.get("access_token") == null) {
         // Navigator.pushNamed(context, "/login");
         // Navigator.pushNamedAndRemoveUntil(
         //     context, '/login', ModalRoute.withName('/login'));
-        signInDetails = {"userName": "Hello, User", "userId": ""};
+        signInDetails = {
+          "userName": "Hello, User",
+          "userId": ""
+        };
         checkInternetConnection();
       } else {
         setState(() {
@@ -331,9 +328,7 @@ class HomeScreen extends State<HomePage> {
 
   checkUpdateUserAppInfo() {
     deviceInfo.getDeviceInfo().then((info) {
-      if (info['manufacturer'] != null &&
-          info['model'] != null &&
-          info['versionSdkInt'] != null) {
+      if (info['manufacturer'] != null && info['model'] != null && info['versionSdkInt'] != null) {
         final Map requestObj = {
           'userMobileCompany': info['manufacturer'],
           'userMobileModel': info['model'],
@@ -346,12 +341,10 @@ class HomeScreen extends State<HomePage> {
             setState(() {
               canUpdateUserAppInfo = false;
             });
-          } else if (data['error'] != null &&
-              data['error'] == "invalid_token") {
+          } else if (data['error'] != null && data['error'] == "invalid_token") {
             RefreshTokenService().getAccessTokenUsingRefreshToken().then((res) {
               final refreshTokenData = json.decode(res.body);
-              if (RefreshTokenService().getAccessTokenFromData(
-                  refreshTokenData, context, setState)) {
+              if (RefreshTokenService().getAccessTokenFromData(refreshTokenData, context, setState)) {
                 checkUpdateUserAppInfo();
               }
             });
@@ -397,8 +390,7 @@ class HomeScreen extends State<HomePage> {
       "limit": limit,
       "screenName": "HS"
     };
-    fetchCartDetailsApi =
-        homeScreenServices.getProductListDetails(requestObj).then((val) {
+    fetchCartDetailsApi = homeScreenServices.getProductListDetails(requestObj).then((val) {
       print(val.body);
       final data = json.decode(val.body);
       if (data['listOfProducts'] != null) {
@@ -427,10 +419,7 @@ class HomeScreen extends State<HomePage> {
             );
           });
           scrollController.addListener(() {
-            if (totalNumberOfProducts > productDetails.length &&
-                !isMoreProductsLoading &&
-                scrollController.position.pixels ==
-                    scrollController.position.maxScrollExtent) {
+            if (totalNumberOfProducts > productDetails.length && !isMoreProductsLoading && scrollController.position.pixels == scrollController.position.maxScrollExtent) {
               setState(() {
                 pageNo = pageNo + 1;
               });
@@ -552,8 +541,7 @@ class HomeScreen extends State<HomePage> {
                                       });
                                       offerId = 0;
                                       offerId = bannerInfo['offerId'];
-                                      Navigator.pushNamed(
-                                          context, '/OfferDetails');
+                                      Navigator.pushNamed(context, '/OfferDetails');
                                     },
                                     // child: Image(
                                     //   loadingBuilder: (BuildContext context, Widget child,
@@ -573,9 +561,7 @@ class HomeScreen extends State<HomePage> {
                                         imageUrl: url,
                                         // height: 300,
                                         fit: BoxFit.fill,
-                                        placeholder: (context, url) =>
-                                            circularLoadingIconWithColor(
-                                                Colors.white),
+                                        placeholder: (context, url) => circularLoadingIconWithColor(Colors.white),
                                       ),
                                     )),
                                 // Positioned(
@@ -637,21 +623,10 @@ class HomeScreen extends State<HomePage> {
                   Navigator.pushNamed(context, '/OfferDetails');
                 } else {
                   productDetailsObject['productId'] = imageInfo['productId'];
-                  productDetailsObject['productTypeId'] =
-                      imageInfo['productTypeId'] != null
-                          ? imageInfo['productTypeId']
-                          : null;
-                  productDetailsObject['specificationId'] =
-                      imageInfo['specificationId'] != null
-                          ? imageInfo['specificationId']
-                          : null;
-                  productDetailsObject['priceId'] = imageInfo['priceId'] != null
-                      ? imageInfo['priceId']
-                      : null;
-                  productDetailsObject['userId'] =
-                      signInDetails['access_token'] != null
-                          ? signInDetails['userId']
-                          : null;
+                  productDetailsObject['productTypeId'] = imageInfo['productTypeId'] != null ? imageInfo['productTypeId'] : null;
+                  productDetailsObject['specificationId'] = imageInfo['specificationId'] != null ? imageInfo['specificationId'] : null;
+                  productDetailsObject['priceId'] = imageInfo['priceId'] != null ? imageInfo['priceId'] : null;
+                  productDetailsObject['userId'] = signInDetails['access_token'] != null ? signInDetails['userId'] : null;
                   productDetailsObject['screenName'] = 'PRD';
                   Navigator.of(context).pushNamed('/productdetails');
                 }
@@ -660,16 +635,11 @@ class HomeScreen extends State<HomePage> {
                 imageUrl: url,
                 fit: BoxFit.fill,
                 // imageBuilder: ,
-                placeholder: (context, url) =>
-                    customizedCircularLoadingIcon(25),
+                placeholder: (context, url) => customizedCircularLoadingIcon(25),
                 width: MediaQuery.of(context).size.width,
               ));
         }).toList(),
-        aspectRatio: MediaQuery.of(context).orientation == Orientation.portrait
-            ? MediaQuery.of(context).size.width /
-                (MediaQuery.of(context).size.width / 2.08)
-            : 9.0,
-        enlargeCenterPage: true,
+        aspectRatio: MediaQuery.of(context).orientation == Orientation.portrait ? MediaQuery.of(context).size.width / (MediaQuery.of(context).size.width / 2.08) : 9.0,
 
         autoPlay: true,
         onPageChanged: (index) {
@@ -695,8 +665,7 @@ class HomeScreen extends State<HomePage> {
                     width: 8.0,
                     height: 8.0,
                     alignment: Alignment.bottomCenter,
-                    margin:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                    margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: carouselDetails.indexOf(val) == _currentIndex
@@ -723,7 +692,9 @@ class HomeScreen extends State<HomePage> {
     // });
     // getSelectedCategoriesInfo();
     if (categoryId != null) {
-      Map obj = {'categoryId': categoryId};
+      Map obj = {
+        'categoryId': categoryId
+      };
       // Uncomment this for default highlightion of subcategoris
       // final categoryName = filterProducts[filterProducts.indexWhere(
       //     (val) => val['categoryId'] == categoryId)]['categoryName'];
@@ -737,8 +708,7 @@ class HomeScreen extends State<HomePage> {
       filterProductsData.add(obj);
       productSearchData['productCategory'] = filterProductsData;
     }
-    if (productSearchData['productSearchData'] != "" ||
-        productSearchData['productCategory'].length > 0) {
+    if (productSearchData['productSearchData'] != "" || productSearchData['productCategory'].length > 0) {
       reset();
       Navigator.of(context).pushNamed('/search');
     }
@@ -749,12 +719,9 @@ class HomeScreen extends State<HomePage> {
 
   fetchCategoriesDetails() {
     final Map requestObj = {
-      'userId': signInDetails['access_token'] != null
-          ? signInDetails['userId']
-          : null,
+      'userId': signInDetails['access_token'] != null ? signInDetails['userId'] : null,
     };
-    homeScreenServices.getCategoriesAndSubCategoriesInfo(requestObj).then(
-        (val) {
+    homeScreenServices.getCategoriesAndSubCategoriesInfo(requestObj).then((val) {
       print(val.body);
       final data = json.decode(val.body);
       if (data['categories'] != null) {
@@ -817,16 +784,13 @@ class HomeScreen extends State<HomePage> {
                   Container(
                       child: res['categoryName'] != "Favorites"
                           ? Container(
-                              decoration: new BoxDecoration(
-                                  borderRadius: new BorderRadius.all(
-                                      Radius.circular(50.0)),
-                                  boxShadow: [
-                                    new BoxShadow(
-                                      color: Colors.grey.shade400,
-                                      offset: Offset(1, 2),
-                                      blurRadius: 2,
-                                    )
-                                  ]),
+                              decoration: new BoxDecoration(borderRadius: new BorderRadius.all(Radius.circular(50.0)), boxShadow: [
+                                new BoxShadow(
+                                  color: Colors.grey.shade400,
+                                  offset: Offset(1, 2),
+                                  blurRadius: 2,
+                                )
+                              ]),
                               child: ClipRRect(
                                   borderRadius: BorderRadius.circular(25),
                                   child: CachedNetworkImage(
@@ -837,17 +801,13 @@ class HomeScreen extends State<HomePage> {
                                   )),
                             )
                           : Container(
-                              decoration: new BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: new BorderRadius.all(
-                                      Radius.circular(50.0)),
-                                  boxShadow: [
-                                    new BoxShadow(
-                                      color: Colors.grey.shade300,
-                                      offset: Offset(1, 2),
-                                      blurRadius: 2,
-                                    )
-                                  ]),
+                              decoration: new BoxDecoration(color: Colors.white, borderRadius: new BorderRadius.all(Radius.circular(50.0)), boxShadow: [
+                                new BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  offset: Offset(1, 2),
+                                  blurRadius: 2,
+                                )
+                              ]),
                               child: ClipRRect(
                                   borderRadius: BorderRadius.circular(25),
                                   child: Icon(
@@ -872,17 +832,13 @@ class HomeScreen extends State<HomePage> {
       List<String> _splitNames = categoryName.split(" ");
       List<Widget> _widgets = [];
       _splitNames.forEach((res) {
-        _widgets.add(Text(res,
-            textAlign: TextAlign.center,
-            style: appFonts.getTextStyle('homescreen_categories_name_style')));
+        _widgets.add(Text(res, textAlign: TextAlign.center, style: appFonts.getTextStyle('homescreen_categories_name_style')));
       });
       return Column(
         children: _widgets,
       );
     } else {
-      return Text(categoryName,
-          textAlign: TextAlign.center,
-          style: appFonts.getTextStyle('homescreen_categories_name_style'));
+      return Text(categoryName, textAlign: TextAlign.center, style: appFonts.getTextStyle('homescreen_categories_name_style'));
     }
   }
 
@@ -901,20 +857,13 @@ class HomeScreen extends State<HomePage> {
             Container(
                 child: Row(
               children: <Widget>[
-                Container(
-                    height: 82,
-                    child: ListView(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        children: getCategoriesInfo())),
+                Container(height: 82, child: ListView(physics: NeverScrollableScrollPhysics(), shrinkWrap: true, scrollDirection: Axis.horizontal, children: getCategoriesInfo())),
                 Container(
                   width: MediaQuery.of(context).size.width / 4.0,
                   // margin: EdgeInsets.only(left: 1, right: 1),
                   child: GestureDetector(
                     onTap: () {
-                      RenderBox box =
-                          productListKey.currentContext.findRenderObject();
+                      RenderBox box = productListKey.currentContext.findRenderObject();
                       Offset position = box.localToGlobal(Offset.zero);
                       scrollController.jumpTo(position.direction + 300);
                     },
@@ -923,16 +872,13 @@ class HomeScreen extends State<HomePage> {
                         Container(
                             // height: 50,
                             // width: 50,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    new BorderRadius.all(Radius.circular(50.0)),
-                                boxShadow: [
-                                  new BoxShadow(
-                                    color: Colors.grey.shade400,
-                                    offset: Offset(1, 2),
-                                    blurRadius: 2,
-                                  )
-                                ]),
+                            decoration: BoxDecoration(borderRadius: new BorderRadius.all(Radius.circular(50.0)), boxShadow: [
+                              new BoxShadow(
+                                color: Colors.grey.shade400,
+                                offset: Offset(1, 2),
+                                blurRadius: 2,
+                              )
+                            ]),
 
                             // child: Center(
                             //     child: Text(
@@ -945,8 +891,7 @@ class HomeScreen extends State<HomePage> {
                             child: ClipRRect(
                                 borderRadius: BorderRadius.circular(25),
                                 child: CachedNetworkImage(
-                                  imageUrl:
-                                      'https://feednextmedia.s3.ap-south-1.amazonaws.com/CAT-Icon-All-01.jpg',
+                                  imageUrl: 'https://feednextmedia.s3.ap-south-1.amazonaws.com/CAT-Icon-All-01.jpg',
                                   fit: BoxFit.fill,
                                   height: 50,
                                   width: 50,
@@ -957,8 +902,7 @@ class HomeScreen extends State<HomePage> {
                           child: Text(
                             'All',
                             textAlign: TextAlign.center,
-                            style: AppFonts().getTextStyle(
-                                'homescreen_categories_name_style'),
+                            style: AppFonts().getTextStyle('homescreen_categories_name_style'),
                           ),
                         )
                       ],
@@ -973,7 +917,10 @@ class HomeScreen extends State<HomePage> {
 
   // Repeat previous order
   repeatPreviousOrder(int orderId, bool isCartDelete) {
-    final Map requestObj = {'cartDelete': isCartDelete, 'orderId': orderId};
+    final Map requestObj = {
+      'cartDelete': isCartDelete,
+      'orderId': orderId
+    };
     // Navigator.pop(context);
     displayLoadingIcon(context);
     print(requestObj);
@@ -1015,8 +962,7 @@ class HomeScreen extends State<HomePage> {
           final refreshTokenData = json.decode(res.body);
           // print(data);
           Navigator.pop(context);
-          if (RefreshTokenService()
-              .getAccessTokenFromData(refreshTokenData, context, setState)) {
+          if (RefreshTokenService().getAccessTokenFromData(refreshTokenData, context, setState)) {
             repeatPreviousOrder(orderId, isCartDelete);
           }
         });
@@ -1029,8 +975,7 @@ class HomeScreen extends State<HomePage> {
       // setState(() {
       //   isLoading = false;
       // });
-      ApiErros()
-          .apiErrorNotifications(err, context, '/yourorders', scafflodkey);
+      ApiErros().apiErrorNotifications(err, context, '/yourorders', scafflodkey);
     });
   }
 
@@ -1046,8 +991,7 @@ class HomeScreen extends State<HomePage> {
               child: Dialog(
                 backgroundColor: Colors.transparent,
                 elevation: 100,
-                child: customizedCircularLoadingIconWithColorAndSize(
-                    50, Colors.white),
+                child: customizedCircularLoadingIconWithColorAndSize(50, Colors.white),
               ));
         });
   }
@@ -1079,8 +1023,7 @@ class HomeScreen extends State<HomePage> {
                     //     // Pad ding(padding: EdgeInsets.only(top: 5)),
                     Text(
                   "Subscription Information",
-                  style: appFonts.getTextStyle(
-                      'home_screen_repeat_previous_order_popup_heading_style'),
+                  style: appFonts.getTextStyle('home_screen_repeat_previous_order_popup_heading_style'),
                 ),
                 // ],
 
@@ -1100,8 +1043,7 @@ class HomeScreen extends State<HomePage> {
                         //     bottom: 5, right: 10, left: 10, top: 5),
                         child: Text(
                           message,
-                          style: appFonts.getTextStyle(
-                              'home_screen_repeat_previous_order_popup_content_style'),
+                          style: appFonts.getTextStyle('home_screen_repeat_previous_order_popup_content_style'),
                           softWrap: true,
                         ),
                       ),
@@ -1141,10 +1083,7 @@ class HomeScreen extends State<HomePage> {
                     onPressed: () {
                       Navigator.pop(context);
                       if (noOfProductsAddedInCart > 0) {
-                        displayRepeatOrderPopup(
-                            context,
-                            "You have some products in the cart. Do you want clear the cart to repeat this order?",
-                            orderId);
+                        displayRepeatOrderPopup(context, "You have some products in the cart. Do you want clear the cart to repeat this order?", orderId);
                       } else {
                         repeatPreviousOrder(orderId, true);
                       }
@@ -1175,8 +1114,7 @@ class HomeScreen extends State<HomePage> {
               child: AlertDialog(
                 title: Text(
                   "FeedNext Update",
-                  style: appFonts.getTextStyle(
-                      'home_screen_repeat_previous_order_popup_heading_style'),
+                  style: appFonts.getTextStyle('home_screen_repeat_previous_order_popup_heading_style'),
                 ),
                 content: Container(
                     color: Colors.white,
@@ -1184,8 +1122,7 @@ class HomeScreen extends State<HomePage> {
                       Flexible(
                         child: Text(
                           appUpdateMessage,
-                          style: appFonts.getTextStyle(
-                              'home_screen_repeat_previous_order_popup_content_style'),
+                          style: appFonts.getTextStyle('home_screen_repeat_previous_order_popup_content_style'),
                           softWrap: true,
                         ),
                       ),
@@ -1236,8 +1173,7 @@ class HomeScreen extends State<HomePage> {
                     //     // Pad ding(padding: EdgeInsets.only(top: 5)),
                     Text(
                   "Repeat Previous Order",
-                  style: appFonts.getTextStyle(
-                      'home_screen_repeat_previous_order_popup_heading_style'),
+                  style: appFonts.getTextStyle('home_screen_repeat_previous_order_popup_heading_style'),
                 ),
                 // ],
 
@@ -1257,8 +1193,7 @@ class HomeScreen extends State<HomePage> {
                         //     bottom: 5, right: 10, left: 10, top: 5),
                         child: Text(
                           message,
-                          style: appFonts.getTextStyle(
-                              'home_screen_repeat_previous_order_popup_content_style'),
+                          style: appFonts.getTextStyle('home_screen_repeat_previous_order_popup_content_style'),
                           softWrap: true,
                         ),
                       ),
@@ -1312,45 +1247,34 @@ class HomeScreen extends State<HomePage> {
   }
 
   checkPreviousOrderLinkedWithSubscription() {
-    final Map requestObj = {"orderId": null};
+    final Map requestObj = {
+      "orderId": null
+    };
     displayLoadingIcon(context);
-    orderTrackingService.checkOrderLinkedWithSubscription(requestObj).then(
-        (val) {
+    orderTrackingService.checkOrderLinkedWithSubscription(requestObj).then((val) {
       final data = json.decode(val.body);
       print(data);
       print(data['orderId']);
-      if (data['havingSubscribedOrders'] != null &&
-          data['havingSubscribedOrders']) {
+      if (data['havingSubscribedOrders'] != null && data['havingSubscribedOrders']) {
         Navigator.of(context).pop();
-        displaySubscriptionPopup(
-            context,
-            "You have subscribed this order. Do you want repeat this order?",
-            data['orderId']);
-      } else if (data['havingSubscribedOrders'] != null &&
-          !data['havingSubscribedOrders'] &&
-          data['status'] == null) {
+        displaySubscriptionPopup(context, "You have subscribed this order. Do you want repeat this order?", data['orderId']);
+      } else if (data['havingSubscribedOrders'] != null && !data['havingSubscribedOrders'] && data['status'] == null) {
         Navigator.of(context).pop();
         if (noOfProductsAddedInCart > 0) {
-          displayRepeatOrderPopup(
-              context,
-              "You have some products in the cart. Do you want clear the cart to repeat this order?",
-              data['orderId']);
+          displayRepeatOrderPopup(context, "You have some products in the cart. Do you want clear the cart to repeat this order?", data['orderId']);
         } else {
           repeatPreviousOrder(data['orderId'], true);
         }
-      } else if (data['status'] != null &&
-          data['status'] == "NOPREVIOUSORDERS") {
+      } else if (data['status'] != null && data['status'] == "NOPREVIOUSORDERS") {
         Navigator.of(context).pop();
         clearErrorMessages(scafflodkey);
-        showErrorNotifications(
-            "You don't have any previous orders", context, scafflodkey);
+        showErrorNotifications("You don't have any previous orders", context, scafflodkey);
       } else if (data['error'] != null && data['error'] == "invalid_token") {
         Navigator.of(context).pop();
         RefreshTokenService().getAccessTokenUsingRefreshToken().then((res) {
           final refreshTokenData = json.decode(res.body);
           // print(data);
-          if (RefreshTokenService()
-              .getAccessTokenFromData(refreshTokenData, context, setState)) {
+          if (RefreshTokenService().getAccessTokenFromData(refreshTokenData, context, setState)) {
             checkPreviousOrderLinkedWithSubscription();
           }
         });
@@ -1369,15 +1293,7 @@ class HomeScreen extends State<HomePage> {
     return Scaffold(
       // backgroundColor: Colors.grey[100],
       key: scafflodkey,
-      appBar: appBarWidgetWithIconsAnSearchbox(
-          context,
-          false,
-          this.setState,
-          false,
-          '/home',
-          searchFieldKey,
-          searchFieldController,
-          searchFocusNode),
+      appBar: appBarWidgetWithIconsAnSearchbox(context, false, this.setState, false, '/home', searchFieldKey, searchFieldController, searchFocusNode),
       drawer: appBarDrawer(context, this.setState, scafflodkey),
       // endDrawer: filterDrawer(
       //     this.setState, context, scafflodkey, false, searchFieldController),
@@ -1476,106 +1392,88 @@ class HomeScreen extends State<HomePage> {
                         itemCount: 1,
                         controller: scrollController,
                         itemBuilder: (BuildContext context, int i) {
-                          return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                showCategories(),
-                                // Divider(
-                                //   thickness: 1.5,
-                                // ),
-                                carouselDetails != null &&
-                                        carouselDetails.length > 0
-                                    ? new Container(
-                                        // padding: const EdgeInsets.all(15.0),
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        padding:
-                                            const EdgeInsets.only(top: 7.0),
-                                        // padding: const EdgeInsets.only(
-                                        //     left: 0.0, right: 0.0, bottom: 5.0, top: 5.0),
-                                        // height: 75,
-                                        height:
-                                            MediaQuery.of(context).size.width /
-                                                2,
-                                        child: new ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(2),
-                                          child: getCarouselData(),
-                                          // banner,
-                                        ),
-                                      )
-                                    : customizedCircularLoadingIcon(25),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 5, bottom: 5),
-                                ),
-                                // Divider(
-                                //   thickness: 1.5,
-                                // ),
-                                Container(
-                                  // margin:
-                                  //     EdgeInsets.only(left: 10, right: 10),
-                                  alignment: Alignment.center,
-                                  width: MediaQuery.of(context).size.width,
-                                  child: RaisedButton(
-                                    onPressed: () {
-                                      if (signInDetails['access_token'] ==
-                                              null ||
-                                          signInDetails['access_token'] == "") {
-                                        Navigator.pushNamed(context, '/login');
-                                      } else {
-                                        checkPreviousOrderLinkedWithSubscription();
-                                        // if (noOfProductsAddedInCart > 0) {
-                                        //   displayRepeatOrderPopup(
-                                        //     context,
-                                        //     "You have some products in the cart. Do you want clear the cart to repeat this order?",
-                                        //   );
-                                        // } else {
-                                        //   repeatPreviousOrder(null, true);
-                                        // }
-                                      }
-                                    },
-                                    child: Text(
-                                      "Repeat Previous Order",
-                                      style: appFonts.getTextStyle(
-                                          'home_screen_repeat_previous_order_button_style'),
+                          return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                            showCategories(),
+                            // Divider(
+                            //   thickness: 1.5,
+                            // ),
+                            carouselDetails != null && carouselDetails.length > 0
+                                ? new Container(
+                                    // padding: const EdgeInsets.all(15.0),
+                                    width: MediaQuery.of(context).size.width,
+                                    padding: const EdgeInsets.only(top: 7.0),
+                                    // padding: const EdgeInsets.only(
+                                    //     left: 0.0, right: 0.0, bottom: 5.0, top: 5.0),
+                                    // height: 75,
+                                    height: MediaQuery.of(context).size.width / 2,
+                                    child: new ClipRRect(
+                                      borderRadius: BorderRadius.circular(2),
+                                      child: getCarouselData(),
+                                      // banner,
                                     ),
-                                    color: mainYellowColor,
-                                    padding: EdgeInsets.only(
-                                        left:
-                                            MediaQuery.of(context).size.width /
-                                                4,
-                                        right:
-                                            MediaQuery.of(context).size.width /
-                                                4),
-                                  ),
+                                  )
+                                : customizedCircularLoadingIcon(25),
+                            Padding(
+                              padding: EdgeInsets.only(top: 5, bottom: 5),
+                            ),
+                            // Divider(
+                            //   thickness: 1.5,
+                            // ),
+                            Container(
+                              // margin:
+                              //     EdgeInsets.only(left: 10, right: 10),
+                              alignment: Alignment.center,
+                              width: MediaQuery.of(context).size.width,
+                              child: RaisedButton(
+                                onPressed: () {
+                                  if (signInDetails['access_token'] == null || signInDetails['access_token'] == "") {
+                                    Navigator.pushNamed(context, '/login');
+                                  } else {
+                                    checkPreviousOrderLinkedWithSubscription();
+                                    // if (noOfProductsAddedInCart > 0) {
+                                    //   displayRepeatOrderPopup(
+                                    //     context,
+                                    //     "You have some products in the cart. Do you want clear the cart to repeat this order?",
+                                    //   );
+                                    // } else {
+                                    //   repeatPreviousOrder(null, true);
+                                    // }
+                                  }
+                                },
+                                child: Text(
+                                  "Repeat Previous Order",
+                                  style: appFonts.getTextStyle('home_screen_repeat_previous_order_button_style'),
                                 ),
-                                // Divider(
-                                //   thickness: 1.5,
-                                // ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 5, bottom: 5),
-                                ),
-                                Container(
-                                    key: productListKey,
-                                    child: showProductDetails(
-                                      productDetails,
-                                      this.setState,
-                                      productShowMoreOrLess,
-                                      NeverScrollableScrollPhysics(),
-                                      true,
-                                      context,
-                                      '/home',
-                                    )),
-                                isMoreProductsLoading
-                                    ? Container(
-                                        margin: EdgeInsets.only(top: 5),
-                                        child: Center(
-                                          child:
-                                              customizedCircularLoadingIcon(30),
-                                        ),
-                                      )
-                                    : Container(),
-                              ]);
+                                color: mainYellowColor,
+                                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width / 4, right: MediaQuery.of(context).size.width / 4),
+                              ),
+                            ),
+                            // Divider(
+                            //   thickness: 1.5,
+                            // ),
+                            Padding(
+                              padding: EdgeInsets.only(top: 5, bottom: 5),
+                            ),
+                            Container(
+                                key: productListKey,
+                                child: showProductDetails(
+                                  productDetails,
+                                  this.setState,
+                                  productShowMoreOrLess,
+                                  NeverScrollableScrollPhysics(),
+                                  true,
+                                  context,
+                                  '/home',
+                                )),
+                            isMoreProductsLoading
+                                ? Container(
+                                    margin: EdgeInsets.only(top: 5),
+                                    child: Center(
+                                      child: customizedCircularLoadingIcon(30),
+                                    ),
+                                  )
+                                : Container(),
+                          ]);
                         })
                     // ]))
                     // ]))
