@@ -19,6 +19,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  web_ffi: 0.7.2 
   path: ^1.7.0
   ffi: ^1.1.2
   moor: ^2.0.0
