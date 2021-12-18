@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:cornext_mobile/constants/imagepaths.dart';
 import 'package:cornext_mobile/models/signinmodel.dart';
 import 'package:cornext_mobile/constants/appcolors.dart';
+import 'package:cornext_mobile/multilingual/localization/language/languages.dart';
 import 'package:badges/badges.dart';
 import 'package:cornext_mobile/constants/appstyles.dart';
 import 'package:cornext_mobile/services/homescreenservices/homescreenservices.dart';
@@ -408,7 +409,7 @@ Widget appBarDrawer(context, state, GlobalKey<ScaffoldState> scaffoldKey) {
         // ),
 
         ListTile(
-          title: Text("Home"),
+          title: Text(Languages.of(context).home),
           leading: Icon(Icons.home),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(context, '/home', ModalRoute.withName('/home'));
