@@ -30,9 +30,7 @@ Future<void> main() async {
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
+    return super.createHttpClient(context)..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
   }
 }
 
@@ -124,16 +122,11 @@ class MyApp extends StatelessWidget {
                   var list = uri.queryParametersAll;
                   print(uri);
                   print(list);
-                  final splitedUriData =
-                      uri.toString().split("https://cornext.feednext.app/");
+                  final splitedUriData = uri.toString().split("https://cornext.feednext.app/");
                   if (list.keys.length == 0 && uri.toString() != "") {
-                    if (splitedUriData[splitedUriData.length - 1]
-                            .trim()
-                            .length >
-                        0) {
+                    if (splitedUriData[splitedUriData.length - 1].trim().length > 0) {
                       return FutureBuilder(
-                        future: SharedPreferenceService()
-                            .checkAccessTokenAndUpdateuserDetails(),
+                        future: SharedPreferenceService().checkAccessTokenAndUpdateuserDetails(),
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
                             print(snapshot.data);
@@ -149,18 +142,13 @@ class MyApp extends StatelessWidget {
                               return HomePage();
                             } else {
                               // setState(() {
-                              signInDetails['access_token'] =
-                                  val.get("access_token");
-                              signInDetails['refresh_token'] =
-                                  val.get("refresh_token");
+                              signInDetails['access_token'] = val.get("access_token");
+                              signInDetails['refresh_token'] = val.get("refresh_token");
                               signInDetails['userName'] = val.get('userName');
                               signInDetails['userId'] = val.get('userId');
                               signInDetails['emailId'] = val.get('emailId');
                               signInDetails['mobileNo'] = val.get('mobileNo');
-                              orderIdFromDeepLink =
-                                  splitedUriData[splitedUriData.length - 1]
-                                      .trim()
-                                      .toString();
+                              orderIdFromDeepLink = splitedUriData[splitedUriData.length - 1].trim().toString();
                               // Navigator.pushNamed(context, '/ordersummary');
                               fetchCartDetails(context);
                               return CartPage();
@@ -200,8 +188,7 @@ class MyApp extends StatelessWidget {
                     // });
 
                     return FutureBuilder(
-                      future: SharedPreferenceService()
-                          .checkAccessTokenAndUpdateuserDetails(),
+                      future: SharedPreferenceService().checkAccessTokenAndUpdateuserDetails(),
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           print(snapshot.data);
@@ -217,10 +204,8 @@ class MyApp extends StatelessWidget {
                             return HomePage();
                           } else {
                             // setState(() {
-                            signInDetails['access_token'] =
-                                val.get("access_token");
-                            signInDetails['refresh_token'] =
-                                val.get("refresh_token");
+                            signInDetails['access_token'] = val.get("access_token");
+                            signInDetails['refresh_token'] = val.get("refresh_token");
                             signInDetails['userName'] = val.get('userName');
                             signInDetails['userId'] = val.get('userId');
                             signInDetails['emailId'] = val.get('emailId');
