@@ -12,4 +12,7 @@ class LanguageHi extends Languages {
 
   @override
   String get labelInfo => "यह मल्टी लैंग्वेज डेमो एप्लीकेशन है";
+
+  @override
+  String get home => "यह";
 }
