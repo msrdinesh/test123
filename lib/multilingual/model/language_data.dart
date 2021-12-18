@@ -1,4 +1,4 @@
-import 'package:multiple_language/localization/locale_constant.dart';
+import 'package:../language/localization/locale_constant.dart';
 
 class LanguageData {
   final String flag;
