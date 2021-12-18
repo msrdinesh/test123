@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:localization/language/language_ar.dart';
-import 'package:localization/language/language_en.dart';
-import 'package:localization/language/language_hi.dart';
+import 'package:cornext_mobile/multilingual/localization/language/language_ar.dart';
+import 'package:cornext_mobile/multilingual/localization/language/language_en.dart';
+import 'package:cornext_mobile/multilingual/localization/language/language_hi.dart';
 
 import 'language/languages.dart';
 
