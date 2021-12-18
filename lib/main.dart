@@ -16,6 +16,7 @@ import 'package:cornext_mobile/services/homescreenservices/homescreenservices.da
 // import 'package:cornext_mobile/utils/apierrors/apierror.dart';
 import 'package:cornext_mobile/components/widgets/appbarwidget.dart';
 import 'package:cornext_mobile/screens/cart/cartscreen.dart';
+import 'package:cornext_mobile/multilingual/localization/locale_constant.dart';
 import 'dart:convert';
 // import 'package:connectivity/connectivity.dart';
 // import 'package:cornext_mobile/screens/farmdetails/farmdetails.dart';
