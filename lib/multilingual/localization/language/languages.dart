@@ -12,5 +12,5 @@ abstract class Languages {
   String get labelInfo;
 
   String get labelSelectLanguage;
-  String get home;
+  String get home => "Home";
 }
