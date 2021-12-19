@@ -54,6 +54,12 @@ class MyAppState extends State<MyApp> {
   //   return '';
   // }
   Locale _locale;
+  void setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
+
   final HomeScreenServices homeScreenServices = HomeScreenServices();
 
   fetchCartDetails(context) {
