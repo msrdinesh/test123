@@ -11,24 +11,19 @@ class LanguagesPage extends StatelessWidget {
           new Flexible(
               child: Padding(
                   padding: EdgeInsets.all(10),
-                  child: GridView.count(
-                      childAspectRatio: (2 / 1),
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 4.0,
-                      mainAxisSpacing: 8.0,
-                      children: List.generate(choices.length, (index) {
-                        return InkWell(
-                            onTap: choices[index].onClick,
-                            child: Center(
-                              child: SelectCard(choice: choices[index]),
-                            ));
-                      }))))
+                  child: GridView.count(childAspectRatio: (2 / 1), crossAxisCount: 2, crossAxisSpacing: 4.0, mainAxisSpacing: 8.0, children: [
+                    InkWell(
+                        onTap: choices[0].onClick,
+                        child: Center(
+                          child: SelectCard(choice: choices[0]),
+                        ))
+                  ])))
         ])));
   }
 }
 
 void func1() {
-  print("pressed");
+  changeLanguage(context, "en");
 }
 
 void func2() {}
