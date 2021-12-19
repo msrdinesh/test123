@@ -18,9 +18,7 @@ class LanguagesPage extends StatelessWidget {
                       mainAxisSpacing: 8.0,
                       children: List.generate(choices.length, (index) {
                         return InkWell(
-                            onTap: () {
-                              print("tapped");
-                            },
+                            onTap: choices[index].onClick,
                             child: Center(
                               child: SelectCard(choice: choices[index]),
                             ));
@@ -29,7 +27,10 @@ class LanguagesPage extends StatelessWidget {
   }
 }
 
-void func1() {}
+void func1() {
+  print("pressed");
+}
+
 void func2() {}
 void func3() {}
 void func4() {}
