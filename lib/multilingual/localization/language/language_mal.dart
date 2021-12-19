@@ -11,4 +11,6 @@ class LanguageMal extends Languages {
   String get logout => "പുറത്തുകടക്കുക";
   String get signIn => "സൈൻ ഇൻ";
   String get cont => "തുടരുക";
+  String get signIn1 => "സൈൻ ഇൻ";
+  String get newCustomer => "പുതിയ ഉപഭോക്താവ്?";
 }

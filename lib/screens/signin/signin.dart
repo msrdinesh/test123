@@ -7,6 +7,7 @@ import 'package:cornext_mobile/utils/globalvalidations/globalvalidations.dart';
 import 'package:cornext_mobile/constants/appstyles.dart';
 import 'package:cornext_mobile/services/signinservices/signinservice.dart';
 import 'dart:convert';
+import 'package:cornext_mobile/multilingual/localization/language/languages.dart';
 import 'package:http/http.dart' as http;
 import 'package:cornext_mobile/constants/imagepaths.dart';
 import 'package:cornext_mobile/models/signinmodel.dart';
@@ -94,14 +95,14 @@ class SignIn extends State<SignInPage> {
   }
 
   checkFormValidOrNot() {
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(mobileNoFocus, mobileNokey);
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(passwordFocus, passwordFormKey);
+    GlobalValidations().validateCurrentFieldValidOrNot(mobileNoFocus, mobileNokey);
+    GlobalValidations().validateCurrentFieldValidOrNot(passwordFocus, passwordFormKey);
   }
 
   addProductDetailsIntoCart() {
-    Map returnObj = {"cart": getCartProductsObject()};
+    Map returnObj = {
+      "cart": getCartProductsObject()
+    };
     print(returnObj);
     productDetailsService.addProductIntoCart(returnObj).then((res) {
       print(res.body);
@@ -124,8 +125,7 @@ class SignIn extends State<SignInPage> {
           Navigator.popAndPushNamed(context, "/cart");
         } else {
           storeCartDetails = [];
-          Navigator.pushNamedAndRemoveUntil(
-              context, '/home', ModalRoute.withName('/home'));
+          Navigator.pushNamedAndRemoveUntil(context, '/home', ModalRoute.withName('/home'));
         }
       } else if (data == 'FAILED') {
         onLoading = false;
@@ -149,10 +149,8 @@ class SignIn extends State<SignInPage> {
       Map obj = {
         'productId': val['productId'],
         'brandId': val['brandId'] != null ? val['brandId'] : null,
-        'productTypeId':
-            val['productTypeId'] != null ? val['productTypeId'] : null,
-        'specificationId':
-            val['specificationId'] != null ? val['specificationId'] : null,
+        'productTypeId': val['productTypeId'] != null ? val['productTypeId'] : null,
+        'specificationId': val['specificationId'] != null ? val['specificationId'] : null,
         'priceId': val['priceId'] != null ? val['priceId'] : null,
         'quantity': val['quantity'] != null ? val['quantity'] : null,
         'isAppend': true
@@ -200,10 +198,7 @@ class SignIn extends State<SignInPage> {
                 FocusScope.of(context).requestFocus(FocusNode());
               },
               child: Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(cornextBackgroundImagePath),
-                        fit: BoxFit.cover)),
+                decoration: BoxDecoration(image: DecorationImage(image: AssetImage(cornextBackgroundImagePath), fit: BoxFit.cover)),
                 child: Center(
                     child: SingleChildScrollView(
                         child: Column(
@@ -211,8 +206,7 @@ class SignIn extends State<SignInPage> {
                             children: <Widget>[
                       Card(
                           margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0)),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
                           child: Form(
                               key: signInFormKey,
                               child: Container(
@@ -220,26 +214,22 @@ class SignIn extends State<SignInPage> {
                                   child: Column(children: <Widget>[
                                     TextFormField(
                                       cursorColor: mainAppColor,
-                                      validator: (value) => GlobalValidations()
-                                          .signInmobileValidations(value),
+                                      validator: (value) => GlobalValidations().signInmobileValidations(value),
                                       decoration: InputDecoration(
                                         prefixIcon: Icon(
                                           Icons.account_circle,
                                           color: mainAppColor,
                                         ),
                                         labelText: mobileNumberLabelName + " *",
-                                        labelStyle: AppFonts()
-                                            .getTextStyle('hint_style'),
+                                        labelStyle: AppFonts().getTextStyle('hint_style'),
                                         counterText: "",
                                         errorMaxLines: 3,
 
                                         // alignLabelWithHint: true,
                                         border: AppStyles().inputBorder,
                                         prefix: Text("+91 "),
-                                        contentPadding:
-                                            AppStyles().contentPaddingForInput,
-                                        focusedBorder:
-                                            AppStyles().focusedInputBorder,
+                                        contentPadding: AppStyles().contentPaddingForInput,
+                                        focusedBorder: AppStyles().focusedInputBorder,
                                       ),
                                       controller: mobileNoController,
                                       key: mobileNokey,
@@ -255,8 +245,7 @@ class SignIn extends State<SignInPage> {
                                       // controller: _emailController,
                                       // onChanged: (value) => _emailText = value,
                                       inputFormatters: [
-                                        WhitelistingTextInputFormatter
-                                            .digitsOnly
+                                        WhitelistingTextInputFormatter.digitsOnly
                                       ],
                                       keyboardType: TextInputType.number,
                                       maxLength: 10,
@@ -275,22 +264,17 @@ class SignIn extends State<SignInPage> {
                                             color: mainAppColor,
                                           ),
                                           labelText: passwordLabelName + " *",
-                                          labelStyle: AppFonts()
-                                              .getTextStyle('hint_style'),
+                                          labelStyle: AppFonts().getTextStyle('hint_style'),
                                           border: AppStyles().inputBorder,
                                           errorMaxLines: 3,
-                                          focusedBorder:
-                                              AppStyles().focusedInputBorder,
-                                          contentPadding: AppStyles()
-                                              .contentPaddingForInput,
+                                          focusedBorder: AppStyles().focusedInputBorder,
+                                          contentPadding: AppStyles().contentPaddingForInput,
                                           suffixIcon: showOrHidePassword
                                               ? IconButton(
-                                                  icon: Icon(
-                                                      Icons.visibility_off),
+                                                  icon: Icon(Icons.visibility_off),
                                                   onPressed: () {
                                                     setState(() {
-                                                      showOrHidePassword =
-                                                          !showOrHidePassword;
+                                                      showOrHidePassword = !showOrHidePassword;
                                                     });
                                                   },
                                                   color: mainAppColor,
@@ -299,15 +283,13 @@ class SignIn extends State<SignInPage> {
                                                   icon: Icon(Icons.visibility),
                                                   onPressed: () {
                                                     setState(() {
-                                                      showOrHidePassword =
-                                                          !showOrHidePassword;
+                                                      showOrHidePassword = !showOrHidePassword;
                                                     });
                                                   },
                                                   color: mainAppColor,
                                                 )),
                                       obscureText: showOrHidePassword,
-                                      validator: (value) => GlobalValidations()
-                                          .signInPasswordValidations(value),
+                                      validator: (value) => GlobalValidations().signInPasswordValidations(value),
                                       focusNode: passwordFocus,
                                       // autovalidate: true,
                                       // autocorrect: true,
@@ -322,14 +304,12 @@ class SignIn extends State<SignInPage> {
                                         child: InkWell(
                                           child: Text(
                                             "Forgot Password?",
-                                            style: appFonts.getTextStyle(
-                                                'skip_link_style'),
+                                            style: appFonts.getTextStyle('skip_link_style'),
                                           ),
                                           onTap: () {
                                             clearErrorMessages(scafflodkey);
                                             reset();
-                                            Navigator.pushNamed(
-                                                context, '/forgotpassword');
+                                            Navigator.pushNamed(context, '/forgotpassword');
                                           },
                                         )),
                                     Padding(
@@ -341,10 +321,7 @@ class SignIn extends State<SignInPage> {
                                             child: RaisedButton(
                                               color: mainAppColor,
 
-                                              shape: new RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      new BorderRadius.circular(
-                                                          0.0)),
+                                              shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(0.0)),
                                               onPressed: () {
                                                 // if (signInFormKey.currentState.validate()) {
                                                 //   signInFormKey.currentState.save();
@@ -411,30 +388,19 @@ class SignIn extends State<SignInPage> {
                                                 // });
 
                                                 setState(() {
-                                                  clearErrorMessages(
-                                                      scafflodkey);
-                                                  if (signInFormKey.currentState
-                                                      .validate()) {
+                                                  clearErrorMessages(scafflodkey);
+                                                  if (signInFormKey.currentState.validate()) {
                                                     onLoading = true;
                                                     // signInFormKey.currentState
                                                     //     .validate();
                                                     Map userDetails = new Map();
-                                                    userDetails['username'] =
-                                                        mobileNoController.text
-                                                            .trim();
-                                                    userDetails['password'] =
-                                                        passwordController.text
-                                                            .trim();
-                                                    SignInService()
-                                                        .validateUserCredentials(
-                                                            userDetails)
-                                                        .then((val) {
+                                                    userDetails['username'] = mobileNoController.text.trim();
+                                                    userDetails['password'] = passwordController.text.trim();
+                                                    SignInService().validateUserCredentials(userDetails).then((val) {
                                                       // print(val);
-                                                      http.Response response =
-                                                          val;
+                                                      http.Response response = val;
                                                       // print(response.body);
-                                                      final data = json.decode(
-                                                          response.body);
+                                                      final data = json.decode(response.body);
                                                       print(data);
                                                       // print(data['access_token']);
                                                       // if (data['access_token'] !=
@@ -445,87 +411,39 @@ class SignIn extends State<SignInPage> {
                                                       //       .pop();
                                                       //   reset();
                                                       // }
-                                                      if (data['access_token'] !=
-                                                              null &&
-                                                          data['access_token'] !=
-                                                              '') {
-                                                        signInDetails[
-                                                                'access_token'] =
-                                                            data[
-                                                                'access_token'];
-                                                        signInDetails[
-                                                                'refresh_token'] =
-                                                            data[
-                                                                'refresh_token'];
-                                                        signInDetails[
-                                                                'expires_in'] =
-                                                            data['expires_in'];
-                                                        signInDetails[
-                                                                'userName'] =
-                                                            data['userName'];
+                                                      if (data['access_token'] != null && data['access_token'] != '') {
+                                                        signInDetails['access_token'] = data['access_token'];
+                                                        signInDetails['refresh_token'] = data['refresh_token'];
+                                                        signInDetails['expires_in'] = data['expires_in'];
+                                                        signInDetails['userName'] = data['userName'];
                                                         print(data['emailId']);
                                                         print(data['mobileNo']);
-                                                        signInDetails[
-                                                                'userId'] =
-                                                            data['userId']
-                                                                .toString();
-                                                        signInDetails[
-                                                                'emailId'] =
-                                                            data['emailId'];
-                                                        signInDetails[
-                                                                'mobileNo'] =
-                                                            data['mobileNo'];
+                                                        signInDetails['userId'] = data['userId'].toString();
+                                                        signInDetails['emailId'] = data['emailId'];
+                                                        signInDetails['mobileNo'] = data['mobileNo'];
                                                         setState(() {});
-                                                        SharedPreferenceService()
-                                                            .setAccessToken(data[
-                                                                'access_token']);
-                                                        SharedPreferenceService()
-                                                            .setRefreshToken(data[
-                                                                'refresh_token']);
-                                                        SharedPreferenceService()
-                                                            .setUserName(data[
-                                                                'userName']);
-                                                        SharedPreferenceService()
-                                                            .setUserId(
-                                                                data['userId']);
-                                                        SharedPreferenceService()
-                                                            .setEmailId(data[
-                                                                'emailId']);
-                                                        SharedPreferenceService()
-                                                            .setMobileNo(data[
-                                                                'mobileNo']);
+                                                        SharedPreferenceService().setAccessToken(data['access_token']);
+                                                        SharedPreferenceService().setRefreshToken(data['refresh_token']);
+                                                        SharedPreferenceService().setUserName(data['userName']);
+                                                        SharedPreferenceService().setUserId(data['userId']);
+                                                        SharedPreferenceService().setEmailId(data['emailId']);
+                                                        SharedPreferenceService().setMobileNo(data['mobileNo']);
                                                         // final SharedPreferences prefs = SharedPreferences.getInstance();
                                                         // setAccessToken().
                                                         // if(prefs != null){
                                                         //   prefs.
                                                         // }
                                                         // setState(() {});
-                                                        if (storeCartDetails
-                                                                .length >
-                                                            0) {
+                                                        if (storeCartDetails.length > 0) {
                                                           addProductDetailsIntoCart();
                                                         } else {
                                                           setState(() {
                                                             onLoading = false;
                                                           });
-                                                          Navigator
-                                                              .pushNamedAndRemoveUntil(
-                                                                  context,
-                                                                  '/home',
-                                                                  ModalRoute
-                                                                      .withName(
-                                                                          '/home'));
+                                                          Navigator.pushNamedAndRemoveUntil(context, '/home', ModalRoute.withName('/home'));
                                                         }
-                                                      } else if (data[
-                                                                  'error'] !=
-                                                              null &&
-                                                          data['error'] ==
-                                                              'invalid_grant') {
-                                                        showErrorNotifications(
-                                                            ErrorMessages()
-                                                                .invalidUserDetailsError,
-                                                            context,
-                                                            scafflodkey);
+                                                      } else if (data['error'] != null && data['error'] == 'invalid_grant') {
+                                                        showErrorNotifications(ErrorMessages().invalidUserDetailsError, context, scafflodkey);
                                                         setState(() {
                                                           onLoading = false;
                                                         });
@@ -535,23 +453,13 @@ class SignIn extends State<SignInPage> {
                                                       setState(() {
                                                         onLoading = false;
                                                       });
-                                                      ApiErros()
-                                                          .apiErrorNotifications(
-                                                              err,
-                                                              context,
-                                                              '/login',
-                                                              scafflodkey);
+                                                      ApiErros().apiErrorNotifications(err, context, '/login', scafflodkey);
                                                     }).catchError((err) {
                                                       // print(err);
                                                       setState(() {
                                                         onLoading = false;
                                                       });
-                                                      ApiErros()
-                                                          .apiErrorNotifications(
-                                                              err,
-                                                              context,
-                                                              '/login',
-                                                              scafflodkey);
+                                                      ApiErros().apiErrorNotifications(err, context, '/login', scafflodkey);
                                                     });
                                                     // print(response);
                                                     // onSubmit();
@@ -570,18 +478,13 @@ class SignIn extends State<SignInPage> {
 
                                               // shape: ,
                                               // clipBehavior: Clip.antiAlias,
-                                              child: Text("Sign In",
-                                                  style: appFonts.getTextStyle(
-                                                      'button_text_color_white')),
+                                              child: Text(Languages.of(context).signIn, style: appFonts.getTextStyle('button_text_color_white')),
                                             ))
                                         : loadingButtonWidget(context),
                                     Container(
                                         width: 180,
                                         child: RaisedButton(
-                                          shape: new RoundedRectangleBorder(
-                                              borderRadius:
-                                                  new BorderRadius.circular(
-                                                      0.0)),
+                                          shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(0.0)),
                                           onPressed: () {
                                             // onSubmit();
                                             // if (_formKey.currentState.validate()) {
@@ -601,8 +504,7 @@ class SignIn extends State<SignInPage> {
                                             reset();
                                             editacconutScreen = false;
                                             enablefields = true;
-                                            Navigator.pushNamed(
-                                                context, '/registration');
+                                            Navigator.pushNamed(context, '/registration');
 
                                             // Navigator.pushNamed(context, '/videos');
 
@@ -616,9 +518,7 @@ class SignIn extends State<SignInPage> {
                                           color: mainYellowColor,
                                           // shape: ,
                                           // clipBehavior: Clip.antiAlias,
-                                          child: Text("New Customer?",
-                                              style: appFonts.getTextStyle(
-                                                  'button_text_color_black')),
+                                          child: Text("New Customer?", style: appFonts.getTextStyle('button_text_color_black')),
                                         ))
                                   ]))))
                     ]))),

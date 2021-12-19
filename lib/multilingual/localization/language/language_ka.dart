@@ -11,4 +11,6 @@ class LanguageKa extends Languages {
   String get logout => "ಲಾಗ್ ಔಟ್";
   String get signIn => "ಸೈನ್ ಇನ್";
   String get cont => "ಮುಂದುವರಿಸಿ";
+  String get signIn1 => "ಸೈನ್ ಇನ್";
+  String get newCustomer => "ಹೊಸ ಗ್ರಾಹಕ?";
 }

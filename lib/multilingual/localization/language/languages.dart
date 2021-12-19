@@ -14,4 +14,6 @@ abstract class Languages {
   String get logout;
   String get signIn;
   String get cont;
+  String get signIn1;
+  String get newCustomer;
 }

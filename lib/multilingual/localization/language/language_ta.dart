@@ -11,4 +11,6 @@ class LanguageTa extends Languages {
   String get logout => "வெளியேறு";
   String get signIn => "உள்நுழைவு";
   String get cont => "தொடரவும்";
+  String get signIn1 => "உள்நுழைவு";
+  String get newCustomer => "புது வாடிக்கையாளர்?";
 }

@@ -19,4 +19,6 @@ class LanguageBe extends Languages {
   String get signIn => "সাইন ইন করুন";
   @override
   String get cont => "চালিয়ে যান";
+  String get signIn1 => "সাইন ইন করুন";
+  String get newCustomer => "নতুন গ্রাহক?";
 }
