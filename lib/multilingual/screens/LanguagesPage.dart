@@ -119,14 +119,14 @@ class Choice {
 }
 
 const List<Choice> choices = const <Choice>[
-  const Choice(title: 'English'),
-  const Choice(title: 'हिन्दी'),
-  const Choice(title: 'தமிழ்'),
-  const Choice(title: 'తెలుగు'),
-  const Choice(title: 'ಕನ್ನಡ'),
-  const Choice(title: 'മലയാളം'),
-  const Choice(title: 'मराठी'),
-  const Choice(title: 'বাংলা'),
+  const Choice(title: 'English', color: Colors.red),
+  const Choice(title: 'हिन्दी', color: Colors.red),
+  const Choice(title: 'தமிழ்', color: Colors.red),
+  const Choice(title: 'తెలుగు', color: Colors.red),
+  const Choice(title: 'ಕನ್ನಡ', color: Colors.red),
+  const Choice(title: 'മലയാളം', color: Colors.red),
+  const Choice(title: 'मराठी', color: Colors.red),
+  const Choice(title: 'বাংলা', color: Colors.red),
 ];
 
 class SelectCard extends StatelessWidget {
@@ -138,7 +138,7 @@ class SelectCard extends StatelessWidget {
     return SizedBox(
         height: 100,
         child: Card(
-            color: Colors.orange,
+            color: choice.color,
             child: Center(
               child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
                 Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
