@@ -112,10 +112,11 @@ void func7() {}
 void func8() {}
 
 class Choice {
-  const Choice({this.title, this.icon, this.onClick});
+  const Choice({this.title, this.icon, this.onClick, this.color});
   final String title;
   final IconData icon;
   final Function onClick;
+  final Color color;
 }
 
 const List<Choice> choices = const <Choice>[
