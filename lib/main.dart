@@ -265,7 +265,6 @@ class MyAppState extends State<MyApp> {
                                 )),
                             InkWell(
                                 onTap: () => {
-                                      print("tapped"),
                                       changeLanguage(context, "mar"),
                                       AppLocalizationsDelegate(),
                                       setState(() {
@@ -273,7 +272,7 @@ class MyAppState extends State<MyApp> {
                                       })
                                     },
                                 child: Center(
-                                  child: SelectCard(choice: choices[6]),
+                                  child: SelectCard(choice: choices[7]),
                                 )),
                           ]))),
                   _isSelected
