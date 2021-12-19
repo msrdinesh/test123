@@ -10,4 +10,5 @@ class LanguageMar extends Languages {
   String get faqs => "सामान्य प्रश्न";
   String get logout => "बाहेर पडणे";
   String get signIn => "साइन इन";
+  String get cont => "सुरू";
 }

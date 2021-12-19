@@ -10,4 +10,5 @@ class LanguageTa extends Languages {
   String get faqs => "அடிக்கடி கேட்கப்படும் கேள்விகள்";
   String get logout => "வெளியேறு";
   String get signIn => "உள்நுழைவு";
+  String get cont => "தொடரவும்";
 }

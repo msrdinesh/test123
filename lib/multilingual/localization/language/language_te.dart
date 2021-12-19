@@ -10,4 +10,5 @@ class LanguageTe extends Languages {
   String get faqs => "తరచుగా అడిగే ప్రశ్నలు";
   String get logout => "లాగ్ అవుట్";
   String get signIn => "సైన్ ఇన్";
+  String get cont => "తెలుగులో కొనసాగించడానికి";
 }

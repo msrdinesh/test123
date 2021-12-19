@@ -10,4 +10,5 @@ class LanguageEn extends Languages {
   String get faqs => "FAQS";
   String get logout => "Logout";
   String get signIn => "Sign In";
+  String get cont => "Continue in English";
 }

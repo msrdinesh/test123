@@ -13,4 +13,5 @@ abstract class Languages {
   String get faqs;
   String get logout;
   String get signIn;
+  String get cont;
 }

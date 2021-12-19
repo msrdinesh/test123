@@ -10,4 +10,5 @@ class LanguageBe extends Languages {
   String get faqs => "প্রশ্নাবলী";
   String get logout => "প্রস্থান";
   String get signIn => "সাইন ইন করুন";
+  String get cont => "চালিয়ে যান";
 }
