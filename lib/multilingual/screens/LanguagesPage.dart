@@ -10,7 +10,7 @@ class LanguagesPage extends StatelessWidget {
           Text("Choose a language"),
           new Flexible(
               child: GridView.count(
-                  childAspectRatio: (1 / 2),
+                  childAspectRatio: (2 / 1),
                   crossAxisCount: 2,
                   crossAxisSpacing: 4.0,
                   mainAxisSpacing: 8.0,
