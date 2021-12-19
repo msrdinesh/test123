@@ -20,9 +20,6 @@ Future<Locale> getLocale() async {
 }
 
 Locale _locale(String languageCode) {
-  print("dinesh");
-  print(languageCode);
-  print(languageCode.isNotEmpty);
   return languageCode != null && languageCode.isNotEmpty ? Locale(languageCode, '') : null;
 }
 
