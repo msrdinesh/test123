@@ -518,7 +518,7 @@ class SignIn extends State<SignInPage> {
                                           color: mainYellowColor,
                                           // shape: ,
                                           // clipBehavior: Clip.antiAlias,
-                                          child: Text(Languages.of(context).newCustormer, style: appFonts.getTextStyle('button_text_color_black')),
+                                          child: Text(Languages.of(context).newCustomer, style: appFonts.getTextStyle('button_text_color_black')),
                                         ))
                                   ]))))
                     ]))),
