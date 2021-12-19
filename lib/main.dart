@@ -115,6 +115,7 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     func();
+    print("building material app");
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         locale: _locale,
