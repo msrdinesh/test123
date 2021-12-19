@@ -275,6 +275,17 @@ class MyAppState extends State<MyApp> {
                                 child: Center(
                                   child: SelectCard(choice: choices[7]),
                                 )),
+                            InkWell(
+                                onTap: () => {
+                                      changeLanguage(context, "xy"),
+                                      AppLocalizationsDelegate(),
+                                      setState(() {
+                                        _isSelected = true;
+                                      })
+                                    },
+                                child: Center(
+                                  child: SelectCard(choice: choices[8]),
+                                ))
                           ]))),
                   _isSelected
                       ? FlatButton(
