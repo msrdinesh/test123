@@ -155,7 +155,7 @@ class MyAppState extends State<MyApp> {
           child: child,
         );
       },
-      home: SignInPage(),
+      home: HomePage(),
 //         home: FutureBuilder(
 //             // stream: getLinksStream(),
 //             // initialData: getLinks(),
