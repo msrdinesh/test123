@@ -171,106 +171,107 @@ class MyAppState extends State<MyApp> {
           );
         },
         title: "Choose a language",
-        home: Scaffold(
-            body: Column(children: <Widget>[
-          Text("Choose a language"),
-          new Flexible(
-              child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: GridView.count(childAspectRatio: (2 / 1), crossAxisCount: 2, crossAxisSpacing: 4.0, mainAxisSpacing: 8.0, children: [
-                    InkWell(
-                        onTap: () => {
-                              changeLanguage(context, "en"),
-                              setState(() {
-                                _isSelected = true;
-                              })
-                            },
-                        child: Center(
-                          child: SelectCard(choice: choices[0]),
-                        )),
-                    InkWell(
-                        onTap: () => {
-                              changeLanguage(context, "hi"),
-                              setState(() {
-                                _isSelected = true;
-                              })
-                            },
-                        child: Center(
-                          child: SelectCard(choice: choices[1]),
-                        )),
-                    InkWell(
-                        onTap: () => {
-                              changeLanguage(context, "en"),
-                              setState(() {
-                                _isSelected = true;
-                              })
-                            },
-                        child: Center(
-                          child: SelectCard(choice: choices[2]),
-                        )),
-                    InkWell(
-                        onTap: () => {
-                              changeLanguage(context, "en"),
-                              setState(() {
-                                _isSelected = true;
-                              })
-                            },
-                        child: Center(
-                          child: SelectCard(choice: choices[3]),
-                        )),
-                    InkWell(
-                        onTap: () => {
-                              changeLanguage(context, "en"),
-                              setState(() {
-                                _isSelected = true;
-                              })
-                            },
-                        child: Center(
-                          child: SelectCard(choice: choices[4]),
-                        )),
-                    InkWell(
-                        onTap: () => {
-                              changeLanguage(context, "en"),
-                              setState(() {
-                                _isSelected = true;
-                              })
-                            },
-                        child: Center(
-                          child: SelectCard(choice: choices[5]),
-                        )),
-                    InkWell(
-                        onTap: () => {
-                              changeLanguage(context, "en"),
-                              setState(() {
-                                _isSelected = true;
-                              })
-                            },
-                        child: Center(
-                          child: SelectCard(choice: choices[6]),
-                        )),
-                    InkWell(
-                        onTap: () => {
-                              changeLanguage(context, "en"),
-                              setState(() {
-                                _isSelected = true;
-                              })
-                            },
-                        child: Center(
-                          child: SelectCard(choice: choices[7]),
-                        ))
-                  ]))),
-          _isSelected
-              ? FlatButton(
-                  onPressed: () {
-                    print("pressed button");
-                    Navigator.pushNamed(context, '/login');
-                  },
-                  color: Colors.yellow,
-                  minWidth: 340.0,
-                  child: Text('Contineu in English'))
-              : SizedBox(height: 0, width: 0),
-          SizedBox(height: 210)
-        ]))
+        home: Builder(
+            builder: (context) => Scaffold(
+                    body: Column(children: <Widget>[
+                  Text("Choose a language"),
+                  new Flexible(
+                      child: Padding(
+                          padding: EdgeInsets.all(10),
+                          child: GridView.count(childAspectRatio: (2 / 1), crossAxisCount: 2, crossAxisSpacing: 4.0, mainAxisSpacing: 8.0, children: [
+                            InkWell(
+                                onTap: () => {
+                                      changeLanguage(context, "en"),
+                                      setState(() {
+                                        _isSelected = true;
+                                      })
+                                    },
+                                child: Center(
+                                  child: SelectCard(choice: choices[0]),
+                                )),
+                            InkWell(
+                                onTap: () => {
+                                      changeLanguage(context, "hi"),
+                                      setState(() {
+                                        _isSelected = true;
+                                      })
+                                    },
+                                child: Center(
+                                  child: SelectCard(choice: choices[1]),
+                                )),
+                            InkWell(
+                                onTap: () => {
+                                      changeLanguage(context, "en"),
+                                      setState(() {
+                                        _isSelected = true;
+                                      })
+                                    },
+                                child: Center(
+                                  child: SelectCard(choice: choices[2]),
+                                )),
+                            InkWell(
+                                onTap: () => {
+                                      changeLanguage(context, "en"),
+                                      setState(() {
+                                        _isSelected = true;
+                                      })
+                                    },
+                                child: Center(
+                                  child: SelectCard(choice: choices[3]),
+                                )),
+                            InkWell(
+                                onTap: () => {
+                                      changeLanguage(context, "en"),
+                                      setState(() {
+                                        _isSelected = true;
+                                      })
+                                    },
+                                child: Center(
+                                  child: SelectCard(choice: choices[4]),
+                                )),
+                            InkWell(
+                                onTap: () => {
+                                      changeLanguage(context, "en"),
+                                      setState(() {
+                                        _isSelected = true;
+                                      })
+                                    },
+                                child: Center(
+                                  child: SelectCard(choice: choices[5]),
+                                )),
+                            InkWell(
+                                onTap: () => {
+                                      changeLanguage(context, "en"),
+                                      setState(() {
+                                        _isSelected = true;
+                                      })
+                                    },
+                                child: Center(
+                                  child: SelectCard(choice: choices[6]),
+                                )),
+                            InkWell(
+                                onTap: () => {
+                                      changeLanguage(context, "en"),
+                                      setState(() {
+                                        _isSelected = true;
+                                      })
+                                    },
+                                child: Center(
+                                  child: SelectCard(choice: choices[7]),
+                                ))
+                          ]))),
+                  _isSelected
+                      ? FlatButton(
+                          onPressed: () {
+                            print("pressed button");
+                            Navigator.pushNamed(context, '/login');
+                          },
+                          color: Colors.yellow,
+                          minWidth: 340.0,
+                          child: Text('Contineu in English'))
+                      : SizedBox(height: 0, width: 0),
+                  SizedBox(height: 210)
+                ])))
         // home: language == null ? LanguagePage() : HomePage(),
 //         home: FutureBuilder(
 //             // stream: getLinksStream(),
