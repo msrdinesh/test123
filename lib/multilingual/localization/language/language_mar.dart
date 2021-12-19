@@ -2,7 +2,7 @@ import 'languages.dart';
 
 class LanguageMar extends Languages {
   @override
-  String get home => "വീട്";
+  String get home => "मुख्यपृष्ठ";
   String get profile => "प्रोफाइल";
   String get subscriptions => "सदस्यता";
   String get yourOrders => "तुमच्या ऑर्डर";
