@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class LanguagePage extends StatefulWidget {
   @override
-  State<LanguagePageState> createState() => LanguagePageState();
+  LanguagePageState createState() => LanguagePageState();
 }
 
 class LanguagePageState extends State<LanguagePage> {
