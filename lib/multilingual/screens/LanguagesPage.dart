@@ -104,7 +104,7 @@ class LanguagePageState extends State<LanguagePage> {
                         ))
                   ]))),
           _isSelected ? FlatButton(onPressed: () {}, color: Colors.yellow, minWidth: 340.0, child: Text('Contineu in English')) : SizedBox(height: 0, width: 0),
-          SizedBox(height: 230)
+          SizedBox(height: 210)
         ])));
   }
 }
