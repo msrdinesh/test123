@@ -126,7 +126,7 @@ class MyAppState extends State<MyApp> {
           Locale('ta', ''),
           Locale('ka', ''),
           Locale('mal', ''),
-          Locale('mar', ''),
+          Locale('max', ''),
           Locale('be', ''),
           Locale('xy', '')
         ],
@@ -256,7 +256,7 @@ class MyAppState extends State<MyApp> {
                                 )),
                             InkWell(
                                 onTap: () => {
-                                      changeLanguage(context, 'mar'),
+                                      changeLanguage(context, 'max'),
                                       AppLocalizationsDelegate(),
                                       setState(() {
                                         _isSelected = true;
