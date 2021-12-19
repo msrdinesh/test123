@@ -108,7 +108,7 @@ class MyAppState extends State<MyApp> {
 
   void func() async {
     var prefManager = await SharedPreferences.getInstance();
-    await prefManager.clear();
+    // await prefManager.clear();
     language = prefManager.getString("SelectedLanguageCode");
   }
 
@@ -137,7 +137,6 @@ class MyAppState extends State<MyApp> {
           }
           return supportedLocales?.first;
         },
-        debugShowCheckedModeBanner: false,
         theme: ThemeData(
             // This is the theme of your application.
             //
