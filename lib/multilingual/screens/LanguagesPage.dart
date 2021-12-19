@@ -31,16 +31,16 @@ class LanguagesPage extends StatelessWidget {
 }
 
 void func1(context) {
-  changeLanguage(context, "en");
+  // changeLanguage(context, "en");
 }
 
-void func2(context) {}
-void func3(context) {}
-void func4(context) {}
-void func5(context) {}
-void func6(context) {}
-void func7(context) {}
-void func8(context) {}
+void func2() {}
+void func3() {}
+void func4() {}
+void func5() {}
+void func6() {}
+void func7() {}
+void func8() {}
 
 class Choice {
   const Choice({this.title, this.icon, this.onClick});
