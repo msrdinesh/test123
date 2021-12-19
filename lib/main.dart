@@ -39,7 +39,7 @@ class MyHttpOverrides extends HttpOverrides {
 
 class MyApp extends StatefulWidget {
   static void setLocale(BuildContext context, Locale newLocale) {
-    var state = context.findAncestorStateOfType<_MyAppState>();
+    var state = context.findAncestorStateOfType<MyAppState>();
     state.setLocale(newLocale);
   }
 
