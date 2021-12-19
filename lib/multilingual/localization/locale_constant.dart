@@ -25,5 +25,5 @@ Locale _locale(String languageCode) {
 
 void changeLanguage(BuildContext context, String selectedLanguageCode) async {
   var _locale = await setLocale(selectedLanguageCode);
-  MyAppState.setLocale(context, _locale);
+  MyApp.setLocale(context, _locale);
 }
