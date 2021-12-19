@@ -4,6 +4,7 @@ class LanguagesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        title: "Choose a language",
         home: Scaffold(
             appBar: AppBar(
               title: Text("Flutter GridView Demo"),
