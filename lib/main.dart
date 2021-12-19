@@ -100,6 +100,25 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        supportedLocales: [
+          Locale('en', ''),
+          Locale('ar', ''),
+          Locale('hi', '')
+        ],
+        localizationsDelegates: [
+          AppLocalizationsDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        localeResolutionCallback: (locale, supportedLocales) {
+          for (var supportedLocale in supportedLocales) {
+            if (supportedLocale?.languageCode == locale?.languageCode && supportedLocale?.countryCode == locale?.countryCode) {
+              return supportedLocale;
+            }
+          }
+          return supportedLocales?.first;
+        },
         debugShowCheckedModeBanner: false,
         title: 'FeedNext',
         theme: ThemeData(
