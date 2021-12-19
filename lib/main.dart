@@ -115,61 +115,61 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     func();
     return MaterialApp(
-      supportedLocales: [
-        Locale('en', ''),
-        Locale('ar', ''),
-        Locale('hi', '')
-      ],
-      localizationsDelegates: [
-        AppLocalizationsDelegate(),
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      localeResolutionCallback: (locale, supportedLocales) {
-        for (var supportedLocale in supportedLocales) {
-          if (supportedLocale?.languageCode == locale?.languageCode && supportedLocale?.countryCode == locale?.countryCode) {
-            return supportedLocale;
+        supportedLocales: [
+          Locale('en', ''),
+          Locale('ar', ''),
+          Locale('hi', '')
+        ],
+        localizationsDelegates: [
+          AppLocalizationsDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        localeResolutionCallback: (locale, supportedLocales) {
+          for (var supportedLocale in supportedLocales) {
+            if (supportedLocale?.languageCode == locale?.languageCode && supportedLocale?.countryCode == locale?.countryCode) {
+              return supportedLocale;
+            }
           }
-        }
-        return supportedLocales?.first;
-      },
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or simply save your changes to "hot reload" in a Flutter IDE).
-          // Notice that the counter didn't reset back to zero; the application
-          // is not restarted.
-          primarySwatch: Colors.green,
-          primaryColor: mainAppColor,
-          cursorColor: mainAppColor,
-          fontFamily: 'Raleway',
-          textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Raleway')
-          // appBarTheme: AppBarTheme(elevation: 5),
-          // canvasColor: mainAppColor
-          // typography: Typography.material2018(),
-          // textSelectionHandleColor: Colors.transparent,
-          // fontFamily: 'Roboto_Condensed',
-          // appBarTheme: AppBarTheme(elevation: 1000)
-          // fontFamily: 'Roboto'
-          ),
-      // initialRoute: '/',
-      onGenerateRoute: configureRoutes(),
-      builder: (BuildContext context, Widget child) {
-        final MediaQueryData data = MediaQuery.of(context);
-        return MediaQuery(
-          data: data.copyWith(
-            textScaleFactor: 1.0,
-          ),
-          child: child,
-        );
-      },
-      , title: "Choose a language",
+          return supportedLocales?.first;
+        },
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+            // This is the theme of your application.
+            //
+            // Try running your application with "flutter run". You'll see the
+            // application has a blue toolbar. Then, without quitting the app, try
+            // changing the primarySwatch below to Colors.green and then invoke
+            // "hot reload" (press "r" in the console where you ran "flutter run",
+            // or simply save your changes to "hot reload" in a Flutter IDE).
+            // Notice that the counter didn't reset back to zero; the application
+            // is not restarted.
+            primarySwatch: Colors.green,
+            primaryColor: mainAppColor,
+            cursorColor: mainAppColor,
+            fontFamily: 'Raleway',
+            textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Raleway')
+            // appBarTheme: AppBarTheme(elevation: 5),
+            // canvasColor: mainAppColor
+            // typography: Typography.material2018(),
+            // textSelectionHandleColor: Colors.transparent,
+            // fontFamily: 'Roboto_Condensed',
+            // appBarTheme: AppBarTheme(elevation: 1000)
+            // fontFamily: 'Roboto'
+            ),
+        // initialRoute: '/',
+        onGenerateRoute: configureRoutes(),
+        builder: (BuildContext context, Widget child) {
+          final MediaQueryData data = MediaQuery.of(context);
+          return MediaQuery(
+            data: data.copyWith(
+              textScaleFactor: 1.0,
+            ),
+            child: child,
+          );
+        },
+        title: "Choose a language",
         home: Scaffold(
             body: Column(children: <Widget>[
           Text("Choose a language"),
@@ -269,7 +269,7 @@ class MyAppState extends State<MyApp> {
               : SizedBox(height: 0, width: 0),
           SizedBox(height: 210)
         ]))
-      // home: language == null ? LanguagePage() : HomePage(),
+        // home: language == null ? LanguagePage() : HomePage(),
 //         home: FutureBuilder(
 //             // stream: getLinksStream(),
 //             // initialData: getLinks(),
@@ -400,7 +400,7 @@ class MyAppState extends State<MyApp> {
 //                 return HomePage();
 //               }
 //             })
-      // home: FormDetailsPage()
-    );
+        // home: FormDetailsPage()
+        );
   }
 }
