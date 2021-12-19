@@ -10,6 +10,7 @@ class LanguagePage extends StatefulWidget {
 }
 
 class LanguagePageState extends State<LanguagePage> {
+  bool _isSelcted = false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,8 +25,9 @@ class LanguagePageState extends State<LanguagePage> {
                     InkWell(
                         onTap: () => {
                               changeLanguage(context, "en"),
-                              print("pressed"),
-                              func()
+                              setState(() {
+                                _isSelected = true;
+                              })
                             },
                         child: Center(
                           child: SelectCard(choice: choices[0]),
@@ -33,8 +35,9 @@ class LanguagePageState extends State<LanguagePage> {
                     InkWell(
                         onTap: () => {
                               changeLanguage(context, "en"),
-                              print("pressed"),
-                              func()
+                              setState(() {
+                                _isSelected = true;
+                              })
                             },
                         child: Center(
                           child: SelectCard(choice: choices[1]),
@@ -42,8 +45,9 @@ class LanguagePageState extends State<LanguagePage> {
                     InkWell(
                         onTap: () => {
                               changeLanguage(context, "en"),
-                              print("pressed"),
-                              func()
+                              setState(() {
+                                _isSelected = true;
+                              })
                             },
                         child: Center(
                           child: SelectCard(choice: choices[2]),
@@ -51,8 +55,9 @@ class LanguagePageState extends State<LanguagePage> {
                     InkWell(
                         onTap: () => {
                               changeLanguage(context, "en"),
-                              print("pressed"),
-                              func()
+                              setState(() {
+                                _isSelected = true;
+                              })
                             },
                         child: Center(
                           child: SelectCard(choice: choices[3]),
@@ -60,8 +65,9 @@ class LanguagePageState extends State<LanguagePage> {
                     InkWell(
                         onTap: () => {
                               changeLanguage(context, "en"),
-                              print("pressed"),
-                              func()
+                              setState(() {
+                                _isSelected = true;
+                              })
                             },
                         child: Center(
                           child: SelectCard(choice: choices[4]),
@@ -69,8 +75,9 @@ class LanguagePageState extends State<LanguagePage> {
                     InkWell(
                         onTap: () => {
                               changeLanguage(context, "en"),
-                              print("pressed"),
-                              func()
+                              setState(() {
+                                _isSelected = true;
+                              })
                             },
                         child: Center(
                           child: SelectCard(choice: choices[5]),
@@ -78,8 +85,9 @@ class LanguagePageState extends State<LanguagePage> {
                     InkWell(
                         onTap: () => {
                               changeLanguage(context, "en"),
-                              print("pressed"),
-                              func()
+                              setState(() {
+                                _isSelected = true;
+                              })
                             },
                         child: Center(
                           child: SelectCard(choice: choices[6]),
@@ -87,8 +95,9 @@ class LanguagePageState extends State<LanguagePage> {
                     InkWell(
                         onTap: () => {
                               changeLanguage(context, "en"),
-                              print("pressed"),
-                              func()
+                              setState(() {
+                                _isSelected = true;
+                              })
                             },
                         child: Center(
                           child: SelectCard(choice: choices[7]),
