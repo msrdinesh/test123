@@ -1,4 +1,4 @@
-import 'package:cornext_mobile/multilingual/localization/language/locale_constant.dart';
+import 'package:cornext_mobile/multilingual/localization/locale_constant.dart';
 
 class LanguageData {
   final String flag;
