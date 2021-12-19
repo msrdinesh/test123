@@ -131,6 +131,7 @@ class MyAppState extends State<MyApp> {
           Locale('xy', '')
         ],
         localizationsDelegates: [
+          CyMaterialLocalizations.delegate,
           AppLocalizationsDelegate(),
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
