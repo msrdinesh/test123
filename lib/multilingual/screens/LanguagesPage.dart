@@ -7,6 +7,7 @@ class LanguagesPage extends StatelessWidget {
         title: "Choose a language",
         home: Scaffold(
             body: Column(children: <Widget>[
+          Text("Choose a language"),
           new Flexible(
               child: GridView.count(
                   crossAxisCount: 2,
