@@ -18,6 +18,7 @@ import 'package:cornext_mobile/components/widgets/appbarwidget.dart';
 import 'package:cornext_mobile/screens/cart/cartscreen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:cornext_mobile/multilingual/localization/locale_constant.dart';
+import 'package:cornext_mobile/multilingual/screens/LanguagesPage.dart;
 import 'package:cornext_mobile/multilingual/localization/localizations_delegate.dart';
 import 'dart:convert';
 // import 'package:connectivity/connectivity.dart';
@@ -155,7 +156,7 @@ class MyAppState extends State<MyApp> {
           child: child,
         );
       },
-      home: HomePage(),
+      home: getLocale()==null?LanguagesPage():HomePage(),
 //         home: FutureBuilder(
 //             // stream: getLinksStream(),
 //             // initialData: getLinks(),

@@ -15,12 +15,12 @@ Future<Locale> setLocale(String languageCode) async {
 
 Future<Locale> getLocale() async {
   SharedPreferences _prefs = await SharedPreferences.getInstance();
-  String languageCode = _prefs.getString(prefSelectedLanguageCode) ?? "en";
+  String languageCode = _prefs.getString(prefSelectedLanguageCode) ?? null;
   return _locale(languageCode);
 }
 
 Locale _locale(String languageCode) {
-  return languageCode != null && languageCode.isNotEmpty ? Locale(languageCode, '') : Locale('en', '');
+  return languageCode != null && languageCode.isNotEmpty ? Locale(languageCode, '') : null;
 }
 
 void changeLanguage(BuildContext context, String selectedLanguageCode) async {
