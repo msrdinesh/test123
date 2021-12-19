@@ -17,29 +17,61 @@ class LanguagesPage extends StatelessWidget {
                       crossAxisSpacing: 4.0,
                       mainAxisSpacing: 8.0,
                       children: List.generate(choices.length, (index) {
-                        return Center(
+                        return 
+                         new InkWell(
+    onTap: () {
+      print("tapped");
+    },
+    child:
+                        
+                        Center(
                           child: SelectCard(choice: choices[index]),
                         );
-                      }))))
+                      })))))
         ])));
   }
 }
 
+void func1(){
+
+}
+void func2(){
+  
+}
+void func3(){
+  
+}
+void func4(){
+  
+}
+void func5(){
+  
+}
+void func6(){
+  
+}
+void func7(){
+  
+}
+void func8(){
+  
+}
 class Choice {
-  const Choice({this.title, this.icon});
+  const Choice({this.title, this.icon,this.onClick});
   final String title;
   final IconData icon;
+  final Function onClick;
 }
 
 const List<Choice> choices = const <Choice>[
-  const Choice(title: 'Home', icon: Icons.home),
-  const Choice(title: 'Contact', icon: Icons.contacts),
-  const Choice(title: 'Map', icon: Icons.map),
-  const Choice(title: 'Phone', icon: Icons.phone),
-  const Choice(title: 'Camera', icon: Icons.camera_alt),
-  const Choice(title: 'Setting', icon: Icons.settings),
-  const Choice(title: 'Album', icon: Icons.photo_album),
-  const Choice(title: 'WiFi', icon: Icons.wifi),
+  const Choice(title: 'Home', icon: Icons.home,onClick:func1),
+  const Choice(title: 'Contact', icon: Icons.contacts,onClick:func2),
+  const Choice(title: 'Map', icon: Icons.map,onClick: func3),
+  const Choice(title: 'Phone', icon: Icons.phone,onClick:func4),
+  const Choice(title: 'Camera', icon: Icons.camera_alt,onClick:func5),
+  const Choice(title: 'Setting', icon: Icons.settings,onClick:func6),
+  const Choice(title: 'Album', icon: Icons.photo_album,onClick:func7),
+  const Choice(title: 'WiFi', icon: Icons.wifi,onClick:func8),
 ];
 
 class SelectCard extends StatelessWidget {
