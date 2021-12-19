@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:cornext_mobile/multilingual/localization/language/languages.dart';
+import 'package:cornext_mobile/multilingual/localization/locale_constant.dart';
+import 'package:cornext_mobile/multilingual/model/language_data.dart';
 
 class LanguagesPage extends StatelessWidget {
   @override
@@ -18,7 +21,7 @@ class LanguagesPage extends StatelessWidget {
                       mainAxisSpacing: 8.0,
                       children: List.generate(choices.length, (index) {
                         return InkWell(
-                            onTap: choices[index].onClick,
+                            onTap: choices[index].onClick(context),
                             child: Center(
                               child: SelectCard(choice: choices[index]),
                             ));
@@ -27,17 +30,17 @@ class LanguagesPage extends StatelessWidget {
   }
 }
 
-void func1() {
-  print("pressed");
+void func1(context) {
+  changeLanguage(context, "en");
 }
 
-void func2() {}
-void func3() {}
-void func4() {}
-void func5() {}
-void func6() {}
-void func7() {}
-void func8() {}
+void func2(context) {}
+void func3(context) {}
+void func4(context) {}
+void func5(context) {}
+void func6(context) {}
+void func7(context) {}
+void func8(context) {}
 
 class Choice {
   const Choice({this.title, this.icon, this.onClick});
