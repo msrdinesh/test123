@@ -417,7 +417,7 @@ Widget appBarDrawer(context, state, GlobalKey<ScaffoldState> scaffoldKey) {
         ),
         Divider(),
         ListTile(
-          title: Text("Profile"),
+          title: Text(Languages.of(context).profile),
           leading: Icon(Icons.supervised_user_circle),
           onTap: () {
             if (signInDetails['access_token'] == null) {
@@ -432,7 +432,7 @@ Widget appBarDrawer(context, state, GlobalKey<ScaffoldState> scaffoldKey) {
         ),
         Divider(),
         ListTile(
-          title: Text("Subscriptions"),
+          title: Text(Languages.of(context).subscriptions),
           leading: Icon(Icons.subscriptions),
           onTap: () {
             if (signInDetails['access_token'] == null) {
@@ -444,7 +444,7 @@ Widget appBarDrawer(context, state, GlobalKey<ScaffoldState> scaffoldKey) {
         ),
         Divider(),
         ListTile(
-          title: Text("Your Orders"),
+          title: Text(Languages.of(context).yourOrders),
           leading: Icon(Icons.shopping_basket),
           onTap: () {
             if (signInDetails['access_token'] == null) {
@@ -456,7 +456,7 @@ Widget appBarDrawer(context, state, GlobalKey<ScaffoldState> scaffoldKey) {
         ),
         Divider(),
         ListTile(
-          title: Text("Delivery Address(es)"),
+          title: Text(Languages.of(context).deliveryAddress),
           leading: Icon(Icons.library_books),
           onTap: () {
             if (signInDetails['access_token'] == null) {
@@ -483,7 +483,7 @@ Widget appBarDrawer(context, state, GlobalKey<ScaffoldState> scaffoldKey) {
         // ),
         // Divider(),
         ListTile(
-          title: Text("FAQS"),
+          title: Text(Languages.of(context).faqs),
           leading: Icon(Icons.help),
           onTap: () {
             // if (signInDeatils['access_token'] == null) {
@@ -497,7 +497,7 @@ Widget appBarDrawer(context, state, GlobalKey<ScaffoldState> scaffoldKey) {
         Divider(),
         signInDetails['access_token'] != null
             ? ListTile(
-                title: Text("Logout"),
+                title: Text(Languages.of(context).logout),
                 leading: Icon(Icons.exit_to_app),
                 onTap: () {
                   // Navigator.pushNamed(context, "/login");

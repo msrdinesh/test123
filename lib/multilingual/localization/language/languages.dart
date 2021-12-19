@@ -5,5 +5,10 @@ abstract class Languages {
     return Localizations.of<Languages>(context, Languages);
   }
 
-  String get home;
+  String get profile;
+  String get subscriptions;
+  String get yourOrders;
+  String get deliveryAddress;
+  String get faqs;
+  String get logout;
 }
