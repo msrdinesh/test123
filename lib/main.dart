@@ -62,10 +62,11 @@ class MyAppState extends State<MyApp> {
       _locale = locale;
     });
   }
+
   @override
   void initState() {
-  func()
-}
+    func();
+  }
 
   final HomeScreenServices homeScreenServices = HomeScreenServices();
 
