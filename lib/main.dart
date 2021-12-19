@@ -102,6 +102,8 @@ class MyAppState extends State<MyApp> {
   void func() async {
     var prefManager = await SharedPreferences.getInstance();
     await prefManager.clear();
+    print('dinnu I am here');
+    print(getLocale());
   }
 
   @override
