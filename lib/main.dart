@@ -56,7 +56,6 @@ class MyAppState extends State<MyApp> {
   //   return '';
   // }
   String language;
-  SharedPreferences _prefs = await SharedPreferences.getInstance();
   Locale _locale;
   void setLocale(Locale locale) {
     setState(() {
@@ -170,7 +169,7 @@ class MyAppState extends State<MyApp> {
           child: child,
         );
       },
-      home: _prefs.getString("SelectedLanguageCode") == null ? LanguagesPage() : HomePage(),
+      home: language == null ? LanguagesPage() : HomePage(),
 //         home: FutureBuilder(
 //             // stream: getLinksStream(),
 //             // initialData: getLinks(),
