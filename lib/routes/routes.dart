@@ -32,12 +32,16 @@ import 'package:cornext_mobile/screens/errorscreen/paymentfailederrorscreen.dart
 import 'package:cornext_mobile/screens/errorscreen/ordercreationfailedscreen.dart';
 import 'package:cornext_mobile/screens/faqs/faqsscreen.dart';
 import 'package:cornext_mobile/screens/notificationscreens/appudatescreen.dart';
+import 'package:cornext_mobile/multilingual/screens/home.dart';
 
 RouteFactory configureRoutes() {
   return (settings) {
     // final val = settings.name;
     Widget screen;
     switch (settings.name) {
+      case '/home2':
+        screen = Home();
+        break;
       case '/login':
         screen = SignInPage();
         break;

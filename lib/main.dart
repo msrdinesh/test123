@@ -80,7 +80,7 @@ class MyAppState extends State<MyApp> {
         //   }
         // });
         SharedPreferenceService().removeUserInfo();
-        Navigator.pushNamed(context, '/login');
+        Navigator.pushNamed(context, '/home2');
       }
     }, onError: (err) {
       // ApiErros().apiErrorNotifications(err, context, '/home',);
