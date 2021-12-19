@@ -103,7 +103,7 @@ class LanguagePageState extends State<LanguagePage> {
                           child: SelectCard(choice: choices[7]),
                         ))
                   ]))),
-          _isSelected ? FlatButton(onPressed: () {}, color: Colors.yellow, minWidth: 300.0, child: Text('Contineu in English')) : SizedBox(height: 0, width: 0),
+          _isSelected ? FlatButton(onPressed: () {}, color: Colors.yellow, minWidth: 350.0, child: Text('Contineu in English')) : SizedBox(height: 0, width: 0),
           SizedBox(height: 230)
         ])));
   }
