@@ -56,14 +56,14 @@ class Choice {
 }
 
 const List<Choice> choices = const <Choice>[
-  const Choice(title: 'English', onClick: func1),
-  const Choice(title: 'Contact', icon: Icons.contacts, onClick: func2),
-  const Choice(title: 'Map', icon: Icons.map, onClick: func3),
-  const Choice(title: 'Phone', icon: Icons.phone, onClick: func4),
-  const Choice(title: 'Camera', icon: Icons.camera_alt, onClick: func5),
-  const Choice(title: 'Setting', icon: Icons.settings, onClick: func6),
-  const Choice(title: 'Album', icon: Icons.photo_album, onClick: func7),
-  const Choice(title: 'WiFi', icon: Icons.wifi, onClick: func8),
+  const Choice(title: 'English'),
+  const Choice(title: 'हिन्दी'),
+  const Choice(title: 'தமிழ்'),
+  const Choice(title: 'తెలుగు'),
+  const Choice(title: 'ಕನ್ನಡ'),
+  const Choice(title: 'മലയാളം'),
+  const Choice(title: 'मराठी'),
+  const Choice(title: 'বাংলা'),
 ];
 
 class SelectCard extends StatelessWidget {
