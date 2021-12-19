@@ -109,7 +109,7 @@ class MyAppState extends State<MyApp> {
     var prefManager = await SharedPreferences.getInstance();
     await prefManager.clear();
     print(prefManager.getString("SelectedLanguageCode"));
-    language = await prefManager.getString("SelectedLanguageCode");
+    language = prefManager.getString("SelectedLanguageCode");
   }
 
   @override
