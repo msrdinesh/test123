@@ -280,6 +280,7 @@ class MyAppState extends State<MyApp> {
                       ? FlatButton(
                           onPressed: () {
                             print("pressed button");
+                            print("pushed home");
                             Navigator.pushNamed(context, '/home');
                           },
                           color: Colors.yellow,
