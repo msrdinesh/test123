@@ -166,7 +166,7 @@ class MyAppState extends State<MyApp> {
           child: child,
         );
       },
-      home: getLocale() == null ? LanguagesPage() : HomePage(),
+      home: _prefs.getString("SelectedLanguageCode") == null ? LanguagesPage() : HomePage(),
 //         home: FutureBuilder(
 //             // stream: getLinksStream(),
 //             // initialData: getLinks(),
