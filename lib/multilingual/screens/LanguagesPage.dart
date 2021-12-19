@@ -120,7 +120,7 @@ class Choice {
 }
 
 const List<Choice> choices = const <Choice>[
-  const Choice(title: 'English', color: Colors.red),
+  const Choice(title: 'English', color: Color(oxffADD8E6)),
   const Choice(title: 'हिन्दी', color: Colors.red),
   const Choice(title: 'தமிழ்', color: Colors.red),
   const Choice(title: 'తెలుగు', color: Colors.red),
