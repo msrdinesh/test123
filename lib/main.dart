@@ -262,6 +262,7 @@ class MyAppState extends State<MyApp> {
           _isSelected
               ? FlatButton(
                   onPressed: () {
+                    print("pressed button");
                     Navigator.pushNamed(context, '/login');
                   },
                   color: Colors.yellow,
