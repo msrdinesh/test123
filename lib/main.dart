@@ -261,7 +261,7 @@ class MyAppState extends State<MyApp> {
                                       })
                                     },
                                 child: Center(
-                                  child: SelectCard(choice: choices[7]),
+                                  child: SelectCard(choice: choices[6]),
                                 )),
                             InkWell(
                                 onTap: () => {

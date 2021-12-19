@@ -110,7 +110,7 @@ class LanguagePageState extends State<LanguagePage> {
                   },
                   color: Colors.yellow,
                   minWidth: 340.0,
-                  child: Text('Contineu in English'))
+                  child: Text('Continue in English'))
               : SizedBox(height: 0, width: 0),
           SizedBox(height: 210)
         ])));
