@@ -58,6 +58,7 @@ class MyAppState extends State<MyApp> {
   // }
   bool _isSelected = false;
   String language;
+  String access_token;
   Locale _locale;
   void setLocale(Locale locale) {
     setState(() {
@@ -111,6 +112,7 @@ class MyAppState extends State<MyApp> {
     var prefManager = await SharedPreferences.getInstance();
     // await prefManager.clear();
     language = prefManager.getString("SelectedLanguageCode");
+    access_token = prefManager.getString("access_token");
   }
 
   @override
@@ -282,7 +284,11 @@ class MyAppState extends State<MyApp> {
                               onPressed: () {
                                 print("pressed button");
                                 print("pushed home");
-                                Navigator.pushNamed(context, '/login');
+                                if (access_token == null) {
+                                  Navigator.pushNamed(context, '/login');
+                                } else {
+                                  Navigator.pushNamed(context, '/home');
+                                }
                               },
                               color: Colors.yellow,
                               minWidth: 340.0,
