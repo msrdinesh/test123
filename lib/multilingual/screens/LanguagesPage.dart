@@ -34,7 +34,7 @@ class LanguagePageState extends State<LanguagePage> {
                         )),
                     InkWell(
                         onTap: () => {
-                              changeLanguage(context, "en"),
+                              changeLanguage(context, "hi"),
                               setState(() {
                                 _isSelected = true;
                               })
