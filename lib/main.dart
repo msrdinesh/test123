@@ -55,6 +55,7 @@ class MyAppState extends State<MyApp> {
   //   data = await getInitialLink();
   //   return '';
   // }
+  bool _isSelected;
   String language;
   Locale _locale;
   void setLocale(Locale locale) {
