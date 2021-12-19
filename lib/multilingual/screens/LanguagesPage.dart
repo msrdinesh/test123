@@ -103,12 +103,12 @@ class LanguagePageState extends State<LanguagePage> {
                           child: SelectCard(choice: choices[7]),
                         ))
                   ]))),
-          TextButton(
+          _isSelcted?TextButton(
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
             ),
             onPressed: () {},
-            child: Text('TextButton'),
+            child: Text('TextButton'):SiedBox(height:0,width:0),
           )
         ])));
   }
