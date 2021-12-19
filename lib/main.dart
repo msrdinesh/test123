@@ -254,6 +254,7 @@ class MyAppState extends State<MyApp> {
                                 )),
                             InkWell(
                                 onTap: () => {
+                                      print("tapped"),
                                       changeLanguage(context, "mar"),
                                       AppLocalizationsDelegate(),
                                       setState(() {
