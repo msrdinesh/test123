@@ -103,7 +103,7 @@ class MyAppState extends State<MyApp> {
     var prefManager = await SharedPreferences.getInstance();
     await prefManager.clear();
     print('dinnu I am here');
-    print(getLocale() == null);
+    print(getLocale() == Future<null>);
     print(getLocale());
   }
 
