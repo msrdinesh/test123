@@ -100,6 +100,8 @@ class MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    prefManager = SharedPreferences.getInstance();
+    prefManager.clear();
     return MaterialApp(
       supportedLocales: [
         Locale('en', ''),
