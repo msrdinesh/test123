@@ -19,6 +19,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
   Future<Languages> load(Locale locale) => _load(locale);
 
   static Future<Languages> _load(Locale locale) async {
+    print("here dinesh");
     print(locale.languageCode);
     switch (locale.languageCode) {
       case 'en':
