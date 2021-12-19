@@ -7,7 +7,6 @@ import 'package:cornext_mobile/multilingual/localization/language/language_mar.d
 import 'package:cornext_mobile/multilingual/localization/language/language_be.dart';
 import 'package:cornext_mobile/multilingual/localization/language/language_en.dart';
 import 'package:cornext_mobile/multilingual/localization/language/language_hi.dart';
-import 'package:cornext_mobile/multilingual/localization/language/language_xy.dart';
 
 import 'language/languages.dart';
 
@@ -23,8 +22,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
         'ka',
         'mal',
         'mr',
-        'be',
-        'xy'
+        'be'
       ].contains(locale.languageCode);
 
   @override
@@ -47,11 +45,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
       case 'mal':
         return LanguageMal();
       case 'mr':
-        print("you are in marati");
         return LanguageMar();
-      case 'xy':
-        print("you are in xy");
-        return LanguageXy();
       case 'be':
         return LanguageBe();
       default:
