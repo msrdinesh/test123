@@ -252,18 +252,18 @@ class MyAppState extends State<MyApp> {
                                 child: Center(
                                   child: SelectCard(choice: choices[5]),
                                 )),
-                            InkWell(
-                                onTap: () => {
-                                      print("tapped"),
-                                      changeLanguage(context, "mar"),
-                                      AppLocalizationsDelegate(),
-                                      setState(() {
-                                        _isSelected = true;
-                                      })
-                                    },
-                                child: Center(
-                                  child: SelectCard(choice: choices[6]),
-                                )),
+                            // InkWell(
+                            //     onTap: () => {
+                            //           print("tapped"),
+                            //           changeLanguage(context, "mar"),
+                            //           AppLocalizationsDelegate(),
+                            //           setState(() {
+                            //             _isSelected = true;
+                            //           })
+                            //         },
+                            //     child: Center(
+                            //       child: SelectCard(choice: choices[6]),
+                            //     )),
                             InkWell(
                                 onTap: () => {
                                       changeLanguage(context, "be"),
