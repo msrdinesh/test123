@@ -127,7 +127,7 @@ const List<Choice> choices = const <Choice>[
       color: Color(
         0xffffd580,
       )),
-  const Choice(title: 'తెలుగు', color: Color(0xffffb6c1)),
+  const Choice(title: 'తెలుగు', color: Color(0xff90ee90)),
   const Choice(title: 'ಕನ್ನಡ', color: Color(0xffffb6c1)),
   const Choice(title: 'മലയാളം', color: Color(0xffffb6c1)),
   const Choice(title: 'मराठी', color: Color(0xffffb6c1)),
