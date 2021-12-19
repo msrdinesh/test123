@@ -11,7 +11,7 @@ Future<Locale> setLocale(String languageCode) async {
   SharedPreferences _prefs = await SharedPreferences.getInstance();
   _prefs.setString(prefSelectedLanguageCode, languageCode);
   print("dinesh");
-  print(_prefs.setString(prefSelectedLanguageCode));
+  print(_prefs.getString(prefSelectedLanguageCode));
   return _locale(languageCode);
 }
 
