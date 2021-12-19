@@ -77,7 +77,7 @@ class SelectCard extends StatelessWidget {
         child: Card(
             color: Colors.orange,
             child: Center(
-              child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
+              child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
                 Text(choice.title),
               ]),
             )));
