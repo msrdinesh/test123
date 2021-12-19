@@ -43,13 +43,12 @@ class SelectCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle textStyle = Theme.of(context).textTheme.display1;
     return Card(
         color: Colors.orange,
         child: Center(
           child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
-            Expanded(child: Icon(choice.icon, size: 50.0, color: textStyle.color)),
-            Text(choice.title, style: textStyle),
+            Expanded(child: Icon(choice.icon, size: 50)),
+            Text(choice.title),
           ]),
         ));
   }
