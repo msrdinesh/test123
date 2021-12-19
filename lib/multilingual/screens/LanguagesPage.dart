@@ -17,7 +17,9 @@ class LanguagesPage extends StatelessWidget {
                   child: GridView.count(childAspectRatio: (2 / 1), crossAxisCount: 2, crossAxisSpacing: 4.0, mainAxisSpacing: 8.0, children: [
                     InkWell(
                         onTap: () => {
-                              changeLanguage(context, "en")
+                              changeLanguage(context, "en");
+                              print("pressed");
+
                             },
                         child: Center(
                           child: SelectCard(choice: choices[0]),
