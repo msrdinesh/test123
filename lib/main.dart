@@ -115,6 +115,17 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     func();
     return MaterialApp(
+      supportedLocales: [
+        Locale('en', ''),
+        Locale('ar', ''),
+        Locale('hi', '')
+      ],
+      localizationsDelegates: [
+        AppLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       localeResolutionCallback: (locale, supportedLocales) {
         for (var supportedLocale in supportedLocales) {
           if (supportedLocale?.languageCode == locale?.languageCode && supportedLocale?.countryCode == locale?.countryCode) {
