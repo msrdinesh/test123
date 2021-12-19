@@ -1,41 +1,56 @@
-import 'package:cornext_mobile/services/registrationservices/registrationservice.dart';
 import 'package:flutter/material.dart';
-import 'package:cornext_mobile/components/widgets/appbarwidget.dart';
-import 'package:cornext_mobile/constants/labelnames.dart';
-import 'package:cornext_mobile/constants/appcolors.dart';
-import 'package:cornext_mobile/utils/globalvalidations/globalvalidations.dart';
-import 'package:cornext_mobile/constants/appstyles.dart';
-import 'package:cornext_mobile/services/signinservices/signinservice.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:cornext_mobile/constants/imagepaths.dart';
-import 'package:cornext_mobile/models/signinmodel.dart';
-// import 'package:flushbar/flushbar.dart';
-import 'package:cornext_mobile/components/widgets/loadingbutton.dart';
-import 'package:cornext_mobile/utils/apierrors/apierror.dart';
-import 'package:cornext_mobile/components/widgets/notifications.dart';
-import 'package:cornext_mobile/constants/errormessages.dart';
-import 'package:cornext_mobile/services/sharedprefrencesservice/sharedpreferenceservice.dart';
-import 'package:cornext_mobile/services/sqflitedbservice/sqllitedbservice.dart';
-import 'package:cornext_mobile/services/cartservice/cartservice.dart';
-import 'package:cornext_mobile/services/productdetailsservice/productdetailsservice.dart';
-import 'package:cornext_mobile/constants/appfonts.dart';
-import 'package:flutter/services.dart';
-// import 'dart:async';
 
-class LanguagesPage extends StatefulWidget {
+class LanguagePage extends StatelessWidget {
   @override
-  SignIn createState() => SignIn();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+            appBar: AppBar(
+              title: Text("Flutter GridView Demo"),
+            ),
+            body: GridView.count(
+                crossAxisCount: 3,
+                crossAxisSpacing: 4.0,
+                mainAxisSpacing: 8.0,
+                children: List.generate(choices.length, (index) {
+                  return Center(
+                    child: SelectCard(choice: choices[index]),
+                  );
+                }))));
+  }
 }
 
-class SignIn extends State<LanguagesPage> {
-  @override
-  void initState() {}
+class Choice {
+  const Choice({this.title, this.icon});
+  final String title;
+  final IconData icon;
+}
 
+const List<Choice> choices = const <Choice>[
+  const Choice(title: 'Home', icon: Icons.home),
+  const Choice(title: 'Contact', icon: Icons.contacts),
+  const Choice(title: 'Map', icon: Icons.map),
+  const Choice(title: 'Phone', icon: Icons.phone),
+  const Choice(title: 'Camera', icon: Icons.camera_alt),
+  const Choice(title: 'Setting', icon: Icons.settings),
+  const Choice(title: 'Album', icon: Icons.photo_album),
+  const Choice(title: 'WiFi', icon: Icons.wifi),
+];
+
+class SelectCard extends StatelessWidget {
+  const SelectCard({Key key, this.choice}) : super(key: key);
+  final Choice choice;
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Column(children: <Widget>[
-      Padding(padding: EdgeInsets.all(16.0), child: Text("Chooose your language", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)))
-    ]));
+    final TextStyle textStyle = Theme.of(context).textTheme.display1;
+    return Card(
+        color: Colors.orange,
+        child: Center(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
+            Expanded(child: Icon(choice.icon, size: 50.0, color: textStyle.color)),
+            Text(choice.title, style: textStyle),
+          ]),
+        ));
   }
 }
