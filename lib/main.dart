@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:cornext_mobile/constants/appcolors.dart';
 import 'package:flutter/material.dart';
-// import 'package:cornext_mobile/screens/signin/signin.dart';
+import 'package:cornext_mobile/screens/signin/signin.dart';
 import 'package:cornext_mobile/routes/routes.dart';
 import 'package:cornext_mobile/screens/home/homescreen.dart';
 import 'package:uni_links/uni_links.dart';
