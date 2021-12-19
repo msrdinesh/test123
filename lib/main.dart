@@ -116,6 +116,8 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     func();
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        locale: _locale,
         supportedLocales: [
           Locale('en', ''),
           Locale('ar', ''),
