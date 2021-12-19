@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LanguagePage extends StatelessWidget {
+class LanguagesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
