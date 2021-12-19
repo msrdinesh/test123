@@ -47,6 +47,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
       case 'mr':
         return LanguageMar();
       case 'be':
+        print("bengali");
         return LanguageBe();
       default:
         return LanguageEn();
