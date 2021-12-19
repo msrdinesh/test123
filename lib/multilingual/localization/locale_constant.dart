@@ -3,8 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:cornext_mobile/main.dart;
-
+import 'package:cornext_mobile/main.dart';
 
 const String prefSelectedLanguageCode = "SelectedLanguageCode";
 
@@ -21,9 +20,7 @@ Future<Locale> getLocale() async {
 }
 
 Locale _locale(String languageCode) {
-  return languageCode != null && languageCode.isNotEmpty
-      ? Locale(languageCode, '')
-      : Locale('en', '');
+  return languageCode != null && languageCode.isNotEmpty ? Locale(languageCode, '') : Locale('en', '');
 }
 
 void changeLanguage(BuildContext context, String selectedLanguageCode) async {
