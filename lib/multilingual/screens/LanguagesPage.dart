@@ -6,15 +6,17 @@ class LanguagesPage extends StatelessWidget {
     return MaterialApp(
         title: "Choose a language",
         home: Scaffold(
-            body: GridView.count(
-                crossAxisCount: 2,
-                crossAxisSpacing: 4.0,
-                mainAxisSpacing: 8.0,
-                children: List.generate(choices.length, (index) {
-                  return Center(
-                    child: SelectCard(choice: choices[index]),
-                  );
-                }))));
+            body: Column(children: <Widget>[
+          GridView.count(
+              crossAxisCount: 2,
+              crossAxisSpacing: 4.0,
+              mainAxisSpacing: 8.0,
+              children: List.generate(choices.length, (index) {
+                return Center(
+                  child: SelectCard(choice: choices[index]),
+                );
+              }))
+        ])));
   }
 }
 
