@@ -122,7 +122,7 @@ class MyAppState extends State<MyApp> {
         locale: _locale,
         supportedLocales: [
           Locale('en', ''),
-          Locale('hin', ''),
+          Locale('hi', ''),
           Locale('te', ''),
           Locale('ta', ''),
           Locale('ka', ''),
@@ -200,7 +200,7 @@ class MyAppState extends State<MyApp> {
                                 )),
                             InkWell(
                                 onTap: () => {
-                                      changeLanguage(context, "hin"),
+                                      changeLanguage(context, "hi"),
                                       AppLocalizationsDelegate(),
                                       setState(() {
                                         _isSelected = true;
