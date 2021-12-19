@@ -3,10 +3,10 @@ import 'languages.dart';
 class LanguageTe extends Languages {
   @override
   String get home => "ఇల్లు";
-  String get profile => "Profile";
-  String get subscriptions => "Subscriptions";
-  String get yourOrders => "Your Orders";
-  String get deliveryAddress => "Delivery Address(es)";
-  String get faqs => "FAQS";
-  String get logout => "Logout";
+  String get profile => "ప్రొఫైల్";
+  String get subscriptions => "చందాలు";
+  String get yourOrders => "మీ ఆదేశాలు";
+  String get deliveryAddress => "పంపాల్సిన చిరునామా";
+  String get faqs => "తరచుగా అడిగే ప్రశ్నలు";
+  String get logout => "లాగ్ అవుట్";
 }

@@ -3,10 +3,10 @@ import 'languages.dart';
 class LanguageMal extends Languages {
   @override
   String get home => "വീട്";
-  String get profile => "Profile";
-  String get subscriptions => "Subscriptions";
-  String get yourOrders => "Your Orders";
-  String get deliveryAddress => "Delivery Address(es)";
-  String get faqs => "FAQS";
-  String get logout => "Logout";
+  String get profile => "പ്രൊഫൈൽ";
+  String get subscriptions => "സബ്സ്ക്രിപ്ഷനുകൾ";
+  String get yourOrders => "നിങ്ങളുടെ ഉത്തരവുകൾ";
+  String get deliveryAddress => "ഡെലിവറി വിലാസം";
+  String get faqs => "പതിവ് ചോദ്യങ്ങൾ";
+  String get logout => "പുറത്തുകടക്കുക";
 }

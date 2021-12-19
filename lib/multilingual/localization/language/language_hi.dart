@@ -3,10 +3,10 @@ import 'languages.dart';
 class LanguageHi extends Languages {
   @override
   String get home => "घर";
-  String get profile => "Profile";
-  String get subscriptions => "Subscriptions";
-  String get yourOrders => "Your Orders";
-  String get deliveryAddress => "Delivery Address(es)";
-  String get faqs => "FAQS";
-  String get logout => "Logout";
+  String get profile => "प्रोफ़ाइल";
+  String get subscriptions => "सदस्यता";
+  String get yourOrders => "तुम्हारे ऑर्डर";
+  String get deliveryAddress => "डिलिवरी का पता";
+  String get faqs => "पूछे जाने वाले प्रश्न";
+  String get logout => "लॉग आउट";
 }

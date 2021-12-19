@@ -3,10 +3,10 @@ import 'languages.dart';
 class LanguageKa extends Languages {
   @override
   String get home => "ಮನೆ";
-  String get profile => "Profile";
-  String get subscriptions => "Subscriptions";
-  String get yourOrders => "Your Orders";
-  String get deliveryAddress => "Delivery Address(es)";
-  String get faqs => "FAQS";
-  String get logout => "Logout";
+  String get profile => "ಪ್ರೊಫೈಲ್";
+  String get subscriptions => "ಚಂದಾದಾರಿಕೆಗಳು";
+  String get yourOrders => "ನಿಮ್ಮ ಆದೇಶಗಳು";
+  String get deliveryAddress => "ತಲುಪಿಸುವ ವಿಳಾಸ";
+  String get faqs => "FAQಗಳು";
+  String get logout => "ಲಾಗ್ ಔಟ್";
 }
