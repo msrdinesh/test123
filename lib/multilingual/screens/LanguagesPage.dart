@@ -33,8 +33,6 @@ class SignIn extends State<LanguagesPage> {
   void initState() {}
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:Text("Chooose your language",style: TextStyle(fontWeight:FontWeight.bold,fontSize:20));
-    );
+    return Scaffold(body: Text("Chooose your language", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)));
   }
 }
