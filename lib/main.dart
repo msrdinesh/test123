@@ -55,6 +55,7 @@ class MyAppState extends State<MyApp> {
   //   data = await getInitialLink();
   //   return '';
   // }
+  String language;
   SharedPreferences _prefs = await SharedPreferences.getInstance();
   Locale _locale;
   void setLocale(Locale locale) {
@@ -62,6 +63,10 @@ class MyAppState extends State<MyApp> {
       _locale = locale;
     });
   }
+  @override
+  void initState() {
+  func()
+}
 
   final HomeScreenServices homeScreenServices = HomeScreenServices();
 
@@ -103,9 +108,7 @@ class MyAppState extends State<MyApp> {
   void func() async {
     var prefManager = await SharedPreferences.getInstance();
     await prefManager.clear();
-    print('dinnu I am here');
-    print(getLocale() == null);
-    print(getLocale());
+    language = prefManager.getString("SelectedLanguageCode");
   }
 
   @override
