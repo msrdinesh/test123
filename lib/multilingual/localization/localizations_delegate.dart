@@ -20,7 +20,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
         'hi',
         'ta',
         'te',
-        'ki',
+        'ka',
         'mal',
         'mar',
         'be',
@@ -42,7 +42,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
         return LanguageHi();
       case 'ta':
         return LanguageTa();
-      case 'ki':
+      case 'ka':
         return LanguageKa();
       case 'mal':
         return LanguageMal();
