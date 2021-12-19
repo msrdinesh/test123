@@ -27,7 +27,7 @@ class HomeState extends State<Home> {
                   height: 80,
                 ),
                 Text(
-                  Languages.of(context).labelWelcome,
+                  Languages.of(context).home,
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black),
                 ),
                 SizedBox(
