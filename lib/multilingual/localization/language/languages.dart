@@ -5,6 +5,7 @@ abstract class Languages {
     return Localizations.of<Languages>(context, Languages);
   }
 
+  String get home;
   String get profile;
   String get subscriptions;
   String get yourOrders;
