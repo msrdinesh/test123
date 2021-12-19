@@ -32,7 +32,6 @@ import 'package:cornext_mobile/screens/errorscreen/paymentfailederrorscreen.dart
 import 'package:cornext_mobile/screens/errorscreen/ordercreationfailedscreen.dart';
 import 'package:cornext_mobile/screens/faqs/faqsscreen.dart';
 import 'package:cornext_mobile/screens/notificationscreens/appudatescreen.dart';
-import 'package:cornext_mobile/multilingual/screens/home.dart';
 
 RouteFactory configureRoutes() {
   return (settings) {
