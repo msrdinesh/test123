@@ -6,9 +6,6 @@ class LanguagesPage extends StatelessWidget {
     return MaterialApp(
         title: "Choose a language",
         home: Scaffold(
-            appBar: AppBar(
-              title: Text("Flutter GridView Demo"),
-            ),
             body: GridView.count(
                 crossAxisCount: 2,
                 crossAxisSpacing: 4.0,
