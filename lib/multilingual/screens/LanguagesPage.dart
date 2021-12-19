@@ -32,7 +32,6 @@ class LanguagesPage extends StatelessWidget {
 
 void func() async {
   var prefManager = await SharedPreferences.getInstance();
-  await prefManager.clear();
   String language = prefManager.getString("SelectedLanguageCode");
   print(language);
 }
