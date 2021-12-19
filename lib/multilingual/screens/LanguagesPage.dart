@@ -10,7 +10,7 @@ class LanguagePage extends StatefulWidget {
 }
 
 class LanguagePageState extends State<LanguagePage> {
-  bool _isSelcted = false;
+  bool _isSelected = false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
