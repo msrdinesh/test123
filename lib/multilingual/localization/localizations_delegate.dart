@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:cornext_mobile/multilingual/localization/language/language_ar.dart';
+import 'package:cornext_mobile/multilingual/localization/language/language_ta.dart';
+import 'package:cornext_mobile/multilingual/localization/language/language_te.dart';
+import 'package:cornext_mobile/multilingual/localization/language/language_ka.dart';
+import 'package:cornext_mobile/multilingual/localization/language/language_mal.dart';
+import 'package:cornext_mobile/multilingual/localization/language/language_mar.dart';
+import 'package:cornext_mobile/multilingual/localization/language/language_be.dart';
 import 'package:cornext_mobile/multilingual/localization/language/language_en.dart';
 import 'package:cornext_mobile/multilingual/localization/language/language_hi.dart';
 
