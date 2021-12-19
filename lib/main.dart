@@ -98,11 +98,15 @@ class MyAppState extends State<MyApp> {
     });
     super.didChangeDependencies();
   }
+  
+  void func() async(){
+var prefManager = await SharedPreferences.getInstance();
+    await prefManager.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
-    var prefManager = await SharedPreferences.getInstance();
-    await prefManager.clear();
+    func()
     return MaterialApp(
       supportedLocales: [
         Locale('en', ''),
