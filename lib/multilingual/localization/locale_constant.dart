@@ -10,6 +10,7 @@ const String prefSelectedLanguageCode = "SelectedLanguageCode";
 Future<Locale> setLocale(String languageCode) async {
   SharedPreferences _prefs = await SharedPreferences.getInstance();
   await _prefs.setString(prefSelectedLanguageCode, languageCode);
+  print(_prefs.setString(prefSelectedLanguageCode, languageCode));
   print("i am here dinnu");
   print(_prefs.getString(prefSelectedLanguageCode));
   return _locale(languageCode);
