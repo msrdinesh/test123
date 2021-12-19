@@ -32,7 +32,7 @@ class LanguagesPage extends StatelessWidget {
                               func()
                             },
                         child: Center(
-                          child: SelectCard(choice: choices[0]),
+                          child: SelectCard(choice: choices[1]),
                         )),
                     InkWell(
                         onTap: () => {
@@ -41,7 +41,7 @@ class LanguagesPage extends StatelessWidget {
                               func()
                             },
                         child: Center(
-                          child: SelectCard(choice: choices[0]),
+                          child: SelectCard(choice: choices[2]),
                         )),
                     InkWell(
                         onTap: () => {
@@ -50,7 +50,7 @@ class LanguagesPage extends StatelessWidget {
                               func()
                             },
                         child: Center(
-                          child: SelectCard(choice: choices[0]),
+                          child: SelectCard(choice: choices[3]),
                         )),
                     InkWell(
                         onTap: () => {
@@ -59,7 +59,7 @@ class LanguagesPage extends StatelessWidget {
                               func()
                             },
                         child: Center(
-                          child: SelectCard(choice: choices[0]),
+                          child: SelectCard(choice: choices[4]),
                         )),
                     InkWell(
                         onTap: () => {
@@ -68,7 +68,7 @@ class LanguagesPage extends StatelessWidget {
                               func()
                             },
                         child: Center(
-                          child: SelectCard(choice: choices[0]),
+                          child: SelectCard(choice: choices[5]),
                         )),
                     InkWell(
                         onTap: () => {
@@ -77,7 +77,7 @@ class LanguagesPage extends StatelessWidget {
                               func()
                             },
                         child: Center(
-                          child: SelectCard(choice: choices[0]),
+                          child: SelectCard(choice: choices[6]),
                         )),
                     InkWell(
                         onTap: () => {
@@ -86,7 +86,7 @@ class LanguagesPage extends StatelessWidget {
                               func()
                             },
                         child: Center(
-                          child: SelectCard(choice: choices[0]),
+                          child: SelectCard(choice: choices[7]),
                         ))
                   ])))
         ])));
