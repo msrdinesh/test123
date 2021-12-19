@@ -31,7 +31,7 @@ class LanguagesPage extends StatelessWidget {
 }
 
 void func1() {
-  changeLanguage(context, "en");
+  // changeLanguage(context, "en");
 }
 
 void func2() {}
