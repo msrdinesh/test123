@@ -296,7 +296,9 @@ class MyAppState extends State<MyApp> {
                           : SizedBox(height: 0, width: 0),
                       SizedBox(height: 210)
                     ])))
-            : SignInPage()
+            : access_token == null
+                ? SignInPage()
+                : HomePage()
         // home: language == null ? LanguagePage() : HomePage(),
 //         home: FutureBuilder(
 //             // stream: getLinksStream(),
