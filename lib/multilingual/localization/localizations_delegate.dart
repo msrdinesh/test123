@@ -21,10 +21,12 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
   static Future<Languages> _load(Locale locale) async {
     switch (locale.languageCode) {
       case 'en':
+        print("why am i here");
         return LanguageEn();
       case 'ar':
         return LanguageAr();
       case 'hi':
+        print("here I am ");
         return LanguageHi();
       default:
         return LanguageEn();
