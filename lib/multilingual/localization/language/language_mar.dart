@@ -9,4 +9,5 @@ class LanguageMar extends Languages {
   String get deliveryAddress => "वितरण पत्ता";
   String get faqs => "सामान्य प्रश्न";
   String get logout => "बाहेर पडणे";
+  String get signIn => "साइन इन";
 }

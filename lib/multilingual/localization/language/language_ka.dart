@@ -9,4 +9,5 @@ class LanguageKa extends Languages {
   String get deliveryAddress => "ತಲುಪಿಸುವ ವಿಳಾಸ";
   String get faqs => "FAQಗಳು";
   String get logout => "ಲಾಗ್ ಔಟ್";
+  String get signIn => "ಸೈನ್ ಇನ್";
 }

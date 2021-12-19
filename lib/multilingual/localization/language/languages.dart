@@ -12,4 +12,5 @@ abstract class Languages {
   String get deliveryAddress;
   String get faqs;
   String get logout;
+  String get signIn;
 }

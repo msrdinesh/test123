@@ -9,4 +9,5 @@ class LanguageMal extends Languages {
   String get deliveryAddress => "ഡെലിവറി വിലാസം";
   String get faqs => "പതിവ് ചോദ്യങ്ങൾ";
   String get logout => "പുറത്തുകടക്കുക";
+  String get signIn => "സൈൻ ഇൻ";
 }

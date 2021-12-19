@@ -9,4 +9,5 @@ class LanguageHi extends Languages {
   String get deliveryAddress => "डिलिवरी का पता";
   String get faqs => "पूछे जाने वाले प्रश्न";
   String get logout => "लॉग आउट";
+  String get signIn => "साइन इन करें";
 }

@@ -9,4 +9,5 @@ class LanguageTe extends Languages {
   String get deliveryAddress => "పంపాల్సిన చిరునామా";
   String get faqs => "తరచుగా అడిగే ప్రశ్నలు";
   String get logout => "లాగ్ అవుట్";
+  String get signIn => "సైన్ ఇన్";
 }

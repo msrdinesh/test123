@@ -506,7 +506,7 @@ Widget appBarDrawer(context, state, GlobalKey<ScaffoldState> scaffoldKey) {
                 },
               )
             : ListTile(
-                title: Text("Sign In"),
+                title: Text(Languages.of(context).signIn),
                 leading: Icon(Icons.person_add),
                 onTap: () {
                   // Navigator.pushNamed(context, "/login");

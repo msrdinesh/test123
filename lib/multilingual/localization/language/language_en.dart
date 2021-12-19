@@ -9,4 +9,5 @@ class LanguageEn extends Languages {
   String get deliveryAddress => "Delivery Address(es)";
   String get faqs => "FAQS";
   String get logout => "Logout";
+  String get signIn => "Sign In";
 }
