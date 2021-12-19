@@ -103,6 +103,7 @@ class LanguagePageState extends State<LanguagePage> {
                           child: SelectCard(choice: choices[7]),
                         ))
                   ]))),
+          Text("hello world"),
           _isSelected
               ? TextButton(
                   style: ButtonStyle(
