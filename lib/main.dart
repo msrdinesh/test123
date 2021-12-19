@@ -126,9 +126,9 @@ class MyAppState extends State<MyApp> {
           Locale('te', ''),
           Locale('ta', ''),
           Locale('ka', ''),
-          Locale('ml', ''),
+          Locale('mal', ''),
           Locale('mr', ''),
-          Locale('bn', ''),
+          Locale('be', ''),
         ],
         localizationsDelegates: [
           AppLocalizationsDelegate(),
