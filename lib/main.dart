@@ -108,7 +108,7 @@ class MyAppState extends State<MyApp> {
 
   void func() async {
     var prefManager = await SharedPreferences.getInstance();
-    await prefManager.clear();
+    // await prefManager.clear();
     language = prefManager.getString("SelectedLanguageCode");
   }
 
@@ -120,8 +120,13 @@ class MyAppState extends State<MyApp> {
         locale: _locale,
         supportedLocales: [
           Locale('en', ''),
-          Locale('ar', ''),
-          Locale('hi', '')
+          Locale('hi', ''),
+          Locale('te', ''),
+          Locale('ta', ''),
+          Locale('ka', ''),
+          Locale('mal', ''),
+          Locale('mar', ''),
+          Locale('be', '')
         ],
         localizationsDelegates: [
           AppLocalizationsDelegate(),
