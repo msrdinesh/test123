@@ -55,6 +55,7 @@ class MyAppState extends State<MyApp> {
   //   data = await getInitialLink();
   //   return '';
   // }
+  SharedPreferences _prefs = await SharedPreferences.getInstance();
   Locale _locale;
   void setLocale(Locale locale) {
     setState(() {
