@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cornext_mobile/multilingual/localization/language/languages.dart';
 import 'package:cornext_mobile/multilingual/localization/locale_constant.dart';
-import 'cornext_mobile/multilingual/model/language_data.dart';
+import 'package:cornext_mobile/multilingual/model/language_data.dart';
 
 class Home extends StatefulWidget {
   @override
