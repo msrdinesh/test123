@@ -10,5 +10,5 @@ class LanguageHi extends Languages {
   String get faqs => "पूछे जाने वाले प्रश्न";
   String get logout => "लॉग आउट";
   String get signIn => "साइन इन करें";
-  String get cont => "ಮುಂದುವರಿಸಿ";
+  String get cont => "हिंदी जारी रखने के लिए";
 }
