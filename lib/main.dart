@@ -284,7 +284,7 @@ class MyAppState extends State<MyApp> {
                           },
                           color: Colors.yellow,
                           minWidth: 340.0,
-                          child: Text(Languages.of(context).cont)
+                          child: Text(Languages.of(context).cont))
                       : SizedBox(height: 0, width: 0),
                   SizedBox(height: 210)
                 ])))
