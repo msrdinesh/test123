@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cornext_mobile/multilingual/localization/language/languages.dart';
 import 'package:cornext_mobile/multilingual/localization/locale_constant.dart';
 import 'package:cornext_mobile/multilingual/model/language_data.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LanguagesPage extends StatelessWidget {
   @override
@@ -18,7 +19,8 @@ class LanguagesPage extends StatelessWidget {
                     InkWell(
                         onTap: () => {
                               changeLanguage(context, "en"),
-                              print("pressed")
+                              print("pressed"),
+                              func()
                             },
                         child: Center(
                           child: SelectCard(choice: choices[0]),
@@ -26,6 +28,13 @@ class LanguagesPage extends StatelessWidget {
                   ])))
         ])));
   }
+}
+
+void func() async {
+  var prefManager = await SharedPreferences.getInstance();
+  await prefManager.clear();
+  String language = prefManager.getString("SelectedLanguageCode");
+  print(language);
 }
 
 void func1() {
