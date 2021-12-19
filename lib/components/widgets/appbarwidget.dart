@@ -409,7 +409,7 @@ Widget appBarDrawer(context, state, GlobalKey<ScaffoldState> scaffoldKey) {
         // ),
 
         ListTile(
-          title: Text(Languages.of(context).appName),
+          title: Text(Languages.of(context).home),
           leading: Icon(Icons.home),
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(context, '/home', ModalRoute.withName('/home'));
