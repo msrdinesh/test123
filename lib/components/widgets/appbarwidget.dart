@@ -233,6 +233,17 @@ deleteTokenOnLogout(context, scaffoldKey, state) {
 
 Widget appBarWidgetWithIcons(context, bool showSearchIcon, state, bool isCartPage, String previousRouteName) {
   return AppBar(
+    supportedLocales: [
+      Locale('en', ''),
+      Locale('ar', ''),
+      Locale('hi', '')
+    ],
+    localizationsDelegates: [
+      AppLocalizationsDelegate(),
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+      GlobalCupertinoLocalizations.delegate,
+    ],
     // elevation: 100,
     centerTitle: true,
     // title: Row(mainAxisAlignment: MainAxisAlignment.center,
