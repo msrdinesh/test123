@@ -100,193 +100,193 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        supportedLocales: [
-          Locale('en', ''),
-          Locale('ar', ''),
-          Locale('hi', '')
-        ],
-        localizationsDelegates: [
-          AppLocalizationsDelegate(),
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        localeResolutionCallback: (locale, supportedLocales) {
-          for (var supportedLocale in supportedLocales) {
-            if (supportedLocale?.languageCode == locale?.languageCode && supportedLocale?.countryCode == locale?.countryCode) {
-              return supportedLocale;
-            }
+      supportedLocales: [
+        Locale('en', ''),
+        Locale('ar', ''),
+        Locale('hi', '')
+      ],
+      localizationsDelegates: [
+        AppLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      localeResolutionCallback: (locale, supportedLocales) {
+        for (var supportedLocale in supportedLocales) {
+          if (supportedLocale?.languageCode == locale?.languageCode && supportedLocale?.countryCode == locale?.countryCode) {
+            return supportedLocale;
           }
-          return supportedLocales?.first;
-        },
-        debugShowCheckedModeBanner: false,
-        title: 'FeedNext',
-        theme: ThemeData(
-            // This is the theme of your application.
-            //
-            // Try running your application with "flutter run". You'll see the
-            // application has a blue toolbar. Then, without quitting the app, try
-            // changing the primarySwatch below to Colors.green and then invoke
-            // "hot reload" (press "r" in the console where you ran "flutter run",
-            // or simply save your changes to "hot reload" in a Flutter IDE).
-            // Notice that the counter didn't reset back to zero; the application
-            // is not restarted.
-            primarySwatch: Colors.green,
-            primaryColor: mainAppColor,
-            cursorColor: mainAppColor,
-            fontFamily: 'Raleway',
-            textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Raleway')
-            // appBarTheme: AppBarTheme(elevation: 5),
-            // canvasColor: mainAppColor
-            // typography: Typography.material2018(),
-            // textSelectionHandleColor: Colors.transparent,
-            // fontFamily: 'Roboto_Condensed',
-            // appBarTheme: AppBarTheme(elevation: 1000)
-            // fontFamily: 'Roboto'
-            ),
-        // initialRoute: '/',
-        onGenerateRoute: configureRoutes(),
-        builder: (BuildContext context, Widget child) {
-          final MediaQueryData data = MediaQuery.of(context);
-          return MediaQuery(
-            data: data.copyWith(
-              textScaleFactor: 1.0,
-            ),
-            child: child,
-          );
-        },
-        // home: SignInPage(),
-        home: FutureBuilder(
-            // stream: getLinksStream(),
-            // initialData: getLinks(),
-            future: getInitialLink(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                // our app started by configured links
-                // var uri = Uri.parse(snapshot.data);
-                // print(uri);
-                if (snapshot.data != null) {
-                  var uri = Uri.parse(snapshot.data);
-                  var list = uri.queryParametersAll;
-                  print(uri);
-                  print(list);
-                  final splitedUriData = uri.toString().split("https://cornext.feednext.app/");
-                  if (list.keys.length == 0 && uri.toString() != "") {
-                    if (splitedUriData[splitedUriData.length - 1].trim().length > 0) {
-                      return FutureBuilder(
-                        future: SharedPreferenceService().checkAccessTokenAndUpdateuserDetails(),
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            print(snapshot.data);
-                            final val = snapshot.data;
-                            if (val.get("access_token") == null) {
-                              // Navigator.pushNamed(context, "/login");
-                              // Navigator.pushNamedAndRemoveUntil(
-                              //     context, '/login', ModalRoute.withName('/login'));
-                              signInDetails = {
-                                "userName": "Hello, User",
-                                "userId": ""
-                              };
-                              return HomePage();
-                            } else {
-                              // setState(() {
-                              signInDetails['access_token'] = val.get("access_token");
-                              signInDetails['refresh_token'] = val.get("refresh_token");
-                              signInDetails['userName'] = val.get('userName');
-                              signInDetails['userId'] = val.get('userId');
-                              signInDetails['emailId'] = val.get('emailId');
-                              signInDetails['mobileNo'] = val.get('mobileNo');
-                              orderIdFromDeepLink = splitedUriData[splitedUriData.length - 1].trim().toString();
-                              // Navigator.pushNamed(context, '/ordersummary');
-                              fetchCartDetails(context);
-                              return CartPage();
-                            }
-                          } else {
-                            return HomePage();
-                          }
-                        },
-                      );
-                    } else {
-                      return HomePage();
-                    }
-                  } else if (list.keys.length > 0) {
-                    // SharedPreferenceService()
-                    //     .checkAccessTokenAndUpdateuserDetails()
-                    //     .then((val) {
-                    //   if (val.get("access_token") == null) {
-                    //     // Navigator.pushNamed(context, "/login");
-                    //     // Navigator.pushNamedAndRemoveUntil(
-                    //     //     context, '/login', ModalRoute.withName('/login'));
-                    //     signInDeatils = {
-                    //       "userName": "Hello, User",
-                    //       "userId": ""
-                    //     };
-                    //     return HomePage();
-                    //   } else {
-                    //     // setState(() {
-                    //     signInDeatils['access_token'] = val.get("access_token");
-                    //     signInDeatils['refresh_token'] =
-                    //         val.get("refresh_token");
-                    //     signInDeatils['userName'] = val.get('userName');
-                    //     signInDeatils['userId'] = val.get('userId');
-                    //     orderIdFromDeepLink = int.parse(list.keys.first);
-                    //     // Navigator.pushNamed(context, '/ordersummary');
-                    //     return OrderSummary();
-                    //   }
-                    // });
-
-                    return FutureBuilder(
-                      future: SharedPreferenceService().checkAccessTokenAndUpdateuserDetails(),
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          print(snapshot.data);
-                          final val = snapshot.data;
-                          if (val.get("access_token") == null) {
-                            // Navigator.pushNamed(context, "/login");
-                            // Navigator.pushNamedAndRemoveUntil(
-                            //     context, '/login', ModalRoute.withName('/login'));
-                            signInDetails = {
-                              "userName": "Hello, User",
-                              "userId": ""
-                            };
-                            return HomePage();
-                          } else {
-                            // setState(() {
-                            signInDetails['access_token'] = val.get("access_token");
-                            signInDetails['refresh_token'] = val.get("refresh_token");
-                            signInDetails['userName'] = val.get('userName');
-                            signInDetails['userId'] = val.get('userId');
-                            signInDetails['emailId'] = val.get('emailId');
-                            signInDetails['mobileNo'] = val.get('mobileNo');
-                            orderIdFromDeepLink = list.keys.first;
-                            // Navigator.pushNamed(context, '/ordersummary');
-                            fetchCartDetails(context);
-                            return CartPage();
-                          }
-                        } else {
-                          return HomePage();
-                        }
-                      },
-                    );
-                    // return HomePage();
-                    // Navigator.pushNamedAndRemoveUntil(context, '/yourorderdetails',
-                    //     ModalRoute.withName('/yourorderdetails'));
-                  } else {
-                    return HomePage();
-                  }
-                } else {
-                  // print('data');
-                  // our app started normally
-                  return HomePage();
-                } // we retrieve all query parameters , tzd://genius-team.com?product_id=1
-// return Text(list.map((f)=>f.toString()).join(‘-’)); // we just print all //parameters but you can now do whatever you want, for example open //product details page.
-              } else {
-                // print('data');
-                // our app started normally
-                return HomePage();
-              }
-            })
-        // home: FormDetailsPage()
+        }
+        return supportedLocales?.first;
+      },
+      debugShowCheckedModeBanner: false,
+      title: 'FeedNext',
+      theme: ThemeData(
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          primarySwatch: Colors.green,
+          primaryColor: mainAppColor,
+          cursorColor: mainAppColor,
+          fontFamily: 'Raleway',
+          textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Raleway')
+          // appBarTheme: AppBarTheme(elevation: 5),
+          // canvasColor: mainAppColor
+          // typography: Typography.material2018(),
+          // textSelectionHandleColor: Colors.transparent,
+          // fontFamily: 'Roboto_Condensed',
+          // appBarTheme: AppBarTheme(elevation: 1000)
+          // fontFamily: 'Roboto'
+          ),
+      // initialRoute: '/',
+      onGenerateRoute: configureRoutes(),
+      builder: (BuildContext context, Widget child) {
+        final MediaQueryData data = MediaQuery.of(context);
+        return MediaQuery(
+          data: data.copyWith(
+            textScaleFactor: 1.0,
+          ),
+          child: child,
         );
+      },
+      home: SignInPage(),
+//         home: FutureBuilder(
+//             // stream: getLinksStream(),
+//             // initialData: getLinks(),
+//             future: getInitialLink(),
+//             builder: (context, snapshot) {
+//               if (snapshot.hasData) {
+//                 // our app started by configured links
+//                 // var uri = Uri.parse(snapshot.data);
+//                 // print(uri);
+//                 if (snapshot.data != null) {
+//                   var uri = Uri.parse(snapshot.data);
+//                   var list = uri.queryParametersAll;
+//                   print(uri);
+//                   print(list);
+//                   final splitedUriData = uri.toString().split("https://cornext.feednext.app/");
+//                   if (list.keys.length == 0 && uri.toString() != "") {
+//                     if (splitedUriData[splitedUriData.length - 1].trim().length > 0) {
+//                       return FutureBuilder(
+//                         future: SharedPreferenceService().checkAccessTokenAndUpdateuserDetails(),
+//                         builder: (context, snapshot) {
+//                           if (snapshot.hasData) {
+//                             print(snapshot.data);
+//                             final val = snapshot.data;
+//                             if (val.get("access_token") == null) {
+//                               // Navigator.pushNamed(context, "/login");
+//                               // Navigator.pushNamedAndRemoveUntil(
+//                               //     context, '/login', ModalRoute.withName('/login'));
+//                               signInDetails = {
+//                                 "userName": "Hello, User",
+//                                 "userId": ""
+//                               };
+//                               return HomePage();
+//                             } else {
+//                               // setState(() {
+//                               signInDetails['access_token'] = val.get("access_token");
+//                               signInDetails['refresh_token'] = val.get("refresh_token");
+//                               signInDetails['userName'] = val.get('userName');
+//                               signInDetails['userId'] = val.get('userId');
+//                               signInDetails['emailId'] = val.get('emailId');
+//                               signInDetails['mobileNo'] = val.get('mobileNo');
+//                               orderIdFromDeepLink = splitedUriData[splitedUriData.length - 1].trim().toString();
+//                               // Navigator.pushNamed(context, '/ordersummary');
+//                               fetchCartDetails(context);
+//                               return CartPage();
+//                             }
+//                           } else {
+//                             return HomePage();
+//                           }
+//                         },
+//                       );
+//                     } else {
+//                       return HomePage();
+//                     }
+//                   } else if (list.keys.length > 0) {
+//                     // SharedPreferenceService()
+//                     //     .checkAccessTokenAndUpdateuserDetails()
+//                     //     .then((val) {
+//                     //   if (val.get("access_token") == null) {
+//                     //     // Navigator.pushNamed(context, "/login");
+//                     //     // Navigator.pushNamedAndRemoveUntil(
+//                     //     //     context, '/login', ModalRoute.withName('/login'));
+//                     //     signInDeatils = {
+//                     //       "userName": "Hello, User",
+//                     //       "userId": ""
+//                     //     };
+//                     //     return HomePage();
+//                     //   } else {
+//                     //     // setState(() {
+//                     //     signInDeatils['access_token'] = val.get("access_token");
+//                     //     signInDeatils['refresh_token'] =
+//                     //         val.get("refresh_token");
+//                     //     signInDeatils['userName'] = val.get('userName');
+//                     //     signInDeatils['userId'] = val.get('userId');
+//                     //     orderIdFromDeepLink = int.parse(list.keys.first);
+//                     //     // Navigator.pushNamed(context, '/ordersummary');
+//                     //     return OrderSummary();
+//                     //   }
+//                     // });
+
+//                     return FutureBuilder(
+//                       future: SharedPreferenceService().checkAccessTokenAndUpdateuserDetails(),
+//                       builder: (context, snapshot) {
+//                         if (snapshot.hasData) {
+//                           print(snapshot.data);
+//                           final val = snapshot.data;
+//                           if (val.get("access_token") == null) {
+//                             // Navigator.pushNamed(context, "/login");
+//                             // Navigator.pushNamedAndRemoveUntil(
+//                             //     context, '/login', ModalRoute.withName('/login'));
+//                             signInDetails = {
+//                               "userName": "Hello, User",
+//                               "userId": ""
+//                             };
+//                             return HomePage();
+//                           } else {
+//                             // setState(() {
+//                             signInDetails['access_token'] = val.get("access_token");
+//                             signInDetails['refresh_token'] = val.get("refresh_token");
+//                             signInDetails['userName'] = val.get('userName');
+//                             signInDetails['userId'] = val.get('userId');
+//                             signInDetails['emailId'] = val.get('emailId');
+//                             signInDetails['mobileNo'] = val.get('mobileNo');
+//                             orderIdFromDeepLink = list.keys.first;
+//                             // Navigator.pushNamed(context, '/ordersummary');
+//                             fetchCartDetails(context);
+//                             return CartPage();
+//                           }
+//                         } else {
+//                           return HomePage();
+//                         }
+//                       },
+//                     );
+//                     // return HomePage();
+//                     // Navigator.pushNamedAndRemoveUntil(context, '/yourorderdetails',
+//                     //     ModalRoute.withName('/yourorderdetails'));
+//                   } else {
+//                     return HomePage();
+//                   }
+//                 } else {
+//                   // print('data');
+//                   // our app started normally
+//                   return HomePage();
+//                 } // we retrieve all query parameters , tzd://genius-team.com?product_id=1
+// // return Text(list.map((f)=>f.toString()).join(‘-’)); // we just print all //parameters but you can now do whatever you want, for example open //product details page.
+//               } else {
+//                 // print('data');
+//                 // our app started normally
+//                 return HomePage();
+//               }
+//             })
+      // home: FormDetailsPage()
+    );
   }
 }
