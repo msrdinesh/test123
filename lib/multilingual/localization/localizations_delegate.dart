@@ -17,7 +17,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
   @override
   bool isSupported(Locale locale) => [
         'en',
-        'hi',
+        'hin',
         'ta',
         'te',
         'ka',
@@ -38,7 +38,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
         return LanguageEn();
       case 'te':
         return LanguageTe();
-      case 'hi':
+      case 'hin':
         return LanguageHi();
       case 'ta':
         return LanguageTa();
