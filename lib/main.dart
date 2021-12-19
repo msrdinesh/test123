@@ -281,7 +281,7 @@ class MyAppState extends State<MyApp> {
                           onPressed: () {
                             print("pressed button");
                             print("pushed home");
-                            Navigator.pushNamed(context, '/home');
+                            Navigator.pushNamed(context, '/login');
                           },
                           color: Colors.yellow,
                           minWidth: 340.0,
