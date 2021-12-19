@@ -122,7 +122,11 @@ class Choice {
 const List<Choice> choices = const <Choice>[
   const Choice(title: 'English', color: Color(0xffADD8E6)),
   const Choice(title: 'हिन्दी', color: Color(0xffffb6c1)),
-  const Choice(title: 'தமிழ்', color: Color(0xffffb6c1)),
+  const Choice(
+      title: 'தமிழ்',
+      color: Color(
+        0xffffd580,
+      )),
   const Choice(title: 'తెలుగు', color: Color(0xffffb6c1)),
   const Choice(title: 'ಕನ್ನಡ', color: Color(0xffffb6c1)),
   const Choice(title: 'മലയാളം', color: Color(0xffffb6c1)),
