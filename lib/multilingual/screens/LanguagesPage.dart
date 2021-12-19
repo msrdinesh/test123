@@ -4,7 +4,12 @@ import 'package:cornext_mobile/multilingual/localization/locale_constant.dart';
 import 'package:cornext_mobile/multilingual/model/language_data.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LanguagesPage extends StatelessWidget {
+class LanguagePage extends StatefulWidget {
+  @override
+  State<LanguagePageState> createState() => LanguagePageState();
+}
+
+class LanguagePageState extends State<LanguagePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
