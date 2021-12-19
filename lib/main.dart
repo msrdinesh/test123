@@ -170,7 +170,7 @@ class MyAppState extends State<MyApp> {
           child: child,
         );
       },
-      home: language == null ? LanguagesPage() : HomePage(),
+      home: language == null ? LanguagesPageState() : HomePage(),
 //         home: FutureBuilder(
 //             // stream: getLinksStream(),
 //             // initialData: getLinks(),
