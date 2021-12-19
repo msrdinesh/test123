@@ -48,7 +48,7 @@ class MyAppState extends State<MyApp> {
   //   data = await getInitialLink();
   //   return '';
   // }
-
+  Locale _locale;
   final HomeScreenServices homeScreenServices = HomeScreenServices();
 
   fetchCartDetails(context) {
