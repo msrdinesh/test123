@@ -24,6 +24,69 @@ class LanguagesPage extends StatelessWidget {
                             },
                         child: Center(
                           child: SelectCard(choice: choices[0]),
+                        )),
+                    InkWell(
+                        onTap: () => {
+                              changeLanguage(context, "en"),
+                              print("pressed"),
+                              func()
+                            },
+                        child: Center(
+                          child: SelectCard(choice: choices[0]),
+                        )),
+                    InkWell(
+                        onTap: () => {
+                              changeLanguage(context, "en"),
+                              print("pressed"),
+                              func()
+                            },
+                        child: Center(
+                          child: SelectCard(choice: choices[0]),
+                        )),
+                    InkWell(
+                        onTap: () => {
+                              changeLanguage(context, "en"),
+                              print("pressed"),
+                              func()
+                            },
+                        child: Center(
+                          child: SelectCard(choice: choices[0]),
+                        )),
+                    InkWell(
+                        onTap: () => {
+                              changeLanguage(context, "en"),
+                              print("pressed"),
+                              func()
+                            },
+                        child: Center(
+                          child: SelectCard(choice: choices[0]),
+                        )),
+                    InkWell(
+                        onTap: () => {
+                              changeLanguage(context, "en"),
+                              print("pressed"),
+                              func()
+                            },
+                        child: Center(
+                          child: SelectCard(choice: choices[0]),
+                        )),
+                    InkWell(
+                        onTap: () => {
+                              changeLanguage(context, "en"),
+                              print("pressed"),
+                              func()
+                            },
+                        child: Center(
+                          child: SelectCard(choice: choices[0]),
+                        )),
+                    InkWell(
+                        onTap: () => {
+                              changeLanguage(context, "en"),
+                              print("pressed"),
+                              func()
+                            },
+                        child: Center(
+                          child: SelectCard(choice: choices[0]),
                         ))
                   ])))
         ])));
@@ -79,13 +142,6 @@ class SelectCard extends StatelessWidget {
             child: Center(
               child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
                 Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))
               ]),
             )));
   }
