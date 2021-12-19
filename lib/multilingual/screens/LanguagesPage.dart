@@ -56,7 +56,7 @@ class Choice {
 }
 
 const List<Choice> choices = const <Choice>[
-  const Choice(title: 'Home', onClick: func1),
+  const Choice(title: 'English', onClick: func1),
   const Choice(title: 'Contact', icon: Icons.contacts, onClick: func2),
   const Choice(title: 'Map', icon: Icons.map, onClick: func3),
   const Choice(title: 'Phone', icon: Icons.phone, onClick: func4),
@@ -78,7 +78,7 @@ class SelectCard extends StatelessWidget {
             color: Colors.orange,
             child: Center(
               child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
-                Text(choice.title),
+                Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
               ]),
             )));
   }
