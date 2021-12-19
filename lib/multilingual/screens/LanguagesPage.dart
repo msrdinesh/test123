@@ -9,7 +9,7 @@ class LanguagesPage extends StatelessWidget {
               title: Text("Flutter GridView Demo"),
             ),
             body: GridView.count(
-                crossAxisCount: 3,
+                crossAxisCount: 2,
                 crossAxisSpacing: 4.0,
                 mainAxisSpacing: 8.0,
                 children: List.generate(choices.length, (index) {
