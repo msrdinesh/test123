@@ -39,11 +39,8 @@ RouteFactory configureRoutes() {
     // final val = settings.name;
     Widget screen;
     switch (settings.name) {
-      case '/home2':
-        screen = Home();
-        break;
       case '/login':
-        screen = Home();
+        screen = SignInPage();
         break;
       case '/registration':
         screen = RegistartionPage();
