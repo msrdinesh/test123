@@ -48,7 +48,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
         return LanguageMal();
       case 'mar':
         print("you are in marati");
-        return LanguageBe();
+        return LanguageMar();
       case 'xy':
         return LanguageXy();
       case 'be':
