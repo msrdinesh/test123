@@ -46,7 +46,7 @@ class SelectCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 250,
+        height: 100,
         child: Card(
             color: Colors.orange,
             child: Center(
