@@ -9,16 +9,18 @@ class LanguagesPage extends StatelessWidget {
             body: Column(children: <Widget>[
           Text("Choose a language"),
           new Flexible(
-              child: GridView.count(
-                  childAspectRatio: (2 / 1),
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 4.0,
-                  mainAxisSpacing: 8.0,
-                  children: List.generate(choices.length, (index) {
-                    return Center(
-                      child: SelectCard(choice: choices[index]),
-                    );
-                  })))
+              child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: GridView.count(
+                      childAspectRatio: (2 / 1),
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 4.0,
+                      mainAxisSpacing: 8.0,
+                      children: List.generate(choices.length, (index) {
+                        return Center(
+                          child: SelectCard(choice: choices[index]),
+                        );
+                      }))))
         ])));
   }
 }
