@@ -6,12 +6,4 @@ abstract class Languages {
   }
 
   String get home;
-  String get appName;
-
-  String get labelWelcome;
-
-  String get labelInfo;
-
-  String get labelSelectLanguage;
-  // String get home;
 }

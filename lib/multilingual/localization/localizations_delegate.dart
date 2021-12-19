@@ -11,8 +11,13 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
   @override
   bool isSupported(Locale locale) => [
         'en',
-        'ar',
-        'hi'
+        'hi',
+        'ta',
+        'te',
+        'ka',
+        'mal',
+        'mar',
+        'be'
       ].contains(locale.languageCode);
 
   @override
@@ -23,13 +28,21 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
     print(locale.languageCode);
     switch (locale.languageCode) {
       case 'en':
-        print("why am i here");
         return LanguageEn();
-      case 'ar':
-        return LanguageAr();
+      case 'te':
+        return LanguageTe();
       case 'hi':
-        print("here I am ");
         return LanguageHi();
+      case 'ta':
+        return LanguageTa();
+      case 'ka':
+        return LanguageKa();
+      case 'mal':
+        return LanguageMal();
+      case 'mar':
+        return LanguageMar();
+      case 'be':
+        return LanguageBe();
       default:
         return LanguageEn();
     }
