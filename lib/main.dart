@@ -99,7 +99,7 @@ class MyAppState extends State<MyApp> {
     super.didChangeDependencies();
   }
   
-  void func() async(){
+  void func() async{
 var prefManager = await SharedPreferences.getInstance();
     await prefManager.clear();
   }
