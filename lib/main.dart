@@ -163,6 +163,7 @@ class MyAppState extends State<MyApp> {
       onGenerateRoute: configureRoutes(),
       builder: (BuildContext context, Widget child) {
         final MediaQueryData data = MediaQuery.of(context);
+        print(language);
         return MediaQuery(
           data: data.copyWith(
             textScaleFactor: 1.0,
