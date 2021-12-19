@@ -7,6 +7,7 @@ import 'package:cornext_mobile/multilingual/localization/language/language_mar.d
 import 'package:cornext_mobile/multilingual/localization/language/language_be.dart';
 import 'package:cornext_mobile/multilingual/localization/language/language_en.dart';
 import 'package:cornext_mobile/multilingual/localization/language/language_hi.dart';
+import 'package:cornext_mobile/multilingual/localization/language/language_xy.dart';
 
 import 'language/languages.dart';
 
