@@ -43,7 +43,7 @@ RouteFactory configureRoutes() {
         screen = Home();
         break;
       case '/login':
-        screen = SignInPage();
+        screen = Home();
         break;
       case '/registration':
         screen = RegistartionPage();
