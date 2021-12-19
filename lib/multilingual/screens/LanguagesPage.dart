@@ -79,6 +79,13 @@ class SelectCard extends StatelessWidget {
             child: Center(
               child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
                 Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                Text(choice.title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))
               ]),
             )));
   }
