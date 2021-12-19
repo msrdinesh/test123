@@ -16,7 +16,7 @@ class HomeState extends State<Home> {
             Icons.language,
             color: Colors.white,
           ),
-          title: Text(Languages.of(context).appName),
+          title: Text(Languages.of(context).home),
         ),
         body: Container(
           margin: EdgeInsets.all(30),
