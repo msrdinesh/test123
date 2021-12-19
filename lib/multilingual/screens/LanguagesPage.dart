@@ -103,14 +103,7 @@ class LanguagePageState extends State<LanguagePage> {
                           child: SelectCard(choice: choices[7]),
                         ))
                   ]))),
-          _isSelected
-              ? TextButton(
-                  style: ButtonStyle(
-                    foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-                  ),
-                  onPressed: () {},
-                  child: Text('TextButton'))
-              : SizedBox(height: 0, width: 0),
+          _isSelected ? FlatButton(onPressed: () {}, child: Text('TextButton')) : SizedBox(height: 0, width: 0),
           SizedBox(height: 230)
         ])));
   }
