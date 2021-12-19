@@ -121,13 +121,13 @@ class Choice {
 
 const List<Choice> choices = const <Choice>[
   const Choice(title: 'English', color: Color(0xffADD8E6)),
-  const Choice(title: 'हिन्दी', color: Colors.red),
-  const Choice(title: 'தமிழ்', color: Colors.red),
-  const Choice(title: 'తెలుగు', color: Colors.red),
-  const Choice(title: 'ಕನ್ನಡ', color: Colors.red),
-  const Choice(title: 'മലയാളം', color: Colors.red),
-  const Choice(title: 'मराठी', color: Colors.red),
-  const Choice(title: 'বাংলা', color: Colors.red),
+  const Choice(title: 'हिन्दी', color: Color(0xffffb6c1)),
+  const Choice(title: 'தமிழ்', color: Color(0xffffb6c1)),
+  const Choice(title: 'తెలుగు', Color(0xffffb6c1)),
+  const Choice(title: 'ಕನ್ನಡ', Color(0xffffb6c1)),
+  const Choice(title: 'മലയാളം', Color(0xffffb6c1)),
+  const Choice(title: 'मराठी', Color(0xffffb6c1)),
+  const Choice(title: 'বাংলা', Color(0xffffb6c1)),
 ];
 
 class SelectCard extends StatelessWidget {
