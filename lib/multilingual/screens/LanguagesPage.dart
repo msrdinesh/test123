@@ -21,7 +21,7 @@ class LanguagesPage extends StatelessWidget {
                       mainAxisSpacing: 8.0,
                       children: List.generate(choices.length, (index) {
                         return InkWell(
-                            onTap: choices[index].onClick(context),
+                            onTap: choices[index].onClick,
                             child: Center(
                               child: SelectCard(choice: choices[index]),
                             ));
