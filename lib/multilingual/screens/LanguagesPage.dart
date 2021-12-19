@@ -56,7 +56,7 @@ class Choice {
 }
 
 const List<Choice> choices = const <Choice>[
-  const Choice(title: 'Home', icon: Icons.home, onClick: func1),
+  const Choice(title: 'Home', onClick: func1),
   const Choice(title: 'Contact', icon: Icons.contacts, onClick: func2),
   const Choice(title: 'Map', icon: Icons.map, onClick: func3),
   const Choice(title: 'Phone', icon: Icons.phone, onClick: func4),
