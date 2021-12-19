@@ -22,7 +22,8 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
         'ka',
         'mal',
         'mar',
-        'be'
+        'be',
+        'xy'
       ].contains(locale.languageCode);
 
   @override
@@ -47,6 +48,8 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
       case 'mar':
         print("you are in marati");
         return LanguageMar();
+      case 'xy':
+        return LanguageXy();
       case 'be':
         return LanguageBe();
       default:
