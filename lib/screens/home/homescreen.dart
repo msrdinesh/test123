@@ -1366,6 +1366,7 @@ class HomeScreen extends State<HomePage> {
                     Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['street'])),
                     Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['city'])),
                     Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['state'])),
+                    Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['pincode'])),
                     Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['mobileNo']))
                   ])))));
       ans.add(SizedBox(width: 50));
