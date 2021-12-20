@@ -82,7 +82,7 @@ class HomeScreen extends State<HomePage> {
   final DeviceInfo deviceInfo = DeviceInfo();
   bool isMoreAddressListLoading = false;
   bool isSubscriptionAddressEditing = false;
-  int pressed;
+  int pressed = 0;
 
   @override
   void initState() {
@@ -1349,10 +1349,11 @@ class HomeScreen extends State<HomePage> {
   List<Widget> makeAddressCards(List addressList) {
     List<Widget> ans = [];
     for (int i = 0; i < addressList.length; i++) {
+      print(pressed);
       ans.add(DecoratedBox(
           decoration: BoxDecoration(
             border: Border.all(
-              color: pressed == i ? Colors.black : Colors.yellow,
+              color: pressed == i ? Colors.yellow : Colors.black,
               width: 1,
             ),
           ),
