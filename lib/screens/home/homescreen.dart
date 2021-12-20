@@ -1258,7 +1258,7 @@ class HomeScreen extends State<HomePage> {
         context: context,
         builder: (builder) {
           return Column(children: [
-            Text("Choose your location", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))
+            Padding(padding: EdgeInsets.all(5), child: Text("Choose your location", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)))
           ]);
         });
   }
