@@ -57,6 +57,7 @@ class BaseService {
     String token;
     SharedPreferenceService().getAccessToken().then((String result) {
       // token = token;
+      print(token);
     });
     print("i am here dinnu");
     print(token);
