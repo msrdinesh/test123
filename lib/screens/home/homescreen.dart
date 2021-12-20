@@ -82,6 +82,7 @@ class HomeScreen extends State<HomePage> {
   final DeviceInfo deviceInfo = DeviceInfo();
   bool isMoreAddressListLoading = false;
   bool isSubscriptionAddressEditing = false;
+  int pressed;
 
   @override
   void initState() {
@@ -1347,8 +1348,6 @@ class HomeScreen extends State<HomePage> {
 
   List<Widget> makeAddressCards(List addressList) {
     List<Widget> ans = [];
-    print("i am here dinnu");
-    print(addressList[0]);
     for (int i = 0; i < addressList.length; i++) {
       ans.add(DecoratedBox(
           decoration: BoxDecoration(
@@ -1360,6 +1359,9 @@ class HomeScreen extends State<HomePage> {
               onTap: () {
                 print("dinesh");
                 print("pressed" + i.toString());
+                setState(() {
+                  pressed = i;
+                });
               },
               child: SizedBox(
                   height: 120,
