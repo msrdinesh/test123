@@ -76,9 +76,10 @@ class HomeScreen extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    categories = getCategoriesInfo();
+
     // getUniLinksData();
     setState(() {
+      categories = getCategoriesInfo();
       filterProducts = [];
       subCategoriesList = [];
       checkAccessTokenAndUpdateUserDetails();
