@@ -1352,6 +1352,7 @@ class HomeScreen extends State<HomePage> {
       ans.add(DecoratedBox(
           decoration: BoxDecoration(
             border: Border.all(
+              color:Colors.red
               width: 1,
             ),
           ),
