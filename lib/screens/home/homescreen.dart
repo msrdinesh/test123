@@ -860,10 +860,6 @@ class HomeScreen extends State<HomePage> {
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: categories.length,
                       separatorBuilder: (BuildContext context, int index) => const Divider(),
-                      itemBuilder: (BuildContext context, int index) {
-                        return categories[index];
-                        );
-                      },
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (BuildContext context, int index) {
