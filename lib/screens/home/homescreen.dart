@@ -1368,6 +1368,7 @@ class HomeScreen extends State<HomePage> {
                     Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['state'])),
                     Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['mobileNo']))
                   ])))));
+      ans.add(SizedBox(width: 50));
     }
     return ans;
   }
@@ -1383,16 +1384,6 @@ class HomeScreen extends State<HomePage> {
             Padding(padding: EdgeInsets.all(15), child: Align(alignment: Alignment.centerLeft, child: Text("Choose your location", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)))),
             Padding(padding: EdgeInsets.only(left: 15), child: Align(alignment: Alignment.centerLeft, child: Text("Select a delivery location to see product availability and delivery options", style: TextStyle(fontSize: 15)))),
             Padding(padding: EdgeInsets.all(15), child: Align(alignment: Alignment.centerLeft, child: SingleChildScrollView(scrollDirection: Axis.horizontal, child: Align(alignment: Alignment.centerLeft, child: Row(children: makeAddressCards(addressList))))))
-            // ListView.separated(
-            //   shrinkWrap: true,
-            //   scrollDirection: Axis.horizontal,
-            //   physics: AlwaysScrollableScrollPhysics(),
-            //   itemCount: getCategoriesInfo().length,
-            //   separatorBuilder: (BuildContext context, int index) => SizedBox(width: 15),
-            //   itemBuilder: (BuildContext context, int index) {
-            //     return SizedBox(width: 50, child: getCategoriesInfo()[index]);
-            //   },
-            // )
           ]);
         });
   }
