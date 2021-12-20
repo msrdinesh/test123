@@ -1359,7 +1359,6 @@ class HomeScreen extends State<HomePage> {
           child: GestureDetector(
               onTap: () {
                 print("dinesh");
-                _showModalSheet();
               },
               child: SizedBox(
                   height: 120,
