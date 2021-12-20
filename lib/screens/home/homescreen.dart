@@ -1356,13 +1356,16 @@ class HomeScreen extends State<HomePage> {
               width: 1,
             ),
           ),
-          child: Column(children: [
-            Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['doorNumber'])),
-            Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['street'])),
-            Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['city'])),
-            Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['state'])),
-            Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['mobileNo']))
-          ])));
+          child: SizedBox(
+              height: 50,
+              width: 50,
+              child: Column(children: [
+                Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['doorNumber'])),
+                Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['street'])),
+                Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['city'])),
+                Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['state'])),
+                Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['mobileNo']))
+              ]))));
     }
     return ans;
   }
