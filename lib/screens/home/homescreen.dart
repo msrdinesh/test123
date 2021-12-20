@@ -854,7 +854,7 @@ class HomeScreen extends State<HomePage> {
               children: <Widget>[
                 Container(height: 82, child: ListView(physics: NeverScrollableScrollPhysics(), shrinkWrap: true, scrollDirection: Axis.horizontal, children: getCategoriesInfo())),
                 Container(
-                  width: MediaQuery.of(context).size.width / 4.0,
+                  width: MediaQuery.of(context).size.width / 5.0,
                   // margin: EdgeInsets.only(left: 1, right: 1),
                   child: GestureDetector(
                     onTap: () {
