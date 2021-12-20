@@ -858,7 +858,7 @@ class HomeScreen extends State<HomePage> {
                     child: ListView.separated(
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: getCategoriesInfo().length,
-                      separatorBuilder: (BuildContext context, int index) => SizedBox(width: 10),
+                      separatorBuilder: (BuildContext context, int index) => SizedBox(width: 15),
                       itemBuilder: (BuildContext context, int index) {
                         return SizedBox(width: 50, child: getCategoriesInfo()[index]);
                       },
