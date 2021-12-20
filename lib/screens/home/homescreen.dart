@@ -889,7 +889,7 @@ class HomeScreen extends State<HomePage> {
                                   imageUrl: 'https://feednextmedia.s3.ap-south-1.amazonaws.com/CAT-Icon-All-01.jpg',
                                   fit: BoxFit.fill,
                                   height: 50,
-                                  width: 30,
+                                  width: 20,
                                 ))),
                         AppStyles().customPadding(1),
                         Container(
