@@ -1253,6 +1253,19 @@ class HomeScreen extends State<HomePage> {
         });
   }
 
+  void _showModalSheet() {
+    showModalBottomSheet(
+        context: context,
+        builder: (builder) {
+          return new Container(
+            color: Colors.tealAccent,
+            child: new Center(
+              child: new Text("Hi ModalSheet"),
+            ),
+          );
+        });
+  }
+
   Widget showLocation() {
     return Container(
         height: 40,
@@ -1267,6 +1280,7 @@ class HomeScreen extends State<HomePage> {
                   GestureDetector(
                       onTap: () {
                         print("pressed");
+                        _showModalSheet();
                       },
                       child: Icon(Icons.keyboard_arrow_down_outlined))
                 ]))),
