@@ -44,6 +44,11 @@ class HomePage extends StatefulWidget {
 }
 
 class HomeScreen extends State<HomePage> {
+  final GlobalKey<ScaffoldState> scafFoldKey = GlobalKey<ScaffoldState>();
+  int totalNumberOfAddresses = 0;
+  final ApiErros apiErros = ApiErros();
+  int selectedRadio;
+  var changeSubscriptionAddress = {};
   final AddressServices addressServices = AddressServices();
   bool isAddressLoading = false;
   List addressList = [];
@@ -1043,11 +1048,7 @@ class HomeScreen extends State<HomePage> {
                     child: Row(children: [
                       Container(
                         margin: EdgeInsets.only(right: 10, left: 10),
-                        child: Icon(
-                          Icons.info,
-                          size: 30,
-                          color: mainAppColor,
-                        ),
+                        child: Icon(Icons.info, size: 30),
                       ),
                       Flexible(
                         // margin: EdgeInsets.only(
@@ -1149,7 +1150,6 @@ class HomeScreen extends State<HomePage> {
                         'Ok',
                         style: appFonts.getTextStyle('button_text_color_white'),
                       ),
-                      color: mainAppColor,
                     ),
                   )
                 ],
@@ -1282,7 +1282,6 @@ class HomeScreen extends State<HomePage> {
                         child: Icon(
                           Icons.info,
                           size: 30,
-                          color: mainAppColor,
                         ),
                       ),
                       Flexible(
