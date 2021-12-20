@@ -1350,8 +1350,8 @@ class HomeScreen extends State<HomePage> {
     print(addressList.length);
     List<Widget> ans = [];
     // addressList.map((add) => ans.add(Card(child: Text("dinnu"))));
-    for(int i =0;i<addressList.length ;i++){
-      ans.add(Card(child:Text(addressList[i]['city']));
+    for (int i = 0; i < addressList.length; i++) {
+      ans.add(Card(child: Text(addressList[i]['city'])));
     }
     print(ans);
     print("anser size" + ans.length.toString());
