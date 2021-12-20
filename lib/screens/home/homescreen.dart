@@ -1354,10 +1354,10 @@ class HomeScreen extends State<HomePage> {
             Padding(padding: EdgeInsets.only(left: 15), child: Align(alignment: Alignment.centerLeft, child: Text("Select a delivery location to see product availability and delivery options", style: TextStyle(fontSize: 15)))),
             ListView.separated(
               physics: NeverScrollableScrollPhysics(),
-              itemCount: addressList.length,
+              itemCount: getCategoriesInfo().length,
               separatorBuilder: (BuildContext context, int index) => SizedBox(width: 15),
               itemBuilder: (BuildContext context, int index) {
-                return SizedBox(width: 50, child: Text(addressList[index]['city']));
+                return SizedBox(width: 50, child: getCategoriesInfo()[index]);
               },
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
