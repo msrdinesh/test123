@@ -867,7 +867,7 @@ class HomeScreen extends State<HomePage> {
                         Container(
                             // height: 50,
                             // width: 50,
-                            decoration: BoxDecoration(borderRadius: new BorderRadius.all(Radius.circular(40.0)), boxShadow: [
+                            decoration: BoxDecoration(borderRadius: new BorderRadius.all(Radius.circular(20.0)), boxShadow: [
                               new BoxShadow(
                                 color: Colors.grey.shade400,
                                 offset: Offset(1, 2),
