@@ -860,7 +860,7 @@ class HomeScreen extends State<HomePage> {
                       itemCount: getCategoriesInfo().length,
                       separatorBuilder: (BuildContext context, int index) => SizedBox(width: 0),
                       itemBuilder: (BuildContext context, int index) {
-                        return getCategoriesInfo()[index];
+                        return SizedBox(width: 50, child: getCategoriesInfo()[index]);
                       },
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
