@@ -846,6 +846,7 @@ class HomeScreen extends State<HomePage> {
         margin: EdgeInsets.only(left: 0, right: 0, top: 18),
         // alignment: Alignment.,
         child: ListView(
+          shrinkWrap: true,
           scrollDirection: Axis.horizontal,
           physics: AlwaysScrollableScrollPhysics(),
           children: <Widget>[
@@ -870,7 +871,7 @@ class HomeScreen extends State<HomePage> {
                             decoration: BoxDecoration(borderRadius: new BorderRadius.all(Radius.circular(50.0)), boxShadow: [
                               new BoxShadow(
                                 color: Colors.grey.shade400,
-                                offset: Offset(1, 2),
+                                offset: Offset(1, 1),
                                 blurRadius: 2,
                               )
                             ]),
@@ -891,7 +892,7 @@ class HomeScreen extends State<HomePage> {
                                   height: 50,
                                   width: 50,
                                 ))),
-                        AppStyles().customPadding(0.25),
+                        AppStyles().customPadding(1),
                         Container(
                           // padding: EdgeInsets.only(top: 1),
                           child: Text(
