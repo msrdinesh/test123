@@ -1353,15 +1353,13 @@ class HomeScreen extends State<HomePage> {
       ans.add(SizedBox(
           height: 100,
           width: 100,
-          child: Card(
-              elevation: 10,
-              child: Column(children: [
-                Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['doorNumber'])),
-                Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['street'])),
-                Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['city'])),
-                Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['state'])),
-                Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['mobileNo']))
-              ]))));
+          child: Column(children: [
+            Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['doorNumber'])),
+            Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['street'])),
+            Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['city'])),
+            Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['state'])),
+            Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['mobileNo']))
+          ])));
     }
     return ans;
   }
