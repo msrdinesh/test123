@@ -1177,6 +1177,7 @@ class HomeScreen extends State<HomePage> {
       final addressData = json.decode(res.body);
 
       print('address');
+      print("i am here");
       print(addressData);
 
       if (addressData['addressList'] != null && addressData['addressList'].length > 0) {
