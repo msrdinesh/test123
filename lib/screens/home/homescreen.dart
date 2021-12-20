@@ -1343,6 +1343,11 @@ class HomeScreen extends State<HomePage> {
         });
   }
 
+  Widget makeAddressCards(List addressList) {
+    List ans;
+    addressList.map((add) => ans.add(Card(child: Text("dinnu"))));
+  }
+
   void _showModalSheet() {
     showModalBottomSheet(
         context: context,
@@ -1353,7 +1358,7 @@ class HomeScreen extends State<HomePage> {
             Padding(padding: EdgeInsets.all(15), child: Align(alignment: Alignment.centerLeft, child: Text("Choose your location", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)))),
             Padding(padding: EdgeInsets.only(left: 15), child: Align(alignment: Alignment.centerLeft, child: Text("Select a delivery location to see product availability and delivery options", style: TextStyle(fontSize: 15)))),
 
-            SingleChildScrollView(scrollDirection: Axis.horizontal, child: Row(children: getCategoriesInfo()))
+            SingleChildScrollView(scrollDirection: Axis.horizontal, child: Row(children: makeAddressCards(addressList)))
             // ListView.separated(
             //   shrinkWrap: true,
             //   scrollDirection: Axis.horizontal,
