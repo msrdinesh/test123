@@ -846,7 +846,6 @@ class HomeScreen extends State<HomePage> {
         margin: EdgeInsets.only(left: 0, right: 0, top: 18),
         // alignment: Alignment.,
         child: ListView(
-          itemExtent: 100.0,
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
           physics: AlwaysScrollableScrollPhysics(),
