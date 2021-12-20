@@ -79,7 +79,7 @@ class HomeScreen extends State<HomePage> {
 
     // getUniLinksData();
     setState(() {
-      categories = getCategoriesInfo();
+      // categories = getCategoriesInfo();
       filterProducts = [];
       subCategoriesList = [];
       checkAccessTokenAndUpdateUserDetails();
