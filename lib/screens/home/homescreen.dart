@@ -870,7 +870,7 @@ class HomeScreen extends State<HomePage> {
                             decoration: BoxDecoration(borderRadius: new BorderRadius.all(Radius.circular(50.0)), boxShadow: [
                               new BoxShadow(
                                 color: Colors.grey.shade400,
-                                offset: Offset(1, 1),
+                                offset: Offset(1, 2),
                                 blurRadius: 2,
                               )
                             ]),
@@ -884,7 +884,7 @@ class HomeScreen extends State<HomePage> {
                             //       fontSize: 45),
                             // )),
                             child: ClipRRect(
-                                borderRadius: BorderRadius.circular(25),
+                                borderRadius: BorderRadius.circular(20),
                                 child: CachedNetworkImage(
                                   imageUrl: 'https://feednextmedia.s3.ap-south-1.amazonaws.com/CAT-Icon-All-01.jpg',
                                   fit: BoxFit.fill,
