@@ -1356,19 +1356,24 @@ class HomeScreen extends State<HomePage> {
               width: 1,
             ),
           ),
-          child: SizedBox(
-              height: 120,
-              width: 120,
-              child: Padding(
-                  padding: EdgeInsets.all(5),
-                  child: Column(children: [
-                    Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['doorNumber'])),
-                    Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['street'])),
-                    Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['city'])),
-                    Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['state'])),
-                    Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['pincode'])),
-                    Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['mobileNo']))
-                  ])))));
+          child: GestureDetector(
+              onTap: () {
+                print("dinesh");
+                _showModalSheet();
+              },
+              child: SizedBox(
+                  height: 120,
+                  width: 120,
+                  child: Padding(
+                      padding: EdgeInsets.all(5),
+                      child: Column(children: [
+                        Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['doorNumber'])),
+                        Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['street'])),
+                        Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['city'])),
+                        Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['state'])),
+                        Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['pincode'])),
+                        Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['mobileNo']))
+                      ]))))));
       ans.add(SizedBox(width: 50));
     }
     return ans;
