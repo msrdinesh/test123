@@ -1254,7 +1254,7 @@ class HomeScreen extends State<HomePage> {
   }
 
   Widget showLocation() {
-    return Container(height: 20, width: 10000, child: Text("Location will come here"), color: Color(0xff90ee90));
+    return Container(height: 40, width: 10000, child: Text("Location will come here"), color: Color(0xff90ee90));
   }
 
   checkPreviousOrderLinkedWithSubscription() {
