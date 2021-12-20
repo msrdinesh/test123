@@ -870,7 +870,7 @@ class HomeScreen extends State<HomePage> {
                             decoration: BoxDecoration(borderRadius: new BorderRadius.all(Radius.circular(50.0)), boxShadow: [
                               new BoxShadow(
                                 color: Colors.grey.shade400,
-                                offset: Offset(1, 2),
+                                offset: Offset(1, 1),
                                 blurRadius: 2,
                               )
                             ]),
