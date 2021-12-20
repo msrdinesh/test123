@@ -1350,6 +1350,7 @@ class HomeScreen extends State<HomePage> {
     print(addressList.length);
     List ans;
     addressList.map((add) => ans.add(Card(child: Text("dinnu"))));
+    print(ans);
     print("anser size" + ans.length.toString());
     return ans;
   }
