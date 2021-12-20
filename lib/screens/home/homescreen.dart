@@ -884,12 +884,12 @@ class HomeScreen extends State<HomePage> {
                             //       fontSize: 45),
                             // )),
                             child: ClipRRect(
-                                borderRadius: BorderRadius.circular(1),
+                                borderRadius: BorderRadius.circular(25),
                                 child: CachedNetworkImage(
                                   imageUrl: 'https://feednextmedia.s3.ap-south-1.amazonaws.com/CAT-Icon-All-01.jpg',
                                   fit: BoxFit.fill,
-                                  height: 50,
-                                  width: 50,
+                                  height: 40,
+                                  width: 40,
                                 ))),
                         AppStyles().customPadding(1),
                         Container(
