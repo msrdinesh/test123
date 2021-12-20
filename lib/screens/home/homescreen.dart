@@ -1352,16 +1352,16 @@ class HomeScreen extends State<HomePage> {
           return Column(children: [
             Padding(padding: EdgeInsets.all(15), child: Align(alignment: Alignment.centerLeft, child: Text("Choose your location", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)))),
             Padding(padding: EdgeInsets.only(left: 15), child: Align(alignment: Alignment.centerLeft, child: Text("Select a delivery location to see product availability and delivery options", style: TextStyle(fontSize: 15)))),
-            ListView.separated(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              physics: AlwaysScrollableScrollPhysics(),
-              itemCount: getCategoriesInfo().length,
-              separatorBuilder: (BuildContext context, int index) => SizedBox(width: 15),
-              itemBuilder: (BuildContext context, int index) {
-                return SizedBox(width: 50, child: getCategoriesInfo()[index]);
-              },
-            )
+            // ListView.separated(
+            //   shrinkWrap: true,
+            //   scrollDirection: Axis.horizontal,
+            //   physics: AlwaysScrollableScrollPhysics(),
+            //   itemCount: getCategoriesInfo().length,
+            //   separatorBuilder: (BuildContext context, int index) => SizedBox(width: 15),
+            //   itemBuilder: (BuildContext context, int index) {
+            //     return SizedBox(width: 50, child: getCategoriesInfo()[index]);
+            //   },
+            // )
           ]);
         });
   }
