@@ -1404,7 +1404,7 @@ class HomeScreen extends State<HomePage> {
             Padding(
                 padding: EdgeInsets.all(15),
                 child: Row(children: [
-                  Icon(Icons.location_on_rounded, color: Colors.blue),
+                  Icon(Icons.location_searching_sharp, color: Colors.blue),
                   SizedBox(width: 5),
                   Text("Use my current location", style: TextStyle(color: Colors.blue))
                 ]))
