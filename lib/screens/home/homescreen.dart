@@ -1264,7 +1264,7 @@ class HomeScreen extends State<HomePage> {
                 child: Row(children: [
                   Icon(Icons.location_on_rounded),
                   Text("  Deliver to Hyderabad 500018", textAlign: TextAlign.left),
-                  Icon(Icons.keyboard_arrow_down_outlined)
+                  GestureDetector(onTap: () {}, child: Icon(Icons.keyboard_arrow_down_outlined))
                 ]))),
         color: Color(0xff90ee90));
   }
