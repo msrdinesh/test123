@@ -1258,7 +1258,6 @@ class HomeScreen extends State<HomePage> {
         context: context,
         builder: (builder) {
           return new Container(
-            color: Colors.tealAccent,
             child: new Center(
               child: new Text("Hi ModalSheet"),
             ),
