@@ -72,14 +72,12 @@ class HomeScreen extends State<HomePage> {
   dynamic fetchCartDetailsApi;
   final AppFonts appFonts = AppFonts();
   final DeviceInfo deviceInfo = DeviceInfo();
-  List<Widget> categories;
+
   @override
   void initState() {
     super.initState();
-
     // getUniLinksData();
     setState(() {
-      // categories = getCategoriesInfo();
       filterProducts = [];
       subCategoriesList = [];
       checkAccessTokenAndUpdateUserDetails();
@@ -855,7 +853,18 @@ class HomeScreen extends State<HomePage> {
             Container(
                 child: Row(
               children: <Widget>[
-                Container(height: 82, child: ListView(physics: NeverScrollableScrollPhysics(), shrinkWrap: true, scrollDirection: Axis.horizontal, children: getCategoriesInfo())),
+                Container(
+                    height: 82,
+                    child: ListView.separated(
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: getCategoriesInfo().length,
+                      separatorBuilder: (BuildContext context, int index) => const Divider(),
+                      itemBuilder: (BuildContext context, int index) {
+                        return getCategoriesInfo()[index];
+                      },
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                    )),
                 Container(
                   width: MediaQuery.of(context).size.width / 4.0,
                   // margin: EdgeInsets.only(left: 1, right: 1),
