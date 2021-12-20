@@ -1382,7 +1382,7 @@ class HomeScreen extends State<HomePage> {
           return Column(children: [
             Padding(padding: EdgeInsets.all(15), child: Align(alignment: Alignment.centerLeft, child: Text("Choose your location", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)))),
             Padding(padding: EdgeInsets.only(left: 15), child: Align(alignment: Alignment.centerLeft, child: Text("Select a delivery location to see product availability and delivery options", style: TextStyle(fontSize: 15)))),
-            Padding(padding: EdgeInsets.only(left:15),child:Align(alignment: Alignment.centerLeft, child: SingleChildScrollView(scrollDirection: Axis.horizontal, child: Align(alignment: Alignment.centerLeft, child: Row(children: makeAddressCards(addressList)))))
+            Padding(padding: EdgeInsets.only(left: 15), child: Align(alignment: Alignment.centerLeft, child: SingleChildScrollView(scrollDirection: Axis.horizontal, child: Align(alignment: Alignment.centerLeft, child: Row(children: makeAddressCards(addressList))))))
             // ListView.separated(
             //   shrinkWrap: true,
             //   scrollDirection: Axis.horizontal,
