@@ -1349,8 +1349,8 @@ class HomeScreen extends State<HomePage> {
     List<Widget> ans = [];
     for (int i = 0; i < addressList.length; i++) {
       ans.add(SizedBox(
-          height: 250,
-          width: 250,
+          height: 100,
+          width: 100,
           child: Card(
               child: Column(children: [
             Text(addressList[i]['city'])
