@@ -53,7 +53,7 @@ class BaseService {
 
   Future postDetailsByAccessToken(String url, requestObj) {
     // if (getAccessToken() != null) {
-    final String token = signInDetails['access_token'];
+    final String token = getAccessToken();
     print("i am here dinnu");
     print(token);
     return http.post(Uri.parse(url), body: json.encode(requestObj), headers: {
