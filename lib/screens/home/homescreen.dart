@@ -94,6 +94,7 @@ class HomeScreen extends State<HomePage> {
       removeImagesFromCache();
     });
     checkAndDisplayLoginSuccessMessage();
+    getAddress(false);
   }
 
   // @override
