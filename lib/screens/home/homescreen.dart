@@ -841,7 +841,7 @@ class HomeScreen extends State<HomePage> {
   Widget showCategories() {
     return Container(
         // width: 80,
-        // width: MediaQuery.of(context).size.width - 10,
+        width: MediaQuery.of(context).size.width - 10,
         height: 82,
         margin: EdgeInsets.only(left: 0, right: 0, top: 18),
         // alignment: Alignment.,
