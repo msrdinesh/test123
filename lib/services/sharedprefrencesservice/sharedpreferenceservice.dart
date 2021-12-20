@@ -12,6 +12,11 @@ class SharedPreferenceService {
     // return prefs;
   }
 
+  Future<String> getAccessToken() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString("access_token");
+  }
+
   void setRefreshToken(String refreshToken) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove("refresh_token");
@@ -54,32 +59,27 @@ class SharedPreferenceService {
   void addFailedOrderDetails(Map orderDetails) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String> failedOrderDetails = [];
-    failedOrderDetails =
-        prefs.getStringList('orderDetails' + orderDetails['userId'].toString());
+    failedOrderDetails = prefs.getStringList('orderDetails' + orderDetails['userId'].toString());
     if (failedOrderDetails != null && failedOrderDetails.length > 0) {
       failedOrderDetails.add(json.encode(orderDetails));
       prefs.remove('orderDetails' + orderDetails['userId'].toString());
-      prefs.setStringList('orderDetails' + orderDetails['userId'].toString(),
-          failedOrderDetails);
+      prefs.setStringList('orderDetails' + orderDetails['userId'].toString(), failedOrderDetails);
     } else {
       failedOrderDetails = [];
       failedOrderDetails.add(json.encode(orderDetails));
       prefs.remove('orderDetails' + orderDetails['userId'].toString());
-      prefs.setStringList('orderDetails' + orderDetails['userId'].toString(),
-          failedOrderDetails);
+      prefs.setStringList('orderDetails' + orderDetails['userId'].toString(), failedOrderDetails);
     }
   }
 
   void removeCurrentOrderFromFailedOrderDetails(String orderDetails) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final List<String> failedOrderDetails = prefs
-        .getStringList('orderDetails' + signInDetails['userId'].toString());
+    final List<String> failedOrderDetails = prefs.getStringList('orderDetails' + signInDetails['userId'].toString());
     if (failedOrderDetails.length > 0) {
       // failedOrderDetails.add(orderDetails.toString());
       failedOrderDetails.remove(orderDetails);
       prefs.remove('orderDetails' + signInDetails['userId'].toString());
-      prefs.setStringList('orderDetails' + signInDetails['userId'].toString(),
-          failedOrderDetails);
+      prefs.setStringList('orderDetails' + signInDetails['userId'].toString(), failedOrderDetails);
     } else {
       // failedOrderDetails.add(orderDetails.toString());
       prefs.remove('orderDetails' + signInDetails['userId'].toString());

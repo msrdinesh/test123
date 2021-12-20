@@ -2,6 +2,7 @@ import 'package:http/http.dart' as http;
 // import 'package:http/io_client.dart';
 // import 'dart:io';
 import 'package:cornext_mobile/constants/urls.dart';
+import 'package:cornext_mobile/services/sharedprefrencesservice/sharedpreferenceservice.dart';
 import 'dart:convert';
 // import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cornext_mobile/models/signinmodel.dart';
@@ -53,7 +54,7 @@ class BaseService {
 
   Future postDetailsByAccessToken(String url, requestObj) {
     // if (getAccessToken() != null) {
-    final String token = getAccessToken();
+    final String token = SharedPreferenceService().getAccessToken().toString();
     print("i am here dinnu");
     print(token);
     return http.post(Uri.parse(url), body: json.encode(requestObj), headers: {
