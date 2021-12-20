@@ -1257,11 +1257,9 @@ class HomeScreen extends State<HomePage> {
     showModalBottomSheet(
         context: context,
         builder: (builder) {
-          return new Container(
-            child: new Center(
-              child: new Text("Hi ModalSheet"),
-            ),
-          );
+          return Column(children: [
+            Text("Choose your location", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))
+          ]);
         });
   }
 
