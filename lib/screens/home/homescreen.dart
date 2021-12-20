@@ -72,7 +72,7 @@ class HomeScreen extends State<HomePage> {
   dynamic fetchCartDetailsApi;
   final AppFonts appFonts = AppFonts();
   final DeviceInfo deviceInfo = DeviceInfo();
-  List categories;
+  List<Widget> categories;
   @override
   void initState() {
     super.initState();
