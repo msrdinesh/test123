@@ -1350,9 +1350,13 @@ class HomeScreen extends State<HomePage> {
     print("i am here dinnu");
     print(addressList[0]);
     for (int i = 0; i < addressList.length; i++) {
-      ans.add(SizedBox(
-          height: 100,
-          width: 100,
+      ans.add(DecoratedBox(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.red,
+              width: 10,
+            ),
+          ),
           child: Column(children: [
             Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['doorNumber'])),
             Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['street'])),
