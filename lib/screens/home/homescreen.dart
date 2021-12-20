@@ -1348,10 +1348,13 @@ class HomeScreen extends State<HomePage> {
   List<Widget> makeAddressCards(List addressList) {
     List<Widget> ans = [];
     for (int i = 0; i < addressList.length; i++) {
-      ans.add(Card(
-          child: Column(children: [
-        Text(addressList[i]['city'])
-      ])));
+      ans.add(SizedBox(
+          height: 50,
+          width: 50,
+          child: Card(
+              child: Column(children: [
+            Text(addressList[i]['city'])
+          ]))));
     }
     return ans;
   }
