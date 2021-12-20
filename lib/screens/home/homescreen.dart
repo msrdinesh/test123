@@ -1343,9 +1343,10 @@ class HomeScreen extends State<HomePage> {
         });
   }
 
-  Widget makeAddressCards(List addressList) {
+  List<Widget> makeAddressCards(List addressList) {
     List ans;
     addressList.map((add) => ans.add(Card(child: Text("dinnu"))));
+    return ans;
   }
 
   void _showModalSheet() {
