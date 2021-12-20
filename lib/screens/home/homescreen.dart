@@ -44,6 +44,9 @@ class HomePage extends StatefulWidget {
 }
 
 class HomeScreen extends State<HomePage> {
+  final AddressServices addressServices = AddressServices();
+  bool isAddressLoading = false;
+  List addressList = [];
   List productDetails = [];
   final Connectivity _connectivity = Connectivity();
   List productShowMoreOrLess = [];
@@ -72,6 +75,8 @@ class HomeScreen extends State<HomePage> {
   dynamic fetchCartDetailsApi;
   final AppFonts appFonts = AppFonts();
   final DeviceInfo deviceInfo = DeviceInfo();
+  bool isMoreAddressListLoading = false;
+  bool isSubscriptionAddressEditing = false;
 
   @override
   void initState() {
@@ -807,7 +812,6 @@ class HomeScreen extends State<HomePage> {
                                   borderRadius: BorderRadius.circular(25),
                                   child: Icon(
                                     Icons.star_border,
-                                    color: mainAppColor,
                                     size: 50,
                                   )),
                             )),
@@ -1151,6 +1155,92 @@ class HomeScreen extends State<HomePage> {
                 ],
               ));
         });
+  }
+
+  getAddress(bool isMoreDataLoading) {
+    Map obj = {
+      "limit": limit,
+      "pageNumber": pageNo
+    };
+    if (!isMoreDataLoading) {
+      setState(() {
+        isAddressLoading = true;
+      });
+    } else {
+      setState(() {
+        isMoreAddressListLoading = true;
+      });
+    }
+    AddressServices().getAddressDetails(obj).then((res) {
+      final addressData = json.decode(res.body);
+
+      print('address');
+      print(addressData);
+
+      if (addressData['addressList'] != null && addressData['addressList'].length > 0) {
+        setState(() {
+          if (!isMoreDataLoading) {
+            addressList = addressData['addressList'];
+          } else {
+            addressData['addressList'].forEach((val) {
+              addressList.add(val);
+            });
+          }
+          setState(() {});
+          // print(changeSubscriptionAddress['addressId']);
+          // print(selectedDeliveryAddress["addressId"]);
+          if (isAddressEditing || isSubscriptionAddressEditing || isRepeatOrder || isRepeatPreviousOrder || selectedDeliveryAddress["addressId"] != null) {
+            if (isAddressEditing) {
+              selectedRadio = addressList.indexWhere((val) => val['addressId'] == editAddressDetails['addressId']);
+            } else if (isRepeatOrder && repeatOrderAddressId > 0) {
+              selectedRadio = addressList.indexWhere((val) => val['addressId'] == repeatOrderAddressId);
+            } else if (selectedDeliveryAddress["addressId"] != null) {
+              selectedRadio = addressList.indexWhere((val) => val['addressId'] == selectedDeliveryAddress["addressId"]);
+            } else if (isRepeatPreviousOrder && repeatPreviousOrderAddressId > 0) {
+              selectedRadio = addressList.indexWhere((val) => val['addressId'] == repeatPreviousOrderAddressId);
+            } else {
+              print(addressList.indexWhere((val) => val['addressId'] == changeSubscriptionAddress['addressId']));
+              selectedRadio = addressList.indexWhere((val) => val['addressId'] == changeSubscriptionAddress['addressId']);
+            }
+          }
+          totalNumberOfAddresses = addressData['count'];
+          print(addressData['count']);
+          print(addressList.length);
+          scrollController
+            ..addListener(() {
+              if (totalNumberOfAddresses > addressList.length && !isMoreAddressListLoading && scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+                // print('data');
+                pageNo = pageNo + 1;
+                getAddress(true);
+              }
+            });
+          // print(addressList[0]['communicationAddress']);
+        });
+      } else if (addressData['error'] != null && addressData['error'] == "invalid_token") {
+        RefreshTokenService().getAccessTokenUsingRefreshToken().then((res) {
+          final data = json.decode(res.body);
+          // print(data);
+          if (RefreshTokenService().getAccessTokenFromData(data, context, setState)) {
+            getAddress(false);
+          }
+        });
+      } else if (addressData['error'] != null) {
+        apiErros.apiLoggedErrors(addressData, context, scafFoldKey);
+      }
+      setState(() {
+        isAddressLoading = false;
+        isMoreAddressListLoading = false;
+      });
+      // print(addressList);
+      // print(addressList[0]['city']);
+      // print(addressList.length);
+    }, onError: (err) {
+      setState(() {
+        isAddressLoading = false;
+      });
+      Navigator.pop(context);
+      apiErros.apiErrorNotifications(err, context, '/deliveryaddress', scafFoldKey);
+    });
   }
 
   displayRepeatOrderPopup(context, String message, int orderId) {
