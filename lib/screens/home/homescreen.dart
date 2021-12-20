@@ -1254,7 +1254,17 @@ class HomeScreen extends State<HomePage> {
   }
 
   Widget showLocation() {
-    return Container(height: 40, width: 10000, child: Padding(padding: EdgeInsets.all(10), child: Align(alignment: Alignment.centerLeft, child: Text("Deliver to", textAlign: TextAlign.left))), color: Color(0xff90ee90));
+    return Container(
+        height: 40,
+        width: 10000,
+        child: Padding(
+            padding: EdgeInsets.all(10),
+            child: Align(
+                alignment: Alignment.centerLeft,
+                child: Row(children: [
+                  Text("Deliver to", textAlign: TextAlign.left)
+                ]))),
+        color: Color(0xff90ee90));
   }
 
   checkPreviousOrderLinkedWithSubscription() {
