@@ -1399,14 +1399,14 @@ class HomeScreen extends State<HomePage> {
                 child: Row(children: [
                   Icon(Icons.location_on_rounded, color: Colors.blue),
                   SizedBox(width: 5),
-                  Text("Enter an Indian pincode")
+                  Text("Enter an Indian pincode", style: TextStyle(color: Colors.blue))
                 ])),
             Padding(
                 padding: EdgeInsets.all(15),
                 child: Row(children: [
                   Icon(Icons.location_on_rounded, color: Colors.blue),
                   SizedBox(width: 5),
-                  Text("Use my current location")
+                  Text("Use my current location", style: TextStyle(color: Colors.blue))
                 ]))
           ]);
         });
