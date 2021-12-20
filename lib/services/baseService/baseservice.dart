@@ -51,7 +51,7 @@ class BaseService {
     });
   }
 
-  Future postDetailsByAccessToken(String url, requestObj) {
+  Future postDetailsByAccessToken(String url, requestObj) async {
     // if (getAccessToken() != null) {
     print(signInDetails);
     String token = signInDetails['access_token'];
