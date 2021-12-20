@@ -1353,6 +1353,7 @@ class HomeScreen extends State<HomePage> {
           width: 100,
           child: Card(
               child: Column(children: [
+            Text(addressList[i]['name']),
             Text(addressList[i]['city'])
           ]))));
     }
