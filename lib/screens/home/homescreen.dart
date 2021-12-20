@@ -1359,13 +1359,15 @@ class HomeScreen extends State<HomePage> {
           child: SizedBox(
               height: 100,
               width: 100,
-              child: Column(children: [
-                Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['doorNumber'])),
-                Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['street'])),
-                Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['city'])),
-                Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['state'])),
-                Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['mobileNo']))
-              ]))));
+              child: Padding(
+                  padding: EdgeInsets.all(5),
+                  child: Column(children: [
+                    Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['doorNumber'])),
+                    Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['street'])),
+                    Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['city'])),
+                    Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['state'])),
+                    Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['mobileNo']))
+                  ])))));
     }
     return ans;
   }
