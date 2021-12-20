@@ -1347,6 +1347,8 @@ class HomeScreen extends State<HomePage> {
     showModalBottomSheet(
         context: context,
         builder: (builder) {
+          print("number of addresses");
+          print(addressList.length);
           return Column(children: [
             Padding(padding: EdgeInsets.all(15), child: Align(alignment: Alignment.centerLeft, child: Text("Choose your location", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)))),
             Padding(padding: EdgeInsets.only(left: 15), child: Align(alignment: Alignment.centerLeft, child: Text("Select a delivery location to see product availability and delivery options", style: TextStyle(fontSize: 15)))),
