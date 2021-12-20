@@ -1355,11 +1355,11 @@ class HomeScreen extends State<HomePage> {
           width: 100,
           child: Card(
               child: Column(children: [
-            Text(addressList[i]['doorNumber']),
-            Text(addressList[i]['street']),
-            Text(addressList[i]['city']),
-            Text(addressList[i]['state']),
-            Text(addressList[i]['mobileNo'])
+            Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['doorNumber'])),
+            Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['street'])),
+            Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['city'])),
+            Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['state'])),
+            Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['mobileNo']))
           ]))));
     }
     return ans;
