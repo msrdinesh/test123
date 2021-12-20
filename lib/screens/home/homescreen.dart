@@ -1253,6 +1253,10 @@ class HomeScreen extends State<HomePage> {
         });
   }
 
+  Widget showLocation() {
+    return Text("Location will come here");
+  }
+
   checkPreviousOrderLinkedWithSubscription() {
     final Map requestObj = {
       "orderId": null
@@ -1400,6 +1404,7 @@ class HomeScreen extends State<HomePage> {
                         controller: scrollController,
                         itemBuilder: (BuildContext context, int i) {
                           return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                            showLocation(),
                             showCategories(),
                             // Divider(
                             //   thickness: 1.5,
