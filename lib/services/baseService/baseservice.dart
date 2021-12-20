@@ -54,7 +54,10 @@ class BaseService {
 
   Future postDetailsByAccessToken(String url, requestObj) {
     // if (getAccessToken() != null) {
-    final String token = SharedPreferenceService().getAccessToken().toString();
+    String token;
+    SharedPreferenceService().getAccessToken().then((String result) {
+      token = token;
+    });
     print("i am here dinnu");
     print(token);
     return http.post(Uri.parse(url), body: json.encode(requestObj), headers: {
