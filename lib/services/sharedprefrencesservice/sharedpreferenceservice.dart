@@ -12,7 +12,7 @@ class SharedPreferenceService {
     // return prefs;
   }
 
-  Future<String> getAccessToken() async {
+  getAccessToken() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString("access_token");
   }
