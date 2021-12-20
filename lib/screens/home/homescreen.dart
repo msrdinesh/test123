@@ -1357,8 +1357,8 @@ class HomeScreen extends State<HomePage> {
             ),
           ),
           child: SizedBox(
-              height: 150,
-              width: 150,
+              height: 120,
+              width: 120,
               child: Padding(
                   padding: EdgeInsets.all(5),
                   child: Column(children: [
