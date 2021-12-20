@@ -33,47 +33,40 @@ class AddressServices {
   // bool displayBanner = true;
 
   Future getAddressDetails(requestObj) {
+    print("in getAddressDetials");
     return BaseService().postDetailsByAccessToken(addressDetails, requestObj);
   }
 
   Future getNewAddressDetails(requestObj) {
-    return BaseService()
-        .postDetailsByAccessToken(newAddressDetails, requestObj);
+    return BaseService().postDetailsByAccessToken(newAddressDetails, requestObj);
   }
 
   Future getUpdateAddressDetails(requestObj) {
-    return BaseService()
-        .postDetailsByAccessToken(updateAddressDetails, requestObj);
+    return BaseService().postDetailsByAccessToken(updateAddressDetails, requestObj);
   }
 
   Future getDeleteAddress(requestObj) {
-    return BaseService()
-        .postDetailsByAccessToken(deleteAddressDetails, requestObj);
+    return BaseService().postDetailsByAccessToken(deleteAddressDetails, requestObj);
   }
 
   Future updateOrderAddressDetails(requestObj) {
-    return BaseService()
-        .postDetailsByAccessToken(updateOrderAddressUrl, requestObj);
+    return BaseService().postDetailsByAccessToken(updateOrderAddressUrl, requestObj);
   }
 
   Future checkAddressLinkedWithSubscriptions(int addressId) {
-    return BaseService().getInfoByAccessToken(
-        checkAddressLinkedWithSubscriptionsurl + addressId.toString());
+    return BaseService().getInfoByAccessToken(checkAddressLinkedWithSubscriptionsurl + addressId.toString());
   }
 
   Future checkPincodeAvailability(String pincode) {
-    return BaseService()
-        .getInfoByAccessToken(checkPinCodeAvailabilityUrl + pincode.toString());
+    return BaseService().getInfoByAccessToken(checkPinCodeAvailabilityUrl + pincode.toString());
   }
 
   Future checkPinCodeAvailabilityForCartProducts(String addressId) {
-    return BaseService().getInfoByAccessToken(
-        checkPinCodeAvailableForCartProductsUrl + addressId.toString());
+    return BaseService().getInfoByAccessToken(checkPinCodeAvailableForCartProductsUrl + addressId.toString());
   }
 
   Future checkPincodeLinkedWithActiveOrders(requestObj) {
-    return BaseService().postDetailsByAccessToken(
-        checkPincodeIsLinkedWithActiveOrdersUrl, requestObj);
+    return BaseService().postDetailsByAccessToken(checkPincodeIsLinkedWithActiveOrdersUrl, requestObj);
   }
 
   Future getStates() {
