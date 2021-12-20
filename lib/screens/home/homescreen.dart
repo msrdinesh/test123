@@ -1354,7 +1354,7 @@ class HomeScreen extends State<HomePage> {
           height: 100,
           width: 100,
           child: Card(
-              borderRadius: BorderRadius.circular(10),
+              elevation: 5,
               child: Column(children: [
                 Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['doorNumber'])),
                 Align(alignment: Alignment.centerLeft, child: Text(addressList[i]['street'])),
