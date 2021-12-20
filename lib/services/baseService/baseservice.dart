@@ -54,7 +54,9 @@ class BaseService {
   Future postDetailsByAccessToken(String url, requestObj) {
     // if (getAccessToken() != null) {
     print(signInDetails);
-    final String token = signInDetails['access_token'];
+    String token = signInDetails['access_token'];
+    var prefManager = await SharedPreferences.getInstance();
+    token = prefManager.getString("access_token");
     print("i am here dinnu");
     print(token);
     return http.post(Uri.parse(url), body: json.encode(requestObj), headers: {
