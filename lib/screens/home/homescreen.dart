@@ -900,8 +900,8 @@ class HomeScreen extends State<HomePage> {
                                 child: CachedNetworkImage(
                                   imageUrl: 'https://feednextmedia.s3.ap-south-1.amazonaws.com/CAT-Icon-All-01.jpg',
                                   fit: BoxFit.fill,
-                                  height: 30,
-                                  width: 30,
+                                  height: 5,
+                                  width: 5,
                                 ))),
                         AppStyles().customPadding(1),
                         Container(
