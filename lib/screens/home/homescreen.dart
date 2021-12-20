@@ -1263,7 +1263,7 @@ class HomeScreen extends State<HomePage> {
                 alignment: Alignment.centerLeft,
                 child: Row(children: [
                   Icon(Icons.location_on_rounded),
-                  Text("Deliver to", textAlign: TextAlign.left)
+                  Text("  Deliver to", textAlign: TextAlign.left)
                 ]))),
         color: Color(0xff90ee90));
   }
