@@ -1347,6 +1347,7 @@ class HomeScreen extends State<HomePage> {
 
   List<Widget> makeAddressCards(List addressList) {
     List<Widget> ans = [];
+    print(addressList[0]);
     for (int i = 0; i < addressList.length; i++) {
       ans.add(SizedBox(
           height: 100,
