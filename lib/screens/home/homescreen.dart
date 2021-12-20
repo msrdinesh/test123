@@ -1346,6 +1346,8 @@ class HomeScreen extends State<HomePage> {
   }
 
   List<Widget> makeAddressCards(List addressList) {
+    print("i am here dinnu");
+    print(addressList.length);
     List ans;
     addressList.map((add) => ans.add(Card(child: Text("dinnu"))));
     print("anser size" + ans.length.toString());
