@@ -56,7 +56,7 @@ class BaseService {
     // if (getAccessToken() != null) {
     String token;
     SharedPreferenceService().getAccessToken().then((String result) {
-      token = token;
+      // token = token;
     });
     print("i am here dinnu");
     print(token);
