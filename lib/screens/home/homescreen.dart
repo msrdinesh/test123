@@ -891,7 +891,7 @@ class HomeScreen extends State<HomePage> {
                                   height: 50,
                                   width: 50,
                                 ))),
-                        AppStyles().customPadding(0.5),
+                        AppStyles().customPadding(0.25),
                         Container(
                           // padding: EdgeInsets.only(top: 1),
                           child: Text(
