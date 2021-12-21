@@ -1571,15 +1571,15 @@ class HomeScreen extends State<HomePage> {
                       Flexible(child: Padding(padding: EdgeInsets.all(0), child: Text("Allow this FeedNext app to access your location and skip this step in the future.")))
                     ],
                   )),
-                  ListTile(title:
-                  Row(children: [
-                    ElevatedButton(
+                  ListTile(
+                      title: Row(children: [
+                    RaisedButton(
                       child: Text('Not now'),
                       onPressed: () {
                         print('Pressed');
                       },
                     ),
-                    ElevatedButton(
+                    RaisedButton(
                       child: Text('Allow access'),
                       onPressed: () {
                         print('Pressed');
