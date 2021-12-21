@@ -1448,18 +1448,19 @@ class HomeScreen extends State<HomePage> {
                         ),
                         height: 40,
                         width: 330,
-                        child: Center(
+                        child: Align(
+                            alignment: Alignment.centerLeft,
                             child: TextFormField(
-                          onSaved: (String value) {
-                            pincode = value;
-                          },
-                          key: passwordFormKey,
-                          validator: (value) => GlobalValidations().pincodeValidations(value),
-                          // autovalidate: true,
-                          // autocorrect: true,
+                              onSaved: (String value) {
+                                pincode = value;
+                              },
+                              key: passwordFormKey,
+                              validator: (value) => GlobalValidations().pincodeValidations(value),
+                              // autovalidate: true,
+                              // autocorrect: true,
 
-                          // onSaved: (val) => _passwordError = val,
-                        ))))
+                              // onSaved: (val) => _passwordError = val,
+                            ))))
               ]));
         });
   }
