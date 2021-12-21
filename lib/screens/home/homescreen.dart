@@ -1427,6 +1427,14 @@ class HomeScreen extends State<HomePage> {
         });
   }
 
+  void _apply() {
+    final form = passwordFormKey.currentState;
+    if (form.validate()) {
+      form.save();
+      Navigator.pop(context);
+    }
+  }
+
   void _showPincode() {
     showModalBottomSheet(
         context: context,
@@ -1468,7 +1476,9 @@ class HomeScreen extends State<HomePage> {
                         height: 40.0,
                         child: RaisedButton(
                           child: Text('Apply'),
-                          onPressed: () {},
+                          onPressed: () {
+                            _apply();
+                          },
                         )))
               ]));
         });
