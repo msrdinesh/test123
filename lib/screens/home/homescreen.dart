@@ -1447,7 +1447,7 @@ class HomeScreen extends State<HomePage> {
   void getPlace(VoidCallback fun) async {
     isLoading = true;
     fun();
-    var response = await http.get(Uri.parse('https://api.worldpostallocations.com/pincode?postalcode=521001&countrycode=IN'));
+    var response = await http.get(Uri.parse('https://api.worldpostallocations.com/pincode?postalcode=' + pincode + '&countrycode=IN'));
     Map<String, dynamic> respons = jsonDecode(response.body);
     place = respons['result'][0]['province'];
     print("i am here");
