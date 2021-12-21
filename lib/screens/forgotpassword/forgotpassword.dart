@@ -45,8 +45,7 @@ class ForgotPasswordScreen extends State<ForgotPasswordPage> {
 
   //initialization of validations.
   checkFormValidOrNot() {
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(mobileNoFocus, mobileNokey);
+    GlobalValidations().validateCurrentFieldValidOrNot(mobileNoFocus, mobileNokey);
     // GlobalValidations()
     //     .validateCurrentFieldValidOrNot(passwordFocus, passwordFormKey);
   }
@@ -69,15 +68,9 @@ class ForgotPasswordScreen extends State<ForgotPasswordPage> {
         // showSuccessNotifications(SuccessMessages().otpSentMessage, context);
         Navigator.pushNamed(context, '/otpvalidationforforgotpassword');
       } else if (data != null && data == 'USERDOESNOTEXIST') {
-        showErrorNotifications(
-            ErrorMessages().forgotPasswordUserDoesNotExistError,
-            context,
-            scafFoldkey);
+        showErrorNotifications(ErrorMessages().forgotPasswordUserDoesNotExistError, context, scafFoldkey);
       } else if (data != null && data == 'MOBILENUMBERINVALID') {
-        showErrorNotifications(
-            ErrorMessages().forgotPasswordUserMobileNumberinvalid,
-            context,
-            scafFoldkey);
+        showErrorNotifications(ErrorMessages().forgotPasswordUserMobileNumberinvalid, context, scafFoldkey);
       } else if (data['error'] != null) {
         apiErros.apiLoggedErrors(data, context, scafFoldkey);
       }
@@ -85,8 +78,7 @@ class ForgotPasswordScreen extends State<ForgotPasswordPage> {
         onLoading = false;
       });
     }, onError: (err) {
-      ApiErros()
-          .apiErrorNotifications(err, context, '/forgotpassword', scafFoldkey);
+      ApiErros().apiErrorNotifications(err, context, '/forgotpassword', scafFoldkey);
       setState(() {
         onLoading = false;
       });
@@ -102,10 +94,7 @@ class ForgotPasswordScreen extends State<ForgotPasswordPage> {
             FocusScope.of(context).requestFocus(FocusNode());
           },
           child: Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(cornextBackgroundImagePath),
-                    fit: BoxFit.cover)),
+            decoration: BoxDecoration(image: DecorationImage(image: AssetImage(cornextBackgroundImagePath), fit: BoxFit.cover)),
             child: Center(
                 child: SingleChildScrollView(
                     child: Column(children: <Widget>[
@@ -116,14 +105,11 @@ class ForgotPasswordScreen extends State<ForgotPasswordPage> {
                       child: Container(
                           padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
                           child: Column(children: <Widget>[
-                            Text('$forgotPasswordHeaderName',
-                                style: appFonts.getTextStyle(
-                                    'forgot_passwords_screen_heading_styles')),
+                            Text('$forgotPasswordHeaderName', style: appFonts.getTextStyle('forgot_passwords_screen_heading_styles')),
                             AppStyles().customPadding(8),
                             TextFormField(
                               cursorColor: mainAppColor,
-                              validator: (value) =>
-                                  GlobalValidations().mobileValidations(value),
+                              validator: (value) => GlobalValidations().mobileValidations(value),
                               decoration: InputDecoration(
                                 errorMaxLines: 2,
                                 labelText: mobileNumberLabelName + " *",
@@ -131,8 +117,7 @@ class ForgotPasswordScreen extends State<ForgotPasswordPage> {
                                 // alignLabelWithHint: true,
                                 border: AppStyles().inputBorder,
                                 prefix: Text("+91 "),
-                                contentPadding:
-                                    AppStyles().contentPaddingForInput,
+                                contentPadding: AppStyles().contentPaddingForInput,
                                 focusedBorder: AppStyles().focusedInputBorder,
                               ),
                               controller: mobileNoController,
@@ -140,22 +125,16 @@ class ForgotPasswordScreen extends State<ForgotPasswordPage> {
                               focusNode: mobileNoFocus,
                               keyboardType: TextInputType.number,
                               maxLength: 10,
-                              inputFormatters: [
-                                WhitelistingTextInputFormatter.digitsOnly
-                              ],
                             ),
                             Padding(
                               padding: EdgeInsets.all(10),
                             ),
                             !onLoading
                                 ? RaisedButton(
-                                    shape: new RoundedRectangleBorder(
-                                        borderRadius:
-                                            new BorderRadius.circular(0.0)),
+                                    shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(0.0)),
                                     onPressed: () {
                                       clearErrorMessages(scafFoldkey);
-                                      if (forgotPasswordHomeKey.currentState
-                                          .validate()) {
+                                      if (forgotPasswordHomeKey.currentState.validate()) {
                                         setState(() {
                                           onLoading = true;
                                         });
@@ -165,9 +144,7 @@ class ForgotPasswordScreen extends State<ForgotPasswordPage> {
                                     color: mainAppColor,
                                     // shape: ,
                                     // clipBehavior: Clip.antiAlias,
-                                    child: Text("Generate OTP",
-                                        style: appFonts.getTextStyle(
-                                            'button_text_color_white')),
+                                    child: Text("Generate OTP", style: appFonts.getTextStyle('button_text_color_white')),
                                   )
                                 : loadingButtonWidget(context),
                           ]))))
