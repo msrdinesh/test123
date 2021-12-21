@@ -1580,11 +1580,14 @@ class HomeScreen extends State<HomePage> {
                       },
                     ),
                     RaisedButton(
-                      child: Text('Allow access'),
                       onPressed: () {
                         print('Pressed');
                       },
-                    )
+                      child:SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      child: Text("Allow access")),
+                )    
+                    
                   ]))
                 ]));
           });
