@@ -1564,7 +1564,8 @@ class HomeScreen extends State<HomePage> {
                             isChecked = value;
                           });
                         },
-                      )
+                      ),
+                      Padding(padding: EdgeInsets.all(15), child: Text("Allow this FeedNext app to access your location and skip this step in the future."))
                     ],
                   )
                 ]));
