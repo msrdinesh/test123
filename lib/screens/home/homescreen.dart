@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cornext_mobile/components/widgets/appbarwidget.dart';
 import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'package:cornext_mobile/constants/appcolors.dart';
 import 'package:cornext_mobile/services/refreshtokenservice/refreshtokenservice.dart';
 import 'package:cornext_mobile/services/sharedprefrencesservice/sharedpreferenceservice.dart';
@@ -1441,6 +1443,12 @@ class HomeScreen extends State<HomePage> {
     return textInLocation;
   }
 
+  void getPlace() async {
+    var response = await http.get(Uri.parse('https://api.worldpostallocations.com/pincode?postalcode=521001&countrycode=IN'));
+    response = jsonDecode(response.body);
+    place = response['result'][0]['province'];
+  }
+
   void _showPincode(VoidCallback fun) {
     showModalBottomSheet(
         context: context,
@@ -1484,9 +1492,8 @@ class HomeScreen extends State<HomePage> {
                             print(form);
                             if (form.validate()) {
                               form.save();
-                              print("i am here and pincode is " + pincode);
+                              getPlace();
                               fun();
-
                               Navigator.pop(context);
                             } else {}
                           },
