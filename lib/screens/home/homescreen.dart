@@ -1565,7 +1565,7 @@ class HomeScreen extends State<HomePage> {
                           });
                         },
                       ),
-                      Padding(padding: EdgeInsets.all(15), child: SizedBox(height: 30, child: Text("Allow this FeedNext app to access your location and skip this step in the future.")))
+                      Padding(padding: EdgeInsets.all(15), child: Text("Allow this FeedNext app to access your location and skip this step in the future."))
                     ],
                   )
                 ]));
