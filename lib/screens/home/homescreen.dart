@@ -1578,6 +1578,8 @@ class HomeScreen extends State<HomePage> {
     setState(() {
       BOOL = true;
     });
+    print("dinesh");
+    print(place);
   }
 
   Widget build(BuildContext context) {
