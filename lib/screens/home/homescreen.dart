@@ -1502,7 +1502,7 @@ class HomeScreen extends State<HomePage> {
                                   print(form);
                                   if (form.validate()) {
                                     form.save();
-                                    getPlace();
+                                    getPlace(fun);
                                     fun();
                                     Navigator.pop(context);
                                   } else {}
