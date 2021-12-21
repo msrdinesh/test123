@@ -1438,17 +1438,20 @@ class HomeScreen extends State<HomePage> {
               child: Column(children: [
                 Padding(padding: EdgeInsets.all(15), child: Align(alignment: Alignment.centerLeft, child: Text("Enter an Indian pincode", style: TextStyle(fontSize: 20)))),
                 Padding(padding: EdgeInsets.only(left: 15), child: Align(alignment: Alignment.centerLeft, child: Text("Select a delivery location to see product availability and delivery options", style: TextStyle(fontSize: 15)))),
-                TextFormField(
-                  controller: passwordController,
-                  key: passwordFormKey,
+                SizedBox(
+                    height: 30,
+                    width: 100,
+                    child: TextFormField(
+                      controller: passwordController,
+                      key: passwordFormKey,
 
-                  cursorColor: mainAppColor,
-                  validator: (value) => GlobalValidations().pincodeValidations(value),
-                  // autovalidate: true,
-                  // autocorrect: true,
+                      cursorColor: mainAppColor,
+                      validator: (value) => GlobalValidations().pincodeValidations(value),
+                      // autovalidate: true,
+                      // autocorrect: true,
 
-                  // onSaved: (val) => _passwordError = val,
-                )
+                      // onSaved: (val) => _passwordError = val,
+                    ))
               ]));
         });
   }
