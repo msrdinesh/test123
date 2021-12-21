@@ -58,7 +58,6 @@ dependencies:
   video_thumbnail: ^0.4.3
   # location_permissions: ^2.0.4+1
   android_intent: ^2.0.2
-  permission_handler: 3.3.0
   # hardware_buttons: ^1.0.0
   google_fonts: ^2.1.0
   device_info: ^2.0.3
