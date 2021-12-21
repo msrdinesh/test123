@@ -42,7 +42,7 @@ class HomeScreen extends State<HomePage> {
   bool isChecked = false;
   bool isLoading = false;
   bool BOOL = false;
-  String pincode = "521001";
+  String pincode = "";
   String place = "";
   String textInLocation = "Deliver to ";
   final passwordController = TextEditingController();
@@ -1428,13 +1428,7 @@ class HomeScreen extends State<HomePage> {
   }
 
   String textFun(bool BOOL) {
-    if (BOOL) {
-      print("bool is true");
-    } else {
-      print("bool is false");
-    }
     if (BOOL) return textInLocation + place + " " + pincode;
-    print("pincode is " + pincode);
     return textInLocation;
   }
 
@@ -1537,6 +1531,7 @@ class HomeScreen extends State<HomePage> {
   }
 
   void getCoordinatesAndPlace() async {
+    print("called get coordinates");
     Location location = new Location();
 
     bool _serviceEnabled;
@@ -1685,8 +1680,6 @@ class HomeScreen extends State<HomePage> {
     setState(() {
       BOOL = true;
     });
-    print("dinesh");
-    print(place);
   }
 
   Widget build(BuildContext context) {
