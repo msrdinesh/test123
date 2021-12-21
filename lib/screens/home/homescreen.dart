@@ -1412,6 +1412,7 @@ class HomeScreen extends State<HomePage> {
                     padding: EdgeInsets.all(15),
                     child: GestureDetector(
                         onTap: () {
+                          Navigator.pop(context);
                           _showPincode();
                         },
                         child: Row(children: [
