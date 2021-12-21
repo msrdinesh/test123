@@ -1481,9 +1481,6 @@ class HomeScreen extends State<HomePage> {
                               print("i am here and pincode is " + pincode);
                               fun();
 
-                              textInLocation = pincode;
-                              print(textInLocation);
-
                               Navigator.pop(context);
                             } else {
                               fun();
