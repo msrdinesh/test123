@@ -1461,12 +1461,14 @@ class HomeScreen extends State<HomePage> {
                             child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: TextFormField(
-                                  style: TextStyle(fontSize: 20),
+                                  decoration: const InputDecoration(
+                                    icon: Icon(Icons.person),
+                                    hintText: 'What do people call you?',
+                                    labelText: 'Name *',
+                                  ),
                                   onSaved: (String value) {
                                     pincode = value;
                                   },
-                                  decoration: new InputDecoration(border: InputBorder.none, focusedBorder: InputBorder.none, enabledBorder: InputBorder.none, errorBorder: InputBorder.none, disabledBorder: InputBorder.none, contentPadding: EdgeInsets.only(left: 0, bottom: 11, top: 11, right: 15)),
-                                  key: passwordFormKey,
                                   validator: (value) => GlobalValidations().pincodeValidations(value),
                                 ))))),
                 Padding(
