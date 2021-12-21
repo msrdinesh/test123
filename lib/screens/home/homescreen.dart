@@ -1433,8 +1433,10 @@ class HomeScreen extends State<HomePage> {
     print(form);
     if (form.validate()) {
       form.save();
-      setState() {}
-      print(pincode);
+      setState() {
+        pincode = pincode;
+      }
+
       Navigator.pop(context);
     } else {
       setState() {
