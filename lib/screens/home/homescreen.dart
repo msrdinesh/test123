@@ -1429,6 +1429,7 @@ class HomeScreen extends State<HomePage> {
 
   void _apply() {
     final form = passwordFormKey.currentState;
+    print(form);
     if (form.validate()) {
       form.save();
       Navigator.pop(context);
