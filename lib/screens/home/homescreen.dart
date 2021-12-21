@@ -1574,20 +1574,17 @@ class HomeScreen extends State<HomePage> {
                   ListTile(
                       title: Row(children: [
                     RaisedButton(
-                      child: Text('Not now'),
                       onPressed: () {
                         print('Pressed');
                       },
+                      child: SizedBox(width: MediaQuery.of(context).size.width * 0.4, child: Text("Not now")),
                     ),
                     RaisedButton(
                       onPressed: () {
                         print('Pressed');
                       },
-                      child:SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      child: Text("Allow access")),
-                )    
-                    
+                      child: SizedBox(width: MediaQuery.of(context).size.width * 0.4, child: Text("Allow access")),
+                    )
                   ]))
                 ]));
           });
