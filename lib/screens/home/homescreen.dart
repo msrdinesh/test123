@@ -1444,12 +1444,13 @@ class HomeScreen extends State<HomePage> {
     return textInLocation;
   }
 
-  void getPlace() async {
+  void getPlace(VoidCallback fun) async {
     isLoading = true;
     var response = await http.get(Uri.parse('https://api.worldpostallocations.com/pincode?postalcode=521001&countrycode=IN'));
     Map<String, dynamic> respons = jsonDecode(response.body);
     place = respons['result'][0]['province'];
     print("i am here");
+    fun();
     print(place);
     isLoading = false;
   }
