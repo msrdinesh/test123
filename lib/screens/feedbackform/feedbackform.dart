@@ -1052,10 +1052,10 @@ class FeedbackPageState extends State<FeedbackPage> {
       }
     } else {
       Navigator.pop(context);
-      List<p.PermissionGroup> permissions = [
+      List<PermissionGroup> permissions = [
         PermissionGroup.location
       ];
-      final res = await p.PermissionHandler().requestPermissions(permissions);
+      final res = await PermissionHandler().requestPermissions(permissions);
       print(res);
       // return null;
       // requestPermission(Permission permission);
