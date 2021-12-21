@@ -1431,6 +1431,11 @@ class HomeScreen extends State<HomePage> {
   }
 
   String textFun(bool BOOL) {
+    if (BOOL) {
+      print("bool is true");
+    } else {
+      print("bool is false");
+    }
     if (BOOL) return textInLocation;
     return textInLocation + place + " " + pincode;
   }
