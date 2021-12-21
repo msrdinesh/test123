@@ -1554,7 +1554,7 @@ class HomeScreen extends State<HomePage> {
                 Padding(padding: EdgeInsets.all(15), child: Text("We use your location to improve your shopping experience, ensuring you only see items or products and delivery options available in your place.", style: TextStyle(fontSize: 15))),
                 Row(
                   children: <Widget>[
-                    CheckboxListTile(
+                    Checkbox(
                       checkColor: Colors.white,
                       value: isChecked,
                       onChanged: (bool value) {
