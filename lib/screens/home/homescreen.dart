@@ -1614,7 +1614,7 @@ class HomeScreen extends State<HomePage> {
     // double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       // backgroundColor: Colors.grey[100],
-      key: scafflodkey,
+      key: scafFoldKey,
       appBar: appBarWidgetWithIconsAnSearchbox(context, false, this.setState, false, '/home', searchFieldKey, searchFieldController, searchFocusNode),
       drawer: appBarDrawer(context, this.setState, scafflodkey),
       // endDrawer: filterDrawer(
