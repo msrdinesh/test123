@@ -24,8 +24,7 @@ class ForgotPasswordOtpValidationPage extends StatefulWidget {
   ForgotPasswordOtpValidation createState() => ForgotPasswordOtpValidation();
 }
 
-class ForgotPasswordOtpValidation
-    extends State<ForgotPasswordOtpValidationPage> {
+class ForgotPasswordOtpValidation extends State<ForgotPasswordOtpValidationPage> {
   final mobileNoController = TextEditingController();
   final otpController = TextEditingController();
   bool showResendOtpButton = false;
@@ -104,14 +103,11 @@ class ForgotPasswordOtpValidation
 
         // otpValidationFormKey.currentState?.reset();
         // });
-        Navigator.popAndPushNamed(
-            context, '/CreateNewPassswordInForgotPasswordPage');
+        Navigator.popAndPushNamed(context, '/CreateNewPassswordInForgotPasswordPage');
       } else if (data != null && data == 'MOBILEOTPEXPIRED') {
-        showErrorNotifications(
-            ErrorMessages().forgotPasswordUserOtpExpired, context, scafFoldKey);
+        showErrorNotifications(ErrorMessages().forgotPasswordUserOtpExpired, context, scafFoldKey);
       } else if (data != null && data == 'INVALIDOTP') {
-        showErrorNotifications(
-            ErrorMessages().forgotPasswordInvalidOtp, context, scafFoldKey);
+        showErrorNotifications(ErrorMessages().forgotPasswordInvalidOtp, context, scafFoldKey);
       } else if (data['error'] != null) {
         apiErros.apiLoggedErrors(data, context, scafFoldKey);
       }
@@ -120,8 +116,7 @@ class ForgotPasswordOtpValidation
         onLoading = false;
       });
     }, onError: (err) {
-      ApiErros().apiErrorNotifications(
-          err, context, '/otpvalidationforforgotpassword', scafFoldKey);
+      ApiErros().apiErrorNotifications(err, context, '/otpvalidationforforgotpassword', scafFoldKey);
       setState(() {
         onLoading = false;
       });
@@ -132,8 +127,7 @@ class ForgotPasswordOtpValidation
   backToSignin() {
     // Navigator.popUntil(context, ModalRoute.withName('/'));
     // Navigator.
-    Navigator.pushNamedAndRemoveUntil(
-        context, '/login', ModalRoute.withName('/login'));
+    Navigator.pushNamedAndRemoveUntil(context, '/login', ModalRoute.withName('/login'));
   }
 
   //re-sending otp.
@@ -150,18 +144,14 @@ class ForgotPasswordOtpValidation
       final data = json.decode(res.body);
       if (data != null && data == 'SUCCESS') {
         forgotpassworddetails['mobileno'] = mobileNoController.text.trim();
-        showSuccessNotifications(
-            SuccessMessages().otpSentMessage, context, scafFoldKey);
+        showSuccessNotifications(SuccessMessages().otpSentMessage, context, scafFoldKey);
         // Navigator.pushNamed(context, '/otpvalidationforforgotpassword');
         // otpKey.currentState?.reset();
         // otpFocus.unfocus();
         // otpController.text = "";
         // otpController.clear();
       } else if (data != null && data == 'USERDOESNOTEXIST') {
-        showErrorNotifications(
-            ErrorMessages().forgotPasswordUserDoesNotExistError,
-            context,
-            scafFoldKey);
+        showErrorNotifications(ErrorMessages().forgotPasswordUserDoesNotExistError, context, scafFoldKey);
       } else if (data['error'] != null) {
         apiErros.apiLoggedErrors(data, context, scafFoldKey);
       }
@@ -172,8 +162,7 @@ class ForgotPasswordOtpValidation
       setState(() {
         resendOtpLoadingBtn = false;
       });
-      ApiErros().apiErrorNotifications(
-          err, context, '/otpvalidationforforgotpassword', scafFoldKey);
+      ApiErros().apiErrorNotifications(err, context, '/otpvalidationforforgotpassword', scafFoldKey);
     });
   }
 
@@ -186,10 +175,7 @@ class ForgotPasswordOtpValidation
               FocusScope.of(context).requestFocus(FocusNode());
             },
             child: Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(cornextBackgroundImagePath),
-                      fit: BoxFit.cover)),
+              decoration: BoxDecoration(image: DecorationImage(image: AssetImage(cornextBackgroundImagePath), fit: BoxFit.cover)),
               child: Center(
                   child: SingleChildScrollView(
                       child: Column(
@@ -204,20 +190,17 @@ class ForgotPasswordOtpValidation
                                 child: Column(children: <Widget>[
                                   Text(
                                     '$forgotPasswordHeaderName',
-                                    style: appFonts.getTextStyle(
-                                        'forgot_passwords_screen_heading_styles'),
+                                    style: appFonts.getTextStyle('forgot_passwords_screen_heading_styles'),
                                   ),
                                   AppStyles().customPadding(8),
                                   TextFormField(
                                     decoration: InputDecoration(
                                       border: AppStyles().inputBorder,
                                       errorMaxLines: 3,
-                                      focusedBorder:
-                                          AppStyles().focusedInputBorder,
+                                      focusedBorder: AppStyles().focusedInputBorder,
                                       labelText: '$mobileNumberLabelName',
                                       prefixText: "+91 ",
-                                      contentPadding:
-                                          AppStyles().contentPaddingForInput,
+                                      contentPadding: AppStyles().contentPaddingForInput,
                                       counterText: "",
                                     ),
                                     controller: mobileNoController,
@@ -228,23 +211,17 @@ class ForgotPasswordOtpValidation
                                     decoration: InputDecoration(
                                       border: AppStyles().inputBorder,
                                       errorMaxLines: 3,
-                                      focusedBorder:
-                                          AppStyles().focusedInputBorder,
+                                      focusedBorder: AppStyles().focusedInputBorder,
                                       labelText: '$otpLabelName *',
-                                      contentPadding:
-                                          AppStyles().contentPaddingForInput,
+                                      contentPadding: AppStyles().contentPaddingForInput,
                                       counterText: "",
                                     ),
                                     maxLength: 6,
                                     keyboardType: TextInputType.phone,
                                     controller: otpController,
-                                    validator: (val) =>
-                                        GlobalValidations().otpValidations(val),
+                                    validator: (val) => GlobalValidations().otpValidations(val),
                                     focusNode: otpFocus,
                                     key: otpKey,
-                                    inputFormatters: [
-                                      WhitelistingTextInputFormatter.digitsOnly
-                                    ],
                                   ),
                                   AppStyles().customPadding(5),
                                   showResendOtpButton
@@ -254,27 +231,18 @@ class ForgotPasswordOtpValidation
                                               child: InkWell(
                                                 child: Text(
                                                   "Resend OTP",
-                                                  style: appFonts.getTextStyle(
-                                                      'skip_link_style'),
+                                                  style: appFonts.getTextStyle('skip_link_style'),
                                                 ),
                                                 onTap: () {
                                                   setState(() {
                                                     resendOtpLoadingBtn = true;
                                                   });
-                                                  clearErrorMessages(
-                                                      scafFoldKey);
+                                                  clearErrorMessages(scafFoldKey);
                                                   resendOtp();
                                                 },
                                               ),
                                             )
-                                          : Container(
-                                              alignment: Alignment(1, 1),
-                                              margin: EdgeInsets.only(
-                                                  left: MediaQuery.of(context)
-                                                          .size
-                                                          .width -
-                                                      120),
-                                              child: loadingButtonForLinks())
+                                          : Container(alignment: Alignment(1, 1), margin: EdgeInsets.only(left: MediaQuery.of(context).size.width - 120), child: loadingButtonForLinks())
                                       : Container(),
                                   AppStyles().customPadding(5),
                                   Container(
@@ -283,15 +251,10 @@ class ForgotPasswordOtpValidation
                                     padding: EdgeInsets.all(8),
                                     child: !onLoading
                                         ? RaisedButton(
-                                            shape: new RoundedRectangleBorder(
-                                                borderRadius:
-                                                    new BorderRadius.circular(
-                                                        0.0)),
+                                            shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(0.0)),
                                             onPressed: () {
                                               clearErrorMessages(scafFoldKey);
-                                              if (otpValidationFormKey
-                                                  .currentState
-                                                  .validate()) {
+                                              if (otpValidationFormKey.currentState.validate()) {
                                                 setState(() {
                                                   onLoading = true;
                                                   sendOtp();
@@ -301,8 +264,7 @@ class ForgotPasswordOtpValidation
                                             color: mainAppColor,
                                             child: Text(
                                               "Confirm",
-                                              style: appFonts.getTextStyle(
-                                                  'button_text_color_white'),
+                                              style: appFonts.getTextStyle('button_text_color_white'),
                                               textAlign: TextAlign.center,
                                             ),
                                           )
@@ -313,8 +275,7 @@ class ForgotPasswordOtpValidation
                                     child: InkWell(
                                       child: Text(
                                         "Back to Sign In",
-                                        style: appFonts
-                                            .getTextStyle('skip_link_style'),
+                                        style: appFonts.getTextStyle('skip_link_style'),
                                       ),
                                       onTap: () {
                                         clearErrorMessages(scafFoldKey);

@@ -127,9 +127,7 @@ class Registration extends State<RegistartionPage> {
   getStates() {
     addressServices.getStates().then((val) {
       final data = json.decode(val.body);
-      if (data != null &&
-          data['listOfStates'] != null &&
-          data['listOfStates'].length > 0) {
+      if (data != null && data['listOfStates'] != null && data['listOfStates'].length > 0) {
         setState(() {
           states = data['listOfStates'];
           // selectedState = states[0]['stateId'].toString();
@@ -138,8 +136,7 @@ class Registration extends State<RegistartionPage> {
         ApiErros().apiLoggedErrors(data, context, scafFoldkey);
       }
     }, onError: (err) {
-      ApiErros()
-          .apiErrorNotifications(err, context, '/registration', scafFoldkey);
+      ApiErros().apiErrorNotifications(err, context, '/registration', scafFoldkey);
     });
   }
 
@@ -158,8 +155,7 @@ class Registration extends State<RegistartionPage> {
               child: Dialog(
                 backgroundColor: Colors.transparent,
                 elevation: 100,
-                child: customizedCircularLoadingIconWithColorAndSize(
-                    50, Colors.white),
+                child: customizedCircularLoadingIconWithColorAndSize(50, Colors.white),
               ));
         });
   }
@@ -185,8 +181,7 @@ class Registration extends State<RegistartionPage> {
         RefreshTokenService().getAccessTokenUsingRefreshToken().then((res) {
           final refreshTokenData = json.decode(res.body);
           // print(data);
-          if (RefreshTokenService()
-              .getAccessTokenFromData(refreshTokenData, context, setState)) {
+          if (RefreshTokenService().getAccessTokenFromData(refreshTokenData, context, setState)) {
             getUserDetails();
           }
         });
@@ -197,8 +192,7 @@ class Registration extends State<RegistartionPage> {
       // Navigator.pop(context);
       loadingButtonForEditProfile = false;
       setState(() {});
-      ApiErros()
-          .apiErrorNotifications(err, context, '/registration', scafFoldkey);
+      ApiErros().apiErrorNotifications(err, context, '/registration', scafFoldkey);
     });
   }
 
@@ -210,44 +204,31 @@ class Registration extends State<RegistartionPage> {
   // }
 // checks all TextFormFields is validate or not with global validations
   checkIsFormFieldsValid() {
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(firstNameFocus, firstNameKey);
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(surNameFocus, surNameKey);
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(mobileNoFocus, mobileNoKey);
-    GlobalValidations().validateCurrentFieldValidOrNot(
-        alternateMobileNoFocus, alternateMobileNoKey);
+    GlobalValidations().validateCurrentFieldValidOrNot(firstNameFocus, firstNameKey);
+    GlobalValidations().validateCurrentFieldValidOrNot(surNameFocus, surNameKey);
+    GlobalValidations().validateCurrentFieldValidOrNot(mobileNoFocus, mobileNoKey);
+    GlobalValidations().validateCurrentFieldValidOrNot(alternateMobileNoFocus, alternateMobileNoKey);
     GlobalValidations().validateCurrentFieldValidOrNot(emailFocus, emailkey);
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(passwordFocus, passwordKey);
-    GlobalValidations().validateCurrentFieldValidOrNot(
-        confirmPasswordFocus, confirmPasswordkey);
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(houseNoFocus, houseNokey);
+    GlobalValidations().validateCurrentFieldValidOrNot(passwordFocus, passwordKey);
+    GlobalValidations().validateCurrentFieldValidOrNot(confirmPasswordFocus, confirmPasswordkey);
+    GlobalValidations().validateCurrentFieldValidOrNot(houseNoFocus, houseNokey);
     GlobalValidations().validateCurrentFieldValidOrNot(streetFocus, streetKey);
     GlobalValidations().validateCurrentFieldValidOrNot(cityFocus, cityKey);
     // GlobalValidations().validateCurrentFieldValidOrNot(stateFocus, statekey);
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(pincodeFocus, pincodeKey);
+    GlobalValidations().validateCurrentFieldValidOrNot(pincodeFocus, pincodeKey);
     checkUserExitsOrNot();
   }
 
 //checks for entered credentials is already exists or not
   checkUserExitsOrNot() {
     mobileNoFocus.addListener(() {
-      if (!mobileNoFocus.hasFocus && mobileNoKey.currentState.validate() ||
-          editacconutScreen == false) {
+      if (!mobileNoFocus.hasFocus && mobileNoKey.currentState.validate() || editacconutScreen == false) {
         // print(mobileNoController.text);
         Map userDetails = {
           'countryCode': 91,
           'mobileNo': mobileNoController.text.trim().toString()
         };
-        if (editacconutScreen &&
-            editAddressList['user'] != null &&
-            editAddressList['user']["mobileNo"] != null &&
-            editAddressList['user']["mobileNo"].toString() !=
-                mobileNoController.text.trim()) {
+        if (editacconutScreen && editAddressList['user'] != null && editAddressList['user']["mobileNo"] != null && editAddressList['user']["mobileNo"].toString() != mobileNoController.text.trim()) {
           checkUserAlreadyExists(userDetails, false);
         }
       }
@@ -261,16 +242,14 @@ class Registration extends State<RegistartionPage> {
       // print(res.body);
       final data = json.decode(res.body);
       if (data != null && data == 'USEREXISTS') {
-        showErrorNotifications(
-            ErrorMessages().userAlreadyExistsError, context, scafFoldkey);
+        showErrorNotifications(ErrorMessages().userAlreadyExistsError, context, scafFoldkey);
       } else if (data != null && data == 'USERDOESNOTEXIST') {
         // final Map data = {'mobileNo': mobileNoController.text.trim()};
         if (isNavigation == true) {
           fetchUserDetails();
 
           if (editacconutScreen) {
-            customerRegistrationDetails['personalDetails']['isMobileNoChange'] =
-                "true";
+            customerRegistrationDetails['personalDetails']['isMobileNoChange'] = "true";
           }
 
           // Map<String, dynamic> registrationData = {
@@ -338,16 +317,14 @@ class Registration extends State<RegistartionPage> {
           // }
         }
       } else if (data != null && data == "FAILED") {
-        showErrorNotifications("Failed to check your mobile. Please try again",
-            context, scafFoldkey);
+        showErrorNotifications("Failed to check your mobile. Please try again", context, scafFoldkey);
       }
 
       setState(() {
         onLoading = false;
       });
     }, onError: (err) {
-      ApiErros()
-          .apiErrorNotifications(err, context, '/registration', scafFoldkey);
+      ApiErros().apiErrorNotifications(err, context, '/registration', scafFoldkey);
       setState(() {
         onLoading = false;
       });
@@ -362,12 +339,8 @@ class Registration extends State<RegistartionPage> {
         firstNameController.text = editAddressList['user']['firstName'];
         surnameController.text = editAddressList['user']["lastName"];
         mobileNoController.text = editAddressList['user']["mobileNo"];
-        alternateMobileNoContoller.text =
-            editAddressList['user']["alternateMobileNo"];
-        emailController.text =
-            editAddressList['user']["emailId"] == "info@cornext.in"
-                ? ""
-                : editAddressList['user']["emailId"];
+        alternateMobileNoContoller.text = editAddressList['user']["alternateMobileNo"];
+        emailController.text = editAddressList['user']["emailId"] == "info@cornext.in" ? "" : editAddressList['user']["emailId"];
         passwordController.text = "******";
         //confirmPasswordController.text = editAddressList['user']["password"];
         houseNoController.text = editAddressList['address']["doorNumber"];
@@ -375,8 +348,7 @@ class Registration extends State<RegistartionPage> {
         cityController.text = editAddressList['address']["city"];
         selectedState = editAddressList['address']["stateId"].toString();
         pinCodeController.text = editAddressList['address']["pincode"];
-        sameAsDeliveryAddressCheck =
-            editAddressList['address']['deliveryAddress'];
+        sameAsDeliveryAddressCheck = editAddressList['address']['deliveryAddress'];
       }
     });
   }
@@ -388,25 +360,13 @@ class Registration extends State<RegistartionPage> {
         'firstName': firstNameController.text.trim(),
         'surName': surnameController.text.trim(),
         'mobileNo': mobileNoController.text.trim(),
-        'alternateMobileNo': alternateMobileNoContoller.text.trim() != ''
-            ? alternateMobileNoContoller.text.trim()
-            : null,
-        'emailId': emailController.text.trim() != ''
-            ? emailController.text.trim()
-            : "info@cornext.in",
+        'alternateMobileNo': alternateMobileNoContoller.text.trim() != '' ? alternateMobileNoContoller.text.trim() : null,
+        'emailId': emailController.text.trim() != '' ? emailController.text.trim() : "info@cornext.in",
         'password': !editacconutScreen ? passwordController.text.trim() : null,
       },
       'communicationDetails': {
-        'houseNumber': sameAsDeliveryAddressCheck
-            ? houseNoController.text.trim()
-            : (houseNoController.text.trim() != ''
-                ? houseNoController.text.trim()
-                : null),
-        'streetOrArea': sameAsDeliveryAddressCheck
-            ? streetController.text.trim()
-            : (streetController.text.trim() != ''
-                ? streetController.text.trim()
-                : null),
+        'houseNumber': sameAsDeliveryAddressCheck ? houseNoController.text.trim() : (houseNoController.text.trim() != '' ? houseNoController.text.trim() : null),
+        'streetOrArea': sameAsDeliveryAddressCheck ? streetController.text.trim() : (streetController.text.trim() != '' ? streetController.text.trim() : null),
         'cityOrTownOrVillage': cityController.text.trim(),
         'stateId': int.parse(selectedState),
         'pincode': pinCodeController.text.trim(),
@@ -456,10 +416,7 @@ class Registration extends State<RegistartionPage> {
                   FocusScope.of(context).requestFocus(FocusNode());
                 },
                 child: Container(
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(cornextBackgroundImagePath),
-                            fit: BoxFit.cover)),
+                    decoration: BoxDecoration(image: DecorationImage(image: AssetImage(cornextBackgroundImagePath), fit: BoxFit.cover)),
                     padding: EdgeInsets.only(top: 0),
                     child: Card(
                         //  shape: RoundedRectangleBorder(
@@ -475,38 +432,24 @@ class Registration extends State<RegistartionPage> {
                                       alignment: Alignment.centerLeft,
                                       child: RichText(
                                         softWrap: true,
-                                        text: TextSpan(
-                                            style: appFonts.getTextStyle(
-                                                'edit_profile_customer_id_heading_style'),
-                                            children: [
-                                              TextSpan(
-                                                  text: "Your Customer Id is "),
-                                              TextSpan(
-                                                  text: editAddressList['user']
-                                                      ['erpCustomerId'],
-                                                  style: appFonts.getTextStyle(
-                                                      'edit_profile_customer_id_value_style'))
-                                            ]),
+                                        text: TextSpan(style: appFonts.getTextStyle('edit_profile_customer_id_heading_style'), children: [
+                                          TextSpan(text: "Your Customer Id is "),
+                                          TextSpan(text: editAddressList['user']['erpCustomerId'], style: appFonts.getTextStyle('edit_profile_customer_id_value_style'))
+                                        ]),
                                       ),
                                     )
                                   : Container(),
                               Row(children: <Widget>[
                                 editacconutScreen
                                     ? !enablefields
-                                        ? Text(editaccoutHeadername,
-                                            style: appFonts.getTextStyle(
-                                                'internal_headers_style'))
+                                        ? Text(editaccoutHeadername, style: appFonts.getTextStyle('internal_headers_style'))
                                         : Container(
-                                            margin: EdgeInsets.only(
-                                                top: 10, left: 2),
-                                            child: Text(editProfile,
-                                                style: appFonts.getTextStyle(
-                                                    'internal_headers_style')),
+                                            margin: EdgeInsets.only(top: 10, left: 2),
+                                            child: Text(editProfile, style: appFonts.getTextStyle('internal_headers_style')),
                                           )
                                     : Text(
                                         registrationHeaderName,
-                                        style: appFonts.getTextStyle(
-                                            'registration_heading_style'),
+                                        style: appFonts.getTextStyle('registration_heading_style'),
                                       ),
                                 editacconutScreen && enablefields == false
                                     ? Expanded(
@@ -518,8 +461,7 @@ class Registration extends State<RegistartionPage> {
                                           onPressed: () {
                                             setState(() {
                                               //editacconutScreen = true;
-                                              enableAlternativeMobileNumber =
-                                                  true;
+                                              enableAlternativeMobileNumber = true;
                                               enablefields = true;
                                               //();
                                               // getEditDetails();
@@ -537,14 +479,12 @@ class Registration extends State<RegistartionPage> {
                                     key: registrationFormkey,
                                     child: Column(
                                       // mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
                                         AppStyles().customPadding(7),
                                         Text(
                                           registrationSideHeaderName,
-                                          style: AppFonts().getTextStyle(
-                                              'internal_headers_style'),
+                                          style: AppFonts().getTextStyle('internal_headers_style'),
                                         ),
 
                                         AppStyles().customPadding(3),
@@ -554,24 +494,17 @@ class Registration extends State<RegistartionPage> {
                                           decoration: InputDecoration(
                                             border: AppStyles().inputBorder,
                                             errorMaxLines: 3,
-                                            focusedBorder:
-                                                AppStyles().focusedInputBorder,
-                                            labelText:
-                                                firstNameLabelName + " *",
-                                            labelStyle: AppFonts()
-                                                .getTextStyle('hint_style'),
+                                            focusedBorder: AppStyles().focusedInputBorder,
+                                            labelText: firstNameLabelName + " *",
+                                            labelStyle: AppFonts().getTextStyle('hint_style'),
                                             counterText: "",
-                                            contentPadding: AppStyles()
-                                                .contentPaddingForInput,
+                                            contentPadding: AppStyles().contentPaddingForInput,
                                           ),
                                           autofocus: true,
                                           keyboardType: TextInputType.text,
                                           maxLength: 75,
                                           controller: firstNameController,
-                                          validator: (val) =>
-                                              GlobalValidations()
-                                                  .firstNameValidations(
-                                                      val.trim()),
+                                          validator: (val) => GlobalValidations().firstNameValidations(val.trim()),
                                           cursorColor: mainAppColor,
                                           key: firstNameKey,
                                           focusNode: firstNameFocus,
@@ -581,26 +514,12 @@ class Registration extends State<RegistartionPage> {
 
                                         TextFormField(
                                           enabled: enablefields,
-                                          decoration: InputDecoration(
-                                              border: AppStyles().inputBorder,
-                                              errorMaxLines: 3,
-                                              focusedBorder: AppStyles()
-                                                  .focusedInputBorder,
-                                              labelText:
-                                                  surNameLabelName + " *",
-                                              labelStyle: AppFonts()
-                                                  .getTextStyle('hint_style'),
-                                              counterText: "",
-                                              contentPadding: AppStyles()
-                                                  .contentPaddingForInput),
+                                          decoration: InputDecoration(border: AppStyles().inputBorder, errorMaxLines: 3, focusedBorder: AppStyles().focusedInputBorder, labelText: surNameLabelName + " *", labelStyle: AppFonts().getTextStyle('hint_style'), counterText: "", contentPadding: AppStyles().contentPaddingForInput),
                                           keyboardType: TextInputType.text,
                                           maxLength: 75,
                                           cursorColor: mainAppColor,
                                           controller: surnameController,
-                                          validator: (val) =>
-                                              GlobalValidations()
-                                                  .surNameValidations(
-                                                      val.trim()),
+                                          validator: (val) => GlobalValidations().surNameValidations(val.trim()),
                                           focusNode: surNameFocus,
                                           key: surNameKey,
                                           // maxLengthEnforced: true,
@@ -610,88 +529,55 @@ class Registration extends State<RegistartionPage> {
                                         AppStyles().customPadding(5),
 
                                         TextFormField(
-                                          enabled: enablefields,
-                                          cursorColor: mainAppColor,
-                                          controller: mobileNoController,
-                                          decoration: InputDecoration(
-                                              labelText:
-                                                  mobileNumberLabelName + " *",
-                                              labelStyle: AppFonts()
-                                                  .getTextStyle('hint_style'),
-                                              errorMaxLines: 3,
-                                              counterText: "",
-                                              contentPadding: AppStyles()
-                                                  .contentPaddingForInput,
-                                              // alignLabelWithHint: true,
-                                              border: AppStyles().inputBorder,
-                                              prefix: Text("+91 "),
-                                              focusedBorder: AppStyles()
-                                                  .focusedInputBorder),
-                                          keyboardType: TextInputType.number,
-                                          maxLength: 10,
-                                          validator: (value) =>
-                                              GlobalValidations()
-                                                  .mobileValidationsReg(
-                                                      value.trim(),
-                                                      alternateMobileNoContoller,
-                                                      alternateMobileNoKey),
-                                          onChanged: (val) {
-                                            setState(() {
-                                              if (val.length > 0) {
-                                                enableAlternativeMobileNumber =
-                                                    true;
-                                              } else {
-                                                enableAlternativeMobileNumber =
-                                                    false;
-                                              }
-                                            });
-                                          },
-                                          focusNode: mobileNoFocus,
-                                          key: mobileNoKey,
-                                          inputFormatters: [
-                                            WhitelistingTextInputFormatter
-                                                .digitsOnly
-                                          ],
-                                        ),
+                                            enabled: enablefields,
+                                            cursorColor: mainAppColor,
+                                            controller: mobileNoController,
+                                            decoration: InputDecoration(
+                                                labelText: mobileNumberLabelName + " *",
+                                                labelStyle: AppFonts().getTextStyle('hint_style'),
+                                                errorMaxLines: 3,
+                                                counterText: "",
+                                                contentPadding: AppStyles().contentPaddingForInput,
+                                                // alignLabelWithHint: true,
+                                                border: AppStyles().inputBorder,
+                                                prefix: Text("+91 "),
+                                                focusedBorder: AppStyles().focusedInputBorder),
+                                            keyboardType: TextInputType.number,
+                                            maxLength: 10,
+                                            validator: (value) => GlobalValidations().mobileValidationsReg(value.trim(), alternateMobileNoContoller, alternateMobileNoKey),
+                                            onChanged: (val) {
+                                              setState(() {
+                                                if (val.length > 0) {
+                                                  enableAlternativeMobileNumber = true;
+                                                } else {
+                                                  enableAlternativeMobileNumber = false;
+                                                }
+                                              });
+                                            },
+                                            focusNode: mobileNoFocus,
+                                            key: mobileNoKey),
 
                                         AppStyles().customPadding(5),
 
                                         TextFormField(
-                                          cursorColor: mainAppColor,
-                                          controller:
-                                              alternateMobileNoContoller,
-                                          enabled:
-                                              enableAlternativeMobileNumber &&
-                                                  enablefields,
-                                          validator: (value) =>
-                                              GlobalValidations()
-                                                  .alternateMobileNoValidations(
-                                                      value.trim(),
-                                                      mobileNoController.text
-                                                          .trim()),
-                                          decoration: InputDecoration(
-                                              labelText:
-                                                  alternatMobileNoLabelName,
-                                              labelStyle: AppFonts()
-                                                  .getTextStyle('hint_style'),
-                                              errorMaxLines: 3,
-                                              counterText: "",
-                                              contentPadding: AppStyles()
-                                                  .contentPaddingForInput,
-                                              // alignLabelWithHint: true,
-                                              border: AppStyles().inputBorder,
-                                              prefix: Text("+91 "),
-                                              focusedBorder: AppStyles()
-                                                  .focusedInputBorder),
-                                          keyboardType: TextInputType.number,
-                                          maxLength: 10,
-                                          focusNode: alternateMobileNoFocus,
-                                          key: alternateMobileNoKey,
-                                          inputFormatters: [
-                                            WhitelistingTextInputFormatter
-                                                .digitsOnly
-                                          ],
-                                        ),
+                                            cursorColor: mainAppColor,
+                                            controller: alternateMobileNoContoller,
+                                            enabled: enableAlternativeMobileNumber && enablefields,
+                                            validator: (value) => GlobalValidations().alternateMobileNoValidations(value.trim(), mobileNoController.text.trim()),
+                                            decoration: InputDecoration(
+                                                labelText: alternatMobileNoLabelName,
+                                                labelStyle: AppFonts().getTextStyle('hint_style'),
+                                                errorMaxLines: 3,
+                                                counterText: "",
+                                                contentPadding: AppStyles().contentPaddingForInput,
+                                                // alignLabelWithHint: true,
+                                                border: AppStyles().inputBorder,
+                                                prefix: Text("+91 "),
+                                                focusedBorder: AppStyles().focusedInputBorder),
+                                            keyboardType: TextInputType.number,
+                                            maxLength: 10,
+                                            focusNode: alternateMobileNoFocus,
+                                            key: alternateMobileNoKey),
 
                                         AppStyles().customPadding(5),
 
@@ -699,19 +585,8 @@ class Registration extends State<RegistartionPage> {
                                           enabled: enablefields,
                                           controller: emailController,
                                           cursorColor: mainAppColor,
-                                          decoration: InputDecoration(
-                                              border: AppStyles().inputBorder,
-                                              errorMaxLines: 3,
-                                              focusedBorder: AppStyles()
-                                                  .focusedInputBorder,
-                                              labelText: emailLabelName,
-                                              labelStyle: AppFonts()
-                                                  .getTextStyle('hint_style'),
-                                              contentPadding: AppStyles()
-                                                  .contentPaddingForInput),
-                                          validator: (val) =>
-                                              GlobalValidations()
-                                                  .emailValidations(val.trim()),
+                                          decoration: InputDecoration(border: AppStyles().inputBorder, errorMaxLines: 3, focusedBorder: AppStyles().focusedInputBorder, labelText: emailLabelName, labelStyle: AppFonts().getTextStyle('hint_style'), contentPadding: AppStyles().contentPaddingForInput),
+                                          validator: (val) => GlobalValidations().emailValidations(val.trim()),
                                           focusNode: emailFocus,
                                           key: emailkey,
                                         ),
@@ -723,68 +598,46 @@ class Registration extends State<RegistartionPage> {
                                                 // enabled:
                                                 // editacconutScreen ? false : true,
                                                 controller: passwordController,
-                                                enableInteractiveSelection:
-                                                    false,
+                                                enableInteractiveSelection: false,
                                                 // key: passwordFormKey,
 
                                                 cursorColor: mainAppColor,
                                                 decoration: InputDecoration(
-                                                    labelText:
-                                                        passwordLabelName +
-                                                            " *",
-                                                    labelStyle: AppFonts()
-                                                        .getTextStyle(
-                                                            'hint_style'),
+                                                    labelText: passwordLabelName + " *",
+                                                    labelStyle: AppFonts().getTextStyle('hint_style'),
                                                     errorMaxLines: 3,
-                                                    border:
-                                                        AppStyles().inputBorder,
-                                                    focusedBorder: AppStyles()
-                                                        .focusedInputBorder,
-                                                    contentPadding: AppStyles()
-                                                        .contentPaddingForInput,
-                                                    suffixIcon:
-                                                        showOrHidePassword
-                                                            ? IconButton(
-                                                                icon: Icon(Icons
-                                                                    .visibility_off),
-                                                                onPressed: () {
-                                                                  setState(() {
-                                                                    showOrHidePassword =
-                                                                        !showOrHidePassword;
-                                                                  });
-                                                                },
-                                                                color:
-                                                                    mainAppColor,
-                                                              )
-                                                            : IconButton(
-                                                                icon: Icon(Icons
-                                                                    .visibility),
-                                                                onPressed: () {
-                                                                  setState(() {
-                                                                    showOrHidePassword =
-                                                                        !showOrHidePassword;
-                                                                  });
-                                                                },
-                                                                color:
-                                                                    mainAppColor,
-                                                              )),
+                                                    border: AppStyles().inputBorder,
+                                                    focusedBorder: AppStyles().focusedInputBorder,
+                                                    contentPadding: AppStyles().contentPaddingForInput,
+                                                    suffixIcon: showOrHidePassword
+                                                        ? IconButton(
+                                                            icon: Icon(Icons.visibility_off),
+                                                            onPressed: () {
+                                                              setState(() {
+                                                                showOrHidePassword = !showOrHidePassword;
+                                                              });
+                                                            },
+                                                            color: mainAppColor,
+                                                          )
+                                                        : IconButton(
+                                                            icon: Icon(Icons.visibility),
+                                                            onPressed: () {
+                                                              setState(() {
+                                                                showOrHidePassword = !showOrHidePassword;
+                                                              });
+                                                            },
+                                                            color: mainAppColor,
+                                                          )),
                                                 obscureText: showOrHidePassword,
                                                 // keyboardType: TextInputType.text,
-                                                validator: (value) =>
-                                                    GlobalValidations()
-                                                        .passwordValidations(
-                                                            value.trim(),
-                                                            confirmPasswordController,
-                                                            confirmPasswordkey),
+                                                validator: (value) => GlobalValidations().passwordValidations(value.trim(), confirmPasswordController, confirmPasswordkey),
 
                                                 onChanged: (value) {
                                                   setState(() {
                                                     if (value.length > 0) {
-                                                      enableConfirmPassword =
-                                                          true;
+                                                      enableConfirmPassword = true;
                                                     } else {
-                                                      enableConfirmPassword =
-                                                          false;
+                                                      enableConfirmPassword = false;
                                                     }
                                                   });
                                                 },
@@ -797,64 +650,41 @@ class Registration extends State<RegistartionPage> {
                                         editacconutScreen
                                             ? Container()
                                             : TextFormField(
-                                                controller:
-                                                    confirmPasswordController,
+                                                controller: confirmPasswordController,
                                                 // key: passwordFormKey,
 
                                                 cursorColor: mainAppColor,
                                                 decoration: InputDecoration(
-                                                    labelText:
-                                                        confirmPasswordLabelName +
-                                                            " *",
-                                                    labelStyle: AppFonts()
-                                                        .getTextStyle(
-                                                            'hint_style'),
+                                                    labelText: confirmPasswordLabelName + " *",
+                                                    labelStyle: AppFonts().getTextStyle('hint_style'),
                                                     errorMaxLines: 3,
-                                                    border:
-                                                        AppStyles().inputBorder,
-                                                    focusedBorder: AppStyles()
-                                                        .focusedInputBorder,
-                                                    contentPadding: AppStyles()
-                                                        .contentPaddingForInput,
-                                                    suffixIcon:
-                                                        showOrdHideConfirmPassword
-                                                            ? IconButton(
-                                                                icon: Icon(Icons
-                                                                    .visibility_off),
-                                                                onPressed: () {
-                                                                  setState(() {
-                                                                    showOrdHideConfirmPassword =
-                                                                        !showOrdHideConfirmPassword;
-                                                                  });
-                                                                },
-                                                                color:
-                                                                    mainAppColor,
-                                                              )
-                                                            : IconButton(
-                                                                icon: Icon(Icons
-                                                                    .visibility),
-                                                                onPressed: () {
-                                                                  setState(() {
-                                                                    showOrdHideConfirmPassword =
-                                                                        !showOrdHideConfirmPassword;
-                                                                  });
-                                                                },
-                                                                color:
-                                                                    mainAppColor,
-                                                              )),
-                                                obscureText:
-                                                    showOrdHideConfirmPassword,
+                                                    border: AppStyles().inputBorder,
+                                                    focusedBorder: AppStyles().focusedInputBorder,
+                                                    contentPadding: AppStyles().contentPaddingForInput,
+                                                    suffixIcon: showOrdHideConfirmPassword
+                                                        ? IconButton(
+                                                            icon: Icon(Icons.visibility_off),
+                                                            onPressed: () {
+                                                              setState(() {
+                                                                showOrdHideConfirmPassword = !showOrdHideConfirmPassword;
+                                                              });
+                                                            },
+                                                            color: mainAppColor,
+                                                          )
+                                                        : IconButton(
+                                                            icon: Icon(Icons.visibility),
+                                                            onPressed: () {
+                                                              setState(() {
+                                                                showOrdHideConfirmPassword = !showOrdHideConfirmPassword;
+                                                              });
+                                                            },
+                                                            color: mainAppColor,
+                                                          )),
+                                                obscureText: showOrdHideConfirmPassword,
                                                 enabled: enableConfirmPassword,
-                                                enableInteractiveSelection:
-                                                    false,
+                                                enableInteractiveSelection: false,
 
-                                                validator: (val) =>
-                                                    GlobalValidations()
-                                                        .confirmPasswrodValidations(
-                                                            val.trim(),
-                                                            passwordController
-                                                                .text
-                                                                .trim()),
+                                                validator: (val) => GlobalValidations().confirmPasswrodValidations(val.trim(), passwordController.text.trim()),
                                                 focusNode: confirmPasswordFocus,
                                                 key: confirmPasswordkey,
                                               ),
@@ -880,35 +710,17 @@ class Registration extends State<RegistartionPage> {
 
                                         Text(
                                           registrationCommunicationHeaderName,
-                                          style: appFonts.getTextStyle(
-                                              'internal_headers_style'),
+                                          style: appFonts.getTextStyle('internal_headers_style'),
                                         ),
 
                                         AppStyles().customPadding(3),
 
                                         TextFormField(
                                           enabled: enablefields,
-                                          decoration: InputDecoration(
-                                              border: AppStyles().inputBorder,
-                                              errorMaxLines: 3,
-                                              focusedBorder: AppStyles()
-                                                  .focusedInputBorder,
-                                              labelText:
-                                                  sameAsDeliveryAddressCheck
-                                                      ? houseNumberLabelName +
-                                                          " *"
-                                                      : houseNumberLabelName,
-                                              labelStyle: AppFonts()
-                                                  .getTextStyle('hint_style'),
-                                              counterText: "",
-                                              contentPadding: AppStyles()
-                                                  .contentPaddingForInput),
+                                          decoration: InputDecoration(border: AppStyles().inputBorder, errorMaxLines: 3, focusedBorder: AppStyles().focusedInputBorder, labelText: sameAsDeliveryAddressCheck ? houseNumberLabelName + " *" : houseNumberLabelName, labelStyle: AppFonts().getTextStyle('hint_style'), counterText: "", contentPadding: AppStyles().contentPaddingForInput),
                                           controller: houseNoController,
                                           cursorColor: mainAppColor,
-                                          validator: (val) => GlobalValidations()
-                                              .houseNumberValidations(
-                                                  val.trim(),
-                                                  sameAsDeliveryAddressCheck),
+                                          validator: (val) => GlobalValidations().houseNumberValidations(val.trim(), sameAsDeliveryAddressCheck),
                                           maxLength: 75,
                                           focusNode: houseNoFocus,
                                           key: houseNokey,
@@ -918,25 +730,10 @@ class Registration extends State<RegistartionPage> {
 
                                         TextFormField(
                                           enabled: enablefields,
-                                          decoration: InputDecoration(
-                                              border: AppStyles().inputBorder,
-                                              errorMaxLines: 3,
-                                              focusedBorder: AppStyles()
-                                                  .focusedInputBorder,
-                                              labelText:
-                                                  sameAsDeliveryAddressCheck
-                                                      ? streetLabelName + " *"
-                                                      : streetLabelName,
-                                              labelStyle: AppFonts()
-                                                  .getTextStyle('hint_style'),
-                                              counterText: "",
-                                              contentPadding: AppStyles()
-                                                  .contentPaddingForInput),
+                                          decoration: InputDecoration(border: AppStyles().inputBorder, errorMaxLines: 3, focusedBorder: AppStyles().focusedInputBorder, labelText: sameAsDeliveryAddressCheck ? streetLabelName + " *" : streetLabelName, labelStyle: AppFonts().getTextStyle('hint_style'), counterText: "", contentPadding: AppStyles().contentPaddingForInput),
                                           controller: streetController,
                                           cursorColor: mainAppColor,
-                                          validator: (val) => GlobalValidations()
-                                              .streetValidations(val.trim(),
-                                                  sameAsDeliveryAddressCheck),
+                                          validator: (val) => GlobalValidations().streetValidations(val.trim(), sameAsDeliveryAddressCheck),
                                           maxLength: 75,
                                           focusNode: streetFocus,
                                           key: streetKey,
@@ -946,22 +743,10 @@ class Registration extends State<RegistartionPage> {
 
                                         TextFormField(
                                           enabled: enablefields,
-                                          decoration: InputDecoration(
-                                              border: AppStyles().inputBorder,
-                                              errorMaxLines: 3,
-                                              focusedBorder: AppStyles()
-                                                  .focusedInputBorder,
-                                              labelText: cityLabelName + ' *',
-                                              labelStyle: AppFonts()
-                                                  .getTextStyle('hint_style'),
-                                              counterText: "",
-                                              contentPadding: AppStyles()
-                                                  .contentPaddingForInput),
+                                          decoration: InputDecoration(border: AppStyles().inputBorder, errorMaxLines: 3, focusedBorder: AppStyles().focusedInputBorder, labelText: cityLabelName + ' *', labelStyle: AppFonts().getTextStyle('hint_style'), counterText: "", contentPadding: AppStyles().contentPaddingForInput),
                                           controller: cityController,
                                           cursorColor: mainAppColor,
-                                          validator: (val) =>
-                                              GlobalValidations()
-                                                  .cityValidations(val.trim()),
+                                          validator: (val) => GlobalValidations().cityValidations(val.trim()),
                                           maxLength: 75,
                                           focusNode: cityFocus,
                                           key: cityKey,
@@ -1000,31 +785,20 @@ class Registration extends State<RegistartionPage> {
                                                             ? Colors.grey
                                                             : Colors.grey[350],
                                                     width: 1),
-                                                borderRadius:
-                                                    BorderRadius.circular(7)),
+                                                borderRadius: BorderRadius.circular(7)),
                                             child: Container(
-                                                padding:
-                                                    EdgeInsets.only(left: 15),
+                                                padding: EdgeInsets.only(left: 15),
                                                 // height: 100,
 
                                                 child: DropdownButton<String>(
                                                   underline: Container(),
                                                   focusNode: stateFocus,
                                                   key: statekey,
-                                                  style: AppFonts()
-                                                      .getTextStyle(
-                                                          'hint_style'),
-                                                  disabledHint: !enablefields &&
-                                                          states.length > 0
+                                                  style: AppFonts().getTextStyle('hint_style'),
+                                                  disabledHint: !enablefields && states.length > 0
                                                       ? Text(
-                                                          states[states.indexWhere((val) =>
-                                                                  val['stateId']
-                                                                      .toString() ==
-                                                                  selectedState)]
-                                                              ['name'],
-                                                          style: appFonts
-                                                              .getTextStyle(
-                                                                  'text_color_black_style'),
+                                                          states[states.indexWhere((val) => val['stateId'].toString() == selectedState)]['name'],
+                                                          style: appFonts.getTextStyle('text_color_black_style'),
                                                         )
                                                       : Text(''),
                                                   isExpanded: true,
@@ -1043,25 +817,18 @@ class Registration extends State<RegistartionPage> {
                                                     //         .toString();
                                                     return new DropdownMenuItem(
                                                       child: new Text(
-                                                        state['name']
-                                                            .toString(),
-                                                        style: appFonts
-                                                            .getTextStyle(
-                                                                'state_dropdown_names_style'),
+                                                        state['name'].toString(),
+                                                        style: appFonts.getTextStyle('state_dropdown_names_style'),
                                                       ),
-                                                      value: state['stateId']
-                                                          .toString(),
+                                                      value: state['stateId'].toString(),
                                                     );
                                                   }).toList(),
                                                   onChanged: enablefields
                                                       ? (newVal) {
                                                           setState(() {
-                                                            selectedState =
-                                                                newVal;
-                                                            isStateError =
-                                                                false;
-                                                            stateFocus
-                                                                .requestFocus();
+                                                            selectedState = newVal;
+                                                            isStateError = false;
+                                                            stateFocus.requestFocus();
                                                           });
                                                         }
                                                       : null,
@@ -1069,12 +836,10 @@ class Registration extends State<RegistartionPage> {
                                                 ))),
                                         isStateError
                                             ? Container(
-                                                padding: EdgeInsets.only(
-                                                    left: 15, top: 5),
+                                                padding: EdgeInsets.only(left: 15, top: 5),
                                                 child: Text(
                                                   "Please select State.",
-                                                  style: appFonts.getTextStyle(
-                                                      'state_not_selected_error_styles'),
+                                                  style: appFonts.getTextStyle('state_not_selected_error_styles'),
                                                 ),
                                               )
                                             : Container(),
@@ -1083,24 +848,10 @@ class Registration extends State<RegistartionPage> {
 
                                         TextFormField(
                                           enabled: enablefields,
-                                          decoration: InputDecoration(
-                                              border: AppStyles().inputBorder,
-                                              errorMaxLines: 3,
-                                              focusedBorder: AppStyles()
-                                                  .focusedInputBorder,
-                                              labelText:
-                                                  pincodeLabelName + " *",
-                                              labelStyle: AppFonts()
-                                                  .getTextStyle('hint_style'),
-                                              counterText: "",
-                                              contentPadding: AppStyles()
-                                                  .contentPaddingForInput),
+                                          decoration: InputDecoration(border: AppStyles().inputBorder, errorMaxLines: 3, focusedBorder: AppStyles().focusedInputBorder, labelText: pincodeLabelName + " *", labelStyle: AppFonts().getTextStyle('hint_style'), counterText: "", contentPadding: AppStyles().contentPaddingForInput),
                                           controller: pinCodeController,
                                           cursorColor: mainAppColor,
-                                          validator: (val) =>
-                                              GlobalValidations()
-                                                  .pincodeValidations(
-                                                      val.trim()),
+                                          validator: (val) => GlobalValidations().pincodeValidations(val.trim()),
                                           maxLength: 6,
                                           keyboardType: TextInputType.phone,
                                           focusNode: pincodeFocus,
@@ -1120,8 +871,7 @@ class Registration extends State<RegistartionPage> {
                                                       val = false;
                                                     }
                                                     setState(() {
-                                                      sameAsDeliveryAddressCheck =
-                                                          val;
+                                                      sameAsDeliveryAddressCheck = val;
                                                     });
                                                   }
                                                 : (bool val) {},
@@ -1130,118 +880,59 @@ class Registration extends State<RegistartionPage> {
                                         ]),
 
                                         AppStyles().customPadding(5),
-                                        Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              !onLoading
-                                                  ? Container(
-                                                      // width: 10,
-                                                      margin:
-                                                          EdgeInsets.fromLTRB(
-                                                              100, 0, 100, 0),
-                                                      child: RaisedButton(
-                                                        shape: new RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                new BorderRadius
-                                                                        .circular(
-                                                                    0.0)),
-                                                        onPressed: () {
-                                                          // if (enablefields == false) {
-                                                          //   setState(() {
-                                                          //     return null;
-                                                          //   });
-                                                          if (enablefields ==
-                                                                  true &&
-                                                              !editacconutScreen &&
-                                                              registrationFormkey
-                                                                  .currentState
-                                                                  .validate() &&
-                                                              selectedState !=
-                                                                  null) {
-                                                            setState(() {
-                                                              Map userDetails =
-                                                                  {
-                                                                'countryCode':
-                                                                    91,
-                                                                'mobileNo':
-                                                                    mobileNoController
-                                                                        .text
-                                                                        .trim()
-                                                              };
-                                                              checkUserAlreadyExists(
-                                                                  userDetails,
-                                                                  true);
-                                                            });
-                                                          } else if (selectedState !=
-                                                              null) {
-                                                            clearErrorMessages(
-                                                                scafFoldkey);
-                                                            setState(() {
-                                                              if (registrationFormkey
-                                                                  .currentState
-                                                                  .validate()) {
-                                                                onLoading =
-                                                                    true;
-                                                                Map userDetails =
-                                                                    {
-                                                                  'countryCode':
-                                                                      91,
-                                                                  'mobileNo':
-                                                                      mobileNoController
-                                                                          .text
-                                                                          .trim()
-                                                                };
-                                                                if (editacconutScreen &&
-                                                                    editAddressList[
-                                                                            'user'] !=
-                                                                        null &&
-                                                                    editAddressList['user']
-                                                                            [
-                                                                            "mobileNo"] !=
-                                                                        null &&
-                                                                    editAddressList['user']["mobileNo"]
-                                                                            .toString() !=
-                                                                        mobileNoController
-                                                                            .text
-                                                                            .trim()) {
-                                                                  checkUserAlreadyExists(
-                                                                      userDetails,
-                                                                      true);
-                                                                } else {
-                                                                  setState(() {
-                                                                    onLoading =
-                                                                        false;
-                                                                  });
-                                                                  fetchUserDetails();
-                                                                  customerRegistrationDetails[
-                                                                              'personalDetails']
-                                                                          [
-                                                                          'isMobileNoChange'] =
-                                                                      "false";
-                                                                  print(
-                                                                      customerRegistrationDetails);
-                                                                  Navigator.pushNamed(
-                                                                      context,
-                                                                      '/farmdetails');
-                                                                }
-                                                              }
-                                                            });
-                                                          } else {
-                                                            setState(() {
-                                                              isStateError =
-                                                                  true;
-                                                            });
+                                        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                                          !onLoading
+                                              ? Container(
+                                                  // width: 10,
+                                                  margin: EdgeInsets.fromLTRB(100, 0, 100, 0),
+                                                  child: RaisedButton(
+                                                    shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(0.0)),
+                                                    onPressed: () {
+                                                      // if (enablefields == false) {
+                                                      //   setState(() {
+                                                      //     return null;
+                                                      //   });
+                                                      if (enablefields == true && !editacconutScreen && registrationFormkey.currentState.validate() && selectedState != null) {
+                                                        setState(() {
+                                                          Map userDetails = {
+                                                            'countryCode': 91,
+                                                            'mobileNo': mobileNoController.text.trim()
+                                                          };
+                                                          checkUserAlreadyExists(userDetails, true);
+                                                        });
+                                                      } else if (selectedState != null) {
+                                                        clearErrorMessages(scafFoldkey);
+                                                        setState(() {
+                                                          if (registrationFormkey.currentState.validate()) {
+                                                            onLoading = true;
+                                                            Map userDetails = {
+                                                              'countryCode': 91,
+                                                              'mobileNo': mobileNoController.text.trim()
+                                                            };
+                                                            if (editacconutScreen && editAddressList['user'] != null && editAddressList['user']["mobileNo"] != null && editAddressList['user']["mobileNo"].toString() != mobileNoController.text.trim()) {
+                                                              checkUserAlreadyExists(userDetails, true);
+                                                            } else {
+                                                              setState(() {
+                                                                onLoading = false;
+                                                              });
+                                                              fetchUserDetails();
+                                                              customerRegistrationDetails['personalDetails']['isMobileNoChange'] = "false";
+                                                              print(customerRegistrationDetails);
+                                                              Navigator.pushNamed(context, '/farmdetails');
+                                                            }
                                                           }
-                                                        },
-                                                        color: mainAppColor,
-                                                        child: Text("Continue",
-                                                            style: appFonts
-                                                                .getTextStyle(
-                                                                    'button_text_color_white')),
-                                                      ))
-                                                  : loadingButtonWidget(context)
-                                            ])
+                                                        });
+                                                      } else {
+                                                        setState(() {
+                                                          isStateError = true;
+                                                        });
+                                                      }
+                                                    },
+                                                    color: mainAppColor,
+                                                    child: Text("Continue", style: appFonts.getTextStyle('button_text_color_white')),
+                                                  ))
+                                              : loadingButtonWidget(context)
+                                        ])
                                         // Text(data)
                                       ],
                                     )),

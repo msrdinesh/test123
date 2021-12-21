@@ -78,8 +78,7 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
     // print(val);
     // if (val.length > 0) {
     setState(() {
-      mobileNoController.text =
-          customerRegistrationDetails['personalDetails']['mobileNo'].toString();
+      mobileNoController.text = customerRegistrationDetails['personalDetails']['mobileNo'].toString();
     });
     // }
   }
@@ -91,8 +90,7 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
 
     final Map requestObj = {
       'countryCode': 91,
-      'mobileNo':
-          customerRegistrationDetails['personalDetails']['mobileNo'].toString()
+      'mobileNo': customerRegistrationDetails['personalDetails']['mobileNo'].toString()
     };
     RegistrationService().registerUser(requestObj).then((res) {
       // print(res);
@@ -100,15 +98,12 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
       print(data);
       if (data != null && data == 'SUCCESS') {
         // Navigator.pushNamed(context, '/otpvalidation');
-        showSuccessNotifications(
-            SuccessMessages().otpSentMessage, context, scafFoldKey);
+        showSuccessNotifications(SuccessMessages().otpSentMessage, context, scafFoldKey);
       }
     }, onError: (err) {
-      ApiErros()
-          .apiErrorNotifications(err, context, '/otpvalidation', scafFoldKey);
+      ApiErros().apiErrorNotifications(err, context, '/otpvalidation', scafFoldKey);
     }).catchError((err) {
-      ApiErros()
-          .apiErrorNotifications(err, context, '/otpvalidation', scafFoldKey);
+      ApiErros().apiErrorNotifications(err, context, '/otpvalidation', scafFoldKey);
       // print(err);
       // SocketException("Error", osError: err);
       // Error error = err;
@@ -122,7 +117,9 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
   }
 
   addProductDetailsIntoCart() {
-    Map returnObj = {"cart": getCartProductsObject()};
+    Map returnObj = {
+      "cart": getCartProductsObject()
+    };
     print(returnObj);
     productDetailsService.addProductIntoCart(returnObj).then((res) {
       print(res.body);
@@ -155,8 +152,7 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
           onLoading = false;
           setState(() {});
           displayRegistrationSuccessMessage = true;
-          Navigator.pushNamedAndRemoveUntil(
-              context, '/home', ModalRoute.withName('/home'));
+          Navigator.pushNamedAndRemoveUntil(context, '/home', ModalRoute.withName('/home'));
           // clearSuccessNotifications(scafFoldKey);
           // showSuccessNotifications(
           //     "Account Created Successfully", context, scafFoldKey);
@@ -183,10 +179,8 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
       Map obj = {
         'productId': val['productId'],
         'brandId': val['brandId'] != null ? val['brandId'] : null,
-        'productTypeId':
-            val['productTypeId'] != null ? val['productTypeId'] : null,
-        'specificationId':
-            val['specificationId'] != null ? val['specificationId'] : null,
+        'productTypeId': val['productTypeId'] != null ? val['productTypeId'] : null,
+        'specificationId': val['specificationId'] != null ? val['specificationId'] : null,
         'priceId': val['priceId'] != null ? val['priceId'] : null,
         'quantity': val['quantity'] != null ? val['quantity'] : null,
         'isAppend': true
@@ -203,10 +197,8 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
     // signInFormKey.currentState
     //     .validate();
     Map userDetails = new Map();
-    userDetails['username'] =
-        customerRegistrationDetails['personalDetails']['mobileNo'];
-    userDetails['password'] =
-        customerRegistrationDetails['personalDetails']['password'];
+    userDetails['username'] = customerRegistrationDetails['personalDetails']['mobileNo'];
+    userDetails['password'] = customerRegistrationDetails['personalDetails']['password'];
     SignInService().validateUserCredentials(userDetails).then((val) {
       // print(val);
       final response = val;
@@ -251,15 +243,13 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
             onLoading = false;
           });
           displayRegistrationSuccessMessage = true;
-          Navigator.pushNamedAndRemoveUntil(
-              context, '/home', ModalRoute.withName('/home'));
+          Navigator.pushNamedAndRemoveUntil(context, '/home', ModalRoute.withName('/home'));
           // clearSuccessNotifications(scafFoldKey);
           // showSuccessNotifications(
           //     "Account Created Successfully", context, scafFoldKey);
         }
       } else if (data['error'] != null && data['error'] == 'invalid_grant') {
-        showErrorNotifications(
-            ErrorMessages().invalidUserDetailsError, context, scafFoldKey);
+        showErrorNotifications(ErrorMessages().invalidUserDetailsError, context, scafFoldKey);
         setState(() {
           onLoading = false;
         });
@@ -289,32 +279,23 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
         "mobileOtp": otpController.text.trim()
       },
       "user": {
-        "firstName": customerRegistrationDetails['personalDetails']
-            ['firstName'],
+        "firstName": customerRegistrationDetails['personalDetails']['firstName'],
         "lastName": customerRegistrationDetails['personalDetails']['surName'],
         "countryCode": 91,
         "mobileNo": customerRegistrationDetails['personalDetails']['mobileNo'],
-        "alternateMobileNo": customerRegistrationDetails['personalDetails']
-            ['alternateMobileNo'],
+        "alternateMobileNo": customerRegistrationDetails['personalDetails']['alternateMobileNo'],
         "emailId": customerRegistrationDetails['personalDetails']['emailId'],
-        "userPassword": _utilities.passwordEncode(
-            customerRegistrationDetails['personalDetails']['password'])
+        "userPassword": _utilities.passwordEncode(customerRegistrationDetails['personalDetails']['password'])
       },
       "address": {
-        "doorNumber": customerRegistrationDetails['communicationDetails']
-            ['houseNumber'],
-        "street": customerRegistrationDetails['communicationDetails']
-            ['streetOrArea'],
-        "city": customerRegistrationDetails['communicationDetails']
-            ['cityOrTownOrVillage'],
-        "stateId": customerRegistrationDetails['communicationDetails']
-            ['stateId'],
-        "pincode": customerRegistrationDetails['communicationDetails']
-            ['pincode'],
+        "doorNumber": customerRegistrationDetails['communicationDetails']['houseNumber'],
+        "street": customerRegistrationDetails['communicationDetails']['streetOrArea'],
+        "city": customerRegistrationDetails['communicationDetails']['cityOrTownOrVillage'],
+        "stateId": customerRegistrationDetails['communicationDetails']['stateId'],
+        "pincode": customerRegistrationDetails['communicationDetails']['pincode'],
         "mobileNo": customerRegistrationDetails['personalDetails']['mobileNo'],
         "countryCode": 91,
-        "deliveryAddress": customerRegistrationDetails['communicationDetails']
-            ['sameAsDeliveryAddress']
+        "deliveryAddress": customerRegistrationDetails['communicationDetails']['sameAsDeliveryAddress']
       },
       "farmDetails": customerRegistrationDetails['farmDetails']
     };
@@ -340,33 +321,27 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
         setState(() {
           onLoading = false;
         });
-        showErrorNotifications(
-            ErrorMessages().userAlreadyExistsError, context, scafFoldKey);
+        showErrorNotifications(ErrorMessages().userAlreadyExistsError, context, scafFoldKey);
       } else if (data != null && data == 'MOBILEOTPEXPIRED') {
         setState(() {
           onLoading = false;
         });
-        showErrorNotifications(
-            ErrorMessages().mobileNoOtpExpiredError, context, scafFoldKey);
+        showErrorNotifications(ErrorMessages().mobileNoOtpExpiredError, context, scafFoldKey);
       } else if (data != null && data == 'INVALIDOTP') {
         setState(() {
           onLoading = false;
         });
-        showErrorNotifications(
-            ErrorMessages().invalidOtpError, context, scafFoldKey);
+        showErrorNotifications(ErrorMessages().invalidOtpError, context, scafFoldKey);
       } else if (data != null && data == "FAILED") {
         setState(() {
           onLoading = false;
         });
-        showErrorNotifications(
-            ErrorMessages().failedToRegisterErrorMessage, context, scafFoldKey);
-      } else if (data != null &&
-          data == "UNABLETOREGISTERPLEASECONTACTCORNEXTCUSTOMERSERVICE") {
+        showErrorNotifications(ErrorMessages().failedToRegisterErrorMessage, context, scafFoldKey);
+      } else if (data != null && data == "UNABLETOREGISTERPLEASECONTACTCORNEXTCUSTOMERSERVICE") {
         setState(() {
           onLoading = false;
         });
-        showErrorNotifications(
-            ErrorMessages().userAlreadyExistsError, context, scafFoldKey);
+        showErrorNotifications(ErrorMessages().userAlreadyExistsError, context, scafFoldKey);
       } else if (data['error'] != null) {
         setState(() {
           onLoading = false;
@@ -377,8 +352,7 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
       setState(() {
         onLoading = false;
       });
-      ApiErros()
-          .apiErrorNotifications(err, context, '/otpvalidation', scafFoldKey);
+      ApiErros().apiErrorNotifications(err, context, '/otpvalidation', scafFoldKey);
     });
   }
 
@@ -392,31 +366,23 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
         "mobileOtp": otpController.text.trim()
       },
       "user": {
-        "firstName": customerRegistrationDetails['personalDetails']
-            ['firstName'],
+        "firstName": customerRegistrationDetails['personalDetails']['firstName'],
         "lastName": customerRegistrationDetails['personalDetails']['surName'],
         "countryCode": 91,
         "mobileNo": customerRegistrationDetails['personalDetails']['mobileNo'],
-        "alternateMobileNo": customerRegistrationDetails['personalDetails']
-            ['alternateMobileNo'],
+        "alternateMobileNo": customerRegistrationDetails['personalDetails']['alternateMobileNo'],
         "emailId": customerRegistrationDetails['personalDetails']['emailId'],
       },
       "address": {
         "addressId": editAddressList['address']['addressId'],
-        "doorNumber": customerRegistrationDetails['communicationDetails']
-            ['houseNumber'],
-        "street": customerRegistrationDetails['communicationDetails']
-            ['streetOrArea'],
-        "city": customerRegistrationDetails['communicationDetails']
-            ['cityOrTownOrVillage'],
-        "stateId": customerRegistrationDetails['communicationDetails']
-            ['stateId'],
-        "pincode": customerRegistrationDetails['communicationDetails']
-            ['pincode'],
+        "doorNumber": customerRegistrationDetails['communicationDetails']['houseNumber'],
+        "street": customerRegistrationDetails['communicationDetails']['streetOrArea'],
+        "city": customerRegistrationDetails['communicationDetails']['cityOrTownOrVillage'],
+        "stateId": customerRegistrationDetails['communicationDetails']['stateId'],
+        "pincode": customerRegistrationDetails['communicationDetails']['pincode'],
         "mobileNo": customerRegistrationDetails['personalDetails']['mobileNo'],
         "countryCode": 91,
-        "deliveryAddress": customerRegistrationDetails['communicationDetails']
-            ['sameAsDeliveryAddress']
+        "deliveryAddress": customerRegistrationDetails['communicationDetails']['sameAsDeliveryAddress']
       },
       "farmDetails": customerRegistrationDetails['farmDetails'],
       'deleteFarmDetails': customerRegistrationDetails['deleteFarmDetails']
@@ -443,37 +409,26 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
           };
           noOfProductsAddedInCart = 0;
         });
-        Navigator.pushNamedAndRemoveUntil(
-            context, '/login', ModalRoute.withName('/login'));
+        Navigator.pushNamedAndRemoveUntil(context, '/login', ModalRoute.withName('/login'));
         // signInWithCredentials();
         // Navigator.pushNamed(context, '/login');
         // Navigator.popUntil(context, ModalRoute.withName('/'));
       } else if (data != null && data['status'] == 'USEREXISTS') {
-        showErrorNotifications(
-            ErrorMessages().userAlreadyExistsError, context, scafFoldKey);
+        showErrorNotifications(ErrorMessages().userAlreadyExistsError, context, scafFoldKey);
       } else if (data != null && data['status'] == 'MOBILEOTPEXPIRED') {
-        showErrorNotifications(
-            ErrorMessages().mobileNoOtpExpiredError, context, scafFoldKey);
+        showErrorNotifications(ErrorMessages().mobileNoOtpExpiredError, context, scafFoldKey);
       } else if (data != null && data['status'] == 'INVALIDOTP') {
-        showErrorNotifications(
-            ErrorMessages().invalidOtpError, context, scafFoldKey);
+        showErrorNotifications(ErrorMessages().invalidOtpError, context, scafFoldKey);
       } else if (data != null && data['status'] == "FAILED") {
-        showErrorNotifications(
-            ErrorMessages().failedToUpdateProfileErrorMessage,
-            context,
-            scafFoldKey);
-      } else if (data != null &&
-          data['status'] ==
-              "UNABLETOREGISTERPLEASECONTACTCORNEXTCUSTOMERSERVICE") {
-        showErrorNotifications(
-            ErrorMessages().userAlreadyExistsError, context, scafFoldKey);
+        showErrorNotifications(ErrorMessages().failedToUpdateProfileErrorMessage, context, scafFoldKey);
+      } else if (data != null && data['status'] == "UNABLETOREGISTERPLEASECONTACTCORNEXTCUSTOMERSERVICE") {
+        showErrorNotifications(ErrorMessages().userAlreadyExistsError, context, scafFoldKey);
       } else if (data['error'] != null && data['error'] == "invalid_token") {
         refreshTokenService.getAccessTokenUsingRefreshToken().then(
           (res) {
             final refreshTokenData = json.decode(res.body);
             // print(data);
-            if (refreshTokenService.getAccessTokenFromData(
-                refreshTokenData, context, setState)) {
+            if (refreshTokenService.getAccessTokenFromData(refreshTokenData, context, setState)) {
               validateOtpForUpdateProfile();
             }
           },
@@ -488,8 +443,7 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
       setState(() {
         onLoading = false;
       });
-      ApiErros()
-          .apiErrorNotifications(err, context, '/otpvalidation', scafFoldKey);
+      ApiErros().apiErrorNotifications(err, context, '/otpvalidation', scafFoldKey);
     });
   }
 
@@ -502,10 +456,7 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
               FocusScope.of(context).requestFocus(FocusNode());
             },
             child: Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(cornextBackgroundImagePath),
-                      fit: BoxFit.cover)),
+              decoration: BoxDecoration(image: DecorationImage(image: AssetImage(cornextBackgroundImagePath), fit: BoxFit.cover)),
               child: Center(
                   child: SingleChildScrollView(
                       child: Column(
@@ -520,22 +471,18 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
                                 child: Column(children: <Widget>[
                                   Text(
                                     '$otpValidationHeaderName',
-                                    style: appFonts.getTextStyle(
-                                        'otp_validation_heading_style'),
+                                    style: appFonts.getTextStyle('otp_validation_heading_style'),
                                   ),
                                   AppStyles().customPadding(5),
                                   TextFormField(
                                     decoration: InputDecoration(
                                       border: AppStyles().inputBorder,
                                       errorMaxLines: 3,
-                                      focusedBorder:
-                                          AppStyles().focusedInputBorder,
+                                      focusedBorder: AppStyles().focusedInputBorder,
                                       labelText: '$mobileNumberLabelName',
-                                      labelStyle:
-                                          AppFonts().getTextStyle('hint_style'),
+                                      labelStyle: AppFonts().getTextStyle('hint_style'),
                                       prefixText: "+91 ",
-                                      contentPadding:
-                                          AppStyles().contentPaddingForInput,
+                                      contentPadding: AppStyles().contentPaddingForInput,
                                       counterText: "",
                                     ),
                                     controller: mobileNoController,
@@ -543,37 +490,28 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
                                   ),
                                   AppStyles().customPadding(5),
                                   TextFormField(
-                                    decoration: InputDecoration(
-                                      border: AppStyles().inputBorder,
-                                      errorMaxLines: 3,
-                                      focusedBorder:
-                                          AppStyles().focusedInputBorder,
-                                      labelText: '$otpLabelName *',
-                                      labelStyle:
-                                          AppFonts().getTextStyle('hint_style'),
-                                      contentPadding:
-                                          AppStyles().contentPaddingForInput,
-                                      counterText: "",
-                                    ),
-                                    maxLength: 6,
-                                    keyboardType: TextInputType.phone,
-                                    controller: otpController,
-                                    validator: (val) =>
-                                        GlobalValidations().otpValidations(val),
-                                    focusNode: otpFocus,
-                                    key: otpKey,
-                                    inputFormatters: [
-                                      WhitelistingTextInputFormatter.digitsOnly
-                                    ],
-                                  ),
+                                      decoration: InputDecoration(
+                                        border: AppStyles().inputBorder,
+                                        errorMaxLines: 3,
+                                        focusedBorder: AppStyles().focusedInputBorder,
+                                        labelText: '$otpLabelName *',
+                                        labelStyle: AppFonts().getTextStyle('hint_style'),
+                                        contentPadding: AppStyles().contentPaddingForInput,
+                                        counterText: "",
+                                      ),
+                                      maxLength: 6,
+                                      keyboardType: TextInputType.phone,
+                                      controller: otpController,
+                                      validator: (val) => GlobalValidations().otpValidations(val),
+                                      focusNode: otpFocus,
+                                      key: otpKey),
                                   showResendOtpButton
                                       ? Container(
                                           alignment: Alignment(1, 1),
                                           child: InkWell(
                                             child: Text(
                                               "Resend OTP",
-                                              style: appFonts.getTextStyle(
-                                                  'skip_link_style'),
+                                              style: appFonts.getTextStyle('skip_link_style'),
                                             ),
                                             onTap: () {
                                               resendOtp();
@@ -588,16 +526,11 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
                                           //     100, 0, 100, 0),
                                           padding: EdgeInsets.all(10),
                                           child: RaisedButton(
-                                            shape: new RoundedRectangleBorder(
-                                                borderRadius:
-                                                    new BorderRadius.circular(
-                                                        0.0)),
+                                            shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(0.0)),
                                             onPressed: () {
                                               clearErrorMessages(scafFoldKey);
 
-                                              if (otpValidationFormKey
-                                                  .currentState
-                                                  .validate()) {
+                                              if (otpValidationFormKey.currentState.validate()) {
                                                 onLoading = true;
                                                 if (!editacconutScreen) {
                                                   validateOtp();
@@ -609,8 +542,7 @@ class CustomerOtpValidation extends State<CustomerOtpValidationPage> {
                                             color: mainAppColor,
                                             child: Text(
                                               "Confirm",
-                                              style: appFonts.getTextStyle(
-                                                  'button_text_color_white'),
+                                              style: appFonts.getTextStyle('button_text_color_white'),
                                               textAlign: TextAlign.center,
                                             ),
                                           ))
