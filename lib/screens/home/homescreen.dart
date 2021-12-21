@@ -1547,6 +1547,7 @@ class HomeScreen extends State<HomePage> {
     showModalBottomSheet(
         context: context,
         builder: (builder) {
+          double c_width = MediaQuery.of(context).size.width*0.8;
           return StatefulBuilder(builder: (context, setstate) {
             return FractionallySizedBox(
                 heightFactor: 0.7,
@@ -1554,6 +1555,7 @@ class HomeScreen extends State<HomePage> {
                   Padding(padding: EdgeInsets.all(15), child: Text("Allow location access to improve shopping experience", style: TextStyle(fontSize: 20))),
                   Padding(padding: EdgeInsets.all(15), child: Text("We use your location to improve your shopping experience, ensuring you only see items or products and delivery options available in your place.", style: TextStyle(fontSize: 15))),
                   new Container(
+                    width: c_width,
                       child: Row(
                     children: <Widget>[
                       Checkbox(
