@@ -1,5 +1,4 @@
 import 'dart:convert';
-import package:flutter/services.dart
 import 'package:cornext_mobile/components/widgets/appbarwidget.dart';
 import 'package:cornext_mobile/components/widgets/loadingbutton.dart';
 // import 'package:cornext_mobile/components/widgets/notifications.dart';
@@ -82,7 +81,9 @@ class EditAddressDetails extends State<EditAddressPage> {
   }
 
   checkIsPincodeisLinkedWithActiveOrders() {
-    Map requestObj = {'addressId': addressDetailsObject['addressId']};
+    Map requestObj = {
+      'addressId': addressDetailsObject['addressId']
+    };
     addressServices.checkPincodeLinkedWithActiveOrders(requestObj).then((val) {
       final data = json.decode(val.body);
       if (data['status'] != null && data['status'] == "SUCCESS") {
@@ -97,8 +98,7 @@ class EditAddressDetails extends State<EditAddressPage> {
         refreshTokenService.getAccessTokenUsingRefreshToken().then((res) {
           final refreshTokenData = json.decode(res.body);
           // print(data);
-          if (refreshTokenService.getAccessTokenFromData(
-              refreshTokenData, context, setState)) {
+          if (refreshTokenService.getAccessTokenFromData(refreshTokenData, context, setState)) {
             checkIsPincodeisLinkedWithActiveOrders();
           }
         });
@@ -113,9 +113,7 @@ class EditAddressDetails extends State<EditAddressPage> {
   getStates() {
     addressServices.getStates().then((val) {
       final data = json.decode(val.body);
-      if (data != null &&
-          data['listOfStates'] != null &&
-          data['listOfStates'].length > 0) {
+      if (data != null && data['listOfStates'] != null && data['listOfStates'].length > 0) {
         setState(() {
           states = data['listOfStates'];
           // selectedState = states[0]['stateId'].toString();
@@ -124,26 +122,20 @@ class EditAddressDetails extends State<EditAddressPage> {
         ApiErros().apiLoggedErrors(data, context, scafFoldkey);
       }
     }, onError: (err) {
-      ApiErros()
-          .apiErrorNotifications(err, context, '/registration', scafFoldkey);
+      ApiErros().apiErrorNotifications(err, context, '/registration', scafFoldkey);
     });
   }
 
   // initialization of validations.
   checkIsFormFieldsValid() {
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(editMobileNoFocus, editMobileNoKey);
+    GlobalValidations().validateCurrentFieldValidOrNot(editMobileNoFocus, editMobileNoKey);
 
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(editHouseNoFocus, editHouseNokey);
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(editStreetFocus, editStreetKey);
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(editCityFocus, editCityKey);
+    GlobalValidations().validateCurrentFieldValidOrNot(editHouseNoFocus, editHouseNokey);
+    GlobalValidations().validateCurrentFieldValidOrNot(editStreetFocus, editStreetKey);
+    GlobalValidations().validateCurrentFieldValidOrNot(editCityFocus, editCityKey);
     // GlobalValidations()
     //     .validateCurrentFieldValidOrNot(editStateFocus, editStatekey);
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(editPincodeFocus, editPincodeKey);
+    GlobalValidations().validateCurrentFieldValidOrNot(editPincodeFocus, editPincodeKey);
     // checkUserExitsOrNot();
   }
 
@@ -223,99 +215,58 @@ class EditAddressDetails extends State<EditAddressPage> {
                                   key: registrationFormkey,
                                   child: Column(
                                     // mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Padding(padding: EdgeInsets.only(top: 5)),
-                                      Container(
-                                          margin: EdgeInsets.only(left: 5),
-                                          child: Text("Edit Address",
-                                              style: appFonts.getTextStyle(
-                                                  'edit_&_new_address_heading_style'))),
+                                      Container(margin: EdgeInsets.only(left: 5), child: Text("Edit Address", style: appFonts.getTextStyle('edit_&_new_address_heading_style'))),
                                       AppStyles().customPadding(10),
                                       TextFormField(
                                         cursorColor: mainAppColor,
                                         controller: editMobileNoController,
                                         decoration: InputDecoration(
-                                            labelText:
-                                                mobileNumberLabelName + " *",
+                                            labelText: mobileNumberLabelName + " *",
                                             errorMaxLines: 3,
                                             counterText: "",
-                                            contentPadding: AppStyles()
-                                                .contentPaddingForInput,
+                                            contentPadding: AppStyles().contentPaddingForInput,
                                             // alignLabelWithHint: true,
                                             border: AppStyles().inputBorder,
                                             prefix: Text("+91 "),
-                                            focusedBorder:
-                                                AppStyles().focusedInputBorder),
+                                            focusedBorder: AppStyles().focusedInputBorder),
                                         keyboardType: TextInputType.number,
                                         maxLength: 10,
-                                        validator: (value) =>
-                                            GlobalValidations()
-                                                .mobileValidations(value),
+                                        validator: (value) => GlobalValidations().mobileValidations(value),
                                         focusNode: editMobileNoFocus,
                                         key: editMobileNoKey,
                                         inputFormatters: [
-                                          WhitelistingTextInputFormatter
-                                              .digitsOnly
+                                          WhitelistingTextInputFormatter.digitsOnly
                                         ],
                                       ),
                                       AppStyles().customPadding(3),
                                       TextFormField(
-                                        decoration: InputDecoration(
-                                            border: AppStyles().inputBorder,
-                                            errorMaxLines: 3,
-                                            focusedBorder:
-                                                AppStyles().focusedInputBorder,
-                                            labelText:
-                                                houseNumberLabelName + " *",
-                                            counterText: "",
-                                            contentPadding: AppStyles()
-                                                .contentPaddingForInput),
+                                        decoration: InputDecoration(border: AppStyles().inputBorder, errorMaxLines: 3, focusedBorder: AppStyles().focusedInputBorder, labelText: houseNumberLabelName + " *", counterText: "", contentPadding: AppStyles().contentPaddingForInput),
                                         controller: editHouseNoController,
                                         cursorColor: mainAppColor,
-                                        validator: (val) => GlobalValidations()
-                                            .houseNumberValidations(
-                                                val.trim(), true),
+                                        validator: (val) => GlobalValidations().houseNumberValidations(val.trim(), true),
                                         maxLength: 75,
                                         focusNode: editHouseNoFocus,
                                         key: editHouseNokey,
                                       ),
                                       AppStyles().customPadding(5),
                                       TextFormField(
-                                        decoration: InputDecoration(
-                                            border: AppStyles().inputBorder,
-                                            errorMaxLines: 3,
-                                            focusedBorder:
-                                                AppStyles().focusedInputBorder,
-                                            labelText: streetLabelName + " *",
-                                            counterText: "",
-                                            contentPadding: AppStyles()
-                                                .contentPaddingForInput),
+                                        decoration: InputDecoration(border: AppStyles().inputBorder, errorMaxLines: 3, focusedBorder: AppStyles().focusedInputBorder, labelText: streetLabelName + " *", counterText: "", contentPadding: AppStyles().contentPaddingForInput),
                                         controller: editStreetController,
                                         cursorColor: mainAppColor,
-                                        validator: (val) => GlobalValidations()
-                                            .streetValidations(
-                                                val.trim(), true),
+                                        validator: (val) => GlobalValidations().streetValidations(val.trim(), true),
                                         maxLength: 75,
                                         focusNode: editStreetFocus,
                                         key: editStreetKey,
                                       ),
                                       AppStyles().customPadding(5),
                                       TextFormField(
-                                        decoration: InputDecoration(
-                                            border: AppStyles().inputBorder,
-                                            errorMaxLines: 3,
-                                            focusedBorder:
-                                                AppStyles().focusedInputBorder,
-                                            labelText: cityLabelName + ' *',
-                                            counterText: "",
-                                            contentPadding: AppStyles()
-                                                .contentPaddingForInput),
+                                        decoration: InputDecoration(border: AppStyles().inputBorder, errorMaxLines: 3, focusedBorder: AppStyles().focusedInputBorder, labelText: cityLabelName + ' *', counterText: "", contentPadding: AppStyles().contentPaddingForInput),
                                         controller: editCityController,
                                         cursorColor: mainAppColor,
-                                        validator: (val) => GlobalValidations()
-                                            .cityValidations(val.trim()),
+                                        validator: (val) => GlobalValidations().cityValidations(val.trim()),
                                         maxLength: 75,
                                         focusNode: editCityFocus,
                                         key: editCityKey,
@@ -341,14 +292,9 @@ class EditAddressDetails extends State<EditAddressPage> {
                                       //   key: editStatekey,
                                       // ),
                                       Container(
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: Colors.grey, width: 1),
-                                              borderRadius:
-                                                  BorderRadius.circular(7)),
+                                          decoration: BoxDecoration(border: Border.all(color: Colors.grey, width: 1), borderRadius: BorderRadius.circular(7)),
                                           child: Container(
-                                              padding:
-                                                  EdgeInsets.only(left: 15),
+                                              padding: EdgeInsets.only(left: 15),
                                               child: DropdownButton<String>(
                                                 underline: Container(),
                                                 focusNode: editCityFocus,
@@ -362,37 +308,25 @@ class EditAddressDetails extends State<EditAddressPage> {
                                                   return new DropdownMenuItem(
                                                     child: new Text(
                                                       state['name'].toString(),
-                                                      style: appFonts.getTextStyle(
-                                                          'state_dropdown_names_style'),
+                                                      style: appFonts.getTextStyle('state_dropdown_names_style'),
                                                     ),
-                                                    value: state['stateId']
-                                                        .toString(),
+                                                    value: state['stateId'].toString(),
                                                   );
                                                 }).toList(),
                                                 onChanged: (newVal) {
                                                   setState(() {
                                                     selectedState = newVal;
-                                                    editStateFocus
-                                                        .requestFocus();
+                                                    editStateFocus.requestFocus();
                                                   });
                                                 },
                                                 value: selectedState,
                                               ))),
                                       AppStyles().customPadding(5),
                                       TextFormField(
-                                        decoration: InputDecoration(
-                                            border: AppStyles().inputBorder,
-                                            errorMaxLines: 3,
-                                            focusedBorder:
-                                                AppStyles().focusedInputBorder,
-                                            labelText: pincodeLabelName + " *",
-                                            counterText: "",
-                                            contentPadding: AppStyles()
-                                                .contentPaddingForInput),
+                                        decoration: InputDecoration(border: AppStyles().inputBorder, errorMaxLines: 3, focusedBorder: AppStyles().focusedInputBorder, labelText: pincodeLabelName + " *", counterText: "", contentPadding: AppStyles().contentPaddingForInput),
                                         controller: editPinCodeController,
                                         cursorColor: mainAppColor,
-                                        validator: (val) => GlobalValidations()
-                                            .pincodeValidations(val.trim()),
+                                        validator: (val) => GlobalValidations().pincodeValidations(val.trim()),
                                         maxLength: 6,
                                         enabled: enablePinCode,
                                         keyboardType: TextInputType.phone,
@@ -400,44 +334,36 @@ class EditAddressDetails extends State<EditAddressPage> {
                                         key: editPincodeKey,
                                       ),
                                       AppStyles().customPadding(5),
-                                      Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            !onLoading
-                                                ? Container(
-                                                    // width: 10,
-                                                    // margin: EdgeInsets.fromLTRB(
-                                                    //     100, 0, 100, 0),
-                                                    child: RaisedButton(
-                                                    // shape:
-                                                    //     new RoundedRectangleBorder(
-                                                    //         borderRadius:
-                                                    //             new BorderRadius
-                                                    //                     .circular(
-                                                    //                 20.0)),
-                                                    onPressed: () {
-                                                      // print('hiiiiiii');
-                                                      // print(addressDetailsObject);
-                                                      setState(() {
-                                                        if (registrationFormkey
-                                                                .currentState
-                                                                .validate() &&
-                                                            selectedState !=
-                                                                null) {
-                                                          editAdressInfo();
-                                                        }
-                                                      });
-                                                    },
-                                                    color: mainAppColor,
-                                                    child: Text(
-                                                      " Save",
-                                                      style: appFonts.getTextStyle(
-                                                          'button_text_color_white'),
-                                                    ),
-                                                  ))
-                                                : loadingButtonWidget(context)
-                                          ])
+                                      Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                                        !onLoading
+                                            ? Container(
+                                                // width: 10,
+                                                // margin: EdgeInsets.fromLTRB(
+                                                //     100, 0, 100, 0),
+                                                child: RaisedButton(
+                                                // shape:
+                                                //     new RoundedRectangleBorder(
+                                                //         borderRadius:
+                                                //             new BorderRadius
+                                                //                     .circular(
+                                                //                 20.0)),
+                                                onPressed: () {
+                                                  // print('hiiiiiii');
+                                                  // print(addressDetailsObject);
+                                                  setState(() {
+                                                    if (registrationFormkey.currentState.validate() && selectedState != null) {
+                                                      editAdressInfo();
+                                                    }
+                                                  });
+                                                },
+                                                color: mainAppColor,
+                                                child: Text(
+                                                  " Save",
+                                                  style: appFonts.getTextStyle('button_text_color_white'),
+                                                ),
+                                              ))
+                                            : loadingButtonWidget(context)
+                                      ])
                                     ],
                                   )),
                             )))))));
