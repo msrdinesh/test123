@@ -44,7 +44,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomeScreen extends State<HomePage> {
-  String pincode = "";
+  String pincode = "521001";
   String place = "";
   final passwordController = TextEditingController();
   final passwordFormKey = GlobalKey<FormFieldState>();
