@@ -1456,6 +1456,7 @@ class HomeScreen extends State<HomePage> {
     print(place);
     isLoading = false;
     fun();
+    Navigator.pop(context);
   }
 
   void _showPincode(VoidCallback fun) {
@@ -1507,7 +1508,6 @@ class HomeScreen extends State<HomePage> {
                                     form.save();
                                     getPlace(fun);
                                     fun();
-                                    Navigator.pop(context);
                                   } else {}
                                 },
                               )))
