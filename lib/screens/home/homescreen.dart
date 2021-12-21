@@ -44,6 +44,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomeScreen extends State<HomePage> {
+  bool BOOL = false;
   String pincode = "521001";
   String place = "";
   String textInLocation = "Deliver to";
@@ -1406,7 +1407,7 @@ class HomeScreen extends State<HomePage> {
                     child: GestureDetector(
                         onTap: () {
                           Navigator.pop(context);
-                          _showPincode();
+                          _showPincode(fun);
                         },
                         child: Row(children: [
                           Icon(Icons.location_on_rounded, color: Colors.blue),
@@ -1418,7 +1419,7 @@ class HomeScreen extends State<HomePage> {
                     child: GestureDetector(
                         onTap: () {
                           Navigator.pop(context);
-                          _showPincode();
+                          _showPincode(fun);
                         },
                         child: Row(children: [
                           Icon(Icons.location_searching_sharp, color: Colors.blue),
@@ -1429,17 +1430,15 @@ class HomeScreen extends State<HomePage> {
         });
   }
 
-  void _apply() {}
+  String textFun(bool BOOL) {
+    if (BOOL) return 'OK';
+    return 'not OK';
+  }
 
-  void _showPincode() {
+  void _showPincode(VoidCallback fun) {
     showModalBottomSheet(
         context: context,
         builder: (builder) {
-          print("number of addresses");
-          print(addressList.length);
-          print(makeAddressCards(addressList));
-          print("dinnu is here");
-          print(pincode);
           return FractionallySizedBox(
               heightFactor: 0.6,
               child: Column(children: [
@@ -1480,18 +1479,14 @@ class HomeScreen extends State<HomePage> {
                             if (form.validate()) {
                               form.save();
                               print("i am here and pincode is " + pincode);
-                              setState() {
-                                textInLocation = pincode;
-                              }
+                              fun();
 
                               textInLocation = pincode;
                               print(textInLocation);
 
                               Navigator.pop(context);
                             } else {
-                              setState() {
-                                pincode = "";
-                              }
+                              fun();
                             }
                           },
                         )))
@@ -1509,7 +1504,7 @@ class HomeScreen extends State<HomePage> {
                 alignment: Alignment.centerLeft,
                 child: Row(children: [
                   Icon(Icons.location_on_rounded),
-                  Text(textInLocation, textAlign: TextAlign.left),
+                  Text(textFun(BOOL), textAlign: TextAlign.left),
                   GestureDetector(
                       onTap: () {
                         _showModalSheet();
@@ -1558,6 +1553,12 @@ class HomeScreen extends State<HomePage> {
     }, onError: (err) {
       Navigator.of(context).pop();
       ApiErros().apiErrorNotifications(err, context, '/home', scafflodkey);
+    });
+  }
+
+  void fun() {
+    setState(() {
+      BOOL = true;
     });
   }
 
