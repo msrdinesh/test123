@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:cornext_mobile/components/widgets/appbarwidget.dart';
 import 'dart:convert';
+import 'package:cornext_mobile/constants/appcolors.dart';
 import 'package:cornext_mobile/services/refreshtokenservice/refreshtokenservice.dart';
 import 'package:cornext_mobile/services/sharedprefrencesservice/sharedpreferenceservice.dart';
 import 'package:cornext_mobile/constants/appstyles.dart';
 import 'package:cornext_mobile/constants/appcolors.dart';
 import 'package:cornext_mobile/models/signinmodel.dart';
+import 'package:cornext_mobile/utils/globalvalidations/globalvalidations.dart';
 // import 'package:flutter/services.dart' show rootBundle;
 import 'package:cornext_mobile/services/homescreenservices/homescreenservices.dart';
 import 'package:cornext_mobile/utils/apierrors/apierror.dart';
@@ -44,6 +46,8 @@ class HomePage extends StatefulWidget {
 }
 
 class HomeScreen extends State<HomePage> {
+  final passwordController = TextEditingController();
+  final passwordFormKey = GlobalKey<FormFieldState>();
   final GlobalKey<ScaffoldState> scafFoldKey = GlobalKey<ScaffoldState>();
   int totalNumberOfAddresses = 0;
   final ApiErros apiErros = ApiErros();
@@ -1435,7 +1439,18 @@ class HomeScreen extends State<HomePage> {
               heightFactor: 0.5,
               child: Column(children: [
                 Padding(padding: EdgeInsets.all(15), child: Align(alignment: Alignment.centerLeft, child: Text("Enter an Indian pincode", style: TextStyle(fontSize: 20)))),
-                Padding(padding: EdgeInsets.only(left: 15), child: Align(alignment: Alignment.centerLeft, child: Text("Select a delivery location to see product availability and delivery options", style: TextStyle(fontSize: 15))))
+                Padding(padding: EdgeInsets.only(left: 15), child: Align(alignment: Alignment.centerLeft, child: Text("Select a delivery location to see product availability and delivery options", style: TextStyle(fontSize: 15)))),
+                TextFormField(
+                  controller: passwordController,
+                  key: passwordFormKey,
+
+                  cursorColor: mainAppColor,
+                  validator: (value) => GlobalValidations().pincodeValidations(value),
+                  // autovalidate: true,
+                  // autocorrect: true,
+
+                  // onSaved: (val) => _passwordError = val,
+                )
               ]));
         });
   }

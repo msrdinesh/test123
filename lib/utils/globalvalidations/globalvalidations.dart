@@ -4,16 +4,11 @@ import 'package:cornext_mobile/components/widgets/notifications.dart';
 import 'package:flutter/material.dart';
 
 class GlobalValidations {
-  String passwordValidations(
-      String val,
-      TextEditingController confirmPasswordController,
-      GlobalKey<FormFieldState> confirmPasswordkey) {
+  String passwordValidations(String val, TextEditingController confirmPasswordController, GlobalKey<FormFieldState> confirmPasswordkey) {
     print(confirmPasswordController.text.trim());
     if (val == "") {
       return ErrorMessages().passwordNotEnteredError;
-    } else if (val.toLowerCase().indexOf(RegExp(r'[a-z]')) == -1 ||
-        val.indexOf(RegExp(r'[0-9]')) == -1 ||
-        val.length < 6) {
+    } else if (val.toLowerCase().indexOf(RegExp(r'[a-z]')) == -1 || val.indexOf(RegExp(r'[0-9]')) == -1 || val.length < 6) {
       return ErrorMessages().passwordValidationError;
     } else if (val != '' && confirmPasswordController.text.trim() != '') {
       confirmPasswordkey.currentState?.validate();
@@ -47,10 +42,7 @@ class GlobalValidations {
     return null;
   }
 
-  String mobileValidationsReg(
-      String val,
-      TextEditingController alternateMobileNoContoller,
-      GlobalKey<FormFieldState> alternateMobileNoKey) {
+  String mobileValidationsReg(String val, TextEditingController alternateMobileNoContoller, GlobalKey<FormFieldState> alternateMobileNoKey) {
     if (val == "") {
       return ErrorMessages().mobileNoNotEnteredError;
     } else if (val.length < 10) {
@@ -79,11 +71,7 @@ class GlobalValidations {
     //   return Error
     // }
     // print(val);
-    if ((!onlyNumberRegex.hasMatch(val) && val.trim() != '') ||
-        val.contains('.') ||
-        val.contains('-') ||
-        val.contains(' ') ||
-        val.toLowerCase().indexOf(RegExp(r'[a-z,-.@_+*^%$#@!&]')) != -1) {
+    if ((!onlyNumberRegex.hasMatch(val) && val.trim() != '') || val.contains('.') || val.contains('-') || val.contains(' ') || val.toLowerCase().indexOf(RegExp(r'[a-z,-.@_+*^%$#@!&]')) != -1) {
       return ErrorMessages().animalFieldErrorMessage;
     } else if (val.trim() == "") {
       return ErrorMessages().animalFieldNotEnteredError;
@@ -96,20 +84,11 @@ class GlobalValidations {
     //   return Error
     // }
     // print(val);
-    if ((!onlyNumberRegex.hasMatch(val) && val != '') ||
-        val.contains('.') ||
-        val.contains('-') ||
-        val.contains(' ') ||
-        val.toLowerCase().indexOf(RegExp(r'[a-z,-.@_+*^%$#@!&]')) != -1) {
+    if ((!onlyNumberRegex.hasMatch(val) && val != '') || val.contains('.') || val.contains('-') || val.contains(' ') || val.toLowerCase().indexOf(RegExp(r'[a-z,-.@_+*^%$#@!&]')) != -1) {
       return ErrorMessages().quantityErrorMessage;
-    } else if (val.trim().length > 0 &&
-        int.parse(val.trim()) != null &&
-        int.parse(val.trim()) == 0) {
+    } else if (val.trim().length > 0 && int.parse(val.trim()) != null && int.parse(val.trim()) == 0) {
       return ErrorMessages().quantityErrorMessage;
-    } else if (minimumQuantity != null &&
-        val.trim().length > 0 &&
-        int.parse(val.trim()) != null &&
-        int.parse(val.trim()) < minimumQuantity) {
+    } else if (minimumQuantity != null && val.trim().length > 0 && int.parse(val.trim()) != null && int.parse(val.trim()) < minimumQuantity) {
       return ErrorMessages().minimumQuantityError(minimumQuantity, unit);
     } else if (val.length > 4) {
       return ErrorMessages().quantityLengthErrorMessage;
@@ -119,26 +98,16 @@ class GlobalValidations {
     return null;
   }
 
-  String unitsQuantityValidations(
-      String val, int minimumQuantity, String unit) {
+  String unitsQuantityValidations(String val, int minimumQuantity, String unit) {
     // if(val == ""){
     //   return Error
     // }
     // print(val);
-    if ((!onlyNumberRegex.hasMatch(val) && val != '') ||
-        val.contains('.') ||
-        val.contains('-') ||
-        val.contains(' ') ||
-        val.toLowerCase().indexOf(RegExp(r'[a-z,-.@_+*^%$#@!&]')) != -1) {
+    if ((!onlyNumberRegex.hasMatch(val) && val != '') || val.contains('.') || val.contains('-') || val.contains(' ') || val.toLowerCase().indexOf(RegExp(r'[a-z,-.@_+*^%$#@!&]')) != -1) {
       return ErrorMessages().quantityErrorMessage;
-    } else if (val.trim().length > 0 &&
-        int.parse(val.trim()) != null &&
-        int.parse(val.trim()) == 0) {
+    } else if (val.trim().length > 0 && int.parse(val.trim()) != null && int.parse(val.trim()) == 0) {
       return ErrorMessages().quantityErrorMessage;
-    } else if (minimumQuantity != null &&
-        val.trim().length > 0 &&
-        int.parse(val.trim()) != null &&
-        int.parse(val.trim()) < minimumQuantity) {
+    } else if (minimumQuantity != null && val.trim().length > 0 && int.parse(val.trim()) != null && int.parse(val.trim()) < minimumQuantity) {
       return ErrorMessages().minimumQuantityError(minimumQuantity, unit);
     } else if (val.length > 4) {
       return ErrorMessages().quantityLengthErrorMessage;
@@ -153,15 +122,9 @@ class GlobalValidations {
     //   return Error
     // }
     // print(val);
-    if ((!onlyNumberRegex.hasMatch(val) && val != '') ||
-        val.contains('.') ||
-        val.contains('-') ||
-        val.contains(' ') ||
-        val.toLowerCase().indexOf(RegExp(r'[a-z,-.@_+*^%$#@!&]')) != -1) {
+    if ((!onlyNumberRegex.hasMatch(val) && val != '') || val.contains('.') || val.contains('-') || val.contains(' ') || val.toLowerCase().indexOf(RegExp(r'[a-z,-.@_+*^%$#@!&]')) != -1) {
       return ErrorMessages().subscriptionValidationErrorMessages;
-    } else if (val.trim().length > 0 &&
-        int.parse(val.trim()) != null &&
-        int.parse(val.trim()) == 0) {
+    } else if (val.trim().length > 0 && int.parse(val.trim()) != null && int.parse(val.trim()) == 0) {
       return ErrorMessages().subscriptionValidationErrorMessages;
     } else if (val.length > 4) {
       return ErrorMessages().subscriptionLengthErrorMessages;
@@ -178,11 +141,7 @@ class GlobalValidations {
     //   return Error
     // }
     // print(val);
-    if ((!onlyNumberRegex.hasMatch(val) && val != '') ||
-        val.contains('.') ||
-        val.contains('-') ||
-        val.contains(' ') ||
-        val.toLowerCase().indexOf(RegExp(r'[a-z,-.@_+*^%$#@!&]')) != -1) {
+    if ((!onlyNumberRegex.hasMatch(val) && val != '') || val.contains('.') || val.contains('-') || val.contains(' ') || val.toLowerCase().indexOf(RegExp(r'[a-z,-.@_+*^%$#@!&]')) != -1) {
       return ErrorMessages().quantityErrorMessage;
     } else if (int.parse(val.trim()) != null && int.parse(val.trim()) == 0) {
       return ErrorMessages().quantityErrorMessage;
@@ -249,9 +208,7 @@ class GlobalValidations {
         return ErrorMessages().confirmPasswordNotEnteredError;
       } else if (val != passwordValue) {
         return ErrorMessages().confirmPasswordNotMatchedError;
-      } else if (val.toLowerCase().indexOf(RegExp(r'[a-z]')) == -1 ||
-          val.indexOf(RegExp(r'[0-9]')) == -1 ||
-          val.length < 6) {
+      } else if (val.toLowerCase().indexOf(RegExp(r'[a-z]')) == -1 || val.indexOf(RegExp(r'[0-9]')) == -1 || val.length < 6) {
         return ErrorMessages().confirmPasswordErrorMessage;
       }
     }
@@ -318,13 +275,10 @@ class GlobalValidations {
     List<bool> isSubCategeriesChecked = [];
     List<bool> isFarmDetailsValid = [];
     subCategeries.forEach((val) {
-      if (val[val['path'] + 'isChecked'] &&
-          val[val['path'] + 'totalNo'] != null) {
+      if (val[val['path'] + 'isChecked'] && val[val['path'] + 'totalNo'] != null) {
         isSubCategeriesChecked.add(true);
       }
-      if (val[val['path'] + 'formKey'] != null &&
-          val[val['path'] + 'formKey'].currentState != null &&
-          !val[val['path'] + 'formKey'].currentState.validate()) {
+      if (val[val['path'] + 'formKey'] != null && val[val['path'] + 'formKey'].currentState != null && !val[val['path'] + 'formKey'].currentState.validate()) {
         isFarmDetailsValid.add(false);
       }
     });
@@ -357,8 +311,7 @@ class GlobalValidations {
   }
 
   // On blur validation for a field
-  validateCurrentFieldValidOrNot(
-      FocusNode focusNode, GlobalKey<FormFieldState> key) {
+  validateCurrentFieldValidOrNot(FocusNode focusNode, GlobalKey<FormFieldState> key) {
     focusNode.addListener(() {
       if (!focusNode.hasFocus) {
         key.currentState.validate();
@@ -367,36 +320,26 @@ class GlobalValidations {
     });
   }
 
-  validateCurrentQuantityField(
-      FocusNode focusNode,
-      GlobalKey<FormFieldState> key,
-      context,
-      GlobalKey<ScaffoldState> scaffoldKey) {
+  validateCurrentQuantityField(FocusNode focusNode, GlobalKey<FormFieldState> key, context, GlobalKey<ScaffoldState> scaffoldKey) {
     focusNode.addListener(() {
       if (!focusNode.hasFocus) {
         if (!key.currentState.validate()) {
           // closeNotifications();
           clearErrorMessages(scaffoldKey);
-          showErrorNotifications(
-              key.currentState.errorText, context, scaffoldKey);
+          showErrorNotifications(key.currentState.errorText, context, scaffoldKey);
         }
         // focusNode.unfocus();
       }
     });
   }
 
-  validateCurrentFarmFieldValidOrNot(
-      FocusNode focusNode,
-      GlobalKey<FormFieldState> key,
-      context,
-      GlobalKey<ScaffoldState> scaffoldKey) {
+  validateCurrentFarmFieldValidOrNot(FocusNode focusNode, GlobalKey<FormFieldState> key, context, GlobalKey<ScaffoldState> scaffoldKey) {
     focusNode.addListener(() {
       if (!focusNode.hasFocus) {
         if (!key.currentState.validate()) {
           // closeNotifications();
           clearErrorMessages(scaffoldKey);
-          showErrorNotifications(
-              key.currentState.errorText, context, scaffoldKey);
+          showErrorNotifications(key.currentState.errorText, context, scaffoldKey);
         }
         // focusNode.unfocus();
       }
