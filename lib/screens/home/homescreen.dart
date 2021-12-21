@@ -1572,7 +1572,7 @@ class HomeScreen extends State<HomePage> {
     double longitude = _locationData.longitude;
     List<g.Placemark> placemarks = await g.placemarkFromCoordinates(lattitude, longitude);
     g.Placemark temp = placemarks[0];
-    place = temp.place
+    place = temp.place;
     fun();
   }
 
