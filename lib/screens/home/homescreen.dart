@@ -46,6 +46,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomeScreen extends State<HomePage> {
+  bool checkBoxValue = false;
   bool isLoading = false;
   bool BOOL = false;
   String pincode = "521001";
@@ -1551,6 +1552,19 @@ class HomeScreen extends State<HomePage> {
               child: Column(children: [
                 Padding(padding: EdgeInsets.all(15), child: Text("Allow location access to improve shopping experience", style: TextStyle(fontSize: 20))),
                 Padding(padding: EdgeInsets.all(15), child: Text("We use your location to improve your shopping experience, ensuring you only see items or products and delivery options available in your place.", style: TextStyle(fontSize: 15))),
+                Column(
+                  children: <Widget>[
+                    new Checkbox(
+                        value: checkBoxValue,
+                        activeColor: Colors.green,
+                        onChanged: (bool newValue) {
+                          setState(() {
+                            checkBoxValue = newValue;
+                          });
+                          Text('Remember me');
+                        }),
+                  ],
+                )
               ]));
         });
   }
