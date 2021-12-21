@@ -1475,6 +1475,7 @@ class HomeScreen extends State<HomePage> {
       fun();
       Navigator.pop(context);
     } else {
+      print("here error notification");
       showErrorNotifications("Pincode doesn't exist", context, scafflodKey);
     }
   }
