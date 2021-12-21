@@ -282,13 +282,7 @@ class MyAppState extends State<MyApp> {
                       _isSelected
                           ? FlatButton(
                               onPressed: () {
-                                print("pressed button");
-                                print("pushed home");
-                                if (access_token == null) {
-                                  Navigator.pushNamed(context, '/login');
-                                } else {
-                                  Navigator.pushNamed(context, '/home');
-                                }
+                                Navigator.pushNamed(context, '/home');
                               },
                               color: Colors.yellow,
                               minWidth: 340.0,
