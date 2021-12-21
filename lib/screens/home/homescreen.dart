@@ -1441,7 +1441,6 @@ class HomeScreen extends State<HomePage> {
                 Container(
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: pressed == i ? Colors.yellow : Colors.black,
                         width: 1,
                       ),
                     ),
