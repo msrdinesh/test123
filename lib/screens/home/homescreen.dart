@@ -1563,7 +1563,6 @@ class HomeScreen extends State<HomePage> {
                             checkColor: Colors.white,
                             value: isChecked,
                             onChanged: (bool value) {
-                              print("changed");
                               setstate(() {
                                 isChecked = value;
                               });
@@ -1571,7 +1570,21 @@ class HomeScreen extends State<HomePage> {
                           )),
                       Flexible(child: Padding(padding: EdgeInsets.all(0), child: Text("Allow this FeedNext app to access your location and skip this step in the future.")))
                     ],
-                  ))
+                  )),
+                  Row(children: [
+                    ElevatedButton(
+                      child: Text('Not now'),
+                      onPressed: () {
+                        print('Pressed');
+                      },
+                    ),
+                    ElevatedButton(
+                      child: Text('Allow access'),
+                      onPressed: () {
+                        print('Pressed');
+                      },
+                    )
+                  ])
                 ]));
           });
         });
