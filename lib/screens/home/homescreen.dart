@@ -1461,6 +1461,7 @@ class HomeScreen extends State<HomePage> {
                             child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: TextFormField(
+                                  style: TextStyle(fontSize: 20),
                                   decoration: new InputDecoration(border: InputBorder.none, focusedBorder: InputBorder.none, enabledBorder: InputBorder.none, errorBorder: InputBorder.none, disabledBorder: InputBorder.none, contentPadding: EdgeInsets.only(left: 5, bottom: 11, top: 11, right: 15)),
                                   onSaved: (String value) {
                                     pincode = value;
