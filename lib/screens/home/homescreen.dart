@@ -1549,6 +1549,7 @@ class HomeScreen extends State<HomePage> {
     }
 
     bool tmp = await p.Permission.location.request().isGranted;
+    print(tmp);
     _permissionGranted = await location.hasPermission();
     if (await p.Permission.location.request().isGranted) {
       print("i am here");
