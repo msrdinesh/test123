@@ -45,6 +45,7 @@ class HomePage extends StatefulWidget {
 
 class HomeScreen extends State<HomePage> {
   String pincode = "";
+  String place = "";
   final passwordController = TextEditingController();
   final passwordFormKey = GlobalKey<FormFieldState>();
   final GlobalKey<ScaffoldState> scafFoldKey = GlobalKey<ScaffoldState>();
@@ -1499,7 +1500,7 @@ class HomeScreen extends State<HomePage> {
                 alignment: Alignment.centerLeft,
                 child: Row(children: [
                   Icon(Icons.location_on_rounded),
-                  Text("  Deliver to Hyderabad 500018", textAlign: TextAlign.left),
+                  Text("  Deliver to " + place + " " + pincode, textAlign: TextAlign.left),
                   GestureDetector(
                       onTap: () {
                         _showModalSheet();
