@@ -1453,6 +1453,7 @@ class HomeScreen extends State<HomePage> {
                             child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: TextFormField(
+                                  style: const TextStyle(fontSize: 20),
                                   onSaved: (String value) {
                                     pincode = value;
                                   },
