@@ -1459,8 +1459,7 @@ class HomeScreen extends State<HomePage> {
     print(scafFlodKey);
     print(scafFlodKey.currentState);
     if (scafFlodKey != null && scafFlodKey.currentState != null) {
-      print("here i am dinesh");
-      print("show snackbar");
+      Navigator.pop(context);
       scafFlodKey.currentState.showSnackBar(snackBar);
     }
   }
