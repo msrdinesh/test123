@@ -1557,9 +1557,9 @@ class HomeScreen extends State<HomePage> {
                     Checkbox(
                       checkColor: Colors.white,
                       value: isChecked,
-                      onChanged: (bool? value) {
+                      onChanged: (bool value) {
                         setState(() {
-                          isChecked = value!;
+                          isChecked = value;
                         });
                       },
                     )
