@@ -1547,26 +1547,28 @@ class HomeScreen extends State<HomePage> {
     showModalBottomSheet(
         context: context,
         builder: (builder) {
-          return FractionallySizedBox(
-              heightFactor: 0.7,
-              child: Column(children: [
-                Padding(padding: EdgeInsets.all(15), child: Text("Allow location access to improve shopping experience", style: TextStyle(fontSize: 20))),
-                Padding(padding: EdgeInsets.all(15), child: Text("We use your location to improve your shopping experience, ensuring you only see items or products and delivery options available in your place.", style: TextStyle(fontSize: 15))),
-                Row(
-                  children: <Widget>[
-                    Checkbox(
-                      checkColor: Colors.white,
-                      value: isChecked,
-                      onChanged: (bool value) {
-                        print("changed");
-                        setState(() {
-                          isChecked = value;
-                        });
-                      },
-                    )
-                  ],
-                )
-              ]));
+          return StatefulBuilder(builder: (context, setstate) {
+            return FractionallySizedBox(
+                heightFactor: 0.7,
+                child: Column(children: [
+                  Padding(padding: EdgeInsets.all(15), child: Text("Allow location access to improve shopping experience", style: TextStyle(fontSize: 20))),
+                  Padding(padding: EdgeInsets.all(15), child: Text("We use your location to improve your shopping experience, ensuring you only see items or products and delivery options available in your place.", style: TextStyle(fontSize: 15))),
+                  Row(
+                    children: <Widget>[
+                      Checkbox(
+                        checkColor: Colors.white,
+                        value: isChecked,
+                        onChanged: (bool value) {
+                          print("changed");
+                          setstate(() {
+                            isChecked = value;
+                          });
+                        },
+                      )
+                    ],
+                  )
+                ]));
+          });
         });
   }
 
