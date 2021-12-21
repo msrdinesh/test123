@@ -46,6 +46,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomeScreen extends State<HomePage> {
+  bool isLoading = false;
   bool BOOL = false;
   String pincode = "521001";
   String place = "";
@@ -1444,11 +1445,13 @@ class HomeScreen extends State<HomePage> {
   }
 
   void getPlace() async {
+    isLoading = true;
     var response = await http.get(Uri.parse('https://api.worldpostallocations.com/pincode?postalcode=521001&countrycode=IN'));
     Map<String, dynamic> respons = jsonDecode(response.body);
     place = respons['result'][0]['province'];
     print("i am here");
     print(place);
+    isLoading = false;
   }
 
   void _showPincode(VoidCallback fun) {
@@ -1487,19 +1490,23 @@ class HomeScreen extends State<HomePage> {
                     child: ButtonTheme(
                         minWidth: 330.0,
                         height: 40.0,
-                        child: RaisedButton(
-                          child: Text('Apply'),
-                          onPressed: () {
-                            final form = passwordFormKey.currentState;
-                            print(form);
-                            if (form.validate()) {
-                              form.save();
-                              getPlace();
-                              fun();
-                              Navigator.pop(context);
-                            } else {}
-                          },
-                        )))
+                        child: isLoading
+                            ? CircularProgressIndicator(
+                                semanticsLabel: 'Linear progress indicator',
+                              )
+                            : RaisedButton(
+                                child: Text('Apply'),
+                                onPressed: () {
+                                  final form = passwordFormKey.currentState;
+                                  print(form);
+                                  if (form.validate()) {
+                                    form.save();
+                                    getPlace();
+                                    fun();
+                                    Navigator.pop(context);
+                                  } else {}
+                                },
+                              )))
               ]));
         });
   }
