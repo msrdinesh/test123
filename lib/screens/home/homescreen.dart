@@ -1449,7 +1449,7 @@ class HomeScreen extends State<HomePage> {
                         height: 40,
                         width: 330,
                         child: Padding(
-                            padding: EdgeInsets.all(5),
+                            padding: EdgeInsets.all(10),
                             child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: TextFormField(
