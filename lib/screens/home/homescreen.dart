@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
 import 'dart:convert';
 import 'package:location/location.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:cornext_mobile/constants/appcolors.dart';
 import 'package:cornext_mobile/services/refreshtokenservice/refreshtokenservice.dart';
 import 'package:cornext_mobile/services/sharedprefrencesservice/sharedpreferenceservice.dart';
@@ -1569,6 +1570,8 @@ class HomeScreen extends State<HomePage> {
     }
 
     _locationData = await location.getLocation();
+    double lattitude = _locationData.latitude;
+    double longitude = _locationData.longitude;
   }
 
   void _showCurrentLocation(VoidCallback fun) {
