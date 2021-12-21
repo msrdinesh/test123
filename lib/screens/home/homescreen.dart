@@ -1447,17 +1447,19 @@ class HomeScreen extends State<HomePage> {
                     ),
                     height: 40,
                     width: 330,
-                    child: TextFormField(
-                      onSaved: (String value) {
-                        pincode = value;
-                      },
-                      key: passwordFormKey,
-                      validator: (value) => GlobalValidations().pincodeValidations(value),
-                      // autovalidate: true,
-                      // autocorrect: true,
+                    child: Padding(
+                        padding: EdgeInsets.only(top: 10),
+                        child: TextFormField(
+                          onSaved: (String value) {
+                            pincode = value;
+                          },
+                          key: passwordFormKey,
+                          validator: (value) => GlobalValidations().pincodeValidations(value),
+                          // autovalidate: true,
+                          // autocorrect: true,
 
-                      // onSaved: (val) => _passwordError = val,
-                    ))
+                          // onSaved: (val) => _passwordError = val,
+                        )))
               ]));
         });
   }
