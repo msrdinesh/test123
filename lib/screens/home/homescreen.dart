@@ -1439,8 +1439,8 @@ class HomeScreen extends State<HomePage> {
                 Padding(padding: EdgeInsets.all(15), child: Align(alignment: Alignment.centerLeft, child: Text("Enter an Indian pincode", style: TextStyle(fontSize: 20)))),
                 Padding(padding: EdgeInsets.only(left: 15), child: Align(alignment: Alignment.centerLeft, child: Text("Select a delivery location to see product availability and delivery options", style: TextStyle(fontSize: 15)))),
                 SizedBox(
-                    height: 30,
-                    width: 100,
+                    height: 50,
+                    width: 500,
                     child: TextFormField(
                       controller: passwordController,
                       key: passwordFormKey,
@@ -1453,7 +1453,7 @@ class HomeScreen extends State<HomePage> {
                       // onSaved: (val) => _passwordError = val,
                     ))
               ]));
-        });
+        });S
   }
 
   Widget showLocation() {
