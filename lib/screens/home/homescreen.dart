@@ -1438,7 +1438,6 @@ class HomeScreen extends State<HomePage> {
               heightFactor: 0.6,
               child: Column(children: [
                 Padding(padding: EdgeInsets.all(15), child: Align(alignment: Alignment.centerLeft, child: Text("Enter an Indian pincode", style: TextStyle(fontSize: 20)))),
-                Padding(padding: EdgeInsets.only(left: 15), child: Align(alignment: Alignment.centerLeft, child: Text("Select a delivery location to see product availability and delivery options", style: TextStyle(fontSize: 15)))),
                 Padding(
                     padding: EdgeInsets.only(top: 15),
                     child: Container(
