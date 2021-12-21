@@ -1547,7 +1547,7 @@ class HomeScreen extends State<HomePage> {
     showModalBottomSheet(
         context: context,
         builder: (builder) {
-          double c_width = MediaQuery.of(context).size.width*0.8;
+          double c_width = MediaQuery.of(context).size.width * 0.8;
           return StatefulBuilder(builder: (context, setstate) {
             return FractionallySizedBox(
                 heightFactor: 0.7,
@@ -1567,8 +1567,7 @@ class HomeScreen extends State<HomePage> {
                           });
                         },
                       ),
-                      Flexible(child:
-                      Padding(padding: EdgeInsets.all(15), child: Text("Allow this FeedNext app to access your location and skip this step in the future.")))
+                      Flexible(child: Padding(padding: EdgeInsets.all(10), child: Text("Allow this FeedNext app to access your location and skip this step in the future.")))
                     ],
                   ))
                 ]));
