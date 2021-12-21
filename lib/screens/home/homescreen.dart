@@ -1448,7 +1448,8 @@ class HomeScreen extends State<HomePage> {
                         ),
                         height: 40,
                         width: 330,
-                        child: TextFormField(
+                        child: Center(
+                            child: TextFormField(
                           onSaved: (String value) {
                             pincode = value;
                           },
@@ -1458,7 +1459,7 @@ class HomeScreen extends State<HomePage> {
                           // autocorrect: true,
 
                           // onSaved: (val) => _passwordError = val,
-                        )))
+                        ))))
               ]));
         });
   }
