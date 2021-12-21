@@ -5,7 +5,6 @@ import 'package:cornext_mobile/constants/appcolors.dart';
 import 'package:cornext_mobile/services/refreshtokenservice/refreshtokenservice.dart';
 import 'package:cornext_mobile/services/sharedprefrencesservice/sharedpreferenceservice.dart';
 import 'package:cornext_mobile/constants/appstyles.dart';
-import 'package:cornext_mobile/constants/appcolors.dart';
 import 'package:cornext_mobile/models/signinmodel.dart';
 import 'package:cornext_mobile/utils/globalvalidations/globalvalidations.dart';
 // import 'package:flutter/services.dart' show rootBundle;
@@ -26,7 +25,6 @@ import 'package:cornext_mobile/services/ordertrackingservices/ordertrackingservi
 import 'package:cornext_mobile/services/addressservice/addressservice.dart';
 import 'package:cornext_mobile/components/widgets/notifications.dart';
 
-import '../../constants/appcolors.dart';
 import 'dart:async';
 import 'package:cornext_mobile/constants/appfonts.dart';
 import 'package:cornext_mobile/services/deviceinfoservice/deviceinfoservice.dart';
