@@ -1431,8 +1431,8 @@ class HomeScreen extends State<HomePage> {
   }
 
   String textFun(bool BOOL) {
-    if (BOOL) return 'OK';
-    return 'not OK';
+    if (BOOL) return textInLocation;
+    return textInLocation + place + " " + pincode;
   }
 
   void _showPincode(VoidCallback fun) {
