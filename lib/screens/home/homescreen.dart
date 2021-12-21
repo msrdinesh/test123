@@ -1553,7 +1553,8 @@ class HomeScreen extends State<HomePage> {
                 child: Column(children: [
                   Padding(padding: EdgeInsets.all(15), child: Text("Allow location access to improve shopping experience", style: TextStyle(fontSize: 20))),
                   Padding(padding: EdgeInsets.all(15), child: Text("We use your location to improve your shopping experience, ensuring you only see items or products and delivery options available in your place.", style: TextStyle(fontSize: 15))),
-                  Row(
+                  new Container(
+                      child: Row(
                     children: <Widget>[
                       Checkbox(
                         checkColor: Colors.white,
@@ -1565,9 +1566,9 @@ class HomeScreen extends State<HomePage> {
                           });
                         },
                       ),
-                      Padding(padding: EdgeInsets.all(15), child: Text("Allow this FeedNext app to access your location and skip this step in the future."))
+                      Padding(padding: EdgeInsets.all(15), child: Flexible(child: Text("Allow this FeedNext app to access your location and skip this step in the future.")))
                     ],
-                  )
+                  ))
                 ]));
           });
         });
