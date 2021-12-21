@@ -84,9 +84,7 @@ class NewAddressDetails extends State<NewAddressPage> {
   getStates() {
     addressServices.getStates().then((val) {
       final data = json.decode(val.body);
-      if (data != null &&
-          data['listOfStates'] != null &&
-          data['listOfStates'].length > 0) {
+      if (data != null && data['listOfStates'] != null && data['listOfStates'].length > 0) {
         setState(() {
           states = data['listOfStates'];
           // selectedState = states[0]['stateId'].toString();
@@ -95,25 +93,19 @@ class NewAddressDetails extends State<NewAddressPage> {
         ApiErros().apiLoggedErrors(data, context, scafFoldkey);
       }
     }, onError: (err) {
-      ApiErros()
-          .apiErrorNotifications(err, context, '/registration', scafFoldkey);
+      ApiErros().apiErrorNotifications(err, context, '/registration', scafFoldkey);
     });
   }
 
   checkIsFormFieldsValid() {
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(newMobileNoFocus, newMobileNoKey);
+    GlobalValidations().validateCurrentFieldValidOrNot(newMobileNoFocus, newMobileNoKey);
 
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(newHouseNoFocus, newHouseNokey);
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(newStreetFocus, newStreetKey);
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(newCityFocus, newCityKey);
+    GlobalValidations().validateCurrentFieldValidOrNot(newHouseNoFocus, newHouseNokey);
+    GlobalValidations().validateCurrentFieldValidOrNot(newStreetFocus, newStreetKey);
+    GlobalValidations().validateCurrentFieldValidOrNot(newCityFocus, newCityKey);
     // GlobalValidations()
     //     .validateCurrentFieldValidOrNot(newStateFocus, newStatekey);
-    GlobalValidations()
-        .validateCurrentFieldValidOrNot(newPincodeFocus, newPincodeKey);
+    GlobalValidations().validateCurrentFieldValidOrNot(newPincodeFocus, newPincodeKey);
     // checkUserExitsOrNot();
   }
 
@@ -181,97 +173,54 @@ class NewAddressDetails extends State<NewAddressPage> {
                                   key: addressFormkey,
                                   child: Column(
                                     // mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      Container(
-                                          child: Text("Add New Address",
-                                              style: appFonts.getTextStyle(
-                                                  'edit_&_new_address_heading_style'))),
+                                      Container(child: Text("Add New Address", style: appFonts.getTextStyle('edit_&_new_address_heading_style'))),
                                       AppStyles().customPadding(15),
                                       TextFormField(
                                         cursorColor: mainAppColor,
                                         controller: newMobileNoController,
                                         decoration: InputDecoration(
-                                            labelText:
-                                                mobileNumberLabelName + " *",
+                                            labelText: mobileNumberLabelName + " *",
                                             errorMaxLines: 3,
                                             counterText: "",
-                                            contentPadding: AppStyles()
-                                                .contentPaddingForInput,
+                                            contentPadding: AppStyles().contentPaddingForInput,
                                             // alignLabelWithHint: true,
                                             border: AppStyles().inputBorder,
                                             prefix: Text("+91 "),
-                                            focusedBorder:
-                                                AppStyles().focusedInputBorder),
+                                            focusedBorder: AppStyles().focusedInputBorder),
                                         keyboardType: TextInputType.number,
                                         maxLength: 10,
-                                        validator: (value) =>
-                                            GlobalValidations()
-                                                .mobileValidations(value),
+                                        validator: (value) => GlobalValidations().mobileValidations(value),
                                         focusNode: newMobileNoFocus,
                                         key: newMobileNoKey,
-                                        inputFormatters: [
-                                          WhitelistingTextInputFormatter
-                                              .digitsOnly
-                                        ],
                                       ),
                                       AppStyles().customPadding(3),
                                       TextFormField(
-                                        decoration: InputDecoration(
-                                            border: AppStyles().inputBorder,
-                                            errorMaxLines: 3,
-                                            focusedBorder:
-                                                AppStyles().focusedInputBorder,
-                                            labelText:
-                                                houseNumberLabelName + " *",
-                                            counterText: "",
-                                            contentPadding: AppStyles()
-                                                .contentPaddingForInput),
+                                        decoration: InputDecoration(border: AppStyles().inputBorder, errorMaxLines: 3, focusedBorder: AppStyles().focusedInputBorder, labelText: houseNumberLabelName + " *", counterText: "", contentPadding: AppStyles().contentPaddingForInput),
                                         controller: newHouseNoController,
                                         cursorColor: mainAppColor,
-                                        validator: (val) => GlobalValidations()
-                                            .houseNumberValidations(
-                                                val.trim(), true),
+                                        validator: (val) => GlobalValidations().houseNumberValidations(val.trim(), true),
                                         maxLength: 75,
                                         focusNode: newHouseNoFocus,
                                         key: newHouseNokey,
                                       ),
                                       AppStyles().customPadding(5),
                                       TextFormField(
-                                        decoration: InputDecoration(
-                                            border: AppStyles().inputBorder,
-                                            errorMaxLines: 3,
-                                            focusedBorder:
-                                                AppStyles().focusedInputBorder,
-                                            labelText: streetLabelName + " *",
-                                            counterText: "",
-                                            contentPadding: AppStyles()
-                                                .contentPaddingForInput),
+                                        decoration: InputDecoration(border: AppStyles().inputBorder, errorMaxLines: 3, focusedBorder: AppStyles().focusedInputBorder, labelText: streetLabelName + " *", counterText: "", contentPadding: AppStyles().contentPaddingForInput),
                                         controller: newStreetController,
                                         cursorColor: mainAppColor,
-                                        validator: (val) => GlobalValidations()
-                                            .streetValidations(
-                                                val.trim(), true),
+                                        validator: (val) => GlobalValidations().streetValidations(val.trim(), true),
                                         maxLength: 75,
                                         focusNode: newStreetFocus,
                                         key: newStreetKey,
                                       ),
                                       AppStyles().customPadding(5),
                                       TextFormField(
-                                        decoration: InputDecoration(
-                                            border: AppStyles().inputBorder,
-                                            errorMaxLines: 3,
-                                            focusedBorder:
-                                                AppStyles().focusedInputBorder,
-                                            labelText: cityLabelName + ' *',
-                                            counterText: "",
-                                            contentPadding: AppStyles()
-                                                .contentPaddingForInput),
+                                        decoration: InputDecoration(border: AppStyles().inputBorder, errorMaxLines: 3, focusedBorder: AppStyles().focusedInputBorder, labelText: cityLabelName + ' *', counterText: "", contentPadding: AppStyles().contentPaddingForInput),
                                         controller: newCityController,
                                         cursorColor: mainAppColor,
-                                        validator: (val) => GlobalValidations()
-                                            .cityValidations(val.trim()),
+                                        validator: (val) => GlobalValidations().cityValidations(val.trim()),
                                         maxLength: 75,
                                         focusNode: newCityFocus,
                                         key: newCityKey,
@@ -297,17 +246,9 @@ class NewAddressDetails extends State<NewAddressPage> {
                                       //   key: newStatekey,
                                       // ),
                                       Container(
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: isStateError
-                                                      ? Colors.red[700]
-                                                      : Colors.grey,
-                                                  width: 1),
-                                              borderRadius:
-                                                  BorderRadius.circular(7)),
+                                          decoration: BoxDecoration(border: Border.all(color: isStateError ? Colors.red[700] : Colors.grey, width: 1), borderRadius: BorderRadius.circular(7)),
                                           child: Container(
-                                              padding:
-                                                  EdgeInsets.only(left: 15),
+                                              padding: EdgeInsets.only(left: 15),
                                               child: DropdownButton<String>(
                                                 underline: Container(),
                                                 focusNode: newStateFocus,
@@ -321,18 +262,15 @@ class NewAddressDetails extends State<NewAddressPage> {
                                                   return new DropdownMenuItem(
                                                     child: new Text(
                                                       state['name'].toString(),
-                                                      style: appFonts.getTextStyle(
-                                                          'state_dropdown_names_style'),
+                                                      style: appFonts.getTextStyle('state_dropdown_names_style'),
                                                     ),
-                                                    value: state['stateId']
-                                                        .toString(),
+                                                    value: state['stateId'].toString(),
                                                   );
                                                 }).toList(),
                                                 onChanged: (newVal) {
                                                   setState(() {
                                                     selectedState = newVal;
-                                                    newStateFocus
-                                                        .requestFocus();
+                                                    newStateFocus.requestFocus();
                                                     isStateError = false;
                                                   });
                                                 },
@@ -340,75 +278,55 @@ class NewAddressDetails extends State<NewAddressPage> {
                                               ))),
                                       isStateError
                                           ? Container(
-                                              padding: EdgeInsets.only(
-                                                  left: 15, top: 5),
+                                              padding: EdgeInsets.only(left: 15, top: 5),
                                               child: Text(
                                                 "Please select State.",
-                                                style: appFonts.getTextStyle(
-                                                    'state_not_selected_error_styles'),
+                                                style: appFonts.getTextStyle('state_not_selected_error_styles'),
                                               ),
                                             )
                                           : Container(),
                                       AppStyles().customPadding(5),
                                       TextFormField(
-                                        decoration: InputDecoration(
-                                            border: AppStyles().inputBorder,
-                                            errorMaxLines: 3,
-                                            focusedBorder:
-                                                AppStyles().focusedInputBorder,
-                                            labelText: pincodeLabelName + " *",
-                                            counterText: "",
-                                            contentPadding: AppStyles()
-                                                .contentPaddingForInput),
+                                        decoration: InputDecoration(border: AppStyles().inputBorder, errorMaxLines: 3, focusedBorder: AppStyles().focusedInputBorder, labelText: pincodeLabelName + " *", counterText: "", contentPadding: AppStyles().contentPaddingForInput),
                                         controller: newPinCodeController,
                                         cursorColor: mainAppColor,
-                                        validator: (val) => GlobalValidations()
-                                            .pincodeValidations(val.trim()),
+                                        validator: (val) => GlobalValidations().pincodeValidations(val.trim()),
                                         maxLength: 6,
                                         keyboardType: TextInputType.phone,
                                         focusNode: newPincodeFocus,
                                         key: newPincodeKey,
                                       ),
                                       AppStyles().customPadding(5),
-                                      Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            !onLoading
-                                                ? Container(
-                                                    // width: 10,
-                                                    // margin: EdgeInsets.fromLTRB(
-                                                    //     100, 0, 100, 0),
-                                                    child: RaisedButton(
-                                                    // shape:
-                                                    //     new RoundedRectangleBorder(
-                                                    //         borderRadius:
-                                                    //             new BorderRadius
-                                                    //                     .circular(
-                                                    //                 20.0)),
-                                                    onPressed: () {
-                                                      if (addressFormkey
-                                                              .currentState
-                                                              .validate() &&
-                                                          selectedState !=
-                                                              null) {
-                                                        newAddressinformation();
-                                                      } else if (selectedState ==
-                                                          null) {
-                                                        setState(() {
-                                                          isStateError = true;
-                                                        });
-                                                      }
-                                                    },
-                                                    color: mainAppColor,
-                                                    child: Text(
-                                                      "Add",
-                                                      style: appFonts.getTextStyle(
-                                                          'button_text_color_white'),
-                                                    ),
-                                                  ))
-                                                : loadingButtonWidget(context)
-                                          ])
+                                      Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                                        !onLoading
+                                            ? Container(
+                                                // width: 10,
+                                                // margin: EdgeInsets.fromLTRB(
+                                                //     100, 0, 100, 0),
+                                                child: RaisedButton(
+                                                // shape:
+                                                //     new RoundedRectangleBorder(
+                                                //         borderRadius:
+                                                //             new BorderRadius
+                                                //                     .circular(
+                                                //                 20.0)),
+                                                onPressed: () {
+                                                  if (addressFormkey.currentState.validate() && selectedState != null) {
+                                                    newAddressinformation();
+                                                  } else if (selectedState == null) {
+                                                    setState(() {
+                                                      isStateError = true;
+                                                    });
+                                                  }
+                                                },
+                                                color: mainAppColor,
+                                                child: Text(
+                                                  "Add",
+                                                  style: appFonts.getTextStyle('button_text_color_white'),
+                                                ),
+                                              ))
+                                            : loadingButtonWidget(context)
+                                      ])
                                     ],
                                   )),
                             )))))));
