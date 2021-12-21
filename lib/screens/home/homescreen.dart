@@ -1440,7 +1440,7 @@ class HomeScreen extends State<HomePage> {
                 Padding(padding: EdgeInsets.only(left: 15), child: Align(alignment: Alignment.centerLeft, child: Text("Select a delivery location to see product availability and delivery options", style: TextStyle(fontSize: 15)))),
                 SizedBox(
                     height: 50,
-                    width: 400,
+                    width: 200,
                     child: TextFormField(
                       controller: passwordController,
                       key: passwordFormKey,
