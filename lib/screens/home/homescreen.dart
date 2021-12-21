@@ -1577,14 +1577,14 @@ class HomeScreen extends State<HomePage> {
                       onPressed: () {
                         print('Pressed');
                       },
-                      child: SizedBox(width: MediaQuery.of(context).size.width * 0.4, child: Text("Not now")),
+                      child: SizedBox(width: MediaQuery.of(context).size.width * 0.38, child: Text("Not now")),
                     ),
                     SizedBox(width: 10),
                     RaisedButton(
                       onPressed: () {
                         print('Pressed');
                       },
-                      child: SizedBox(width: MediaQuery.of(context).size.width * 0.4, child: Text("Allow access")),
+                      child: SizedBox(width: MediaQuery.of(context).size.width * 0.38, child: Text("Allow access")),
                     )
                   ]))
                 ]));
