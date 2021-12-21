@@ -1462,6 +1462,8 @@ class HomeScreen extends State<HomePage> {
                                   validator: (value) => GlobalValidations().pincodeValidations(value),
                                 ))))),
                 RaisedButton(
+                  height: 40,
+                  width: 330,
                   child: Text('Apply'),
                   onPressed: () {},
                 )
