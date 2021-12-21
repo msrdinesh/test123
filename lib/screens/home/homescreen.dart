@@ -1429,26 +1429,7 @@ class HomeScreen extends State<HomePage> {
         });
   }
 
-  void _apply() {
-    final form = passwordFormKey.currentState;
-    print(form);
-    if (form.validate()) {
-      form.save();
-      print("i am here and pincode is " + pincode);
-      setState() {
-        textInLocation = pincode;
-      }
-
-      textInLocation = pincode;
-      print(textInLocation);
-
-      Navigator.pop(context);
-    } else {
-      setState() {
-        pincode = "";
-      }
-    }
-  }
+  void _apply() {}
 
   void _showPincode() {
     showModalBottomSheet(
@@ -1494,7 +1475,24 @@ class HomeScreen extends State<HomePage> {
                         child: RaisedButton(
                           child: Text('Apply'),
                           onPressed: () {
-                            _apply();
+                            final form = passwordFormKey.currentState;
+                            print(form);
+                            if (form.validate()) {
+                              form.save();
+                              print("i am here and pincode is " + pincode);
+                              setState() {
+                                textInLocation = pincode;
+                              }
+
+                              textInLocation = pincode;
+                              print(textInLocation);
+
+                              Navigator.pop(context);
+                            } else {
+                              setState() {
+                                pincode = "";
+                              }
+                            }
                           },
                         )))
               ]));
