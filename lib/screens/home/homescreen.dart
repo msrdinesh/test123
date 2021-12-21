@@ -1448,6 +1448,7 @@ class HomeScreen extends State<HomePage> {
     isLoading = true;
     fun();
     var response = await http.get(Uri.parse('https://api.worldpostallocations.com/pincode?postalcode=' + pincode + '&countrycode=IN'));
+    // var response = await htpp.get(Uri.parse('http://www.postalpincode.in/api/pincode/521001'));
     Map<String, dynamic> respons = jsonDecode(response.body);
     place = respons['result'][0]['province'];
     print("i am here");
