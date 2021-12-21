@@ -1557,18 +1557,19 @@ class HomeScreen extends State<HomePage> {
                   new Container(
                       child: Row(
                     children: <Widget>[
-                      Padding(padding:EdgeInsets.all(15),child:
-                      Checkbox(
-                        checkColor: Colors.white,
-                        value: isChecked,
-                        onChanged: (bool value) {
-                          print("changed");
-                          setstate(() {
-                            isChecked = value;
-                          });
-                        },
-                      )),
-                      Flexible(child: Padding(padding: EdgeInsets.all(10), child: Text("Allow this FeedNext app to access your location and skip this step in the future.")))
+                      Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Checkbox(
+                            checkColor: Colors.white,
+                            value: isChecked,
+                            onChanged: (bool value) {
+                              print("changed");
+                              setstate(() {
+                                isChecked = value;
+                              });
+                            },
+                          )),
+                      Flexible(child: Padding(padding: EdgeInsets.all(0), child: Text("Allow this FeedNext app to access your location and skip this step in the future.")))
                     ],
                   ))
                 ]));
