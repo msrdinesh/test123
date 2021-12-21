@@ -1461,11 +1461,6 @@ class HomeScreen extends State<HomePage> {
                             child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: TextFormField(
-                                  decoration: const InputDecoration(
-                                    icon: Icon(Icons.person),
-                                    hintText: 'What do people call you?',
-                                    labelText: 'Name *',
-                                  ),
                                   onSaved: (String value) {
                                     pincode = value;
                                   },
