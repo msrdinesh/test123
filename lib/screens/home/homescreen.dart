@@ -1539,6 +1539,7 @@ class HomeScreen extends State<HomePage> {
     LocationData _locationData;
 
     _serviceEnabled = await location.serviceEnabled();
+    print(_serviceEnabled);
     if (!_serviceEnabled) {
       _serviceEnabled = await location.requestService();
       if (!_serviceEnabled) {
