@@ -1439,6 +1439,7 @@ class HomeScreen extends State<HomePage> {
         textInLocation = pincode;
       }
 
+      textInLocation = pincode;
       print(textInLocation);
 
       Navigator.pop(context);
