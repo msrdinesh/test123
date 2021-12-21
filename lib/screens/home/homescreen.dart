@@ -1557,6 +1557,7 @@ class HomeScreen extends State<HomePage> {
                   new Container(
                       child: Row(
                     children: <Widget>[
+                      Padding(padding:EdgeInsets.all(15),child:
                       Checkbox(
                         checkColor: Colors.white,
                         value: isChecked,
@@ -1566,7 +1567,7 @@ class HomeScreen extends State<HomePage> {
                             isChecked = value;
                           });
                         },
-                      ),
+                      )),
                       Flexible(child: Padding(padding: EdgeInsets.all(10), child: Text("Allow this FeedNext app to access your location and skip this step in the future.")))
                     ],
                   ))
