@@ -50,7 +50,7 @@ class HomeScreen extends State<HomePage> {
   bool BOOL = false;
   String pincode = "521001";
   String place = "";
-  String textInLocation = "Deliver to";
+  String textInLocation = "Deliver to ";
   final passwordController = TextEditingController();
   final passwordFormKey = GlobalKey<FormFieldState>();
   final GlobalKey<ScaffoldState> scafFoldKey = GlobalKey<ScaffoldState>();
@@ -1445,7 +1445,6 @@ class HomeScreen extends State<HomePage> {
   }
 
   void getPlace(VoidCallback fun) async {
-    
     isLoading = true;
     fun();
     var response = await http.get(Uri.parse('https://api.worldpostallocations.com/pincode?postalcode=521001&countrycode=IN'));
