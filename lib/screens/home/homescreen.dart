@@ -1444,7 +1444,23 @@ class HomeScreen extends State<HomePage> {
     return textInLocation;
   }
 
-  void getPlace(VoidCallback fun) async {
+  showErrorNotifications(message, context, GlobalKey<ScaffoldState> scafFlodKey) {
+    final snackBar = SnackBar(
+      backgroundColor: Colors.grey[100],
+      // shape: ,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5))),
+      content: Text(message, textAlign: TextAlign.center, style: AppFonts().getTextStyle('error_notifications_text_style')),
+      duration: Duration(seconds: 3),
+    );
+
+    // Find the Scaffold in the widget tree and use
+    // it to show a SnackBar.
+    if (scafFlodKey != null && scafFlodKey.currentState != null) {
+      scafFlodKey.currentState.showSnackBar(snackBar);
+    }
+  }
+
+  void getPlace(VoidCallback fun, GlobalKey<ScaffoldState> scafflodKey) async {
     isLoading = true;
     fun();
     var response = await http.get(Uri.parse('https://api.worldpostallocations.com/pincode?postalcode=' + pincode + '&countrycode=IN'));
@@ -1458,7 +1474,9 @@ class HomeScreen extends State<HomePage> {
       isLoading = false;
       fun();
       Navigator.pop(context);
-    } else {}
+    } else {
+      showErrorNotifications("Pincode doesn't exist", context, scafflodKey);
+    }
   }
 
   void _showPincode(VoidCallback fun) {
@@ -1508,7 +1526,7 @@ class HomeScreen extends State<HomePage> {
                                   print(form);
                                   if (form.validate()) {
                                     form.save();
-                                    getPlace(fun);
+                                    getPlace(fun, scafFoldKey);
                                     fun();
                                   } else {}
                                 },
