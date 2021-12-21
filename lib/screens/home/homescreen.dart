@@ -1437,7 +1437,7 @@ class HomeScreen extends State<HomePage> {
       print("bool is false");
     }
     if (BOOL) return textInLocation;
-    print("pincode is ",+pincode);
+    print("pincode is " + pincode);
     return textInLocation + place + " " + pincode;
   }
 
