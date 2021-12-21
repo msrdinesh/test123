@@ -1448,7 +1448,7 @@ class HomeScreen extends State<HomePage> {
                     height: 40,
                     width: 330,
                     child: Padding(
-                        padding: EdgeInsets.only(top: 10),
+                        padding: EdgeInsets.only(top: 20),
                         child: TextFormField(
                           onSaved: (String value) {
                             pincode = value;
