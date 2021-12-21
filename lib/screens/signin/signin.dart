@@ -244,9 +244,6 @@ class SignIn extends State<SignInPage> {
                                       // },
                                       // controller: _emailController,
                                       // onChanged: (value) => _emailText = value,
-                                      inputFormatters: [
-                                        WhitelistingTextInputFormatter.digitsOnly
-                                      ],
                                       keyboardType: TextInputType.number,
                                       maxLength: 10,
                                     ),
