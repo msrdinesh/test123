@@ -1456,6 +1456,7 @@ class HomeScreen extends State<HomePage> {
     // Find the Scaffold in the widget tree and use
     // it to show a SnackBar.
     if (scafFlodKey != null && scafFlodKey.currentState != null) {
+      print("here i am dinesh");
       scafFlodKey.currentState.showSnackBar(snackBar);
     }
   }
