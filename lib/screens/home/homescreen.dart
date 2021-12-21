@@ -1549,7 +1549,7 @@ class HomeScreen extends State<HomePage> {
           return FractionallySizedBox(
               heightFactor: 0.6,
               child: Column(children: [
-                Text("Allow location access to improve shopping experience");
+                Text("Allow location access to improve shopping experience")
               ]));
         });
   }
