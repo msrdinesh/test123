@@ -1436,9 +1436,9 @@ class HomeScreen extends State<HomePage> {
     } else {
       print("bool is false");
     }
-    if (BOOL) return textInLocation;
+    if (BOOL) return textInLocation + place + " " + pincode;
     print("pincode is " + pincode);
-    return textInLocation + place + " " + pincode;
+    return textInLocation;
   }
 
   void _showPincode(VoidCallback fun) {
