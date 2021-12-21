@@ -44,6 +44,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomeScreen extends State<HomePage> {
+  String pincode = "";
   final passwordController = TextEditingController();
   final passwordFormKey = GlobalKey<FormFieldState>();
   final GlobalKey<ScaffoldState> scafFoldKey = GlobalKey<ScaffoldState>();
@@ -1447,7 +1448,9 @@ class HomeScreen extends State<HomePage> {
                     height: 50,
                     width: 300,
                     child: TextFormField(
-                      controller: passwordController,
+                      onSaved: (String value) {
+                        pincode = value;
+                      },
                       key: passwordFormKey,
 
                       cursorColor: mainAppColor,
