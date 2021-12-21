@@ -1452,8 +1452,6 @@ class HomeScreen extends State<HomePage> {
                         pincode = value;
                       },
                       key: passwordFormKey,
-
-                      cursorColor: mainAppColor,
                       validator: (value) => GlobalValidations().pincodeValidations(value),
                       // autovalidate: true,
                       // autocorrect: true,
