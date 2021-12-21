@@ -1390,33 +1390,35 @@ class HomeScreen extends State<HomePage> {
           print("number of addresses");
           print(addressList.length);
           print(makeAddressCards(addressList));
-          return Column(children: [
-            Padding(padding: EdgeInsets.all(15), child: Align(alignment: Alignment.centerLeft, child: Text("Choose your location", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)))),
-            Padding(padding: EdgeInsets.only(left: 15), child: Align(alignment: Alignment.centerLeft, child: Text("Select a delivery location to see product availability and delivery options", style: TextStyle(fontSize: 15)))),
-            Padding(padding: EdgeInsets.all(15), child: Align(alignment: Alignment.centerLeft, child: SingleChildScrollView(scrollDirection: Axis.horizontal, child: Align(alignment: Alignment.centerLeft, child: Row(children: makeAddressCards(addressList)))))),
-            Padding(
-                padding: EdgeInsets.all(15),
-                child: GestureDetector(
-                    onTap: () {
-                      print("pressed 1");
-                    },
-                    child: Row(children: [
-                      Icon(Icons.location_on_rounded, color: Colors.blue),
-                      SizedBox(width: 5),
-                      Text("Enter an Indian pincode", style: TextStyle(color: Colors.blue))
-                    ]))),
-            Padding(
-                padding: EdgeInsets.all(15),
-                child: GestureDetector(
-                    onTap: () {
-                      print("pressed 2");
-                    },
-                    child: Row(children: [
-                      Icon(Icons.location_searching_sharp, color: Colors.blue),
-                      SizedBox(width: 5),
-                      Text("Use my current location", style: TextStyle(color: Colors.blue))
-                    ])))
-          ]);
+          return FractionallySizedBox(
+              heightFactor: 0.9,
+              child: Column(children: [
+                Padding(padding: EdgeInsets.all(15), child: Align(alignment: Alignment.centerLeft, child: Text("Choose your location", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)))),
+                Padding(padding: EdgeInsets.only(left: 15), child: Align(alignment: Alignment.centerLeft, child: Text("Select a delivery location to see product availability and delivery options", style: TextStyle(fontSize: 15)))),
+                Padding(padding: EdgeInsets.all(15), child: Align(alignment: Alignment.centerLeft, child: SingleChildScrollView(scrollDirection: Axis.horizontal, child: Align(alignment: Alignment.centerLeft, child: Row(children: makeAddressCards(addressList)))))),
+                Padding(
+                    padding: EdgeInsets.all(15),
+                    child: GestureDetector(
+                        onTap: () {
+                          print("pressed 1");
+                        },
+                        child: Row(children: [
+                          Icon(Icons.location_on_rounded, color: Colors.blue),
+                          SizedBox(width: 5),
+                          Text("Enter an Indian pincode", style: TextStyle(color: Colors.blue))
+                        ]))),
+                Padding(
+                    padding: EdgeInsets.all(15),
+                    child: GestureDetector(
+                        onTap: () {
+                          print("pressed 2");
+                        },
+                        child: Row(children: [
+                          Icon(Icons.location_searching_sharp, color: Colors.blue),
+                          SizedBox(width: 5),
+                          Text("Use my current location", style: TextStyle(color: Colors.blue))
+                        ])))
+              ]));
         });
   }
 
