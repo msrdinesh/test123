@@ -1558,6 +1558,7 @@ class HomeScreen extends State<HomePage> {
                       checkColor: Colors.white,
                       value: isChecked,
                       onChanged: (bool value) {
+                        print("changed");
                         setState(() {
                           isChecked = value;
                         });
