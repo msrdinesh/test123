@@ -1549,30 +1549,7 @@ class HomeScreen extends State<HomePage> {
           return FractionallySizedBox(
               heightFactor: 0.6,
               child: Column(children: [
-                Padding(padding: EdgeInsets.all(15), child: Align(alignment: Alignment.centerLeft, child: Text("Enter an Indian pincode", style: TextStyle(fontSize: 20)))),
-                Padding(
-                    padding: EdgeInsets.only(top: 15),
-                    child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 1,
-                          ),
-                        ),
-                        height: 40,
-                        width: 330,
-                        child: Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: TextFormField(
-                                  key: passwordFormKey,
-                                  style: TextStyle(fontSize: 20),
-                                  decoration: new InputDecoration(border: InputBorder.none, focusedBorder: InputBorder.none, enabledBorder: InputBorder.none, errorBorder: InputBorder.none, disabledBorder: InputBorder.none, contentPadding: EdgeInsets.only(left: 5, bottom: 11, top: 11, right: 15)),
-                                  onSaved: (String value) {
-                                    pincode = value;
-                                  },
-                                  validator: (value) => GlobalValidations().pincodeValidations(value),
-                                )))))
+                Text("")
               ]));
         });
   }
