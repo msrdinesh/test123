@@ -1400,7 +1400,7 @@ class HomeScreen extends State<HomePage> {
                     padding: EdgeInsets.all(15),
                     child: GestureDetector(
                         onTap: () {
-                          print("pressed 1");
+                          _showPincode();
                         },
                         child: Row(children: [
                           Icon(Icons.location_on_rounded, color: Colors.blue),
@@ -1411,7 +1411,7 @@ class HomeScreen extends State<HomePage> {
                     padding: EdgeInsets.all(15),
                     child: GestureDetector(
                         onTap: () {
-                          print("pressed 2");
+                          _showPincode();
                         },
                         child: Row(children: [
                           Icon(Icons.location_searching_sharp, color: Colors.blue),
