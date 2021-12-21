@@ -1459,8 +1459,10 @@ class HomeScreen extends State<HomePage> {
     print(scafFlodKey);
     print(scafFlodKey.currentState);
     if (scafFlodKey != null && scafFlodKey.currentState != null) {
-      Navigator.pop(context);
       scafFlodKey.currentState.showSnackBar(snackBar);
+      Navigator.pop(context);
+      pincode = "";
+      fun();
     }
   }
 
