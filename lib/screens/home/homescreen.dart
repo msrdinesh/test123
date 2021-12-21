@@ -3,6 +3,7 @@ import 'package:cornext_mobile/components/widgets/appbarwidget.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'dart:convert';
 import 'package:location/location.dart';
 import 'package:geocoding/geocoding.dart' as g;
@@ -1549,11 +1550,15 @@ class HomeScreen extends State<HomePage> {
 
     _permissionGranted = await location.hasPermission();
     print(_permissionGranted);
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
-        return;
+    if (await Permission.contacts.request().isGranted) {
+      if (_permissionGranted == PermissionStatus.denied) {
+        _permissionGranted = await location.requestPermission();
+        if (_permissionGranted != PermissionStatus.granted) {
+          return;
+        }
       }
+    } else {
+      print("permission denied");
     }
 
     _locationData = await location.getLocation();
