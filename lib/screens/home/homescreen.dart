@@ -1446,7 +1446,7 @@ class HomeScreen extends State<HomePage> {
                       ),
                     ),
                     height: 40,
-                    width: 320,
+                    width: 330,
                     child: TextFormField(
                       onSaved: (String value) {
                         pincode = value;
