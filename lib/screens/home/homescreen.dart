@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
 import 'dart:convert';
 import 'package:location/location.dart';
-import 'package:geocoding/geocoding.dart as g';
+import 'package:geocoding/geocoding.dart';
 import 'package:cornext_mobile/constants/appcolors.dart';
 import 'package:cornext_mobile/services/refreshtokenservice/refreshtokenservice.dart';
 import 'package:cornext_mobile/services/sharedprefrencesservice/sharedpreferenceservice.dart';
