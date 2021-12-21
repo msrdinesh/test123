@@ -1461,13 +1461,15 @@ class HomeScreen extends State<HomePage> {
                                   key: passwordFormKey,
                                   validator: (value) => GlobalValidations().pincodeValidations(value),
                                 ))))),
-                ButtonTheme(
-                    minWidth: 330.0,
-                    height: 40.0,
-                    child: RaisedButton(
-                      child: Text('Apply'),
-                      onPressed: () {},
-                    ))
+                Padding(
+                    padding: EdgeInsets.all(15),
+                    child: ButtonTheme(
+                        minWidth: 330.0,
+                        height: 40.0,
+                        child: RaisedButton(
+                          child: Text('Apply'),
+                          onPressed: () {},
+                        )))
               ]));
         });
   }
