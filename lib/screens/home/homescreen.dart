@@ -1460,11 +1460,11 @@ class HomeScreen extends State<HomePage> {
                                   decoration: new InputDecoration(border: InputBorder.none, focusedBorder: InputBorder.none, enabledBorder: InputBorder.none, errorBorder: InputBorder.none, disabledBorder: InputBorder.none, contentPadding: EdgeInsets.only(left: 0, bottom: 11, top: 11, right: 15)),
                                   key: passwordFormKey,
                                   validator: (value) => GlobalValidations().pincodeValidations(value),
-                                  // autovalidate: true,
-                                  // autocorrect: true,
-
-                                  // onSaved: (val) => _passwordError = val,
-                                )))))
+                                ))))),
+                RaisedButton(
+                  child: Text('Apply'),
+                  onPressed: () {},
+                )
               ]));
         });
   }
