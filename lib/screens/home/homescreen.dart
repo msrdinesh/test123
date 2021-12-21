@@ -12,11 +12,9 @@ import 'package:cornext_mobile/services/sharedprefrencesservice/sharedpreference
 import 'package:cornext_mobile/constants/appstyles.dart';
 import 'package:cornext_mobile/models/signinmodel.dart';
 import 'package:cornext_mobile/utils/globalvalidations/globalvalidations.dart';
-// import 'package:flutter/services.dart' show rootBundle;
 import 'package:cornext_mobile/services/homescreenservices/homescreenservices.dart';
 import 'package:cornext_mobile/utils/apierrors/apierror.dart';
 import 'package:cornext_mobile/components/widgets/loadingbutton.dart';
-// import 'package:carousel_pro/carousel_pro.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cornext_mobile/services/productsearchandfilterservice/productsearchandfilterservice.dart';
 import 'package:cornext_mobile/services/productdetailsservice/productdetailsservice.dart';
@@ -34,14 +32,6 @@ import 'dart:async';
 import 'package:cornext_mobile/constants/appfonts.dart';
 import 'package:cornext_mobile/services/deviceinfoservice/deviceinfoservice.dart';
 import 'package:cornext_mobile/constants/appconstants.dart';
-// import 'package:cornext_mobile/';
-// import '../../constants/appcolors.dart';
-// import '../../constants/appcolors.dart';
-// import 'package:flutter/services.dart' show rootBundle;
-// import 'package:cornext_mobile/services/ordertrackingservices/ordertrackingservice.dart';
-// import 'package:cornext_mobile/services/sqflitedbservice/sqllitedbservice.dart';
-// import 'package:cornext_mobile/constants/appstyles.dart';
-// import 'package:connectivity/connectivity.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -1572,6 +1562,9 @@ class HomeScreen extends State<HomePage> {
     _locationData = await location.getLocation();
     double lattitude = _locationData.latitude;
     double longitude = _locationData.longitude;
+    List<g.Placemark> placemarks = await g.placemarkFromCoordinates(lattitude, longitude);
+    g.Placemark place = placemarks[0];
+    print(place);
   }
 
   void _showCurrentLocation(VoidCallback fun) {
