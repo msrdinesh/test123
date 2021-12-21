@@ -1396,18 +1396,26 @@ class HomeScreen extends State<HomePage> {
             Padding(padding: EdgeInsets.all(15), child: Align(alignment: Alignment.centerLeft, child: SingleChildScrollView(scrollDirection: Axis.horizontal, child: Align(alignment: Alignment.centerLeft, child: Row(children: makeAddressCards(addressList)))))),
             Padding(
                 padding: EdgeInsets.all(15),
-                child: Row(children: [
-                  Icon(Icons.location_on_rounded, color: Colors.blue),
-                  SizedBox(width: 5),
-                  Text("Enter an Indian pincode", style: TextStyle(color: Colors.blue))
-                ])),
+                child: GestureDetector(
+                    onTap: () {
+                      print("pressed 1");
+                    },
+                    child: Row(children: [
+                      Icon(Icons.location_on_rounded, color: Colors.blue),
+                      SizedBox(width: 5),
+                      Text("Enter an Indian pincode", style: TextStyle(color: Colors.blue))
+                    ]))),
             Padding(
                 padding: EdgeInsets.all(15),
-                child: Row(children: [
-                  Icon(Icons.location_searching_sharp, color: Colors.blue),
-                  SizedBox(width: 5),
-                  Text("Use my current location", style: TextStyle(color: Colors.blue))
-                ]))
+                child: GestureDetector(
+                    onTap: () {
+                      print("pressed 2");
+                    },
+                    child: Row(children: [
+                      Icon(Icons.location_searching_sharp, color: Colors.blue),
+                      SizedBox(width: 5),
+                      Text("Use my current location", style: TextStyle(color: Colors.blue))
+                    ])))
           ]);
         });
   }
