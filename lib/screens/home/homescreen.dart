@@ -1488,9 +1488,7 @@ class HomeScreen extends State<HomePage> {
                               fun();
 
                               Navigator.pop(context);
-                            } else {
-                              fun();
-                            }
+                            } else {}
                           },
                         )))
               ]));
